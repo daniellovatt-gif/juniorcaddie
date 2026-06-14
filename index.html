@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="JuniorCaddie — the home of junior golf in the UK. Knowledge, community and equipment for every stage of your child's golf journey." />
+  <title>JuniorCaddie — The Home of Junior Golf in the UK</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #EEF4FB;
+      color: #0B3D6B;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Tokens ── */
+    :root {
+      --navy:   #0B3D6B;
+      --mid:    #1A6EA8;
+      --sky:    #5AAAD4;
+      --light:  #7BBDE0;
+      --pale:   #B8D8F0;
+      --bg:     #EEF4FB;
+      --white:  #ffffff;
+      --serif:  Georgia, 'Times New Roman', serif;
+      --sans:   -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      --radius: 12px;
+      --max:    1040px;
+    }
+
+    /* ── Logo SVG ── */
+    .logo-mark { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-words { display: flex; flex-direction: column; gap: 0; }
+    .logo-junior { font-family: var(--serif); font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1; }
+    .logo-caddie { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--mid); letter-spacing: -0.5px; line-height: 1; }
+    .logo-mark.reversed .logo-junior { color: var(--pale); }
+    .logo-mark.reversed .logo-caddie { color: var(--white); }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--pale);
+      padding: 16px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; color: var(--mid); font-weight: 400; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--navy); color: var(--white);
+      border: none; padding: 10px 22px;
+      border-radius: 8px; font-size: 14px;
+      cursor: pointer; font-weight: 500;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--mid); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 88px 24px 80px;
+      text-align: center;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 12px; color: var(--sky);
+      letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 24px; font-weight: 400;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.1; letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--mid); }
+    .hero-sub {
+      font-size: 18px; color: var(--mid);
+      line-height: 1.65; max-width: 580px;
+      margin: 0 auto 40px; font-weight: 400;
+    }
+    .email-form {
+      display: flex; gap: 10px;
+      max-width: 460px; margin: 0 auto 14px;
+    }
+    .email-input {
+      flex: 1; padding: 14px 18px;
+      border: 1.5px solid var(--pale);
+      border-radius: 8px; font-size: 15px;
+      background: var(--white); color: var(--navy);
+      outline: none; transition: border-color 0.15s;
+    }
+    .email-input:focus { border-color: var(--mid); }
+    .email-input::placeholder { color: var(--sky); }
+    .email-btn {
+      background: var(--navy); color: var(--white);
+      border: none; padding: 14px 24px;
+      border-radius: 8px; font-size: 15px;
+      font-weight: 500; cursor: pointer;
+      white-space: nowrap; transition: background 0.15s;
+    }
+    .email-btn:hover { background: var(--mid); }
+    .reassurance { font-size: 12px; color: var(--sky); }
+
+    /* ── Why ── */
+    .why {
+      background: var(--navy);
+      padding: 72px 24px;
+    }
+    .why-inner {
+      max-width: 760px; margin: 0 auto; text-align: center;
+    }
+    .section-label {
+      font-size: 11px; color: var(--sky);
+      letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 20px; display: block;
+    }
+    .why p {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: #EEF4FB; line-height: 1.65; font-weight: 400;
+    }
+    .why p strong { color: var(--light); font-weight: 700; }
+
+    /* ── Pillars ── */
+    .pillars {
+      padding: 80px 24px;
+      max-width: var(--max); margin: 0 auto;
+    }
+    .pillars-heading {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 700; color: var(--navy);
+      text-align: center; margin-bottom: 48px;
+      letter-spacing: -0.5px;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .pillar-card {
+      background: var(--white);
+      border: 0.5px solid var(--pale);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+    }
+    .pillar-q {
+      font-size: 11px; color: var(--sky);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .pillar-title {
+      font-family: var(--serif);
+      font-size: 22px; font-weight: 700;
+      color: var(--navy); margin-bottom: 12px; line-height: 1.25;
+    }
+    .pillar-body {
+      font-size: 14px; color: var(--mid); line-height: 1.75;
+    }
+    .pillar-tag {
+      display: inline-block; margin-top: 20px;
+      font-size: 12px; color: var(--mid);
+      border: 0.5px solid var(--pale);
+      border-radius: 20px; padding: 5px 14px;
+    }
+
+    /* ── Journey ── */
+    .journey {
+      background: #0F4F7A;
+      padding: 72px 24px;
+    }
+    .journey-inner { max-width: var(--max); margin: 0 auto; }
+    .journey-heading {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700; color: #EEF4FB;
+      text-align: center; margin-bottom: 48px;
+      letter-spacing: -0.5px;
+    }
+    .stages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .stage {
+      background: var(--navy);
+      border: 0.5px solid var(--mid);
+      border-radius: 10px; padding: 24px 16px;
+      text-align: center;
+    }
+    .stage.active {
+      background: var(--mid);
+      border-color: var(--light);
+    }
+    .stage-num {
+      font-size: 10px; color: var(--sky);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .stage.active .stage-num { color: var(--pale); }
+    .stage-name {
+      font-family: var(--serif);
+      font-size: 15px; font-weight: 700;
+      color: #EEF4FB; margin-bottom: 8px; line-height: 1.25;
+    }
+    .stage-desc {
+      font-size: 12px; color: var(--light); line-height: 1.55;
+    }
+    .stage.active .stage-desc { color: var(--pale); }
+    .stage-launching {
+      display: inline-block; margin-top: 10px;
+      font-size: 10px; color: var(--navy);
+      background: var(--pale); border-radius: 20px;
+      padding: 3px 10px; font-weight: 500;
+    }
+
+    /* ── Ask JuniorCaddie ── */
+    .ask { padding: 80px 24px; max-width: var(--max); margin: 0 auto; }
+    .ask-heading {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 700; color: var(--navy);
+      text-align: center; margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+    .ask-sub {
+      font-size: 16px; color: var(--mid);
+      text-align: center; margin-bottom: 48px;
+      max-width: 560px; margin-left: auto; margin-right: auto;
+      line-height: 1.6;
+    }
+    .stage-filter {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 36px;
+    }
+    .filter-btn {
+      font-size: 13px; color: var(--mid);
+      border: 0.5px solid var(--pale);
+      background: var(--white); border-radius: 20px;
+      padding: 7px 16px; cursor: pointer;
+      transition: all 0.15s; font-weight: 400;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--navy); color: var(--white);
+      border-color: var(--navy);
+    }
+    .qa-list { display: flex; flex-direction: column; gap: 16px; }
+    .qa-card {
+      background: var(--white);
+      border: 0.5px solid var(--pale);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .qa-card[data-stage]:not(.visible) { display: none; }
+    .qa-question {
+      padding: 20px 24px;
+      display: flex; gap: 14px; align-items: flex-start;
+      cursor: pointer;
+    }
+    .qa-q-mark {
+      font-family: var(--serif); font-size: 22px;
+      font-weight: 700; color: var(--mid);
+      line-height: 1; flex-shrink: 0; margin-top: 1px;
+    }
+    .qa-q-text {
+      font-size: 15px; font-weight: 500;
+      color: var(--navy); line-height: 1.5; flex: 1;
+    }
+    .qa-toggle {
+      font-size: 20px; color: var(--pale);
+      flex-shrink: 0; transition: transform 0.2s;
+      align-self: center;
+    }
+    .qa-card.open .qa-toggle { transform: rotate(45deg); color: var(--mid); }
+    .qa-answer {
+      display: none;
+      padding: 0 24px 24px 60px;
+      border-top: 0.5px solid var(--pale);
+      padding-top: 16px;
+    }
+    .qa-card.open .qa-answer { display: block; }
+    .qa-a-text {
+      font-size: 14px; color: #3A6080;
+      line-height: 1.8;
+    }
+    .qa-answered {
+      font-size: 11px; color: var(--sky);
+      margin-top: 12px; letter-spacing: 0.05em;
+    }
+    .qa-stage-tag {
+      display: inline-block; margin-bottom: 12px;
+      font-size: 11px; color: var(--sky);
+      border: 0.5px solid var(--pale);
+      border-radius: 20px; padding: 3px 12px;
+    }
+
+    /* Ask a question form */
+    .ask-form-wrap {
+      margin-top: 56px;
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 40px 40px;
+      max-width: 680px; margin-left: auto; margin-right: auto;
+      margin-top: 56px;
+    }
+    .ask-form-heading {
+      font-family: var(--serif);
+      font-size: 24px; font-weight: 700;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .ask-form-sub {
+      font-size: 14px; color: var(--light);
+      margin-bottom: 28px; line-height: 1.6;
+    }
+    .form-row { display: flex; gap: 12px; margin-bottom: 14px; }
+    .form-field { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .form-label { font-size: 12px; color: var(--light); letter-spacing: 0.05em; }
+    .form-input, .form-select, .form-textarea {
+      padding: 12px 16px;
+      border: 1px solid #1A5A8A;
+      border-radius: 8px; font-size: 14px;
+      background: #0A3357; color: var(--white);
+      outline: none; transition: border-color 0.15s;
+      font-family: var(--sans);
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: #4A7A9A; }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus { border-color: var(--light); }
+    .form-select { appearance: none; cursor: pointer; }
+    .form-select option { background: var(--navy); }
+    .form-textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      background: var(--light); color: var(--navy);
+      border: none; padding: 14px 28px;
+      border-radius: 8px; font-size: 15px;
+      font-weight: 600; cursor: pointer;
+      transition: background 0.15s; width: 100%; margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--white); }
+    .form-note {
+      font-size: 12px; color: #4A7A9A;
+      margin-top: 12px; text-align: center; line-height: 1.5;
+    }
+
+    /* ── Second Capture ── */
+    .capture {
+      padding: 80px 24px;
+      max-width: 680px; margin: 0 auto; text-align: center;
+    }
+    .capture h2 {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 700; color: var(--navy);
+      margin-bottom: 16px; letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .capture-sub {
+      font-size: 16px; color: var(--mid);
+      margin-bottom: 36px; line-height: 1.65;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      padding: 32px 48px;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy { font-size: 12px; color: var(--sky); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      font-size: 12px; color: var(--light);
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 60px 20px 56px; }
+      .email-form { flex-direction: column; }
+      .pillars { padding: 56px 20px; }
+      .journey { padding: 56px 20px; }
+      .ask { padding: 56px 20px; }
+      .ask-form-wrap { padding: 28px 20px; }
+      .form-row { flex-direction: column; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── Utility ── */
+    .text-center { text-align: center; }
+    .mb-12 { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#" class="logo-mark" aria-label="JuniorCaddie home">
+      <svg width="24" height="72" viewBox="0 0 32 96" fill="none" aria-hidden="true">
+        <line x1="8" y1="2" x2="8" y2="86" stroke="#0B3D6B" stroke-width="4" stroke-linecap="round"/>
+        <path d="M8 2 L30 12 L8 22 Z" fill="#1A6EA8"/>
+        <path d="M8 22 L26 30 L8 38 Z" fill="#7BBDE0"/>
+        <ellipse cx="8" cy="88" rx="8" ry="3" fill="#B8D8F0"/>
+      </svg>
+      <div class="logo-words">
+        <span class="logo-junior">Junior</span>
+        <span class="logo-caddie">Caddie</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#pillars">What we're building</a>
+      <a href="#journey">The journey</a>
+      <a href="#ask">Ask JuniorCaddie</a>
+    </div>
+    <button class="nav-cta" onclick="document.getElementById('hero-email').focus()">Get early access</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="eyebrow">Launching soon across the UK</p>
+    <h1>Everything a junior golf family needs.<br><span>Finally in one place.</span></h1>
+    <p class="hero-sub">From first swing to first handicap — JuniorCaddie gives families the knowledge, community and equipment to make the most of everything the game offers their child.</p>
+    <div class="email-form">
+      <input id="hero-email" class="email-input" type="email" placeholder="Your email address" aria-label="Email address"/>
+      <button class="email-btn" onclick="handleSignup('hero')">Notify me</button>
+    </div>
+    <p class="reassurance">No spam. Just one email when we launch.</p>
+  </section>
+
+  <!-- Why JuniorCaddie -->
+  <section class="why" aria-labelledby="why-heading">
+    <div class="why-inner">
+      <span class="section-label">Why JuniorCaddie</span>
+      <p id="why-heading">Junior golf in the UK is thriving — but the knowledge is scattered, the equipment is expensive, and the community exists only in Facebook groups. <strong>We're building the home it deserves.</strong> A place where every family — regardless of budget — gets a fair shot at everything this game offers their child.</p>
+    </div>
+  </section>
+
+  <!-- Three Pillars -->
+  <section class="pillars" id="pillars" aria-labelledby="pillars-heading">
+    <span class="section-label text-center" style="display:block;">What we're building</span>
+    <h2 class="pillars-heading" id="pillars-heading">Answers to the questions every golf parent asks</h2>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <p class="pillar-q">Knowledge</p>
+        <h3 class="pillar-title">What clubs does my child actually need?</h3>
+        <p class="pillar-body">An honest, height-based club finder that tells you exactly what your child needs at their stage — and what to spend. New and second-hand options, no bias.</p>
+        <span class="pillar-tag">Club finder — coming soon</span>
+      </div>
+      <div class="pillar-card">
+        <p class="pillar-q">Community</p>
+        <h3 class="pillar-title">Where should we compete next?</h3>
+        <p class="pillar-body">Every junior competition in the UK — county opens, England Golf events, regional tours — in one searchable calendar. No more piecing it together from five different websites.</p>
+        <span class="pillar-tag">Competition finder — coming soon</span>
+      </div>
+      <div class="pillar-card">
+        <p class="pillar-q">Equipment</p>
+        <h3 class="pillar-title">How does the handicap system work?</h3>
+        <p class="pillar-body">A genuinely clear guide to the World Handicap System, written for parents rather than administrators. Getting that first handicap is a milestone. It should feel like one.</p>
+        <span class="pillar-tag">WHS guide — coming soon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Journey -->
+  <section class="journey" id="journey" aria-labelledby="journey-heading">
+    <div class="journey-inner">
+      <span class="section-label text-center" style="display:block;">The junior golf journey</span>
+      <h2 class="journey-heading" id="journey-heading">Built around every stage of your child's game</h2>
+      <div class="stages">
+        <div class="stage">
+          <p class="stage-num">Stage 1</p>
+          <p class="stage-name">First Swing</p>
+          <p class="stage-desc">Just starting out. Finding out if golf is for them.</p>
+        </div>
+        <div class="stage">
+          <p class="stage-num">Stage 2</p>
+          <p class="stage-name">Finding the Game</p>
+          <p class="stage-desc">Committed and improving. Equipment starts to matter.</p>
+        </div>
+        <div class="stage active">
+          <p class="stage-num">Stage 3</p>
+          <p class="stage-name">Taking it to the Course</p>
+          <p class="stage-desc">First handicap. First competitions.</p>
+          <span class="stage-launching">Launching here</span>
+        </div>
+        <div class="stage">
+          <p class="stage-num">Stage 4</p>
+          <p class="stage-name">Serious Junior</p>
+          <p class="stage-desc">County level and beyond. Performance matters.</p>
+        </div>
+        <div class="stage">
+          <p class="stage-num">Stage 5</p>
+          <p class="stage-name">The Transition</p>
+          <p class="stage-desc">Moving to adult golf. The junior chapter closes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ask JuniorCaddie -->
+  <section class="ask" id="ask" aria-labelledby="ask-heading">
+    <span class="section-label text-center" style="display:block;">Ask JuniorCaddie</span>
+    <h2 class="ask-heading" id="ask-heading">Real questions. Honest answers.</h2>
+    <p class="ask-sub">Every question below came from a real golf parent. Browse by stage or read them all — and ask us anything at the bottom.</p>
+
+    <div class="stage-filter" role="group" aria-label="Filter by stage">
+      <button class="filter-btn active" onclick="filterQA('all', this)">All stages</button>
+      <button class="filter-btn" onclick="filterQA('1', this)">Stage 1 — First Swing</button>
+      <button class="filter-btn" onclick="filterQA('2', this)">Stage 2 — Finding the Game</button>
+      <button class="filter-btn" onclick="filterQA('3', this)">Stage 3 — Taking it to the Course</button>
+      <button class="filter-btn" onclick="filterQA('4', this)">Stage 4 — Serious Junior</button>
+      <button class="filter-btn" onclick="filterQA('5', this)">Stage 5 — The Transition</button>
+    </div>
+
+    <div class="qa-list" id="qa-list">
+
+      <div class="qa-card visible" data-stage="1">
+        <div class="qa-question" onclick="toggleQA(this)" aria-expanded="false">
+          <span class="qa-q-mark" aria-hidden="true">Q</span>
+          <span class="qa-q-text">My child has just started golf lessons. Do they need their own clubs straight away?</span>
+          <span class="qa-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="qa-answer" role="region">
+          <span class="qa-stage-tag">Stage 1 — First Swing</span>
+          <p class="qa-a-text">Not at all. Most junior coaching programmes will have clubs your child can borrow while they find their feet. The last thing you want to do is spend £150 on a starter set before you know whether golf is going to stick. Give it two or three months of lessons first. If they're still loving it and the coach thinks they're ready to play some holes, that's the moment to invest in a basic set. And when you do — buy second-hand. A quality used set of US Kids clubs will serve a beginner far better than a cheap new set from a supermarket.</p>
+          <p class="qa-answered">Answered by JuniorCaddie</p>
+        </div>
+      </div>
+
+      <div class="qa-card visible" data-stage="1">
+        <div class="qa-question" onclick="toggleQA(this)" aria-expanded="false">
+          <span class="qa-q-mark" aria-hidden="true">Q</span>
+          <span class="qa-q-text">What age should a child start golf? My daughter is five — is that too young?</span>
+          <span class="qa-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="qa-answer" role="region">
+          <span class="qa-stage-tag">Stage 1 — First Swing</span>
+          <p class="qa-a-text">Five is absolutely not too young — some of the best junior golfers in the UK started at four or five. The key at this age is that it's entirely fun-led. Short sessions, no pressure, lots of positive reinforcement. US Kids Golf design their equipment specifically for children from age three upwards, and their whole philosophy is built around making the game enjoyable from the very first swing. If your daughter shows any interest at all, nurture it — but let her set the pace entirely.</p>
+          <p class="qa-answered">Answered by JuniorCaddie</p>
+        </div>
+      </div>
+
+      <div class="qa-card visible" data-stage="2">
+        <div class="qa-question" onclick="toggleQA(this)" aria-expanded="false">
+          <span class="qa-q-mark" aria-hidden="true">Q</span>
+          <span class="qa-q-text">How do I know what size clubs my child needs? Everyone seems to give different advice.</span>
+          <span class="qa-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="qa-answer" role="region">
+          <span class="qa-stage-tag">Stage 2 — Finding the Game</span>
+          <p class="qa-a-text">The answer is simpler than most people make it sound: measure your child's height. Not their age — their height. The leading junior golf brand, US Kids Golf, bases their entire sizing system on height, and it's the right approach. A tall nine-year-old and a small twelve-year-old may well need the same length clubs. As a rough guide, children under 4ft need a starter set, 4ft to 4ft 6in need a 7-club set, and 4ft 6in to 5ft need a more complete set with irons and a hybrid. Our Club Finder tool gives you a precise recommendation based on your child's exact height — use that as your starting point.</p>
+          <p class="qa-answered">Answered by JuniorCaddie</p>
+        </div>
+      </div>
+
+      <div class="qa-card visible" data-stage="2">
+        <div class="qa-question" onclick="toggleQA(this)" aria-expanded="false">
+          <span class="qa-q-mark" aria-hidden="true">Q</span>
+          <span class="qa-q-text">Is it worth buying new junior clubs or should I always buy second-hand?</span>
+          <span class="qa-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="qa-answer" role="region">
+          <span class="qa-stage-tag">Stage 2 — Finding the Game</span>
+          <p class="qa-a-text">For most families at Stage 2, second-hand is almost always the smarter choice — and not just for cost reasons. Junior clubs are outgrown quickly. A well-looked-after set of used US Kids clubs bought for £80 will perform as well as a new set costing £200, and when your child grows out of them in 12-18 months, you'll be able to sell them on for close to what you paid. The exception is if your child is showing serious talent and your coach recommends a specific set for performance reasons — at that point the investment in new, properly fitted clubs can be justified. But for most juniors still finding their game, quality second-hand is the way to go.</p>
+          <p class="qa-answered">Answered by JuniorCaddie</p>
+        </div>
+      </div>
+
+      <div class="qa-card visible" data-stage="3">
+        <div class="qa-question" onclick="toggleQA(this)" aria-expanded="false">
+          <span class="qa-q-mark" aria-hidden="true">Q</span>
+          <span class="qa-q-text">How does my child get their first golf handicap in the UK?</span>
+          <span class="qa-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="qa-answer" role="region">
+          <span class="qa-stage-tag">Stage 3 — Taking it to the Course</span>
+          <p class="qa-a-text">Getting a first handicap is one of the great milestones in a junior golfer's journey — and the process is more straightforward than it might seem. Your child needs to be a member of a golf club affiliated to England Golf, or sign up for an iGolf membership if they're not yet a club member. They then need to submit a minimum of three 18-hole scorecards — or the equivalent in 9-hole rounds — through their club's handicap system, usually Intelligentgolf. These rounds must be pre-declared as handicap rounds, played under the Rules of Golf, and signed by a playing partner. Once those three scores are in, the World Handicap System calculates an initial handicap index automatically. The whole process typically takes a few weeks from the first submitted round.</p>
+          <p class="qa-answered">Answered by JuniorCaddie</p>
+        </div>
+      </div>
+
+      <div class="qa-card visible" data-stage="3">
+        <div class="qa-question" onclick="toggleQA(this)" aria-expanded="false">
+          <span class="qa-q-mark" aria-hidden="true">Q</span>
+          <span class="qa-q-text">My child has just got their first handicap. What junior competitions should they enter first?</span>
+          <span class="qa-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="qa-answer" role="region">
+          <span class="qa-stage-tag">Stage 3 — Taking it to the Course</span>
+          <p class="qa-a-text">Start close to home and keep the pressure low. Your child's own club junior competitions are the perfect first step — familiar course, familiar faces, low stakes. Once they've played a few of those and have a feel for competitive golf, junior open competitions at nearby clubs are the natural next step. These are one-day strokeplay events that welcome juniors with any handicap and are a brilliant introduction to competing against players from other clubs. Your county golf union will publish a calendar of junior opens — that's the list to bookmark. Resist the temptation to enter county championships or tour events too early. The goal at this stage is positive competitive experiences, not results.</p>
+          <p class="qa-answered">Answered by JuniorCaddie</p>
+        </div>
+      </div>
+
+      <div class="qa-card visible" data-stage="4">
+        <div class="qa-question" onclick="toggleQA(this)" aria-expanded="false">
+          <span class="qa-q-mark" aria-hidden="true">Q</span>
+          <span class="qa-q-text">My child is playing county level. Is it worth getting a custom club fitting?</span>
+          <span class="qa-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="qa-answer" role="region">
+          <span class="qa-stage-tag">Stage 4 — Serious Junior</span>
+          <p class="qa-a-text">At county level, absolutely yes — and the sooner the better. Most junior golfers playing at this standard are using clubs that are either the wrong length, wrong lie angle, or wrong shaft flex for their swing. A proper fitting with a PGA professional who has experience fitting juniors — not just adults — can make a significant difference to ball striking consistency. The challenge is that juniors are still growing, so a fitting done now may need revisiting in 12-18 months. A good fitter will account for this and recommend specs that give some room for growth. Budget around £50-£75 for the fitting itself, separate from any equipment cost.</p>
+          <p class="qa-answered">Answered by JuniorCaddie</p>
+        </div>
+      </div>
+
+      <div class="qa-card visible" data-stage="4">
+        <div class="qa-question" onclick="toggleQA(this)" aria-expanded="false">
+          <span class="qa-q-mark" aria-hidden="true">Q</span>
+          <span class="qa-q-text">How do county golf squads work and how does my child get selected?</span>
+          <span class="qa-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="qa-answer" role="region">
+          <span class="qa-stage-tag">Stage 4 — Serious Junior</span>
+          <p class="qa-a-text">Each county golf union runs its own junior squad programme, but the principles are broadly similar across England. Selection is based on handicap index and competitive performance in county events during the season. Most counties have an age-banded structure — under 14s, under 16s, and under 18s — with squads at development and performance levels. The best way to get noticed is consistent performance in your county's own junior open series and championships, which county coaches attend specifically to identify talent. Contact your county golf union directly to understand their specific selection criteria — the details vary significantly between counties.</p>
+          <p class="qa-answered">Answered by JuniorCaddie</p>
+        </div>
+      </div>
+
+      <div class="qa-card visible" data-stage="5">
+        <div class="qa-question" onclick="toggleQA(this)" aria-expanded="false">
+          <span class="qa-q-mark" aria-hidden="true">Q</span>
+          <span class="qa-q-text">My son has outgrown his junior clubs. When should he move to adult equipment?</span>
+          <span class="qa-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="qa-answer" role="region">
+          <span class="qa-stage-tag">Stage 5 — The Transition</span>
+          <p class="qa-a-text">It's about height and physical development, not age. Most juniors transition to adult-length clubs when they reach around 5ft 5in to 5ft 9in, though a strong junior with good swing speed may benefit from adult shafts earlier. The tell-tale sign is when your child's current clubs feel too short and they're compensating in their swing — standing too upright, gripping down too far, or losing distance despite improving technique. Rather than replacing everything at once, consider starting with adult-length irons and keeping junior woods a little longer while the transition completes. A fitting at this stage is essential rather than optional — and our marketplace is a good place to sell the outgrown junior set to fund what comes next.</p>
+          <p class="qa-answered">Answered by JuniorCaddie</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Ask a Question Form -->
+    <div class="ask-form-wrap">
+      <h3 class="ask-form-heading">Have a question?</h3>
+      <p class="ask-form-sub">Ask us anything about junior golf — equipment, competitions, handicaps, development. We answer every question personally.</p>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label" for="q-name">Your name</label>
+          <input class="form-input" type="text" id="q-name" placeholder="e.g. Sarah" autocomplete="given-name"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="q-email">Your email</label>
+          <input class="form-input" type="email" id="q-email" placeholder="you@example.com" autocomplete="email"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label" for="q-stage">Which stage is your child at?</label>
+          <select class="form-select" id="q-stage">
+            <option value="" disabled selected>Select a stage</option>
+            <option value="1">Stage 1 — First Swing</option>
+            <option value="2">Stage 2 — Finding the Game</option>
+            <option value="3">Stage 3 — Taking it to the Course</option>
+            <option value="4">Stage 4 — Serious Junior</option>
+            <option value="5">Stage 5 — The Transition</option>
+            <option value="0">Not sure yet</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label" for="q-question">Your question</label>
+          <textarea class="form-textarea" id="q-question" placeholder="What would you like to know?"></textarea>
+        </div>
+      </div>
+      <button class="form-submit" onclick="handleQuestion()">Send my question</button>
+      <p class="form-note">We answer every question. Your email is only used to send you the answer — nothing else.</p>
+    </div>
+  </section>
+
+  <!-- Second Email Capture -->
+  <section class="capture" aria-labelledby="capture-heading">
+    <h2 id="capture-heading">Be first through the gate.</h2>
+    <p class="capture-sub">JuniorCaddie launches in 2025. Join the list and we'll let you know the moment the doors open — plus early access to the Club Finder and WHS Guide.</p>
+    <div class="email-form">
+      <input id="footer-email" class="email-input" type="email" placeholder="Your email address" aria-label="Email address"/>
+      <button class="email-btn" onclick="handleSignup('footer')">Join the list</button>
+    </div>
+    <p class="reassurance">No spam. Just one email when we launch.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href="#" class="logo-mark reversed" aria-label="JuniorCaddie home">
+      <svg width="16" height="48" viewBox="0 0 32 96" fill="none" aria-hidden="true">
+        <line x1="8" y1="2" x2="8" y2="86" stroke="#7BBDE0" stroke-width="4" stroke-linecap="round"/>
+        <path d="M8 2 L30 12 L8 22 Z" fill="#5AAAD4"/>
+        <path d="M8 22 L26 30 L8 38 Z" fill="#B8D8F0"/>
+        <ellipse cx="8" cy="88" rx="8" ry="3" fill="#1A6EA8"/>
+      </svg>
+      <div class="logo-words">
+        <span class="logo-junior">Junior</span>
+        <span class="logo-caddie">Caddie</span>
+      </div>
+    </a>
+    <p class="footer-copy">© 2025 JuniorCaddie. juniorcaddie.co.uk</p>
+    <div class="footer-links">
+      <a href="https://instagram.com/juniorcaddie" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:hello@juniorcaddie.co.uk">Contact</a>
+      <a href="#">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    // Q&A accordion
+    function toggleQA(el) {
+      const card = el.closest('.qa-card');
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.qa-card.open').forEach(c => {
+        c.classList.remove('open');
+        c.querySelector('.qa-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        card.classList.add('open');
+        el.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // Stage filter
+    function filterQA(stage, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.qa-card').forEach(card => {
+        if (stage === 'all' || card.dataset.stage === stage) {
+          card.classList.add('visible');
+          card.style.display = '';
+        } else {
+          card.classList.remove('visible');
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Email signup handler
+    function handleSignup(source) {
+      const input = document.getElementById(source === 'hero' ? 'hero-email' : 'footer-email');
+      const email = input.value.trim();
+      if (!email || !email.includes('@')) {
+        input.style.borderColor = '#E05A5A';
+        input.focus();
+        return;
+      }
+      input.style.borderColor = '#5AAAD4';
+      input.value = '';
+      input.placeholder = 'You\'re on the list. Thank you.';
+      console.log('Email signup:', email, 'source:', source);
+      // TODO: Connect to email service (Mailchimp / ConvertKit)
+    }
+
+    // Question submit handler
+    function handleQuestion() {
+      const name = document.getElementById('q-name').value.trim();
+      const email = document.getElementById('q-email').value.trim();
+      const question = document.getElementById('q-question').value.trim();
+      if (!name || !email || !question) {
+        alert('Please fill in your name, email and question.');
+        return;
+      }
+      console.log('Question submitted:', { name, email, question });
+      document.getElementById('q-name').value = '';
+      document.getElementById('q-email').value = '';
+      document.getElementById('q-question').value = '';
+      document.getElementById('q-stage').selectedIndex = 0;
+      alert('Thank you ' + name + '. We\'ll answer your question personally and let you know when it\'s live.');
+      // TODO: Connect to backend / email notification
+    }
+  </script>
+
+</body>
+</html>
