@@ -45,22 +45,89 @@
     /* ── Nav ── */
     .nav {
       position: sticky; top: 0; z-index: 100;
-      background: var(--bg);
-      border-bottom: 0.5px solid var(--pale);
-      padding: 16px 48px;
+      background: var(--navy);
+      border-bottom: 0.5px solid #0F4F7A;
+      padding: 14px 48px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a { font-size: 14px; color: var(--mid); font-weight: 400; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--navy); }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a {
+      font-size: 13px; color: var(--light);
+      font-weight: 400; transition: color 0.15s;
+    }
+    .nav-links a:hover { color: white; }
     .nav-cta {
-      background: var(--navy); color: var(--white);
-      border: none; padding: 10px 22px;
-      border-radius: 8px; font-size: 14px;
+      background: var(--mid); color: var(--white);
+      border: none; padding: 9px 20px;
+      border-radius: 8px; font-size: 13px;
       cursor: pointer; font-weight: 500;
       transition: background 0.15s;
     }
-    .nav-cta:hover { background: var(--mid); }
+    .nav-cta:hover { background: var(--sky); }
+
+    /* ── Feature Tab Bar ── */
+    .feature-bar {
+      background: var(--navy);
+      padding: 0 48px 24px;
+      border-bottom: none;
+    }
+    .feature-bar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .feature-tab {
+      display: flex; flex-direction: column;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 16px 18px;
+      text-decoration: none;
+      transition: all 0.15s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-tab:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.28);
+      transform: translateY(-1px);
+    }
+    .feature-tab.live {
+      background: rgba(26,110,168,0.35);
+      border-color: var(--mid);
+    }
+    .feature-tab.live:hover {
+      background: rgba(26,110,168,0.5);
+    }
+    .feature-tab-badge {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 20px;
+      margin-bottom: 10px; display: inline-block;
+    }
+    .badge-live { background: #22C55E; color: white; }
+    .badge-soon { background: rgba(255,255,255,0.15); color: var(--light); }
+    .feature-tab-title {
+      font-family: var(--serif);
+      font-size: 17px; font-weight: 700;
+      color: white; line-height: 1.2;
+      margin-bottom: 5px;
+    }
+    .feature-tab-desc {
+      font-size: 12px; color: var(--light);
+      line-height: 1.5;
+    }
+    .feature-tab-arrow {
+      position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px; color: var(--light);
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .feature-tab:hover .feature-tab-arrow { opacity: 1; }
 
     /* ── Hero ── */
     .hero {
@@ -390,7 +457,12 @@
     @media (max-width: 768px) {
       .nav { padding: 14px 20px; }
       .nav-links { display: none; }
-      .hero { padding: 60px 20px 56px; }
+      .feature-bar { padding: 0 16px 16px; }
+      .feature-bar-inner { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .feature-tab { padding: 12px 14px; }
+      .feature-tab-title { font-size: 14px; }
+      .feature-tab-arrow { display: none; }
+      .hero { padding: 48px 20px 48px; }
       .email-form { flex-direction: column; }
       .pillars { padding: 56px 20px; }
       .journey { padding: 56px 20px; }
@@ -427,25 +499,58 @@
   <nav class="nav">
     <a href="#" class="logo-mark" aria-label="JuniorCaddie home">
       <svg width="24" height="72" viewBox="0 0 32 96" fill="none" aria-hidden="true">
-        <line x1="8" y1="2" x2="8" y2="86" stroke="#0B3D6B" stroke-width="4" stroke-linecap="round"/>
+        <line x1="8" y1="2" x2="8" y2="86" stroke="#EEF4FB" stroke-width="4" stroke-linecap="round"/>
         <path d="M8 2 L30 12 L8 22 Z" fill="#1A6EA8"/>
         <path d="M8 22 L26 30 L8 38 Z" fill="#7BBDE0"/>
         <ellipse cx="8" cy="88" rx="8" ry="3" fill="#B8D8F0"/>
       </svg>
       <div class="logo-words">
-        <span class="logo-junior">Junior</span>
-        <span class="logo-caddie">Caddie</span>
+        <span class="logo-junior" style="color:#B8D8F0;">Junior</span>
+        <span class="logo-caddie" style="color:#ffffff;">Caddie</span>
       </div>
     </a>
     <div class="nav-links">
-      <a href="about.html" style="color:#0B3D6B; font-weight:500;">Our story</a>
-      <a href="#pillars">What we're building</a>
-      <a href="competitions.html" style="color:#0B3D6B; font-weight:500;">🏌️ Competition Finder</a>
-      <a href="#ask">Ask JuniorCaddie</a>
-      <a href="#" style="color:#5AAAD4; font-weight:400;">Marketplace — coming soon</a>
+      <a href="about.html">Our story</a>
+      <a href="journey.html">The journey</a>
+      <a href="#ask">Ask us</a>
     </div>
-    <button class="nav-cta" onclick="document.getElementById('hero-email').focus()">Get early access</button>
+    <button class="nav-cta" onclick="document.getElementById('hero-email').focus()">Join the list</button>
   </nav>
+
+  <!-- Feature Tab Bar -->
+  <div class="feature-bar">
+    <div class="feature-bar-inner">
+
+      <a href="competitions.html" class="feature-tab live">
+        <span class="feature-tab-badge badge-live">Live now</span>
+        <div class="feature-tab-title">Competition Finder</div>
+        <div class="feature-tab-desc">59 junior opens across 5 counties — direct entry links</div>
+        <span class="feature-tab-arrow">→</span>
+      </a>
+
+      <a href="#ask" class="feature-tab live">
+        <span class="feature-tab-badge badge-live">Live now</span>
+        <div class="feature-tab-title">Ask JuniorCaddie</div>
+        <div class="feature-tab-desc">Real questions from golf parents. Honest answers.</div>
+        <span class="feature-tab-arrow">→</span>
+      </a>
+
+      <a href="journey.html" class="feature-tab live">
+        <span class="feature-tab-badge badge-live">Live now</span>
+        <div class="feature-tab-title">The Junior Journey</div>
+        <div class="feature-tab-desc">Expert guidance for every stage of your child's game</div>
+        <span class="feature-tab-arrow">→</span>
+      </a>
+
+      <a href="#" class="feature-tab">
+        <span class="feature-tab-badge badge-soon">Coming soon</span>
+        <div class="feature-tab-title">Marketplace</div>
+        <div class="feature-tab-desc">Buy and sell junior golf clubs — sized by height</div>
+        <span class="feature-tab-arrow">→</span>
+      </a>
+
+    </div>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
@@ -782,6 +887,8 @@
     <p class="footer-copy">© 2026 JuniorCaddie. juniorcaddie.co.uk</p>
     <div class="footer-links">
       <a href="about.html">Our story</a>
+      <a href="journey.html">The journey</a>
+      <a href="competitions.html">Competitions</a>
       <a href="https://instagram.com/juniorcaddie" target="_blank" rel="noopener">Instagram</a>
       <a href="mailto:hello@juniorcaddie.co.uk">Contact</a>
       <a href="#">Privacy</a>
