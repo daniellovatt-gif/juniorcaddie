@@ -187,13 +187,13 @@
 <section class="hero">
   <p class="hero-label">Competition Finder</p>
   <h1>Junior opens near you.<br><span>All in one place.</span></h1>
-  <p class="hero-sub">Every junior open competition in Hertfordshire, Bedfordshire and Cambridgeshire — with direct entry links. No more hunting across five different websites.</p>
+  <p class="hero-sub">England Golf national championships, county opens, and national tours — all in one place. Direct entry links where available.</p>
 </section>
 
 <div class="stats">
-  <div class="stat"><div class="stat-n" id="total-count">69</div><div class="stat-l">Competitions individually listed</div></div>
+  <div class="stat"><div class="stat-n" id="total-count">90+</div><div class="stat-l">Competitions individually listed</div></div>
   <div class="stat"><div class="stat-n" id="upcoming-count">—</div><div class="stat-l">Still to come in 2026</div></div>
-  <div class="stat"><div class="stat-n">9</div><div class="stat-l">Counties & tours covered</div></div>
+  <div class="stat"><div class="stat-n">12</div><div class="stat-l">Counties, tours & national bodies</div></div>
   <div class="stat"><div class="stat-n">Growing</div><div class="stat-l">More added every week</div></div>
 </div>
 
@@ -214,6 +214,8 @@
   <div class="filter-row" style="margin-top:8px;">
     <button class="filter-btn" onclick="filterCounty('bjgt', this)" style="background:#0F4F7A; color:white; border-color:#0F4F7A;">🏆 BJGT</button>
     <button class="filter-btn" onclick="filterCounty('faldo', this)" style="background:#0F4F7A; color:white; border-color:#0F4F7A;">🏆 Faldo Series</button>
+    <button class="filter-btn" onclick="filterCounty('england', this)" style="background:#8B0000; color:white; border-color:#8B0000;">🌹 England Golf</button>
+    <button class="filter-btn" onclick="filterCounty('schools', this)" style="background:#1A5A1A; color:white; border-color:#1A5A1A;">🏫 English Schools</button>
   </div>
   <div class="filter-row" style="margin-top:4px;">
     <button class="filter-btn upcoming active" onclick="filterUpcoming(this)">Upcoming only</button>
@@ -1208,13 +1210,277 @@
     <div style="padding:12px 0; font-size:13px; color:#1A6EA8;">The Faldo Junior Tour is for competitive juniors aged 13–21. The Faldo Futures is a grassroots programme for ages 7–12, with qualifying events at local clubs across the UK — visit faldoseries.com to find a Futures event near you.</div>
   </div>
 
+  <!-- ENGLAND GOLF & R&A NATIONAL CHAMPIONSHIPS -->
+  <div class="county-section" id="section-national" data-county="national">
+    <div class="county-header">
+      <span class="county-name" style="color:#0F4F7A;">🏆 National Championships</span>
+      <span class="county-count">12 events</span>
+      <a href="https://www.englandgolf.org/juniors" target="_blank" rel="noopener" class="county-link">England Golf ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:16px 20px; margin-bottom:16px; font-size:14px; color:#1A6EA8; line-height:1.7;">
+      National championships organised by England Golf and The R&A. These are the pinnacle of junior golf in England — county champions qualify for many of these events. Entry is via England Golf's online portal unless stated otherwise.
+    </div>
+    <div class="comps-grid" id="grid-national">
+
+      <div class="comp-card past" data-county="national" data-date="2026-04-03">
+        <span class="stage-badge">Stage 4 · Ages 13–21</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> 3–5 April 2026</div>
+        <div class="comp-name">R&A Girls U16 Amateur Championship</div>
+        <div class="comp-venue">TBC — United Kingdom</div>
+        <div class="comp-tags"><span class="tag">R&A event</span><span class="tag">54-hole strokeplay</span><span class="tag">Girls U16</span><span class="tag">International field</span></div>
+        <a href="https://www.randa.org/en/championships" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="national" data-date="2026-05-26">
+        <span class="stage-badge">Stage 4 · Boys U18</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Spring Bank Holiday week 2026</div>
+        <div class="comp-name">County Boys U18 Championships</div>
+        <div class="comp-venue">Various venues — all counties</div>
+        <div class="comp-tags"><span class="tag">England Golf pathway</span><span class="tag">Max hcp 11.4</span><span class="tag">36 holes strokeplay</span><span class="tag">Winner qualifies for Champion of Champions</span></div>
+        <a href="https://www.englandgolf.org/juniors" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-07-14">
+        <span class="stage-badge">Stage 4 · Boys U16</span>
+        <div class="comp-date"><span class="date-badge">Tue 14 – Thu 16 July 2026</span></div>
+        <div class="comp-name">McGregor Trophy — English Boys U16 Championship</div>
+        <div class="comp-venue">Clitheroe Golf Club, Lancashire</div>
+        <div class="comp-tags"><span class="tag">England Golf</span><span class="tag">72-hole strokeplay</span><span class="tag">Max hcp 5.0</span><span class="tag">Under 16 on 1 Jan 2026</span><span class="tag">All nationalities eligible</span></div>
+        <a href="https://www.englandgolf.org/compete/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-07-15">
+        <span class="stage-badge">Stage 4 · Boys U18</span>
+        <div class="comp-date"><span class="date-badge">Wed 15 – Fri 17 July 2026</span></div>
+        <div class="comp-name">Tillman Trophy — England Boys U18 Team Championship</div>
+        <div class="comp-venue">TBC — England</div>
+        <div class="comp-tags"><span class="tag">England Golf</span><span class="tag">Team event</span><span class="tag">County representatives</span><span class="tag">Under 18</span></div>
+        <a href="https://www.englandgolf.org/compete/junior-competitions" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-07-16">
+        <span class="stage-badge">Stage 4 · Boys U14</span>
+        <div class="comp-date"><span class="date-badge">TBC — Summer 2026</span></div>
+        <div class="comp-name">County Boys U16 & U14 Championships</div>
+        <div class="comp-venue">Various venues — all counties</div>
+        <div class="comp-tags"><span class="tag">England Golf pathway</span><span class="tag">U16: max hcp 14.4 — 36 holes</span><span class="tag">U14: max hcp 18.4 — 18 holes</span><span class="tag">Winner qualifies for Champion of Champions</span></div>
+        <a href="https://www.englandgolf.org/compete/junior-competitions" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-07-17">
+        <span class="stage-badge">Stage 4 · Boys U18</span>
+        <div class="comp-date"><span class="date-badge">Fri 17 – Sat 18 July 2026</span></div>
+        <div class="comp-name">Junior Open Championship — R&A</div>
+        <div class="comp-venue">Course near Royal Birkdale, Lancashire</div>
+        <div class="comp-tags"><span class="tag">R&A event</span><span class="tag">Boys & Girls U16</span><span class="tag">Played during Open Championship week</span><span class="tag">International field — 80+ countries</span><span class="tag">Invitation only via national unions</span></div>
+        <a href="https://www.randa.org/en/championships" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-07-21">
+        <span class="stage-badge">Stage 4 · Girls U18</span>
+        <div class="comp-date"><span class="date-badge">Tue 21 – Thu 23 July 2026</span></div>
+        <div class="comp-name">English Girls Open Amateur Championship</div>
+        <div class="comp-venue">Prestbury Golf Club, Cheshire</div>
+        <div class="comp-tags"><span class="tag">England Golf</span><span class="tag">54-hole strokeplay</span><span class="tag">Max hcp 10.0</span><span class="tag">Under 18 on 1 Jan 2026</span><span class="tag">All nationalities eligible</span></div>
+        <a href="https://www.englandgolf.org/compete/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-07-21">
+        <span class="stage-badge">Stage 4 · Boys U18</span>
+        <div class="comp-date"><span class="date-badge">Tue 21 – Fri 24 July 2026</span></div>
+        <div class="comp-name">Carris Trophy — English Boys U18 Championship</div>
+        <div class="comp-venue">Northamptonshire County Golf Club</div>
+        <div class="comp-tags"><span class="tag">England Golf</span><span class="tag">72-hole strokeplay</span><span class="tag">Max hcp 2.0</span><span class="tag">Under 18 on 1 Jan 2026</span><span class="tag">All nationalities eligible</span><span class="tag">Founded 1935</span></div>
+        <a href="https://www.englandgolf.org/compete/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-08-04">
+        <span class="stage-badge">Stage 3–4 · Boys U14</span>
+        <div class="comp-date"><span class="date-badge">Tue 4 – Thu 6 August 2026</span></div>
+        <div class="comp-name">Reid Trophy — English Boys U14 Championship</div>
+        <div class="comp-venue">Porters Park Golf Club, Hertfordshire</div>
+        <div class="comp-tags"><span class="tag">England Golf</span><span class="tag">54-hole strokeplay</span><span class="tag">Max hcp 8.0</span><span class="tag">Under 14 on 1 Jan 2026</span><span class="tag">All nationalities eligible</span></div>
+        <a href="https://www.englandgolf.org/compete/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-08-10">
+        <span class="stage-badge">Stage 4 · Boys U18</span>
+        <div class="comp-date"><span class="date-badge">TBC — August 2026</span></div>
+        <div class="comp-name">R&A Boys Amateur Championship</div>
+        <div class="comp-venue">TBC — United Kingdom</div>
+        <div class="comp-tags"><span class="tag">R&A event</span><span class="tag">Stroke play then match play</span><span class="tag">Under 18</span><span class="tag">International field</span><span class="tag">Founded 1921</span></div>
+        <a href="https://www.randa.org/en/championships" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-08-17">
+        <span class="stage-badge">Stage 4 · Boys & Girls U18</span>
+        <div class="comp-date"><span class="date-badge">TBC — August 2026</span></div>
+        <div class="comp-name">Girls and Boys Home Internationals</div>
+        <div class="comp-venue">TBC — United Kingdom</div>
+        <div class="comp-tags"><span class="tag">R&A event</span><span class="tag">England v Scotland v Ireland v Wales</span><span class="tag">Team match play</span><span class="tag">Selected players only</span><span class="tag">Under 18 on 1 Jan 2026</span></div>
+        <a href="https://www.randa.org/en/championships" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="national" data-date="2026-09-10">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">September 2026 — date TBC</span></div>
+        <div class="comp-name">England Golf Boys & Girls County Champion of Champions</div>
+        <div class="comp-venue">Woodhall Spa Golf Club (Hotchkin Course), Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">England Golf</span><span class="tag">Invitation only — county U14, U16 & U18 champions</span><span class="tag">36-hole strokeplay</span><span class="tag">Woodhall Spa — England's national golf centre</span></div>
+        <a href="https://www.englandgolf.org/compete/junior-competitions" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+    </div>
+    <div style="padding:12px 0; font-size:13px; color:#1A6EA8;">County championship winners at U14, U16 and U18 level qualify to represent their county at the England Golf Champion of Champions at Woodhall Spa. This is the pinnacle of junior county golf in England.</div>
+  </div>
+
   <div class="no-results" id="no-results">
     No competitions found for the selected filter. Try showing all 2026 competitions.
   </div>
 
+  <!-- ENGLAND GOLF NATIONAL CHAMPIONSHIPS -->
+  <div class="county-section" id="section-england" data-county="england">
+    <div class="county-header">
+      <span class="county-name" style="color:#8B0000;">🌹 England Golf National Championships</span>
+      <span class="county-count">8 national events</span>
+      <a href="https://www.englandgolf.org/boys-and-girls-competitions" target="_blank" rel="noopener" class="county-link">England Golf website ↗</a>
+    </div>
+    <div style="background:#FFF5F5; border:0.5px solid #DDB0B0; border-radius:10px; padding:16px 20px; margin-bottom:16px; font-size:14px; color:#6B0000; line-height:1.7;">
+      England Golf's national junior championships are the pinnacle of junior golf in England. These are elite, selective events — entry requires a handicap index well below the county open standard, and most are invitation or qualification-based. County champions qualify automatically for several of these events via county championships held earlier in the season.
+    </div>
+    <div class="comps-grid" id="grid-england">
+
+      <div class="comp-card past" data-county="england" data-date="2026-07-14">
+        <span class="stage-badge">Stage 4 · Boys Under 16</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Tue 14 – Thu 16 July 2026</div>
+        <div class="comp-name">English Boys U16 Championship — McGregor Trophy</div>
+        <div class="comp-venue">Clitheroe Golf Club, Lancashire</div>
+        <div class="comp-tags"><span class="tag">72 hole strokeplay</span><span class="tag">Max hcp 5.0</span><span class="tag">Under 16 on 1 Jan 2026</span><span class="tag">England Golf national championship</span><span class="tag">Entry via England Golf</span></div>
+        <a href="https://www.englandgolf.org/boys-and-girls-competitions" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="england" data-date="2026-07-15">
+        <span class="stage-badge">Stage 4 · Boys U18</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Wed 15 – Fri 17 July 2026</div>
+        <div class="comp-name">Tillman Trophy — England Boys Team Championship</div>
+        <div class="comp-venue">England (venue TBC)</div>
+        <div class="comp-tags"><span class="tag">County team event</span><span class="tag">England Boys U18 team</span><span class="tag">Invitation only</span></div>
+        <a href="https://www.englandgolf.org/boys-and-girls-competitions" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="england" data-date="2026-07-21">
+        <span class="stage-badge">Stage 4 · Girls Under 18</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Tue 21 – Thu 23 July 2026</div>
+        <div class="comp-name">English Girls Open Amateur Stroke Play Championship</div>
+        <div class="comp-venue">Prestbury Golf Club, Cheshire</div>
+        <div class="comp-tags"><span class="tag">54 hole strokeplay</span><span class="tag">Max hcp 10.0</span><span class="tag">Under 18 on 1 Jan 2026</span><span class="tag">England Golf national championship</span></div>
+        <a href="https://www.englandgolf.org/boys-and-girls-competitions" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="england" data-date="2026-07-21">
+        <span class="stage-badge">Stage 4 · Boys Under 18</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Tue 21 – Fri 24 July 2026</div>
+        <div class="comp-name">English Boys U18 Championship — Carris Trophy</div>
+        <div class="comp-venue">Northamptonshire County Golf Club</div>
+        <div class="comp-tags"><span class="tag">72 hole strokeplay</span><span class="tag">Max hcp 2.0</span><span class="tag">Under 18 on 1 Jan 2026</span><span class="tag">WAGR ranked</span><span class="tag">England Golf national championship</span></div>
+        <a href="https://www.englandgolf.org/boys-and-girls-competitions" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="england" data-date="2026-09-16">
+        <span class="stage-badge">Stage 4 · Boys Under 18</span>
+        <div class="comp-date"><span class="date-badge">Wed 16 September 2026</span></div>
+        <div class="comp-name">England Golf Boys County Champion of Champions</div>
+        <div class="comp-venue">Hotchkin Course, Woodhall Spa Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">36 hole strokeplay</span><span class="tag">County champions only</span><span class="tag">Invitation via county championship win</span><span class="tag">Prestigious venue</span></div>
+        <a href="https://www.golfgenius.com/pages/3944016" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="england" data-date="2026-09-17">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 17 September 2026</span></div>
+        <div class="comp-name">England Golf Men's & Girls' County Champion of Champions</div>
+        <div class="comp-venue">Hotchkin Course, Woodhall Spa Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">36 hole strokeplay</span><span class="tag">County champions only</span><span class="tag">Invitation via county championship win</span></div>
+        <a href="https://www.golfgenius.com/pages/3944017" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="england" data-date="2026-09-20">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">TBC — September/October 2026</span></div>
+        <div class="comp-name">England Golf Junior Champion Club National Final</div>
+        <div class="comp-venue">TBC — venue varies annually</div>
+        <div class="comp-tags"><span class="tag">Team of 3</span><span class="tag">County winners qualify</span><span class="tag">Stableford format</span><span class="tag">Open to club junior teams</span></div>
+        <a href="https://www.englandgolf.org/boys-and-girls-competitions" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="england" data-date="2026-10-15">
+        <span class="stage-badge">Stage 4 · Boys Under 18</span>
+        <div class="comp-date"><span class="date-badge">TBC — Autumn 2026</span></div>
+        <div class="comp-name">England Golf Northern Regional Boys County Qualifier</div>
+        <div class="comp-venue">TBC — Northern England venue</div>
+        <div class="comp-tags"><span class="tag">36 hole strokeplay</span><span class="tag">County team event</span><span class="tag">5 scores from 6 count</span><span class="tag">Winners progress to national final</span></div>
+        <a href="https://www.englandgolf.org/boys-and-girls-competitions" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+    </div>
+    <div style="padding:12px 0; font-size:13px; color:#1A6EA8;">Most England Golf national championships require qualification via county events or very low handicap indices. Contact your county golf union to understand the qualification pathway from county level to these events.</div>
+  </div>
+
+  <!-- ENGLISH SCHOOLS GOLF -->
+  <div class="county-section" id="section-schools" data-county="schools">
+    <div class="county-header">
+      <span class="county-name" style="color:#1A5A1A;">🏫 English Schools Golf</span>
+      <span class="county-count">4 national events</span>
+      <a href="https://www.englishschoolsgolf.org" target="_blank" rel="noopener" class="county-link">ESGA website ↗</a>
+    </div>
+    <div style="background:#F0F8F0; border:0.5px solid #90C890; border-radius:10px; padding:16px 20px; margin-bottom:16px; font-size:14px; color:#1A5A1A; line-height:1.7;">
+      The English Schools Golf Association runs competitions exclusively for school-age golfers competing as representatives of their school. A brilliant pathway for juniors in school golf, running alongside the county and national structures. Entry is via school nomination — contact your school's PE department or the ESGA directly.
+    </div>
+    <div class="comps-grid" id="grid-schools">
+
+      <div class="comp-card" data-county="schools" data-date="2026-07-01">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">TBC — Summer 2026</span></div>
+        <div class="comp-name">English Schools Under 16 Championship</div>
+        <div class="comp-venue">Lincoln Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">School representative event</span><span class="tag">Under 16</span><span class="tag">Boys & Girls</span><span class="tag">County qualifiers first</span></div>
+        <a href="https://www.englishschoolsgolf.org" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="schools" data-date="2026-07-15">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">TBC — Summer 2026</span></div>
+        <div class="comp-name">English Schools National Championship</div>
+        <div class="comp-venue">Bracken Course, Woodhall Spa Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">School representative event</span><span class="tag">All ages</span><span class="tag">Boys & Girls</span><span class="tag">National final</span><span class="tag">Winners captain England vs Wales</span></div>
+        <a href="https://www.englishschoolsgolf.org" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="schools" data-date="2026-08-15">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">TBC — August 2026</span></div>
+        <div class="comp-name">England Schools vs Wales International Match</div>
+        <div class="comp-venue">TBC — Wales venue</div>
+        <div class="comp-tags"><span class="tag">International match</span><span class="tag">National champions only</span><span class="tag">Prestigious honour</span></div>
+        <a href="https://www.englishschoolsgolf.org" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="schools" data-date="2026-06-01">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">TBC — Summer 2026</span></div>
+        <div class="comp-name">English Schools County/Regional Qualifiers</div>
+        <div class="comp-venue">Various venues across England</div>
+        <div class="comp-tags"><span class="tag">School representative event</span><span class="tag">All counties</span><span class="tag">Route to national final</span><span class="tag">Contact school PE department to enter</span></div>
+        <a href="https://www.englishschoolsgolf.org" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
+      </div>
+
+    </div>
+    <div style="padding:12px 0; font-size:13px; color:#1A6EA8;">English Schools Golf is a separate pathway from the county golf structure. Your child competes representing their school rather than their golf club. Contact your school's PE department to find out if they enter the ESGA events, or contact the ESGA directly at englishschoolsgolf.org.</div>
+  </div>
+
   <div class="info-box" style="margin-top:12px;">
     <h3>We're just getting started.</h3>
-    <p>JuniorCaddie's competition finder is under active development. We currently list 69 individual competitions across Hertfordshire, Essex, Middlesex, Surrey, Bedfordshire, Cambridgeshire, plus the BJGT and Faldo Series. Sussex, Hampshire and Kent county competitions are signposted to their county websites while we work on individual listings.</p>
+    <p>JuniorCaddie's competition finder is under active development. We now cover England Golf national championships, the BJGT, Faldo Series, English Schools Golf, and county opens across Hertfordshire, Essex, Middlesex, Surrey, Bedfordshire and Cambridgeshire. Sussex, Hampshire and Kent county competitions are signposted to their county websites.</p>
     <p style="margin-top:10px;">Coming soon: Yorkshire, Lancashire, Gloucestershire, Cheshire, Devon, Norfolk, Suffolk, Oxfordshire and beyond — we're working through every county in England, Scotland and Wales.</p>
     <p style="margin-top:10px;">Know of a competition we've missed? Email us at <a href="mailto:hello@juniorcaddie.co.uk" style="color:#1A6EA8;">hello@juniorcaddie.co.uk</a> and we'll add it.</p>
   </div>
@@ -1286,7 +1552,7 @@
     });
 
     // Show/hide county sections
-    ['herts','beds','cambs','essex','middx','surrey','sussex','hants','kent','bjgt','faldo'].forEach(c => {
+    ['herts','beds','cambs','essex','middx','surrey','sussex','hants','kent','bjgt','faldo','england','schools'].forEach(c => {
       const section = document.getElementById('section-' + c);
       const grid = document.getElementById('grid-' + c);
       if (!section || !grid) return;
@@ -1305,7 +1571,7 @@
   function filterCounty(county, btn) {
     currentCounty = county;
     document.querySelectorAll('.filter-btn').forEach(b => {
-      if (['all','herts','beds','cambs','essex','middx','surrey','sussex','hants','kent','bjgt','faldo'].includes(b.getAttribute('onclick')?.match(/'(\w+)'/)?.[1])) {
+      if (['all','herts','beds','cambs','essex','middx','surrey','sussex','hants','kent','bjgt','faldo','england','schools'].includes(b.getAttribute('onclick')?.match(/'(\w+)'/)?.[1])) {
         b.classList.remove('active');
       }
     });
