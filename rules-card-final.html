@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Junior Golf Rules Card — Top 10 Rules to Print & Laminate | JuniorCaddie</title>
+  <meta name="description" content="Free printable junior golf rules card. Top 10 rules every junior golfer needs to know — yellow stakes, red stakes, bunkers, lost balls and more. Print, laminate and clip to your bag." />
+  <link rel="canonical" href="https://www.juniorcaddie.co.uk/rules-card-final.html" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.juniorcaddie.co.uk/rules-card-final.html" />
+  <meta property="og:title" content="Junior Golf Rules Card — Free Printable Bag Tag | JuniorCaddie" />
+  <meta property="og:description" content="Print and laminate this free junior golf rules card. Covers yellow stakes, red stakes, OOB, bunkers, lost balls and more. Clip to your golf bag." />
+  <meta property="og:site_name" content="JuniorCaddie" />
+  <meta property="og:image" content="https://www.juniorcaddie.co.uk/og-image.png" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Junior Golf Rules Card — Free Printable Bag Tag | JuniorCaddie" />
+  <meta name="twitter:description" content="Print and laminate this free junior golf rules card. Covers yellow stakes, red stakes, OOB, bunkers, lost balls and more. Clip to your golf bag." />
+  <!-- Additional SEO -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="JuniorCaddie" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #E8E8E8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-label {
+    font-size: 11px; color: #999; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 1.5rem; text-align: center;
+  }
+
+  /* The card itself — 85mm × 135mm (tall business card / bag tag) */
+  .card {
+    width: 85mm;
+    background: #FDFCF0;
+    border-radius: 10px;
+    overflow: visible;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+    border: 2px solid #1A3A2A;
+    position: relative;
+  }
+
+  /* Punch hole indicator */
+  .punch-hole {
+    position: absolute;
+    top: -22px; left: 50%;
+    transform: translateX(-50%);
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px dashed #999;
+    background: #E8E8E8;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .punch-hole-label {
+    position: absolute;
+    top: -38px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px; color: #aaa; white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  /* Header */
+  .header {
+    background: #1A3A2A;
+    padding: 11px 14px 9px;
+    text-align: center;
+    border-radius: 7px 7px 0 0;
+  }
+  .header-title {
+    font-size: 15px; font-weight: 800;
+    color: #F0E68C;
+    letter-spacing: -0.2px;
+    line-height: 1.1;
+  }
+  .header-sub {
+    font-size: 8px; color: #A8C8A0;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  /* Rules list */
+  .rules {
+    padding: 8px 12px 6px;
+  }
+
+  .rule {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 5px 0;
+    border-bottom: 0.75px solid #E0EDD8;
+  }
+  .rule:last-child { border-bottom: none; }
+
+  .rule-emoji {
+    font-size: 15px;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .rule-content { flex: 1; }
+
+  .rule-title {
+    font-size: 9.5px;
+    font-weight: 800;
+    color: #1A3A2A;
+    line-height: 1.2;
+    margin-bottom: 1px;
+  }
+
+  .rule-desc {
+    font-size: 8.5px;
+    color: #3A5A3A;
+    line-height: 1.4;
+  }
+
+  .penalty {
+    display: inline-block;
+    background: #C0392B;
+    color: white;
+    font-size: 7.5px;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+    margin-left: 3px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .penalty-2 { background: #7B0000; }
+  .penalty-free { background: #1A6EA8; }
+
+  /* Footer */
+  .footer {
+    background: #1A3A2A;
+    border-radius: 0 0 7px 7px;
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    display: flex; flex-direction: column;
+  }
+  .footer-junior {
+    font-size: 7px; font-weight: 700;
+    color: #A8C8A0; line-height: 1;
+  }
+  .footer-caddie {
+    font-family: Georgia, serif;
+    font-size: 12px; font-weight: 700;
+    color: white; letter-spacing: -0.3px;
+    line-height: 1;
+  }
+  .footer-url {
+    font-size: 7px; color: #A8C8A0;
+    letter-spacing: 0.04em;
+    text-align: right;
+    line-height: 1.4;
+  }
+  .footer-flag {
+    font-size: 10px;
+  }
+
+  /* Print instructions panel */
+  .print-panel {
+    margin-top: 2rem;
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .print-panel h3 {
+    font-size: 13px; color: #1A3A2A;
+    margin-bottom: 8px;
+  }
+  .print-panel p {
+    font-size: 11px; color: #666;
+    line-height: 1.6;
+  }
+  .print-btn {
+    display: block; width: 100%;
+    margin-top: 12px;
+    background: #1A3A2A; color: white;
+    border: none; border-radius: 6px;
+    padding: 9px; font-size: 12px;
+    font-weight: 600; cursor: pointer;
+  }
+  .print-btn:hover { background: #2A5A3A; }
+
+  /* Print styles */
+  @media print {
+    body {
+      background: white;
+      padding: 10mm;
+      display: block;
+    }
+    .page-label, .print-panel, .punch-hole, .punch-hole-label { display: none; }
+    .card {
+      box-shadow: none;
+      border: 2px solid #1A3A2A;
+      margin: 0 auto;
+      page-break-inside: avoid;
+    }
+  }
+</style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Junior Golf Rules Card — Top 10 Rules Every Junior Golfer Needs to Know",
+    "description": "Free printable junior golf rules card covering yellow stakes, red stakes, out of bounds, bunkers, lost balls and more.",
+    "url": "https://www.juniorcaddie.co.uk/rules-card-final.html",
+    "author": {
+      "@type": "Organization",
+      "name": "JuniorCaddie"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JuniorCaddie",
+      "url": "https://www.juniorcaddie.co.uk"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<p class="page-label">JuniorCaddie Rules Card — Version B Final · Print, laminate, attach to bag</p>
+
+<div style="position:relative; margin-top: 48px;">
+
+  <!-- Punch hole indicator -->
+  <div class="punch-hole-label">Punch hole here</div>
+  <div class="punch-hole"></div>
+
+  <div class="card">
+
+    <div class="header">
+      <div class="header-title">🏌️ Junior Golfer's Rules</div>
+      <div class="header-sub">Know the rules · Play with confidence · Enjoy the game</div>
+    </div>
+
+    <div class="rules">
+
+      <div class="rule">
+        <div class="rule-emoji">⛳</div>
+        <div class="rule-content">
+          <div class="rule-title">Play it as it lies</div>
+          <div class="rule-desc">Don't move, bend or improve anything around your ball unless a rule allows it.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-emoji">🟡</div>
+        <div class="rule-content">
+          <div class="rule-title">Yellow stakes — Penalty Area</div>
+          <div class="rule-desc">Ball in water? <span class="penalty">1 shot</span> Drop on the line back to the flag, or replay from last spot.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-emoji">🔴</div>
+        <div class="rule-content">
+          <div class="rule-title">Red stakes — Lateral Penalty</div>
+          <div class="rule-desc">Ball in hazard? <span class="penalty">1 shot</span> Drop within 2 club lengths where it crossed — not nearer the hole.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-emoji">⚪</div>
+        <div class="rule-content">
+          <div class="rule-title">White stakes — Out of Bounds</div>
+          <div class="rule-desc">Stroke & distance. <span class="penalty">1 shot penalty</span> AND you must replay from where you last played. Always play a provisional if unsure!</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-emoji">🏖️</div>
+        <div class="rule-content">
+          <div class="rule-title">Bunkers — Don't touch the sand!</div>
+          <div class="rule-desc">No practice swings. No touching sand before shot. No resting club in bunker. <span class="penalty">1 shot</span></div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-emoji">🔍</div>
+        <div class="rule-content">
+          <div class="rule-title">Lost Ball — 3 minutes to find it</div>
+          <div class="rule-desc">Still lost? <span class="penalty">1 shot</span> + you go back to where you played from. If in doubt, play a provisional!</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-emoji">🙈</div>
+        <div class="rule-content">
+          <div class="rule-title">Unplayable Lie — your call</div>
+          <div class="rule-desc">Anywhere on the course. <span class="penalty">1 shot</span> Drop 2 club lengths, go back on line to flag, or replay from last spot.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-emoji">🪙</div>
+        <div class="rule-content">
+          <div class="rule-title">On the Green — mark it!</div>
+          <div class="rule-desc">Always place a coin or marker before lifting your ball. Replace it in exactly the same spot.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-emoji">🚧</div>
+        <div class="rule-content">
+          <div class="rule-title">Paths, drains & sprinklers</div>
+          <div class="rule-desc">Free relief! <span class="penalty-free penalty">No penalty</span> Find nearest point of full relief — drop within one club length, no nearer hole.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-emoji">✍️</div>
+        <div class="rule-content">
+          <div class="rule-title">Sign your scorecard</div>
+          <div class="rule-desc">Count every shot honestly. Wrong score = disqualification. Golf is the only sport you referee yourself.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <div style="display:flex; flex-direction:column; align-items:flex-start; line-height:1;">
+        <div style="font-family:-apple-system,sans-serif; font-size:7px; font-weight:800; color:#A8C8A0; letter-spacing:0.15em; text-transform:uppercase; line-height:0.9; display:flex; align-items:center; gap:3px;">
+          Junior
+          <svg width="7" height="14" viewBox="0 0 32 68" fill="none">
+            <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#A8C8A0"/>
+            <path d="M6 1 L32 12 L6 23 Z" fill="#A8C8A0"/>
+            <path d="M6 23 L28 32 L6 41 Z" fill="#C8E8C0"/>
+          </svg>
+        </div>
+        <div style="height:1px; background:linear-gradient(to right,#A8C8A0,#4A8A4A,#C8E8C0); border-radius:1px; margin:1px 0; width:100%;"></div>
+        <div style="font-family:Georgia,serif; font-size:12px; font-weight:700; color:white; letter-spacing:-0.5px; text-transform:uppercase; line-height:0.9;">Caddie</div>
+      </div>
+      <div class="footer-flag">🇬🇧</div>
+      <div class="footer-url">
+        The home of junior golf in the UK<br>
+        juniorcaddie.co.uk
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="print-panel">
+  <h3>🖨️ How to print & laminate</h3>
+  <p>Print on A4 paper. Cut out the card. Laminate in a standard A4 pouch. Cut again. Punch a hole at the top. Thread cord or a carabiner clip through — attach to your bag zip.</p>
+  <button class="print-btn" onclick="window.print()">Print this card</button>
+</div>
+
+</body>
+</html>
