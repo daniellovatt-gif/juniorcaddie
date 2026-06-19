@@ -45,89 +45,22 @@
     /* ── Nav ── */
     .nav {
       position: sticky; top: 0; z-index: 100;
-      background: var(--navy);
-      border-bottom: 0.5px solid #0F4F7A;
-      padding: 14px 48px;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--pale);
+      padding: 16px 48px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-links { display: flex; gap: 24px; }
-    .nav-links a {
-      font-size: 13px; color: var(--light);
-      font-weight: 400; transition: color 0.15s;
-    }
-    .nav-links a:hover { color: white; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; color: var(--mid); font-weight: 400; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--navy); }
     .nav-cta {
-      background: var(--mid); color: var(--white);
-      border: none; padding: 9px 20px;
-      border-radius: 8px; font-size: 13px;
+      background: var(--navy); color: var(--white);
+      border: none; padding: 10px 22px;
+      border-radius: 8px; font-size: 14px;
       cursor: pointer; font-weight: 500;
       transition: background 0.15s;
     }
-    .nav-cta:hover { background: var(--sky); }
-
-    /* ── Feature Tab Bar ── */
-    .feature-bar {
-      background: var(--navy);
-      padding: 0 48px 24px;
-      border-bottom: none;
-    }
-    .feature-bar-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-    }
-    .feature-tab {
-      display: flex; flex-direction: column;
-      align-items: flex-start;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 12px;
-      padding: 16px 18px;
-      text-decoration: none;
-      transition: all 0.15s;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-tab:hover {
-      background: rgba(255,255,255,0.14);
-      border-color: rgba(255,255,255,0.28);
-      transform: translateY(-1px);
-    }
-    .feature-tab.live {
-      background: rgba(26,110,168,0.35);
-      border-color: var(--mid);
-    }
-    .feature-tab.live:hover {
-      background: rgba(26,110,168,0.5);
-    }
-    .feature-tab-badge {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 3px 9px; border-radius: 20px;
-      margin-bottom: 10px; display: inline-block;
-    }
-    .badge-live { background: #22C55E; color: white; }
-    .badge-soon { background: rgba(255,255,255,0.15); color: var(--light); }
-    .feature-tab-title {
-      font-family: var(--serif);
-      font-size: 17px; font-weight: 700;
-      color: white; line-height: 1.2;
-      margin-bottom: 5px;
-    }
-    .feature-tab-desc {
-      font-size: 12px; color: var(--light);
-      line-height: 1.5;
-    }
-    .feature-tab-arrow {
-      position: absolute; right: 14px; top: 50%;
-      transform: translateY(-50%);
-      font-size: 18px; color: var(--light);
-      opacity: 0; transition: opacity 0.15s;
-    }
-    .feature-tab:hover .feature-tab-arrow { opacity: 1; }
+    .nav-cta:hover { background: var(--mid); }
 
     /* ── Hero ── */
     .hero {
@@ -457,12 +390,7 @@
     @media (max-width: 768px) {
       .nav { padding: 14px 20px; }
       .nav-links { display: none; }
-      .feature-bar { padding: 0 16px 16px; }
-      .feature-bar-inner { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .feature-tab { padding: 12px 14px; }
-      .feature-tab-title { font-size: 14px; }
-      .feature-tab-arrow { display: none; }
-      .hero { padding: 48px 20px 48px; }
+      .hero { padding: 60px 20px 56px; }
       .email-form { flex-direction: column; }
       .pillars { padding: 56px 20px; }
       .journey { padding: 56px 20px; }
@@ -470,135 +398,40 @@
       .ask-form-wrap { padding: 28px 20px; }
       .form-row { flex-direction: column; }
       footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
-      section[style*="grid-template-columns:1fr 1fr"] > div { grid-template-columns: 1fr !important; }
     }
-
-    /* ── Competition Finder Teaser ── */
-    .comp-teaser { background: var(--white); padding: 64px 24px; }
-    .comp-teaser-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .comp-teaser-text {}
-    .live-badge { display: inline-block; background: #1A6EA8; color: white; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 20px; padding: 4px 12px; margin-bottom: 16px; }
-    .comp-teaser h2 { font-family: var(--serif); font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: var(--navy); letter-spacing: -0.5px; margin-bottom: 14px; line-height: 1.2; }
-    .comp-teaser p { font-size: 15px; color: var(--mid); line-height: 1.7; margin-bottom: 24px; }
-    .comp-teaser-cta { display: inline-block; background: var(--navy); color: white; font-size: 15px; font-weight: 500; padding: 13px 28px; border-radius: 8px; text-decoration: none; transition: background 0.15s; }
-    .comp-teaser-cta:hover { background: var(--mid); }
-    .comp-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .comp-stat-card { background: var(--bg); border: 0.5px solid var(--pale); border-radius: 10px; padding: 20px; text-align: center; }
-    .comp-stat-n { font-family: var(--serif); font-size: 32px; font-weight: 700; color: var(--navy); line-height: 1; }
-    .comp-stat-l { font-size: 12px; color: var(--sky); margin-top: 6px; line-height: 1.4; }
-    @media (max-width: 768px) { .comp-teaser-inner { grid-template-columns: 1fr; gap: 32px; } }
 
     /* ── Utility ── */
     .text-center { text-align: center; }
     .mb-12 { margin-bottom: 12px; }
-
-    /* ── Logo E — Flag inline with JUNIOR ── */
-    .nav-logo { text-decoration: none; display: inline-flex; align-items: center; }
-    .logo-e { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
-    .logo-e-junior {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 15px; font-weight: 700;
-      color: #EEF4FB; letter-spacing: -0.5px;
-      text-transform: uppercase; line-height: 0.9;
-      display: flex; align-items: center; gap: 5px;
-    }
-    .logo-e-flag {
-      width: 14px; height: 28px;
-      color: #EEF4FB; flex-shrink: 0;
-      margin-bottom: -2px;
-    }
-    .logo-e-rule {
-      height: 2px;
-      width: 100%;
-      background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0);
-      border-radius: 1px;
-      margin: 3px 0;
-    }
-    .logo-e-caddie {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 22px; font-weight: 700;
-      color: #7BBDE0; letter-spacing: -1px;
-      text-transform: uppercase; line-height: 0.9;
-    }
-    /* Light version (for light nav backgrounds) */
-    .logo-e.light .logo-e-junior { color: #0B3D6B; }
-    .logo-e.light .logo-e-flag { color: #0B3D6B; }
-    .logo-e.light .logo-e-rule { background: linear-gradient(to right, #0B3D6B, #1A6EA8, #7BBDE0); }
-    .logo-e.light .logo-e-caddie { color: #1A6EA8; }
-
   </style>
-  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
   <!-- Navigation -->
   <nav class="nav">
-    <a href="index.html" class="nav-logo" aria-label="JuniorCaddie home">
-      <div class="logo-e">
-        <div class="logo-e-junior">Junior
-          <svg class="logo-e-flag" viewBox="0 0 32 68" fill="none">
-            <rect x="1" y="0" width="5" height="62" rx="2.5" fill="currentColor"/>
-            <path d="M6 1 L32 12 L6 23 Z" fill="currentColor"/>
-            <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
-          </svg>
-        </div>
-        <div class="logo-e-rule"></div>
-        <div class="logo-e-caddie">Caddie</div>
+    <a href="#" class="logo-mark" aria-label="JuniorCaddie home">
+      <svg width="24" height="72" viewBox="0 0 32 96" fill="none" aria-hidden="true">
+        <line x1="8" y1="2" x2="8" y2="86" stroke="#0B3D6B" stroke-width="4" stroke-linecap="round"/>
+        <path d="M8 2 L30 12 L8 22 Z" fill="#1A6EA8"/>
+        <path d="M8 22 L26 30 L8 38 Z" fill="#7BBDE0"/>
+        <ellipse cx="8" cy="88" rx="8" ry="3" fill="#B8D8F0"/>
+      </svg>
+      <div class="logo-words">
+        <span class="logo-junior">Junior</span>
+        <span class="logo-caddie">Caddie</span>
       </div>
     </a>
     <div class="nav-links">
-      <a href="about.html">Our story</a>
-      <a href="journey.html">The journey</a>
-      <a href="#ask">Ask us</a>
+      <a href="#pillars">What we're building</a>
+      <a href="#journey">The journey</a>
+      <a href="#ask">Ask JuniorCaddie</a>
     </div>
-    <button class="nav-cta" onclick="document.getElementById('hero-email').focus()">Join the list</button>
+    <button class="nav-cta" onclick="document.getElementById('hero-email').focus()">Get early access</button>
   </nav>
-
-  <!-- Feature Tab Bar -->
-  <div class="feature-bar">
-    <div class="feature-bar-inner">
-
-      <a href="competitions.html" class="feature-tab live">
-        <span class="feature-tab-badge badge-live">Live now</span>
-        <div class="feature-tab-title">Competition Finder</div>
-        <div class="feature-tab-desc">87 competitions across 11 counties & national tours — growing weekly</div>
-        <span class="feature-tab-arrow">→</span>
-      </a>
-
-      <a href="rules-card-final.html" class="feature-tab live">
-        <span class="feature-tab-badge badge-live">Free download</span>
-        <div class="feature-tab-title">⛳ Rules Card</div>
-        <div class="feature-tab-desc">Top 10 golf rules — print, laminate & clip to your bag</div>
-        <span class="feature-tab-arrow">→</span>
-      </a>
-
-      <a href="#ask" class="feature-tab live">
-        <span class="feature-tab-badge badge-live">Live now</span>
-        <div class="feature-tab-title">Ask JuniorCaddie</div>
-        <div class="feature-tab-desc">Real questions from golf parents. Honest answers.</div>
-        <span class="feature-tab-arrow">→</span>
-      </a>
-
-      <a href="journey.html" class="feature-tab live">
-        <span class="feature-tab-badge badge-live">Live now</span>
-        <div class="feature-tab-title">The Junior Journey</div>
-        <div class="feature-tab-desc">Expert guidance for every stage of your child's game</div>
-        <span class="feature-tab-arrow">→</span>
-      </a>
-
-      <a href="#" class="feature-tab">
-        <span class="feature-tab-badge badge-soon">Coming soon</span>
-        <div class="feature-tab-title">Marketplace</div>
-        <div class="feature-tab-desc">Buy and sell junior golf clubs — sized by height</div>
-        <span class="feature-tab-arrow">→</span>
-      </a>
-
-    </div>
-  </div>
 
   <!-- Hero -->
   <section class="hero">
-    <p class="eyebrow">Now live across the UK</p>
+    <p class="eyebrow">Launching soon across the UK</p>
     <h1>Everything a junior golf family needs.<br><span>Finally in one place.</span></h1>
     <p class="hero-sub">From first swing to first handicap — JuniorCaddie gives families the knowledge, community and equipment to make the most of everything the game offers their child.</p>
     <div class="email-form">
@@ -616,26 +449,6 @@
     </div>
   </section>
 
-  <!-- Philosophy Teaser -->
-  <section style="background:#ffffff; padding:72px 24px;">
-    <div style="max-width:800px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
-      <div>
-        <span style="font-size:11px; color:#5AAAD4; letter-spacing:3px; text-transform:uppercase; display:block; margin-bottom:16px;">Why this matters</span>
-        <h2 style="font-family:Georgia,serif; font-size:clamp(24px,3vw,34px); font-weight:700; color:#0B3D6B; letter-spacing:-0.5px; line-height:1.2; margin-bottom:20px;">Golf is the antidote to the screen in their pocket.</h2>
-        <p style="font-size:16px; color:#2A5070; line-height:1.75; margin-bottom:28px;">Where else can a child walk around with someone they've never met for four hours and just talk? No phones. No audience. No performance. Just golf, fresh air, and conversation. In a world shaped by social media, that's not a small thing.</p>
-        <a href="about.html" style="display:inline-block; background:#0B3D6B; color:#EEF4FB; font-size:15px; font-weight:500; padding:13px 28px; border-radius:8px; text-decoration:none;">Read our story ↗</a>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <div style="background:#EEF4FB; border-radius:12px; padding:24px; border-left:4px solid #1A6EA8;">
-          <p style="font-family:Georgia,serif; font-size:17px; color:#0B3D6B; line-height:1.6; font-style:italic; margin:0;">"Golf teaches children things that social media is quietly destroying — patience, honesty, grace in defeat, and genuine connection with another person."</p>
-        </div>
-        <div style="background:#EEF4FB; border-radius:12px; padding:24px; border-left:4px solid #7BBDE0;">
-          <p style="font-size:14px; color:#1A6EA8; line-height:1.7; margin:0;">JuniorCaddie exists to make sure every child — regardless of what their family can afford — gets access to everything the game offers. The equipment should never be the reason a child stops playing.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Three Pillars -->
   <section class="pillars" id="pillars" aria-labelledby="pillars-heading">
     <span class="section-label text-center" style="display:block;">What we're building</span>
@@ -647,12 +460,11 @@
         <p class="pillar-body">An honest, height-based club finder that tells you exactly what your child needs at their stage — and what to spend. New and second-hand options, no bias.</p>
         <span class="pillar-tag">Club finder — coming soon</span>
       </div>
-      <div class="pillar-card" style="border-color:#1A6EA8;">
+      <div class="pillar-card">
         <p class="pillar-q">Community</p>
         <h3 class="pillar-title">Where should we compete next?</h3>
-        <p class="pillar-body">Junior opens across Hertfordshire, Essex, Middlesex, Surrey, Bedfordshire, Cambridgeshire, Sussex, Hampshire and Kent — plus the British Junior Golf Tour and Faldo Series. Direct entry links where available. More counties added every week.</p>
-        <a href="competitions.html" style="display:inline-block; margin-top:20px; font-size:13px; font-weight:600; color:#ffffff; background:#1A6EA8; border-radius:20px; padding:6px 16px; text-decoration:none; margin-right:8px;">Competition Finder ↗</a>
-        <a href="rules-card-final.html" style="display:inline-block; margin-top:20px; font-size:13px; font-weight:600; color:#1A6EA8; background:#EEF4FB; border-radius:20px; padding:6px 16px; text-decoration:none; border:1px solid #B8D8F0;">⛳ Rules Card ↗</a>
+        <p class="pillar-body">Every junior competition in the UK — county opens, England Golf events, regional tours — in one searchable calendar. No more piecing it together from five different websites.</p>
+        <span class="pillar-tag">Competition finder — coming soon</span>
       </div>
       <div class="pillar-card">
         <p class="pillar-q">Equipment</p>
@@ -696,66 +508,6 @@
           <p class="stage-desc">Moving to adult golf. The junior chapter closes.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Competition Finder Teaser — Live Now -->
-  <section class="comp-teaser">
-    <div class="comp-teaser-inner">
-      <div class="comp-teaser-text">
-        <span class="live-badge">🏌️ Live now — growing weekly</span>
-        <h2>Junior competitions near you — finally in one place.</h2>
-        <p>We're building the UK's most comprehensive junior golf competition finder — county by county, tour by tour. Currently 87 individually listed competitions covering Hertfordshire, Essex, Middlesex, Surrey, Bedfordshire, Cambridgeshire, the BJGT, Faldo Series, England Golf national championships and English Schools Golf. More counties added every week. Always free.</p>
-        <a href="competitions.html" class="comp-teaser-cta">Find competitions near you ↗</a>
-      </div>
-      <div class="comp-stats">
-        <div class="comp-stat-card">
-          <div class="comp-stat-n">87</div>
-          <div class="comp-stat-l">Competitions individually listed — more added weekly</div>
-        </div>
-        <div class="comp-stat-card">
-          <div class="comp-stat-n">11</div>
-          <div class="comp-stat-l">Counties & national tours — more coming soon</div>
-        </div>
-        <div class="comp-stat-card">
-          <div class="comp-stat-n">Direct</div>
-          <div class="comp-stat-l">Entry links — straight to the form</div>
-        </div>
-        <div class="comp-stat-card">
-          <div class="comp-stat-n">Free</div>
-          <div class="comp-stat-l">Always free to use — no account needed</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Plain English Strip -->
-  <section style="background:#0B3D6B; padding:32px 24px;">
-    <div style="max-width:var(--max); margin:0 auto;">
-      <p style="font-size:11px; color:#5AAAD4; letter-spacing:3px; text-transform:uppercase; margin-bottom:16px; text-align:center;">Golf jargon — plain English</p>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
-        <div style="background:rgba(255,255,255,0.07); border-radius:8px; padding:14px;">
-          <div style="font-size:12px; font-weight:700; color:#7BBDE0; margin-bottom:4px;">Handicap</div>
-          <div style="font-size:12px; color:#B8D8F0; line-height:1.5;">A number showing your child's level. Lower = better. Beginners start around 54. Single figures means county level.</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.07); border-radius:8px; padding:14px;">
-          <div style="font-size:12px; font-weight:700; color:#7BBDE0; margin-bottom:4px;">Strokeplay / Medal</div>
-          <div style="font-size:12px; color:#B8D8F0; line-height:1.5;">Count every shot over 18 holes. Lowest total wins. The most common competition format.</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.07); border-radius:8px; padding:14px;">
-          <div style="font-size:12px; font-weight:700; color:#7BBDE0; margin-bottom:4px;">Stableford</div>
-          <div style="font-size:12px; color:#B8D8F0; line-height:1.5;">Points per hole rather than counting every shot. More forgiving for beginners. Highest points total wins.</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.07); border-radius:8px; padding:14px;">
-          <div style="font-size:12px; font-weight:700; color:#7BBDE0; margin-bottom:4px;">Order of Merit</div>
-          <div style="font-size:12px; color:#B8D8F0; line-height:1.5;">A season-long county leaderboard. Points earned at junior opens across the year. Top juniors are recognised at the end of the season.</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.07); border-radius:8px; padding:14px;">
-          <div style="font-size:12px; font-weight:700; color:#7BBDE0; margin-bottom:4px;">CDH / WHS Number</div>
-          <div style="font-size:12px; color:#B8D8F0; line-height:1.5;">Your child's unique ID in the England Golf system. They get it when they register for a handicap at their club.</div>
-        </div>
-      </div>
-      <p style="text-align:center; margin-top:16px; font-size:12px; color:#5AAAD4;">More terms explained on the <a href="competitions.html" style="color:#7BBDE0; font-weight:600;">competition finder page ↗</a></p>
     </div>
   </section>
 
@@ -961,9 +713,6 @@
     </a>
     <p class="footer-copy">© 2026 JuniorCaddie. juniorcaddie.co.uk</p>
     <div class="footer-links">
-      <a href="about.html">Our story</a>
-      <a href="journey.html">The journey</a>
-      <a href="competitions.html">Competitions</a>
       <a href="https://instagram.com/juniorcaddie" target="_blank" rel="noopener">Instagram</a>
       <a href="mailto:hello@juniorcaddie.co.uk">Contact</a>
       <a href="#">Privacy</a>
@@ -1000,103 +749,39 @@
       });
     }
 
-    // Email signup — submits to Formspree
-    // SETUP: Replace 'YOUR_FORMSPREE_ID' with your actual Formspree form ID
-    // 1. Go to formspree.io and sign up free
-    // 2. Create a new form — use hello@juniorcaddie.co.uk as the email
-    // 3. Copy the form ID (e.g. xpwzgkrb) and replace below
-    const FORMSPREE_EMAIL_ID = 'xbdewqvn';
-    const FORMSPREE_QUESTION_ID = 'mbdewqnn';
-
-    async function handleSignup(source) {
+    // Email signup handler
+    function handleSignup(source) {
       const input = document.getElementById(source === 'hero' ? 'hero-email' : 'footer-email');
-      const btn = input.nextElementSibling;
       const email = input.value.trim();
-
       if (!email || !email.includes('@')) {
         input.style.borderColor = '#E05A5A';
         input.focus();
         return;
       }
-
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-
-      try {
-        const res = await fetch(`https://formspree.io/f/${FORMSPREE_EMAIL_ID}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email, source, _subject: `New JuniorCaddie signup from ${source}` })
-        });
-
-        if (res.ok) {
-          input.value = '';
-          input.placeholder = "You're on the list. Thank you.";
-          input.style.borderColor = '#5AAAD4';
-          btn.textContent = 'Done ✓';
-          btn.style.background = '#5AAAD4';
-        } else {
-          throw new Error('Form error');
-        }
-      } catch(e) {
-        // Fallback — mailto link if Formspree not yet configured
-        window.location.href = `mailto:hello@juniorcaddie.co.uk?subject=Early access request&body=Email: ${email}`;
-        input.value = '';
-        input.placeholder = "Thanks — we'll be in touch.";
-        btn.textContent = 'Sent ✓';
-      }
+      input.style.borderColor = '#5AAAD4';
+      input.value = '';
+      input.placeholder = 'You\'re on the list. Thank you.';
+      console.log('Email signup:', email, 'source:', source);
+      // TODO: Connect to email service (Mailchimp / ConvertKit)
     }
 
-    // Question submit — sends to Formspree
-    async function handleQuestion() {
+    // Question submit handler
+    function handleQuestion() {
       const name = document.getElementById('q-name').value.trim();
       const email = document.getElementById('q-email').value.trim();
-      const stage = document.getElementById('q-stage').value;
       const question = document.getElementById('q-question').value.trim();
-      const btn = document.querySelector('.form-submit');
-
       if (!name || !email || !question) {
         alert('Please fill in your name, email and question.');
         return;
       }
-
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-
-      try {
-        const res = await fetch(`https://formspree.io/f/${FORMSPREE_QUESTION_ID}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            name, email, stage, question,
-            _subject: `New question from ${name} — JuniorCaddie`
-          })
-        });
-
-        if (res.ok) {
-          document.getElementById('q-name').value = '';
-          document.getElementById('q-email').value = '';
-          document.getElementById('q-question').value = '';
-          document.getElementById('q-stage').selectedIndex = 0;
-          btn.textContent = 'Question sent ✓';
-          btn.style.background = '#5AAAD4';
-          btn.style.color = '#0B3D6B';
-        } else {
-          throw new Error('Form error');
-        }
-      } catch(e) {
-        // Fallback — mailto
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nStage: ${stage}\n\nQuestion:\n${question}`);
-        window.location.href = `mailto:hello@juniorcaddie.co.uk?subject=Question from ${name}&body=${body}`;
-        btn.textContent = 'Question sent ✓';
-      }
+      console.log('Question submitted:', { name, email, question });
+      document.getElementById('q-name').value = '';
+      document.getElementById('q-email').value = '';
+      document.getElementById('q-question').value = '';
+      document.getElementById('q-stage').selectedIndex = 0;
+      alert('Thank you ' + name + '. We\'ll answer your question personally and let you know when it\'s live.');
+      // TODO: Connect to backend / email notification
     }
-
-    // Allow Enter key on email inputs
-    ['hero-email','footer-email'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup(id === 'hero-email' ? 'hero' : 'footer'); });
-    });
   </script>
 
 </body>

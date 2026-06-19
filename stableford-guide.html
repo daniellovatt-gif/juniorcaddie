@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="What is Stableford scoring? The simple guide for junior golf parents — explained in plain English by JuniorCaddie."/>
+<title>What is Stableford Scoring? — JuniorCaddie</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    background: #EEF4FB;
+    color: #0B3D6B;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  :root {
+    --navy:  #0B3D6B;
+    --mid:   #1A6EA8;
+    --sky:   #5AAAD4;
+    --light: #7BBDE0;
+    --pale:  #B8D8F0;
+    --bg:    #EEF4FB;
+    --white: #ffffff;
+    --serif: Georgia, 'Times New Roman', serif;
+    --max:   760px;
+  }
+
+  /* Nav */
+  nav {
+    background: var(--navy);
+    border-bottom: 0.5px solid #0F4F7A;
+    padding: 14px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-junior { font-family: var(--serif); font-size: 13px; font-weight: 700; color: var(--pale); line-height: 1; }
+  .logo-caddie { font-family: var(--serif); font-size: 22px; font-weight: 700; color: white; letter-spacing: -0.5px; line-height: 1; }
+  .nav-back { font-size: 14px; color: var(--light); text-decoration: none; }
+  .nav-back:hover { color: white; }
+
+  /* Hero */
+  .hero {
+    background: var(--navy);
+    padding: 56px 24px 48px;
+    text-align: center;
+  }
+  .hero-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(28px, 4vw, 46px); font-weight: 700; color: #EEF4FB; letter-spacing: -1px; margin-bottom: 16px; line-height: 1.1; }
+  .hero h1 span { color: var(--light); }
+  .hero-sub { font-size: 17px; color: var(--light); max-width: 540px; margin: 0 auto; line-height: 1.65; }
+
+  /* Body */
+  .body-wrap { max-width: var(--max); margin: 0 auto; padding: 56px 24px 80px; }
+  .section { margin-bottom: 52px; }
+  .section-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; display: block; }
+  h2 { font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); font-weight: 700; color: var(--navy); letter-spacing: -0.5px; margin-bottom: 16px; line-height: 1.2; }
+  p { font-size: 16px; color: #2A5070; line-height: 1.8; margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+  p strong { color: var(--navy); font-weight: 600; }
+
+  /* The big points table */
+  .points-table {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0.5px solid var(--pale);
+    margin: 28px 0;
+  }
+  .points-row {
+    display: grid;
+    grid-template-columns: 52px 1fr 72px;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 0.5px solid var(--pale);
+    background: var(--white);
+    transition: background 0.1s;
+  }
+  .points-row:last-child { border-bottom: none; }
+  .points-row.header {
+    background: var(--navy);
+    padding: 10px 20px;
+  }
+  .points-row.header span { font-size: 11px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+  .points-row.highlight-gold { background: #FFF8DC; }
+  .points-row.highlight-green { background: #F0FFF0; }
+  .points-row.highlight-blue { background: #F0F8FF; }
+  .points-row.highlight-red { background: #FFF5F5; }
+  .points-row.highlight-grey { background: #F8F8F8; }
+
+  .row-emoji { font-size: 22px; }
+  .row-content {}
+  .row-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .row-desc { font-size: 12px; color: var(--mid); line-height: 1.4; }
+  .row-points {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .points-gold { color: #B8860B; }
+  .points-green { color: #1A7A1A; }
+  .points-blue { color: #1A6EA8; }
+  .points-red { color: #C0392B; }
+  .points-grey { color: #888; }
+
+  /* Scorecard example */
+  .scorecard {
+    background: var(--white);
+    border: 0.5px solid var(--pale);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 28px 0;
+  }
+  .scorecard-header {
+    background: var(--navy);
+    padding: 14px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .scorecard-title { font-family: var(--serif); font-size: 16px; font-weight: 700; color: white; }
+  .scorecard-sub { font-size: 11px; color: var(--sky); }
+  .scorecard-table { width: 100%; border-collapse: collapse; }
+  .scorecard-table th {
+    background: #EEF4FB;
+    font-size: 10px; color: var(--mid);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 8px 12px; text-align: center;
+    border-bottom: 0.5px solid var(--pale);
+    font-weight: 600;
+  }
+  .scorecard-table th:first-child { text-align: left; }
+  .scorecard-table td {
+    padding: 10px 12px; text-align: center;
+    border-bottom: 0.5px solid var(--pale);
+    font-size: 14px; color: var(--navy);
+  }
+  .scorecard-table td:first-child { text-align: left; font-weight: 500; font-size: 13px; }
+  .scorecard-table tr:last-child td { border-bottom: none; font-weight: 700; background: #EEF4FB; }
+  .score-badge {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px; color: white;
+  }
+  .sb-eagle { background: #B8860B; }
+  .sb-birdie { background: #1A7A1A; }
+  .sb-par { background: #1A6EA8; }
+  .sb-bogey { background: #888; }
+  .sb-double { background: #C0392B; }
+
+  /* Pull quote */
+  .pull-quote {
+    border-left: 4px solid var(--mid);
+    padding: 18px 24px; margin: 32px 0;
+    background: var(--white); border-radius: 0 10px 10px 0;
+  }
+  .pull-quote p { font-family: var(--serif); font-size: 18px; color: var(--navy); line-height: 1.6; font-style: italic; margin: 0; }
+
+  /* Tip box */
+  .tip-box {
+    background: #FFF8EC; border: 0.5px solid #E8C97A;
+    border-radius: 10px; padding: 18px 22px; margin: 24px 0;
+  }
+  .tip-label { font-size: 11px; color: #B8922A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .tip-box p { font-size: 14px; color: #6B5000; line-height: 1.7; margin: 0; }
+
+  /* vs comparison */
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+  .vs-card { background: var(--white); border: 0.5px solid var(--pale); border-radius: 10px; padding: 18px; }
+  .vs-card.active { border-color: var(--mid); border-width: 2px; }
+  .vs-label { font-size: 10px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .vs-title { font-family: var(--serif); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .vs-point { font-size: 13px; color: #2A5070; line-height: 1.6; margin-bottom: 6px; padding-left: 14px; position: relative; }
+  .vs-point::before { content: "→"; position: absolute; left: 0; color: var(--mid); }
+
+  /* Interactive scorer */
+  .scorer {
+    background: var(--white); border: 0.5px solid var(--pale);
+    border-radius: 12px; overflow: hidden; margin: 28px 0;
+  }
+  .scorer-header {
+    background: #1A6EA8; padding: 14px 20px;
+  }
+  .scorer-title { font-family: var(--serif); font-size: 17px; font-weight: 700; color: white; margin-bottom: 2px; }
+  .scorer-sub { font-size: 12px; color: #B8D8F0; }
+  .scorer-body { padding: 20px; }
+  .scorer-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .scorer-label { font-size: 14px; color: var(--navy); font-weight: 500; min-width: 120px; }
+  .scorer-input {
+    width: 60px; padding: 8px; border: 1px solid var(--pale);
+    border-radius: 6px; font-size: 16px; text-align: center;
+    color: var(--navy); background: var(--bg);
+  }
+  .scorer-input:focus { outline: none; border-color: var(--mid); }
+  .scorer-result {
+    background: var(--bg); border-radius: 8px;
+    padding: 16px 20px; margin-top: 4px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .scorer-result-label { font-size: 14px; color: var(--mid); }
+  .scorer-result-points {
+    font-family: var(--serif); font-size: 36px; font-weight: 700;
+    color: var(--navy); line-height: 1;
+  }
+  .scorer-result-name { font-size: 13px; color: var(--sky); margin-top: 2px; }
+  .scorer-btn {
+    background: var(--mid); color: white; border: none;
+    padding: 10px 24px; border-radius: 8px; font-size: 14px;
+    font-weight: 600; cursor: pointer; width: 100%; margin-top: 8px;
+  }
+  .scorer-btn:hover { background: var(--navy); }
+
+  /* Footer */
+  footer { background: var(--navy); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 12px; color: var(--sky); }
+  .footer-links { display: flex; gap: 18px; }
+  .footer-links a { font-size: 12px; color: var(--light); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    nav { padding: 14px 16px; }
+    .body-wrap { padding: 36px 16px 56px; }
+    .vs-grid { grid-template-columns: 1fr; }
+    .points-row { grid-template-columns: 40px 1fr 56px; padding: 12px 14px; }
+    footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="20" height="60" viewBox="0 0 32 96" fill="none">
+      <line x1="8" y1="2" x2="8" y2="86" stroke="#EEF4FB" stroke-width="4" stroke-linecap="round"/>
+      <path d="M8 2 L30 12 L8 22 Z" fill="#1A6EA8"/>
+      <path d="M8 22 L26 30 L8 38 Z" fill="#7BBDE0"/>
+      <ellipse cx="8" cy="88" rx="8" ry="3" fill="#B8D8F0"/>
+    </svg>
+    <div>
+      <div class="logo-junior">Junior</div>
+      <div class="logo-caddie">Caddie</div>
+    </div>
+  </a>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-label">Plain English Guides</p>
+  <h1>What is<br><span>Stableford scoring?</span></h1>
+  <p class="hero-sub">The scoring format used in most junior competitions — and why it's actually better than counting every shot. Explained in plain English.</p>
+</section>
+
+<div class="body-wrap">
+
+  <!-- The one sentence explanation -->
+  <div class="section">
+
+    <div class="pull-quote">
+      <p>"Instead of counting every shot over 18 holes, Stableford gives your child points on each hole. Highest total wins. A bad hole costs you nothing — you just score zero and move on."</p>
+    </div>
+
+    <p>That last part is the key. In strokeplay — where you count every single shot — one terrible hole can ruin an entire round. A nine on a par four demoralises a junior golfer in a way that's genuinely hard to recover from.</p>
+
+    <p>Stableford removes that problem. Score badly on a hole? Pick the ball up, write down zero, walk to the next tee. The damage is contained. The round continues. <strong>This is why Stableford is the format most junior competitions use</strong> — it keeps the round moving, keeps spirits up, and rewards consistent play rather than punishing disaster holes.</p>
+
+  </div>
+
+  <!-- The points system -->
+  <div class="section">
+    <span class="section-label">How the points work</span>
+    <h2>One simple table. That's all you need.</h2>
+
+    <p>Every hole on a golf course has a "par" — the number of shots a scratch golfer is expected to take. Your child's score on that hole, adjusted for their handicap, is compared to par. Here's what each result is worth:</p>
+
+    <div class="points-table">
+      <div class="points-row header">
+        <span></span>
+        <span>What happened on the hole</span>
+        <span style="text-align:center;">Points</span>
+      </div>
+      <div class="points-row highlight-gold">
+        <div class="row-emoji">🦅</div>
+        <div class="row-content">
+          <div class="row-name">Eagle</div>
+          <div class="row-desc">2 shots under par — exceptional. Rare at junior level but it happens!</div>
+        </div>
+        <div class="row-points points-gold">4</div>
+      </div>
+      <div class="points-row highlight-green">
+        <div class="row-emoji">🐦</div>
+        <div class="row-content">
+          <div class="row-name">Birdie</div>
+          <div class="row-desc">1 shot under par — a brilliant hole. Fist pump territory.</div>
+        </div>
+        <div class="row-points points-green">3</div>
+      </div>
+      <div class="points-row highlight-blue">
+        <div class="row-emoji">⛳</div>
+        <div class="row-content">
+          <div class="row-name">Par</div>
+          <div class="row-desc">The expected score for the hole. Solid. Consistent. 2 points.</div>
+        </div>
+        <div class="row-points points-blue">2</div>
+      </div>
+      <div class="points-row highlight-grey">
+        <div class="row-emoji">😐</div>
+        <div class="row-content">
+          <div class="row-name">Bogey</div>
+          <div class="row-desc">1 over par — fine for a developing junior. Still scores 1 point.</div>
+        </div>
+        <div class="row-points points-grey">1</div>
+      </div>
+      <div class="points-row highlight-red">
+        <div class="row-emoji">😬</div>
+        <div class="row-content">
+          <div class="row-name">Double bogey or worse</div>
+          <div class="row-desc">2 or more over par — pick up the ball, walk to the next tee. Zero points, no further damage.</div>
+        </div>
+        <div class="row-points points-red">0</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Quick reminder</div>
+      <p>These scores are <strong>after handicap is applied</strong>. So if your child has a high handicap they get extra shots on certain holes — meaning they might score a "net birdie" (birdie after handicap) even if their actual score was a 5 on a par 4. The competition uses the adjusted score, not the raw one.</p>
+    </div>
+
+  </div>
+
+  <!-- Real example scorecard -->
+  <div class="section">
+    <span class="section-label">A real example</span>
+    <h2>What a Stableford scorecard actually looks like.</h2>
+
+    <p>Here's a fictional junior — let's call her Ava, handicap 18 — playing nine holes in a Stableford competition. Watch how the scoring works hole by hole.</p>
+
+    <div class="scorecard">
+      <div class="scorecard-header">
+        <div>
+          <div class="scorecard-title">Ava's scorecard</div>
+          <div class="scorecard-sub">Handicap 18 · First 9 holes</div>
+        </div>
+        <div style="font-size:12px; color:var(--sky); text-align:right;">Stableford<br>competition</div>
+      </div>
+      <table class="scorecard-table">
+        <thead>
+          <tr>
+            <th>Hole</th>
+            <th>Par</th>
+            <th>Ava's score</th>
+            <th>Net score</th>
+            <th>Result</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>4</td>
+            <td>6</td>
+            <td>5</td>
+            <td><span class="score-badge sb-bogey">Bogey</span></td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>3</td>
+            <td><span class="score-badge sb-par">Par</span></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>5</td>
+            <td>9</td>
+            <td>8</td>
+            <td><span class="score-badge sb-double">Disaster!</span></td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>4</td>
+            <td>5</td>
+            <td>4</td>
+            <td><span class="score-badge sb-par">Par</span></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>4</td>
+            <td>4</td>
+            <td>3</td>
+            <td><span class="score-badge sb-birdie">Birdie! 🐦</span></td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>3</td>
+            <td>5</td>
+            <td>4</td>
+            <td><span class="score-badge sb-bogey">Bogey</span></td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>4</td>
+            <td>7</td>
+            <td>6</td>
+            <td><span class="score-badge sb-double">Picked up</span></td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>4</td>
+            <td>5</td>
+            <td>4</td>
+            <td><span class="score-badge sb-par">Par</span></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>5</td>
+            <td>6</td>
+            <td>5</td>
+            <td><span class="score-badge sb-par">Par</span></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="text-align:right; font-size:14px; color:var(--navy);">Total Stableford points</td>
+            <td style="font-size:20px; color:var(--mid);">13</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Notice hole 3 — Ava had a 9. In strokeplay that would be a catastrophe that follows her around the whole round. In Stableford? Zero points. She picked up the ball, moved to the 4th tee, and went on to score a birdie on hole 5. The bad hole was forgotten instantly. <strong>That's the genius of Stableford.</strong></p>
+
+  </div>
+
+  <!-- Stableford vs Strokeplay -->
+  <div class="section">
+    <span class="section-label">Which format is right?</span>
+    <h2>Stableford vs Strokeplay — what's the difference for a junior?</h2>
+
+    <div class="vs-grid">
+      <div class="vs-card active">
+        <div class="vs-label">Stableford</div>
+        <div class="vs-title">Points per hole</div>
+        <div class="vs-point">One bad hole costs you nothing</div>
+        <div class="vs-point">Keeps the round moving faster</div>
+        <div class="vs-point">Better for developing juniors</div>
+        <div class="vs-point">Most junior opens use this format</div>
+        <div class="vs-point">Encourages attacking play</div>
+      </div>
+      <div class="vs-card">
+        <div class="vs-label">Strokeplay / Medal</div>
+        <div class="vs-title">Count every shot</div>
+        <div class="vs-point">Every shot matters all round</div>
+        <div class="vs-point">One bad hole can wreck a score</div>
+        <div class="vs-point">Better for experienced juniors</div>
+        <div class="vs-point">Used in county championships</div>
+        <div class="vs-point">Rewards patience and consistency</div>
+      </div>
+    </div>
+
+    <p>For most Stage 3 and early Stage 4 juniors, Stableford is the more enjoyable format. It rewards good holes, protects against disasters, and keeps the scorecard interesting right to the end. As players develop and their handicap comes down, strokeplay becomes more appropriate — but most junior club competitions run Stableford for good reason.</p>
+
+  </div>
+
+  <!-- Interactive scorer -->
+  <div class="section">
+    <span class="section-label">Try it yourself</span>
+    <h2>Work out your child's points on any hole.</h2>
+
+    <p>Enter the par for the hole, your child's actual score, and their handicap strokes on that hole (usually shown on the scorecard as 1 or 0). We'll work out the Stableford points.</p>
+
+    <div class="scorer">
+      <div class="scorer-header">
+        <div class="scorer-title">⛳ Stableford Points Calculator</div>
+        <div class="scorer-sub">Enter the details for one hole</div>
+      </div>
+      <div class="scorer-body">
+        <div class="scorer-row">
+          <div class="scorer-label">Par for the hole</div>
+          <input type="number" id="par" class="scorer-input" min="3" max="5" value="4" onchange="calcPoints()"/>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-label">Shots taken</div>
+          <input type="number" id="shots" class="scorer-input" min="1" max="15" value="6" onchange="calcPoints()"/>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-label">Handicap strokes<br><span style="font-size:11px; color:var(--sky);">on this hole (0 or 1)</span></div>
+          <input type="number" id="hcpstrokes" class="scorer-input" min="0" max="2" value="1" onchange="calcPoints()"/>
+        </div>
+        <button class="scorer-btn" onclick="calcPoints()">Calculate points</button>
+        <div class="scorer-result" id="scorer-result" style="margin-top:16px;">
+          <div>
+            <div class="scorer-result-label">Stableford points</div>
+            <div class="scorer-result-name" id="result-name">Bogey — 1 point</div>
+          </div>
+          <div class="scorer-result-points" id="result-points">1</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Parent tips -->
+  <div class="section">
+    <span class="section-label">For parents on the day</span>
+    <h2>How to keep score at a Stableford competition.</h2>
+
+    <p>You won't be walking the course during a junior competition — juniors mark each other's cards. But it helps to understand the process before your child plays.</p>
+
+    <p><strong>Before the round:</strong> Your child's playing partners will mark their scorecard and vice versa. They write down the actual shots taken on each hole — not the points. The points are calculated at the end.</p>
+
+    <p><strong>During the round:</strong> If your child takes more than two over par on a hole (before handicap), they should pick the ball up rather than continuing. This keeps pace of play and avoids the frustration of completing a bad hole. They write down the number of shots taken up to that point and move on.</p>
+
+    <p><strong>After the round:</strong> The scorecard is checked, signed by both your child and their marker, and submitted to the competition office. The office calculates the final Stableford total and posts the results.</p>
+
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Important rule</div>
+      <p>Your child must always write down their <strong>actual shots taken</strong>, not the Stableford points. If they write down the wrong number of shots and sign the card, the result stands — even if it costs them the competition. Always double-check the scorecard before signing.</p>
+    </div>
+
+  </div>
+
+  <!-- Link to competitions -->
+  <div style="background:var(--navy); border-radius:12px; padding:28px; text-align:center; margin-top:8px;">
+    <p style="font-size:11px; color:var(--sky); letter-spacing:3px; text-transform:uppercase; margin-bottom:12px;">Ready to enter a Stableford competition?</p>
+    <p style="font-family:Georgia,serif; font-size:22px; font-weight:700; color:white; margin-bottom:16px; line-height:1.2;">Find junior Stableford opens near you on the JuniorCaddie competition finder.</p>
+    <a href="competitions.html" style="display:inline-block; background:#1A6EA8; color:white; font-size:15px; font-weight:600; padding:13px 32px; border-radius:8px; text-decoration:none;">Find competitions ↗</a>
+  </div>
+
+</div>
+
+<footer>
+  <div style="display:flex; flex-direction:column; align-items:flex-start; line-height:1;">
+      <div style="font-family:Georgia,serif; font-size:11px; font-weight:700; color:#EEF4FB; letter-spacing:-0.3px; text-transform:uppercase; line-height:0.9; display:flex; align-items:center; gap:4px;">
+        Junior
+        <svg width="10" height="20" viewBox="0 0 32 68" fill="none">
+          <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+          <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+          <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+        </svg>
+      </div>
+      <div style="height:1.5px; background:linear-gradient(to right,#EEF4FB,#1A6EA8,#7BBDE0); border-radius:1px; margin:2px 0; width:100%;"></div>
+      <div style="font-family:Georgia,serif; font-size:16px; font-weight:700; color:#7BBDE0; letter-spacing:-0.8px; text-transform:uppercase; line-height:0.9;">Caddie</div>
+    </div>
+    <p class="footer-copy">© 2026 JuniorCaddie · juniorcaddie.co.uk</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="competitions.html">Competitions</a>
+    <a href="rules-card-final.html">Rules Card</a>
+    <a href="mailto:hello@juniorcaddie.co.uk">Contact</a>
+  </div>
+</footer>
+
+<script>
+  function calcPoints() {
+    const par = parseInt(document.getElementById('par').value) || 4;
+    const shots = parseInt(document.getElementById('shots').value) || 0;
+    const hcp = parseInt(document.getElementById('hcpstrokes').value) || 0;
+
+    const net = shots - hcp;
+    const diff = par - net;
+
+    let points, name, color;
+
+    if (diff >= 2) { points = 4; name = '🦅 Eagle or better — amazing!'; color = '#B8860B'; }
+    else if (diff === 1) { points = 3; name = '🐦 Birdie — brilliant hole!'; color = '#1A7A1A'; }
+    else if (diff === 0) { points = 2; name = '⛳ Par — solid and consistent'; color = '#1A6EA8'; }
+    else if (diff === -1) { points = 1; name = '😐 Bogey — still on the board'; color = '#666'; }
+    else { points = 0; name = '😬 Double bogey or worse — pick up and move on'; color = '#C0392B'; }
+
+    document.getElementById('result-points').textContent = points;
+    document.getElementById('result-points').style.color = color;
+    document.getElementById('result-name').textContent = name;
+  }
+
+  // Run on load
+  calcPoints();
+</script>
+
+</body>
+</html>

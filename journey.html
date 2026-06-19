@@ -219,6 +219,41 @@
       .stage-number { font-size: 48px; }
       footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
     }
+
+    /* ── Logo E — Flag inline with JUNIOR ── */
+    .nav-logo { text-decoration: none; display: inline-flex; align-items: center; }
+    .logo-e { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+    .logo-e-junior {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 15px; font-weight: 700;
+      color: #EEF4FB; letter-spacing: -0.5px;
+      text-transform: uppercase; line-height: 0.9;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .logo-e-flag {
+      width: 14px; height: 28px;
+      color: #EEF4FB; flex-shrink: 0;
+      margin-bottom: -2px;
+    }
+    .logo-e-rule {
+      height: 2px;
+      width: 100%;
+      background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0);
+      border-radius: 1px;
+      margin: 3px 0;
+    }
+    .logo-e-caddie {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px; font-weight: 700;
+      color: #7BBDE0; letter-spacing: -1px;
+      text-transform: uppercase; line-height: 0.9;
+    }
+    /* Light version (for light nav backgrounds) */
+    .logo-e.light .logo-e-junior { color: #0B3D6B; }
+    .logo-e.light .logo-e-flag { color: #0B3D6B; }
+    .logo-e.light .logo-e-rule { background: linear-gradient(to right, #0B3D6B, #1A6EA8, #7BBDE0); }
+    .logo-e.light .logo-e-caddie { color: #1A6EA8; }
+
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -703,18 +738,19 @@
 </section>
 
 <footer>
-  <div style="display:flex; align-items:center; gap:10px;">
-    <svg width="14" height="42" viewBox="0 0 32 96" fill="none">
-      <line x1="8" y1="2" x2="8" y2="86" stroke="#7BBDE0" stroke-width="4" stroke-linecap="round"/>
-      <path d="M8 2 L30 12 L8 22 Z" fill="#5AAAD4"/>
-      <path d="M8 22 L26 30 L8 38 Z" fill="#B8D8F0"/>
-    </svg>
-    <div>
-      <div style="font-family:Georgia,serif;font-size:10px;font-weight:700;color:#7BBDE0;line-height:1;">Junior</div>
-      <div style="font-family:Georgia,serif;font-size:15px;font-weight:700;color:#EEF4FB;letter-spacing:-0.3px;line-height:1;">Caddie</div>
+  <div style="display:flex; flex-direction:column; align-items:flex-start; line-height:1;">
+      <div style="font-family:Georgia,serif; font-size:11px; font-weight:700; color:#EEF4FB; letter-spacing:-0.3px; text-transform:uppercase; line-height:0.9; display:flex; align-items:center; gap:4px;">
+        Junior
+        <svg width="10" height="20" viewBox="0 0 32 68" fill="none">
+          <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+          <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+          <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+        </svg>
+      </div>
+      <div style="height:1.5px; background:linear-gradient(to right,#EEF4FB,#1A6EA8,#7BBDE0); border-radius:1px; margin:2px 0; width:100%;"></div>
+      <div style="font-family:Georgia,serif; font-size:16px; font-weight:700; color:#7BBDE0; letter-spacing:-0.8px; text-transform:uppercase; line-height:0.9;">Caddie</div>
     </div>
-  </div>
-  <p class="footer-copy">© 2026 JuniorCaddie. juniorcaddie.co.uk</p>
+    <p class="footer-copy">© 2026 JuniorCaddie. juniorcaddie.co.uk</p>
   <div class="footer-links">
     <a href="index.html">Home</a>
     <a href="about.html">Our story</a>
