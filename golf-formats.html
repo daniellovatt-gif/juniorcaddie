@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Golf formats explained in plain English — Stableford, Strokeplay, Matchplay, Fourball, Foursomes, Greensomes and more. Written for junior golf parents by JuniorCaddie."/>
+<title>Golf Formats Explained — JuniorCaddie</title>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    background: #0B3D6B;
+    color: #EEF4FB;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  :root {
+    --navy: #0B3D6B;
+    --mid: #1A6EA8;
+    --sky: #5AAAD4;
+    --light: #7BBDE0;
+    --pale: #B8D8F0;
+    --bg: #EEF4FB;
+    --white: #fff;
+    --serif: Georgia, serif;
+    --max: 900px;
+  }
+
+  /* Nav */
+  nav {
+    background: #072840;
+    padding: 14px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo { text-decoration: none; }
+  .nl-junior { font-family: var(--serif); font-size: 11px; font-weight: 700; color: var(--pale); text-transform: uppercase; line-height: 0.9; display: flex; align-items: center; gap: 4px; }
+  .nl-rule { height: 1.5px; background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0); border-radius: 1px; margin: 2px 0; }
+  .nl-caddie { font-family: var(--serif); font-size: 18px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: -0.8px; line-height: 0.9; }
+  .nav-back { font-size: 13px; color: var(--sky); text-decoration: none; }
+  .nav-back:hover { color: white; }
+
+  /* Hero */
+  .hero {
+    background: #072840;
+    padding: 56px 24px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(30px, 5vw, 52px); font-weight: 700; color: white; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 16px; }
+  .hero h1 em { color: var(--light); font-style: normal; }
+  .hero-sub { font-size: 16px; color: var(--light); max-width: 520px; margin: 0 auto 36px; line-height: 1.65; }
+
+  /* Pro intro card */
+  .pro-intro {
+    max-width: 640px; margin: 0 auto;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px 12px 0 0;
+    padding: 20px 24px;
+    display: flex; gap: 16px; align-items: flex-start;
+    text-align: left;
+  }
+  .pro-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--mid); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .pro-name { font-size: 13px; font-weight: 700; color: white; margin-bottom: 2px; }
+  .pro-title { font-size: 11px; color: var(--sky); margin-bottom: 8px; letter-spacing: 0.04em; }
+  .pro-quote { font-size: 13px; color: var(--light); line-height: 1.6; font-style: italic; }
+
+  /* Format selector tabs */
+  .format-nav {
+    background: #0A3560;
+    padding: 0 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .format-nav::-webkit-scrollbar { display: none; }
+  .format-tabs {
+    display: flex; gap: 4px;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 12px 0;
+    width: max-content;
+    min-width: 100%;
+  }
+  .format-tab {
+    padding: 8px 16px; border-radius: 20px;
+    font-size: 13px; font-weight: 500;
+    cursor: pointer; border: none;
+    background: rgba(255,255,255,0.06);
+    color: var(--light);
+    transition: all 0.15s;
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .format-tab:hover { background: rgba(255,255,255,0.12); color: white; }
+  .format-tab.active { background: white; color: var(--navy); font-weight: 700; }
+
+  /* Main content area */
+  .content { max-width: var(--max); margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* Format cards */
+  .format-section { display: none; }
+  .format-section.active { display: block; }
+
+  /* Top of each format — big visual */
+  .format-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 32px;
+  }
+  .format-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 11px; color: var(--sky);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .format-title { font-family: var(--serif); font-size: clamp(32px, 5vw, 52px); font-weight: 700; color: white; letter-spacing: -1.5px; line-height: 1; margin-bottom: 10px; }
+  .format-tagline { font-size: 17px; color: var(--light); line-height: 1.55; }
+
+  /* Visual diagram */
+  .format-diagram {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 180px;
+    text-align: center;
+  }
+
+  /* Body text */
+  .format-body p {
+    font-size: 16px; color: #C8DFF0; line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .format-body p strong { color: white; font-weight: 600; }
+
+  /* The pro says... */
+  .pro-says {
+    background: rgba(26, 110, 168, 0.2);
+    border-left: 4px solid var(--mid);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .pro-says-label { font-size: 10px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .pro-says p { font-family: var(--serif); font-size: 17px; color: white; line-height: 1.6; font-style: italic; margin: 0; }
+
+  /* Quick facts grid */
+  .quick-facts {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px; margin: 28px 0;
+  }
+  .fact-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 16px;
+  }
+  .fact-icon { font-size: 22px; margin-bottom: 8px; }
+  .fact-label { font-size: 10px; color: var(--sky); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+  .fact-value { font-size: 14px; color: white; font-weight: 600; line-height: 1.3; }
+
+  /* How scoring works — visual boxes */
+  .scoring-visual {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .sv-title { font-size: 12px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .sv-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+  .sv-label { font-size: 13px; color: var(--light); min-width: 80px; }
+  .sv-arrow { color: var(--sky); font-size: 14px; }
+  .sv-result { font-size: 13px; color: white; font-weight: 500; }
+  .sv-points { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-left: 6px; }
+  .pts-gold { background: #B8860B; color: white; }
+  .pts-green { background: #1A7A1A; color: white; }
+  .pts-blue { background: #1A6EA8; color: white; }
+  .pts-grey { background: #555; color: white; }
+  .pts-red { background: #8B0000; color: white; }
+
+  /* Player diagram */
+  .player-diagram {
+    display: flex; gap: 8px; align-items: center;
+    flex-wrap: wrap; margin: 12px 0;
+  }
+  .player-dot {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; font-family: var(--serif);
+    flex-shrink: 0;
+  }
+  .player-a { background: #1A6EA8; color: white; }
+  .player-b { background: #5AAAD4; color: white; }
+  .player-c { background: #1A7A1A; color: white; }
+  .player-d { background: #4A9A4A; color: white; }
+  .vs-tag { font-size: 11px; color: var(--sky); font-weight: 700; }
+  .partner-tag { font-size: 11px; color: var(--sky); display: flex; align-items: center; gap: 6px; }
+
+  /* Divider */
+  .divider { height: 1px; background: rgba(255,255,255,0.08); margin: 36px 0; }
+
+  /* CTA */
+  .bottom-cta {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 28px;
+    text-align: center; margin-top: 48px;
+  }
+  .bottom-cta h3 { font-family: var(--serif); font-size: 22px; font-weight: 700; color: white; margin-bottom: 10px; }
+  .bottom-cta p { font-size: 14px; color: var(--light); margin-bottom: 20px; }
+  .cta-btn { display: inline-block; background: white; color: var(--navy); font-size: 15px; font-weight: 700; padding: 13px 28px; border-radius: 8px; text-decoration: none; }
+  .cta-btn:hover { background: var(--bg); }
+
+  /* Footer */
+  footer { background: #051E36; padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-links { display: flex; gap: 18px; }
+  .footer-links a { font-size: 12px; color: var(--sky); text-decoration: none; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 640px) {
+    nav { padding: 12px 16px; }
+    .hero { padding: 40px 16px 0; }
+    .pro-intro { padding: 16px; }
+    .content { padding: 32px 16px 60px; }
+    .format-header { grid-template-columns: 1fr; }
+    .format-diagram { display: none; }
+    footer { padding: 20px 16px; flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nl-junior">Junior
+      <svg width="10" height="20" viewBox="0 0 32 68" fill="none">
+        <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+        <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+        <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+      </svg>
+    </div>
+    <div class="nl-rule"></div>
+    <div class="nl-caddie">Caddie</div>
+  </a>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <p class="hero-label">Plain English Guides</p>
+  <h1>Golf formats<br><em>actually explained.</em></h1>
+  <p class="hero-sub">Strokeplay, Stableford, Matchplay, Fourball, Foursomes, Greensomes — what they all mean and when your child will play them.</p>
+
+  <div class="pro-intro">
+    <div class="pro-avatar">🏌️</div>
+    <div>
+      <div class="pro-name">Your guide for today</div>
+      <div class="pro-title">PGA Professional · Junior Development Coach</div>
+      <div class="pro-quote">"In twenty years of coaching juniors I've lost count of how many parents have stood on the first tee not knowing what format their child is playing. Let's fix that right now — it's simpler than you think."</div>
+    </div>
+  </div>
+</div>
+
+<!-- Format selector -->
+<div class="format-nav">
+  <div class="format-tabs">
+    <button class="format-tab active" onclick="showFormat('strokeplay', this)">⛳ Strokeplay</button>
+    <button class="format-tab" onclick="showFormat('stableford', this)">🎯 Stableford</button>
+    <button class="format-tab" onclick="showFormat('matchplay', this)">⚔️ Matchplay</button>
+    <button class="format-tab" onclick="showFormat('fourball', this)">👥 Fourball</button>
+    <button class="format-tab" onclick="showFormat('foursomes', this)">🔄 Foursomes</button>
+    <button class="format-tab" onclick="showFormat('greensomes', this)">🌿 Greensomes</button>
+    <button class="format-tab" onclick="showFormat('scramble', this)">🎲 Scramble</button>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="content">
+
+  <!-- ═══════════════════ STROKEPLAY ═══════════════════ -->
+  <div class="format-section active" id="format-strokeplay">
+
+    <div class="format-header">
+      <div>
+        <div class="format-badge">Individual · Most common</div>
+        <div class="format-title">Strokeplay</div>
+        <div class="format-tagline">Count every shot. Lowest total wins. Simple as that.</div>
+      </div>
+      <div class="format-diagram">
+        <div style="font-size:40px; margin-bottom:8px;">🔢</div>
+        <div style="font-size:11px; color:var(--sky); text-transform:uppercase; letter-spacing:1px;">Every shot counts</div>
+        <div style="margin-top:12px; font-family:var(--serif); font-size:28px; font-weight:700; color:white;">72</div>
+        <div style="font-size:11px; color:var(--light);">Total shots over 18 holes</div>
+      </div>
+    </div>
+
+    <div class="format-body">
+      <p><strong>The basics couldn't be simpler.</strong> Your child counts every single shot they take across 18 holes. Tee shots, approach shots, chips, putts — every one goes on the card. At the end, you add them all up. Lowest total wins.</p>
+      <p>This is called "gross" scoring — the raw number. But in junior competitions, there's usually a handicap adjustment too. Your child's handicap is subtracted from their gross score to give the "net" score. So a child who shoots 90 with a handicap of 18 has a net score of 72.</p>
+    </div>
+
+    <div class="pro-says">
+      <div class="pro-says-label">The pro says</div>
+      <p>"Strokeplay is golf in its purest form. Every shot matters equally — whether it's the drive on the first hole or the putt on the last. It rewards consistency above everything else. One terrible hole can hurt you, but one brilliant hole can save you. That balance is what makes strokeplay so compelling."</p>
+    </div>
+
+    <div class="quick-facts">
+      <div class="fact-card">
+        <div class="fact-icon">👤</div>
+        <div class="fact-label">Players</div>
+        <div class="fact-value">Individual</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">📊</div>
+        <div class="fact-label">How you win</div>
+        <div class="fact-value">Lowest total shots over 18 holes</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🏆</div>
+        <div class="fact-label">Used in</div>
+        <div class="fact-value">Most junior opens, county championships</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">⚠️</div>
+        <div class="fact-label">Watch out for</div>
+        <div class="fact-value">One bad hole stays on the card all round</div>
+      </div>
+    </div>
+
+    <div class="scoring-visual">
+      <div class="sv-title">What a scorecard looks like</div>
+      <div class="sv-row"><div class="sv-label">Hole 1</div><div class="sv-arrow">→</div><div class="sv-result">5 shots (par 4) = 1 over par = bogey</div></div>
+      <div class="sv-row"><div class="sv-label">Hole 2</div><div class="sv-arrow">→</div><div class="sv-result">3 shots (par 3) = par</div></div>
+      <div class="sv-row"><div class="sv-label">Hole 3</div><div class="sv-arrow">→</div><div class="sv-result">9 shots (par 5) = 4 over = disaster, but it's just 9</div></div>
+      <div class="sv-row" style="border-top:1px solid rgba(255,255,255,0.1); padding-top:12px; margin-top:4px;"><div class="sv-label" style="color:white; font-weight:700;">Total</div><div class="sv-arrow">→</div><div class="sv-result" style="color:white; font-weight:700;">All 18 holes added together</div></div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ STABLEFORD ═══════════════════ -->
+  <div class="format-section" id="format-stableford">
+
+    <div class="format-header">
+      <div>
+        <div class="format-badge">Individual · Most junior-friendly · Used in most junior opens</div>
+        <div class="format-title">Stableford</div>
+        <div class="format-tagline">Points per hole. Bad holes cost nothing. Highest points wins.</div>
+      </div>
+      <div class="format-diagram">
+        <div style="font-size:11px; color:var(--sky); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Points table</div>
+        <div style="display:flex; flex-direction:column; gap:5px; font-size:13px;">
+          <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--light);">🦅 Eagle</span><span style="background:#B8860B; color:white; padding:1px 8px; border-radius:3px; font-weight:700; font-size:12px;">4 pts</span></div>
+          <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--light);">🐦 Birdie</span><span style="background:#1A7A1A; color:white; padding:1px 8px; border-radius:3px; font-weight:700; font-size:12px;">3 pts</span></div>
+          <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--light);">⛳ Par</span><span style="background:#1A6EA8; color:white; padding:1px 8px; border-radius:3px; font-weight:700; font-size:12px;">2 pts</span></div>
+          <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--light);">😐 Bogey</span><span style="background:#555; color:white; padding:1px 8px; border-radius:3px; font-weight:700; font-size:12px;">1 pt</span></div>
+          <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--light);">😬 Double+</span><span style="background:#8B0000; color:white; padding:1px 8px; border-radius:3px; font-weight:700; font-size:12px;">0 pts</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="format-body">
+      <p><strong>One sentence explanation:</strong> Instead of counting every shot over 18 holes, Stableford gives your child points on each hole. Highest total wins. A bad hole costs zero — you pick up and move on.</p>
+      <p>That last part is the key. In strokeplay, one terrible hole can ruin an entire round. A nine on a par four demoralises a junior golfer in a way that's genuinely hard to recover from. Stableford removes that problem entirely. <strong>This is why Stableford is the format most junior competitions use.</strong></p>
+      <p>These points are calculated after your child's handicap allowance is applied. A high-handicap junior gets extra shots on certain holes — meaning they can score "net birdies" and "net pars" even if their raw score isn't brilliant.</p>
+    </div>
+
+    <div class="pro-says">
+      <div class="pro-says-label">The pro says</div>
+      <p>"Stableford changed junior golf. Before it became the standard format for opens, a junior could shoot a nine on a par four and spend the next ten holes trying to mentally recover. Now? They pick up, walk to the next tee, and birdie the next hole. It's genuinely better for development."</p>
+    </div>
+
+    <div class="quick-facts">
+      <div class="fact-card"><div class="fact-icon">🎯</div><div class="fact-label">Key difference</div><div class="fact-value">Bad holes = 0 points, not a disaster</div></div>
+      <div class="fact-card"><div class="fact-icon">📈</div><div class="fact-label">How you win</div><div class="fact-value">Highest points total wins</div></div>
+      <div class="fact-card"><div class="fact-icon">🏆</div><div class="fact-label">Used in</div><div class="fact-value">Most junior open competitions across England</div></div>
+      <div class="fact-card"><div class="fact-icon">💡</div><div class="fact-label">Top tip</div><div class="fact-value">Pick up when two over par. Keeps pace and protects your score</div></div>
+    </div>
+
+    <!-- Real scorecard example -->
+    <div class="scoring-visual" style="padding:0; overflow:hidden; margin:28px 0;">
+      <div style="background:rgba(26,110,168,0.3); padding:14px 20px;">
+        <div class="sv-title" style="margin:0;">Example scorecard — Ava, handicap 18</div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:13px;">
+          <thead>
+            <tr style="background:rgba(255,255,255,0.05);">
+              <th style="padding:8px 12px; text-align:left; color:var(--sky); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Hole</th>
+              <th style="padding:8px 12px; text-align:center; color:var(--sky); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Par</th>
+              <th style="padding:8px 12px; text-align:center; color:var(--sky); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Score</th>
+              <th style="padding:8px 12px; text-align:center; color:var(--sky); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Net</th>
+              <th style="padding:8px 12px; text-align:center; color:var(--sky); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Result</th>
+              <th style="padding:8px 12px; text-align:center; color:var(--sky); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Pts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+              <td style="padding:9px 12px; color:white; font-weight:500;">1</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">4</td>
+              <td style="padding:9px 12px; text-align:center; color:white;">6</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">5</td>
+              <td style="padding:9px 12px; text-align:center;"><span style="background:#555; color:white; font-size:11px; font-weight:700; padding:2px 8px; border-radius:3px;">Bogey</span></td>
+              <td style="padding:9px 12px; text-align:center; font-weight:700; color:white;">1</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+              <td style="padding:9px 12px; color:white; font-weight:500;">2</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">3</td>
+              <td style="padding:9px 12px; text-align:center; color:white;">4</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">3</td>
+              <td style="padding:9px 12px; text-align:center;"><span style="background:#1A6EA8; color:white; font-size:11px; font-weight:700; padding:2px 8px; border-radius:3px;">Par</span></td>
+              <td style="padding:9px 12px; text-align:center; font-weight:700; color:white;">2</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.06); background:rgba(139,0,0,0.15);">
+              <td style="padding:9px 12px; color:white; font-weight:500;">3</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">5</td>
+              <td style="padding:9px 12px; text-align:center; color:white;">9</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">8</td>
+              <td style="padding:9px 12px; text-align:center;"><span style="background:#8B0000; color:white; font-size:11px; font-weight:700; padding:2px 8px; border-radius:3px;">Pick up</span></td>
+              <td style="padding:9px 12px; text-align:center; font-weight:700; color:#C04040;">0</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+              <td style="padding:9px 12px; color:white; font-weight:500;">4</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">4</td>
+              <td style="padding:9px 12px; text-align:center; color:white;">5</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">4</td>
+              <td style="padding:9px 12px; text-align:center;"><span style="background:#1A6EA8; color:white; font-size:11px; font-weight:700; padding:2px 8px; border-radius:3px;">Par</span></td>
+              <td style="padding:9px 12px; text-align:center; font-weight:700; color:white;">2</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.06); background:rgba(26,122,26,0.2);">
+              <td style="padding:9px 12px; color:white; font-weight:500;">5</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">4</td>
+              <td style="padding:9px 12px; text-align:center; color:white;">4</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">3</td>
+              <td style="padding:9px 12px; text-align:center;"><span style="background:#1A7A1A; color:white; font-size:11px; font-weight:700; padding:2px 8px; border-radius:3px;">Birdie 🐦</span></td>
+              <td style="padding:9px 12px; text-align:center; font-weight:700; color:#5ACA5A;">3</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+              <td style="padding:9px 12px; color:white; font-weight:500;">6–9</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">—</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">—</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light);">—</td>
+              <td style="padding:9px 12px; text-align:center; color:var(--light); font-style:italic; font-size:12px;">Continues...</td>
+              <td style="padding:9px 12px; text-align:center; font-weight:700; color:var(--light);">5</td>
+            </tr>
+            <tr style="background:rgba(255,255,255,0.08);">
+              <td colspan="5" style="padding:10px 12px; text-align:right; font-size:14px; color:white; font-weight:600;">Total Stableford points</td>
+              <td style="padding:10px 12px; text-align:center; font-family:var(--serif); font-size:22px; font-weight:700; color:var(--light);">13</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:12px 20px; font-size:12px; color:var(--sky); border-top:1px solid rgba(255,255,255,0.06);">Notice hole 3 — a nine. In strokeplay that follows Ava all round. In Stableford? Zero points, pick up, birdie on hole 5. The bad hole was forgotten instantly.</div>
+    </div>
+
+    <!-- Interactive calculator -->
+    <div style="background:rgba(26,110,168,0.15); border:1px solid rgba(26,110,168,0.3); border-radius:12px; overflow:hidden; margin:28px 0;">
+      <div style="background:rgba(26,110,168,0.3); padding:14px 20px;">
+        <div style="font-family:var(--serif); font-size:17px; font-weight:700; color:white; margin-bottom:2px;">⛳ Stableford Points Calculator</div>
+        <div style="font-size:12px; color:var(--light);">Work out your child's points on any hole</div>
+      </div>
+      <div style="padding:20px;">
+        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:16px;">
+          <div>
+            <div style="font-size:12px; color:var(--sky); margin-bottom:6px;">Par for the hole</div>
+            <input type="number" id="calc-par" min="3" max="5" value="4" onchange="calcStableford()"
+              style="width:64px; padding:10px; border:1px solid rgba(255,255,255,0.2); border-radius:8px; font-size:18px; text-align:center; color:white; background:rgba(255,255,255,0.08);">
+          </div>
+          <div>
+            <div style="font-size:12px; color:var(--sky); margin-bottom:6px;">Shots taken</div>
+            <input type="number" id="calc-shots" min="1" max="15" value="6" onchange="calcStableford()"
+              style="width:64px; padding:10px; border:1px solid rgba(255,255,255,0.2); border-radius:8px; font-size:18px; text-align:center; color:white; background:rgba(255,255,255,0.08);">
+          </div>
+          <div>
+            <div style="font-size:12px; color:var(--sky); margin-bottom:6px;">Handicap strokes<br><span style="font-size:10px; color:rgba(255,255,255,0.4);">on this hole (0 or 1)</span></div>
+            <input type="number" id="calc-hcp" min="0" max="2" value="1" onchange="calcStableford()"
+              style="width:64px; padding:10px; border:1px solid rgba(255,255,255,0.2); border-radius:8px; font-size:18px; text-align:center; color:white; background:rgba(255,255,255,0.08);">
+          </div>
+        </div>
+        <div id="calc-result" style="background:rgba(255,255,255,0.08); border-radius:8px; padding:16px 20px; display:flex; align-items:center; justify-content:space-between;">
+          <div>
+            <div style="font-size:13px; color:var(--sky);">Stableford points</div>
+            <div id="calc-name" style="font-size:13px; color:var(--light); margin-top:3px;">😐 Bogey — still on the board</div>
+          </div>
+          <div id="calc-points" style="font-family:var(--serif); font-size:42px; font-weight:700; color:white;">1</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="format-body">
+      <p style="font-size:14px;"><strong>Important rule:</strong> Your child must always write down their actual shots taken on the card — not the Stableford points. If they write down the wrong number of shots and sign the card, the result stands even if it costs them the competition. Always double-check before signing.</p>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ MATCHPLAY ═══════════════════ -->
+  <div class="format-section" id="format-matchplay">
+
+    <div class="format-header">
+      <div>
+        <div class="format-badge">Individual · Head to head</div>
+        <div class="format-title">Matchplay</div>
+        <div class="format-tagline">Win the hole. Win the match. It's a fight, not a scorecard.</div>
+      </div>
+      <div class="format-diagram">
+        <div style="font-size:36px; margin-bottom:8px;">⚔️</div>
+        <div style="font-size:11px; color:var(--sky); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Hole by hole</div>
+        <div style="display:flex; gap:8px; justify-content:center; align-items:center;">
+          <div class="player-dot player-a" style="width:30px;height:30px;font-size:14px;">A</div>
+          <div style="font-size:11px;color:var(--sky);">vs</div>
+          <div class="player-dot player-c" style="width:30px;height:30px;font-size:14px;">B</div>
+        </div>
+        <div style="margin-top:10px; font-size:12px; color:var(--light);">Winner takes the hole</div>
+      </div>
+    </div>
+
+    <div class="format-body">
+      <p><strong>Matchplay is completely different from strokeplay</strong> — and it's the most exciting format in golf to watch. Instead of counting shots across all 18 holes, your child plays hole by hole against one opponent. Win a hole and you go "one up." Lose a hole and you go "one down." Halve it and nothing changes.</p>
+      <p>The match ends when one player is ahead by more holes than there are holes left to play. So if your child is 3 up with only 2 holes to play, they win — they can't be beaten. This is written as "3 and 2" (three up, two to play).</p>
+      <p><strong>The brilliant thing about matchplay</strong> is that a disaster hole costs you just one hole — not the whole round. Your child can make a ten on a par four, lose the hole, and then immediately reset to fight for the next one.</p>
+    </div>
+
+    <div class="pro-says">
+      <div class="pro-says-label">The pro says</div>
+      <p>"Matchplay teaches juniors something strokeplay can't — how to compete directly against another person. Reading their opponent, deciding when to attack and when to play safe, how to react when they go behind. It's the format that builds the most character, fastest."</p>
+    </div>
+
+    <div class="quick-facts">
+      <div class="fact-card">
+        <div class="fact-icon">🎯</div>
+        <div class="fact-label">Object</div>
+        <div class="fact-value">Win more holes than your opponent</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">📊</div>
+        <div class="fact-label">Score</div>
+        <div class="fact-value">Holes up or down — e.g. "2 up" or "1 down"</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🏁</div>
+        <div class="fact-label">Match ends</div>
+        <div class="fact-value">When one player can't be caught — e.g. "4 and 3"</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🏆</div>
+        <div class="fact-label">Used in</div>
+        <div class="fact-value">County knockouts, national championships, Ryder Cup</div>
+      </div>
+    </div>
+
+    <div class="scoring-visual">
+      <div class="sv-title">How a matchplay score reads</div>
+      <div class="sv-row"><div class="sv-label">After hole 1</div><div class="sv-arrow">→</div><div class="sv-result">Player A wins with a par — "1 up"</div></div>
+      <div class="sv-row"><div class="sv-label">After hole 2</div><div class="sv-arrow">→</div><div class="sv-result">Player B wins with a birdie — "all square"</div></div>
+      <div class="sv-row"><div class="sv-label">After hole 3</div><div class="sv-arrow">→</div><div class="sv-result">Halved (both make par) — "still all square"</div></div>
+      <div class="sv-row" style="border-top:1px solid rgba(255,255,255,0.1); padding-top:12px; margin-top:4px;"><div class="sv-label" style="color:white; font-weight:700;">Final result</div><div class="sv-arrow">→</div><div class="sv-result" style="color:white; font-weight:700;">"3 and 2" = won by 3 holes with 2 to play</div></div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ FOURBALL ═══════════════════ -->
+  <div class="format-section" id="format-fourball">
+
+    <div class="format-header">
+      <div>
+        <div class="format-badge">Pairs · Best ball</div>
+        <div class="format-title">Fourball</div>
+        <div class="format-tagline">Two vs two. Each player plays their own ball. Best score on your team counts.</div>
+      </div>
+      <div class="format-diagram">
+        <div style="font-size:11px; color:var(--sky); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Team of 2</div>
+        <div style="display:flex; gap:6px; justify-content:center; margin-bottom:8px;">
+          <div class="player-dot player-a">A</div>
+          <div class="player-dot player-b">B</div>
+        </div>
+        <div style="font-size:11px; color:var(--sky); margin-bottom:8px;">Best score counts</div>
+        <div style="font-size:20px;">vs</div>
+        <div style="display:flex; gap:6px; justify-content:center; margin-top:8px;">
+          <div class="player-dot player-c">C</div>
+          <div class="player-dot player-d">D</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="format-body">
+      <p><strong>Fourball is the most common team format</strong> and one of the most enjoyable to play. Two players form a team against another two. All four players hit their own ball throughout — but only the best score on each team counts on each hole.</p>
+      <p>So if your child makes a six on a tough hole but their partner makes a par, the team scores the par. The pressure is shared. If one player is having a bad hole, the other can bail them out. It rewards each player playing to their strengths.</p>
+    </div>
+
+    <div class="pro-says">
+      <div class="pro-says-label">The pro says</div>
+      <p>"Fourball is the perfect introduction to team golf. Your child plays their own game but with a safety net. I've seen juniors play the best round of their life in fourball because the pressure of carrying the team actually focuses them rather than tightening them up."</p>
+    </div>
+
+    <div class="quick-facts">
+      <div class="fact-card"><div class="fact-icon">👥</div><div class="fact-label">Format</div><div class="fact-value">2 vs 2, all four play their own ball</div></div>
+      <div class="fact-card"><div class="fact-icon">🏆</div><div class="fact-label">Scoring</div><div class="fact-value">Best score per team per hole counts</div></div>
+      <div class="fact-card"><div class="fact-icon">💡</div><div class="fact-label">Strategy</div><div class="fact-value">If partner is safe, you can attack</div></div>
+      <div class="fact-card"><div class="fact-icon">📍</div><div class="fact-label">Used in</div><div class="fact-value">Inter-club matches, county team events, Ryder Cup (afternoon)</div></div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ FOURSOMES ═══════════════════ -->
+  <div class="format-section" id="format-foursomes">
+
+    <div class="format-header">
+      <div>
+        <div class="format-badge">Pairs · Alternate shot</div>
+        <div class="format-title">Foursomes</div>
+        <div class="format-tagline">Two players, one ball. You take it in turns. Every shot matters.</div>
+      </div>
+      <div class="format-diagram">
+        <div style="font-size:11px; color:var(--sky); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Alternate shots</div>
+        <div style="display:flex; gap:6px; justify-content:center; margin-bottom:6px;">
+          <div class="player-dot player-a">A</div>
+          <div class="player-dot player-b">B</div>
+        </div>
+        <div style="font-size:11px; color:var(--light); margin-bottom:4px;">A tees off ↓</div>
+        <div style="font-size:11px; color:var(--light); margin-bottom:4px;">B plays second ↓</div>
+        <div style="font-size:11px; color:var(--light);">A plays third...</div>
+      </div>
+    </div>
+
+    <div class="format-body">
+      <p><strong>Foursomes is the most demanding team format</strong> — and also one of the most satisfying when it works. Two players share one ball, taking turns to play each shot. Player A hits the tee shot on odd holes (1, 3, 5...), Player B tees off on even holes. Between tee shots, they simply alternate.</p>
+      <p>The challenge is that each player has to play whatever lie the other leaves them. If your child's partner drives into a bunker, your child plays the bunker shot. There's nowhere to hide — both players' games contribute equally to every hole.</p>
+    </div>
+
+    <div class="pro-says">
+      <div class="pro-says-label">The pro says</div>
+      <p>"Foursomes is the ultimate team test. You can't have one strong player carrying a weak one — both have to contribute. It teaches juniors empathy, patience and communication in a way no other format does. When it clicks between two players who trust each other, it's beautiful to watch."</p>
+    </div>
+
+    <div class="quick-facts">
+      <div class="fact-card"><div class="fact-icon">🔄</div><div class="fact-label">Format</div><div class="fact-value">2 players, 1 ball, alternate shots</div></div>
+      <div class="fact-card"><div class="fact-icon">🎯</div><div class="fact-label">Who tees off</div><div class="fact-value">Decided before the round, alternates each hole</div></div>
+      <div class="fact-card"><div class="fact-icon">💪</div><div class="fact-label">Demands</div><div class="fact-value">Both players must contribute equally</div></div>
+      <div class="fact-card"><div class="fact-icon">📍</div><div class="fact-label">Used in</div><div class="fact-value">Inter-county matches, Walker Cup, Ryder Cup (morning)</div></div>
+    </div>
+
+    <div class="scoring-visual">
+      <div class="sv-title">How alternate shot works on one hole</div>
+      <div class="sv-row"><div class="sv-label">Shot 1</div><div class="sv-arrow">→</div><div class="sv-result">Player A tees off — drives to the fairway</div></div>
+      <div class="sv-row"><div class="sv-label">Shot 2</div><div class="sv-arrow">→</div><div class="sv-result">Player B plays the approach — on the green</div></div>
+      <div class="sv-row"><div class="sv-label">Shot 3</div><div class="sv-arrow">→</div><div class="sv-result">Player A putts — close but not in</div></div>
+      <div class="sv-row"><div class="sv-label">Shot 4</div><div class="sv-arrow">→</div><div class="sv-result">Player B holes the putt — 4 = bogey</div></div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ GREENSOMES ═══════════════════ -->
+  <div class="format-section" id="format-greensomes">
+
+    <div class="format-header">
+      <div>
+        <div class="format-badge">Pairs · Best drive then alternate</div>
+        <div class="format-title">Greensomes</div>
+        <div class="format-tagline">Both players tee off. Pick the best drive. Then alternate from there.</div>
+      </div>
+      <div class="format-diagram">
+        <div style="font-size:36px; margin-bottom:8px;">🌿</div>
+        <div style="font-size:11px; color:var(--sky); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">The hybrid format</div>
+        <div style="font-size:12px; color:var(--light); line-height:1.6;">Both tee off<br>↓<br>Choose best drive<br>↓<br>Alternate from there</div>
+      </div>
+    </div>
+
+    <div class="format-body">
+      <p><strong>Greensomes is foursomes with a lifeline.</strong> Both players tee off on every hole. The team then selects whichever drive they prefer — the longer one, the safer one, whichever gives the best position. From there, they alternate shots just like foursomes until the ball is holed.</p>
+      <p>This format is much more forgiving than pure foursomes because even if one player drives poorly, the other's drive might save the hole. It's particularly popular in mixed-ability team events and fun competitions because it keeps both players engaged from the first shot of every hole.</p>
+    </div>
+
+    <div class="pro-says">
+      <div class="pro-says-label">The pro says</div>
+      <p>"Greensomes is the format I recommend most for junior team events when the players are at different levels. The stronger player's drive can set up the weaker one for a better approach, and vice versa. Both players feel like they're contributing every single hole. It's the most inclusive team format in golf."</p>
+    </div>
+
+    <div class="quick-facts">
+      <div class="fact-card"><div class="fact-icon">🌿</div><div class="fact-label">Format</div><div class="fact-value">Both tee off, choose best, alternate shots</div></div>
+      <div class="fact-card"><div class="fact-icon">😌</div><div class="fact-label">Vs foursomes</div><div class="fact-value">More forgiving — poor drives have a backup</div></div>
+      <div class="fact-card"><div class="fact-icon">💡</div><div class="fact-label">Strategy</div><div class="fact-value">Choose drive based on who plays next and what shot suits them</div></div>
+      <div class="fact-card"><div class="fact-icon">📍</div><div class="fact-label">Used in</div><div class="fact-value">Club team events, society days, mixed competitions</div></div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ SCRAMBLE ═══════════════════ -->
+  <div class="format-section" id="format-scramble">
+
+    <div class="format-header">
+      <div>
+        <div class="format-badge">Team · Most fun format in golf</div>
+        <div class="format-title">Scramble</div>
+        <div class="format-tagline">Everyone plays from the best shot. Every time. The most fun you'll have on a golf course.</div>
+      </div>
+      <div class="format-diagram">
+        <div style="font-size:36px; margin-bottom:8px;">🎲</div>
+        <div style="display:flex; gap:4px; justify-content:center; flex-wrap:wrap; margin-bottom:8px;">
+          <div class="player-dot player-a" style="width:28px;height:28px;font-size:12px;">A</div>
+          <div class="player-dot player-b" style="width:28px;height:28px;font-size:12px;">B</div>
+          <div class="player-dot player-c" style="width:28px;height:28px;font-size:12px;">C</div>
+          <div class="player-dot player-d" style="width:28px;height:28px;font-size:12px;">D</div>
+        </div>
+        <div style="font-size:11px; color:var(--light);">All play from the best ball</div>
+      </div>
+    </div>
+
+    <div class="format-body">
+      <p><strong>The scramble is the most sociable format in golf</strong> — and the one that produces the most impossible-sounding scorecards. Typically played in teams of four: everyone tees off, the team picks the best drive, everyone plays their second shot from that spot, the team picks the best of those, and so on until the ball is holed.</p>
+      <p>The result? Teams routinely finish 15 or even 20 under par because the best shot from four players on every single shot is extraordinary. It's the format that makes high-handicap golfers feel brilliant, and scratch golfers feel invincible.</p>
+      <p><strong>For juniors</strong> it's often used at club fun days and charity events rather than serious competitions — but it's a brilliant introduction to team golf and one of the best ways to get a new golfer enjoying the game before they've developed a consistent swing.</p>
+    </div>
+
+    <div class="pro-says">
+      <div class="pro-says-label">The pro says</div>
+      <p>"I've used scrambles to introduce hundreds of beginners to the game. When you know your teammates can bail you out, you swing freely. And when you hit the best drive in the group and everyone plays from yours — there's no better feeling in golf. The scramble is joy, pure and simple."</p>
+    </div>
+
+    <div class="quick-facts">
+      <div class="fact-card"><div class="fact-icon">🎲</div><div class="fact-label">Format</div><div class="fact-value">Team plays from best ball every shot</div></div>
+      <div class="fact-card"><div class="fact-icon">🎉</div><div class="fact-label">Typical team</div><div class="fact-value">4 players</div></div>
+      <div class="fact-card"><div class="fact-icon">📊</div><div class="fact-label">Scoring</div><div class="fact-value">Teams regularly finish 15-20 under par</div></div>
+      <div class="fact-card"><div class="fact-icon">📍</div><div class="fact-label">Used in</div><div class="fact-value">Club fun days, charity events, society golf</div></div>
+    </div>
+
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="bottom-cta">
+    <h3>Ready to find a competition?</h3>
+    <p>Now you know the formats — find a junior open near you and enter. Most use Stableford scoring.</p>
+    <a href="competitions.html" class="cta-btn">Find competitions ↗</a>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <div class="nl-junior" style="font-size:10px;">Junior
+      <svg width="8" height="16" viewBox="0 0 32 68" fill="none">
+        <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+        <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+        <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+      </svg>
+    </div>
+    <div class="nl-rule" style="width:80px;"></div>
+    <div class="nl-caddie" style="font-size:14px;">Caddie</div>
+  </div>
+  <div class="footer-copy">© 2026 JuniorCaddie · juniorcaddie.co.uk</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="competitions.html">Competitions</a>
+    <a href="stableford-guide.html">Stableford Guide</a>
+    <a href="rules-card-final.html">Rules Card</a>
+  </div>
+</footer>
+
+<script>
+  function showFormat(id, btn) {
+    document.querySelectorAll('.format-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.format-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById('format-' + id).classList.add('active');
+    btn.classList.add('active');
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    window.scrollTo({ top: document.querySelector('.format-nav').offsetTop - 60, behavior: 'smooth' });
+  }
+
+  function calcStableford() {
+    const par = parseInt(document.getElementById('calc-par').value) || 4;
+    const shots = parseInt(document.getElementById('calc-shots').value) || 0;
+    const hcp = parseInt(document.getElementById('calc-hcp').value) || 0;
+    const net = shots - hcp;
+    const diff = par - net;
+    let points, name, color;
+    if (diff >= 2) { points = 4; name = '🦅 Eagle or better — amazing!'; color = '#B8860B'; }
+    else if (diff === 1) { points = 3; name = '🐦 Birdie — brilliant hole!'; color = '#1A7A1A'; }
+    else if (diff === 0) { points = 2; name = '⛳ Par — solid and consistent'; color = '#5AAAD4'; }
+    else if (diff === -1) { points = 1; name = '😐 Bogey — still on the board'; color = '#888'; }
+    else { points = 0; name = '😬 Double bogey or worse — pick up and move on'; color = '#C0392B'; }
+    document.getElementById('calc-points').textContent = points;
+    document.getElementById('calc-points').style.color = color === '#888' ? 'white' : color;
+    document.getElementById('calc-name').textContent = name;
+  }
+
+  // Run on load
+  calcStableford();
+</script>
+
+</body>
+</html>

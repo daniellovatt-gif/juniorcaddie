@@ -75,7 +75,7 @@
       max-width: var(--max);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 10px;
     }
     .feature-tab {
@@ -457,17 +457,21 @@
     @media (max-width: 768px) {
       .nav { padding: 14px 20px; }
       .nav-links { display: none; }
-      .feature-bar { padding: 0 16px 16px; }
-      .feature-bar-inner { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .feature-tab { padding: 12px 14px; }
-      .feature-tab-title { font-size: 14px; }
+      .feature-bar { padding: 0 12px 12px; }
+      .feature-bar-inner { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+      .feature-tab { padding: 12px 10px; }
+      .feature-tab-title { font-size: 12px; }
+      .feature-tab-desc { display: none; }
+      .feature-tab-badge { font-size: 9px; padding: 2px 6px; margin-bottom: 5px; }
       .feature-tab-arrow { display: none; }
-      .hero { padding: 48px 20px 48px; }
+      .hero { padding: 32px 20px 32px; }
+      .hero h1 { font-size: 28px; }
+      .hero-sub { font-size: 15px; }
       .email-form { flex-direction: column; }
-      .pillars { padding: 56px 20px; }
-      .journey { padding: 56px 20px; }
-      .ask { padding: 56px 20px; }
-      .ask-form-wrap { padding: 28px 20px; }
+      .pillars { padding: 48px 20px; }
+      .journey { padding: 48px 20px; }
+      .ask { padding: 48px 20px; }
+      .ask-form-wrap { padding: 24px 16px; }
       .form-row { flex-direction: column; }
       footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
       section[style*="grid-template-columns:1fr 1fr"] > div { grid-template-columns: 1fr !important; }
@@ -572,10 +576,17 @@
         <span class="feature-tab-arrow">→</span>
       </a>
 
+      <a href="golf-formats.html" class="feature-tab live">
+        <span class="feature-tab-badge badge-live">New</span>
+        <div class="feature-tab-title">Golf Formats</div>
+        <div class="feature-tab-desc">Stableford, Matchplay, Foursomes & more — explained in plain English</div>
+        <span class="feature-tab-arrow">→</span>
+      </a>
+
       <a href="rules-card-final.html" class="feature-tab live">
-        <span class="feature-tab-badge badge-live">Free download</span>
+        <span class="feature-tab-badge badge-live">Free</span>
         <div class="feature-tab-title">⛳ Rules Card</div>
-        <div class="feature-tab-desc">Top 10 golf rules — print, laminate & clip to your bag</div>
+        <div class="feature-tab-desc">Top 10 rules — print, laminate & clip to your bag</div>
         <span class="feature-tab-arrow">→</span>
       </a>
 
@@ -607,19 +618,24 @@
   <section class="hero">
     <p class="eyebrow">Now live across the UK</p>
     <h1>Everything a junior golf family needs.<br><span>Finally in one place.</span></h1>
-    <p class="hero-sub">From first swing to first handicap — JuniorCaddie gives families the knowledge, community and equipment to make the most of everything the game offers their child.</p>
+    <p class="hero-sub">From first swing to first handicap — knowledge, competitions and equipment for every stage of your child's golf journey.</p>
+
+    <!-- Primary CTA — competitions — prominent on mobile -->
+    <a href="competitions.html" style="display:inline-block; background:#1A6EA8; color:white; font-size:17px; font-weight:700; padding:16px 32px; border-radius:10px; text-decoration:none; margin-bottom:16px; letter-spacing:-0.3px;">⛳ Find junior competitions near you →</a>
+
+    <!-- Secondary — email -->
     <div class="email-form">
       <input id="hero-email" class="email-input" type="email" placeholder="Your email address" aria-label="Email address"/>
-      <button class="email-btn" onclick="handleSignup('hero')">Notify me</button>
+      <button class="email-btn" onclick="handleSignup('hero')">Join the list</button>
     </div>
-    <p class="reassurance">No spam. Just one email when we launch.</p>
+    <p class="reassurance">No spam. One email when something new launches.</p>
   </section>
 
   <!-- Why JuniorCaddie -->
   <section class="why" aria-labelledby="why-heading">
     <div class="why-inner">
       <span class="section-label">Why JuniorCaddie</span>
-      <p id="why-heading">Junior golf in the UK is thriving — but the knowledge is scattered, the equipment is expensive, and the community exists only in Facebook groups. <strong>We're building the home it deserves.</strong> A place where every family — regardless of budget — gets a fair shot at everything this game offers their child.</p>
+      <p id="why-heading">Junior golf in the UK is thriving — but the knowledge is scattered, the equipment is expensive, and good information is hard to find. <strong>We're building the home it deserves.</strong> Free, honest and built by a golf parent who's been through every stage.</p>
     </div>
   </section>
 
