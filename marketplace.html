@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Junior Golf Club Marketplace — Buy & Sell Second-Hand Junior Golf Clubs | JuniorCaddie</title>
+  <meta name="description" content="Buy and sell second-hand junior golf clubs on JuniorCaddie. Sized by height. Free to list. Reach golf families across the UK."/>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Formspree Ajax -->
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #EEF4FB; color: #0B3D6B;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --navy: #0B3D6B; --mid: #1A6EA8; --sky: #5AAAD4;
+      --light: #7BBDE0; --pale: #B8D8F0; --bg: #EEF4FB;
+      --white: #fff; --serif: Georgia, serif;
+    }
+
+    /* Nav */
+    nav {
+      background: var(--navy); padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 200;
+      border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    }
+    .nav-logo { text-decoration: none; }
+    .nl-junior { font-family: var(--serif); font-size: 11px; font-weight: 700; color: var(--pale); text-transform: uppercase; line-height: 0.9; display: flex; align-items: center; gap: 4px; }
+    .nl-rule { height: 1.5px; background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0); border-radius: 1px; margin: 2px 0; }
+    .nl-caddie { font-family: var(--serif); font-size: 18px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: -0.8px; line-height: 0.9; }
+    .nav-sell-btn {
+      background: white; color: var(--navy);
+      border: none; padding: 8px 20px; border-radius: 7px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      text-decoration: none; display: inline-block;
+      transition: background 0.15s;
+    }
+    .nav-sell-btn:hover { background: var(--pale); }
+
+    /* Hero */
+    .hero { background: var(--navy); padding: 48px 24px 36px; }
+    .hero-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+    .hero-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: white; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.05; }
+    .hero-sub { font-size: 15px; color: var(--light); line-height: 1.6; margin-bottom: 20px; }
+    .hero-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+    .hero-stat-n { font-family: var(--serif); font-size: 26px; font-weight: 700; color: white; line-height: 1; }
+    .hero-stat-l { font-size: 11px; color: var(--sky); }
+    .hero-cta {
+      display: inline-block; background: white; color: var(--navy);
+      font-size: 15px; font-weight: 700; padding: 14px 24px;
+      border-radius: 9px; text-decoration: none; white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .hero-cta:hover { background: var(--pale); }
+    .hero-cta-sub { font-size: 11px; color: var(--sky); text-align: center; margin-top: 6px; }
+
+    /* Filters bar */
+    .filters {
+      background: white;
+      border-bottom: 1px solid var(--pale);
+      padding: 16px 24px;
+      position: sticky; top: 57px; z-index: 100;
+      box-shadow: 0 2px 8px rgba(11,61,107,0.06);
+    }
+    .filters-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+    }
+    .filter-label { font-size: 11px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-right: 4px; flex-shrink: 0; }
+    .filter-select {
+      padding: 7px 12px; border: 1.5px solid var(--pale);
+      border-radius: 7px; font-size: 13px; color: var(--navy);
+      background: var(--bg); cursor: pointer; min-width: 130px;
+    }
+    .filter-select:focus { outline: none; border-color: var(--mid); }
+    .filter-reset { font-size: 12px; color: var(--sky); cursor: pointer; margin-left: auto; padding: 6px 12px; border: 1px solid var(--pale); border-radius: 6px; background: white; }
+    .filter-reset:hover { color: var(--navy); border-color: var(--navy); }
+
+    /* Results count */
+    .results-bar {
+      max-width: 900px; margin: 0 auto;
+      padding: 16px 24px 4px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .results-count { font-size: 13px; color: var(--mid); }
+
+    /* Grid */
+    .grid-wrap { max-width: 900px; margin: 0 auto; padding: 8px 24px 80px; }
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    /* Listing card */
+    .listing-card {
+      background: white; border-radius: 12px;
+      border: 0.5px solid var(--pale);
+      overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+      display: flex; flex-direction: column;
+    }
+    .listing-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(11,61,107,0.1); }
+    .card-photo {
+      width: 100%; height: 180px; object-fit: cover;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; color: var(--pale);
+      flex-shrink: 0;
+    }
+    .card-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+    .card-brand { font-size: 11px; color: var(--sky); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+    .card-title { font-family: var(--serif); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.2; }
+    .card-height { font-size: 12px; color: var(--mid); margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
+    .card-desc { font-size: 13px; color: #2A5070; line-height: 1.55; flex: 1; margin-bottom: 12px;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 0.5px solid var(--pale); }
+    .card-price { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--navy); }
+    .card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
+    .card-tag { font-size: 10px; color: var(--mid); background: var(--bg); border-radius: 4px; padding: 2px 7px; }
+    .card-tag.condition-excellent { background: #E8FFF0; color: #1A7A1A; }
+    .card-tag.condition-good { background: #E8F4FF; color: #1A5A8A; }
+    .card-tag.condition-fair { background: #FFF8E8; color: #7A5A00; }
+    .card-enquire {
+      background: var(--navy); color: white;
+      border: none; padding: 8px 16px; border-radius: 7px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .card-enquire:hover { background: var(--mid); }
+    .card-county { font-size: 11px; color: var(--sky); }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center; padding: 64px 24px;
+      display: none;
+    }
+    .empty-state.visible { display: block; }
+    .empty-icon { font-size: 48px; margin-bottom: 16px; }
+    .empty-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .empty-sub { font-size: 15px; color: var(--mid); margin-bottom: 24px; }
+    .empty-cta { display: inline-block; background: var(--navy); color: white; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+
+    /* Loading */
+    .loading {
+      text-align: center; padding: 64px 24px;
+      display: none;
+    }
+    .loading.visible { display: block; }
+    .loading-spinner {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 3px solid var(--pale);
+      border-top-color: var(--mid);
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── ENQUIRY MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(11,61,107,0.6);
+      backdrop-filter: blur(3px);
+      z-index: 300; display: none;
+      align-items: flex-end; justify-content: center;
+    }
+    .modal-overlay.visible { display: flex; }
+    .modal {
+      background: white; border-radius: 16px 16px 0 0;
+      width: min(540px, 100vw);
+      max-height: 92vh; overflow-y: auto;
+      padding: 28px 28px 40px;
+      animation: slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .modal-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+    .modal-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1.2; }
+    .modal-close { background: var(--bg); border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 16px; cursor: pointer; color: var(--sky); flex-shrink: 0; }
+    .modal-close:hover { background: var(--pale); color: var(--navy); }
+    .modal-listing-summary {
+      background: var(--bg); border-radius: 8px; padding: 12px 14px;
+      margin-bottom: 20px; font-size: 13px; color: var(--mid); line-height: 1.5;
+    }
+    .modal-field { margin-bottom: 14px; }
+    .modal-field label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+    .modal-field input, .modal-field textarea {
+      width: 100%; padding: 10px 13px;
+      border: 1.5px solid var(--pale); border-radius: 8px;
+      font-size: 14px; color: var(--navy); background: white;
+      font-family: inherit;
+    }
+    .modal-field input:focus, .modal-field textarea:focus { outline: none; border-color: var(--mid); }
+    .modal-field textarea { min-height: 80px; resize: vertical; }
+    .modal-submit {
+      width: 100%; background: var(--navy); color: white;
+      border: none; padding: 14px; border-radius: 9px;
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      margin-top: 4px; transition: background 0.15s;
+    }
+    .modal-submit:hover { background: var(--mid); }
+    .modal-submit:disabled { background: var(--pale); cursor: not-allowed; }
+    .modal-note { font-size: 11px; color: var(--sky); text-align: center; margin-top: 8px; }
+
+    /* Sell banner at bottom */
+    .sell-banner {
+      background: var(--navy); padding: 40px 24px; text-align: center;
+      margin-top: 0;
+    }
+    .sell-banner h2 { font-family: var(--serif); font-size: 26px; font-weight: 700; color: white; margin-bottom: 8px; }
+    .sell-banner p { font-size: 14px; color: var(--light); margin-bottom: 20px; }
+    .sell-banner a { display: inline-block; background: white; color: var(--navy); font-size: 15px; font-weight: 700; padding: 13px 28px; border-radius: 9px; }
+
+    @media (max-width: 640px) {
+      nav { padding: 12px 16px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-cta-wrap { display: none; }
+      .filters-inner { gap: 8px; }
+      .filter-select { min-width: 110px; font-size: 12px; }
+      .grid-wrap { padding: 8px 16px 60px; }
+      .modal { padding: 20px 16px 32px; border-radius: 14px 14px 0 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nl-junior">Junior
+      <svg width="10" height="20" viewBox="0 0 32 68" fill="none">
+        <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+        <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+        <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+      </svg>
+    </div>
+    <div class="nl-rule"></div>
+    <div class="nl-caddie">Caddie</div>
+  </a>
+  <a href="sell.html" class="nav-sell-btn">+ List my clubs</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-label">JuniorCaddie Marketplace</p>
+      <h1>Second-hand junior golf clubs — sized by height.</h1>
+      <p class="hero-sub">Junior clubs are outgrown fast. Find quality second-hand sets at a fraction of the new price — or list your outgrown clubs for free and help another family.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-n" id="listing-count">—</div>
+          <div class="hero-stat-l">Clubs listed</div>
+        </div>
+        <div>
+          <div class="hero-stat-n">Free</div>
+          <div class="hero-stat-l">To list</div>
+        </div>
+        <div>
+          <div class="hero-stat-n">Direct</div>
+          <div class="hero-stat-l">Seller contact</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-cta-wrap">
+      <a href="sell.html" class="hero-cta">Sell your clubs →</a>
+      <p class="hero-cta-sub">Free · Instant · No registration</p>
+    </div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters">
+  <div class="filters-inner">
+    <span class="filter-label">Filter:</span>
+    <select class="filter-select" id="f-height" onchange="applyFilters()">
+      <option value="">All heights</option>
+      <option value="91-100">91–100cm</option>
+      <option value="100-110">100–110cm</option>
+      <option value="110-120">110–120cm</option>
+      <option value="120-130">120–130cm</option>
+      <option value="130-145">130–145cm</option>
+      <option value="145-160">145–160cm</option>
+      <option value="160-175">160–175cm</option>
+      <option value="175-200">175cm+</option>
+    </select>
+    <select class="filter-select" id="f-type" onchange="applyFilters()">
+      <option value="">All types</option>
+      <option value="full_set">Full set</option>
+      <option value="irons">Irons</option>
+      <option value="driver">Driver</option>
+      <option value="woods">Fairway woods</option>
+      <option value="hybrid">Hybrid</option>
+      <option value="wedge">Wedge(s)</option>
+      <option value="putter">Putter</option>
+    </select>
+    <select class="filter-select" id="f-county" onchange="applyFilters()">
+      <option value="">All counties</option>
+      <option>Hertfordshire</option>
+      <option>Essex</option>
+      <option>Middlesex</option>
+      <option>Surrey</option>
+      <option>Sussex</option>
+      <option>Hampshire</option>
+      <option>Kent</option>
+      <option>Bedfordshire</option>
+      <option>Cambridgeshire</option>
+      <option>Lancashire</option>
+      <option>Yorkshire</option>
+      <option>Other England</option>
+      <option>Scotland</option>
+      <option>Wales</option>
+    </select>
+    <select class="filter-select" id="f-price" onchange="applyFilters()">
+      <option value="">Any price</option>
+      <option value="0-25">Under £25</option>
+      <option value="25-50">£25–£50</option>
+      <option value="50-100">£50–£100</option>
+      <option value="100-200">£100–£200</option>
+      <option value="200-999">£200+</option>
+    </select>
+    <button class="filter-reset" onclick="resetFilters()">Clear filters</button>
+  </div>
+</div>
+
+<!-- RESULTS BAR -->
+<div class="results-bar">
+  <div class="results-count" id="results-count"></div>
+</div>
+
+<!-- GRID -->
+<div class="grid-wrap">
+  <div class="loading visible" id="loading">
+    <div class="loading-spinner"></div>
+    <div style="font-size:14px; color:var(--mid);">Loading listings...</div>
+  </div>
+  <div class="listings-grid" id="listings-grid"></div>
+  <div class="empty-state" id="empty-state">
+    <div class="empty-icon">🏌️</div>
+    <div class="empty-title">No listings yet</div>
+    <div class="empty-sub">Be the first to list your outgrown junior clubs. It's free and takes 2 minutes.</div>
+    <a href="sell.html" class="empty-cta">List my clubs →</a>
+  </div>
+</div>
+
+<!-- SELL BANNER -->
+<div class="sell-banner">
+  <h2>Got clubs your child has outgrown?</h2>
+  <p>List them free in 2 minutes. Reach junior golf families across the UK.</p>
+  <a href="sell.html">List my clubs for free →</a>
+</div>
+
+<!-- ── ENQUIRY MODAL ── -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Enquire about these clubs</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="modal-listing-summary" id="modal-summary"></div>
+
+    <!-- Formspree Ajax form -->
+    <div data-fs-success style="display:none; text-align:center; padding:24px 0;">
+      <div style="font-size:40px; margin-bottom:12px;">⛳</div>
+      <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; color:var(--navy); margin-bottom:8px;">Enquiry sent!</div>
+      <div style="font-size:14px; color:var(--mid); margin-bottom:16px;">The seller will be in touch at your email address directly.</div>
+      <button onclick="closeModal()" style="background:var(--navy);color:white;border:none;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">Back to listings</button>
+    </div>
+    <div data-fs-error style="font-size:13px; color:#C0392B; margin-bottom:12px;"></div>
+
+    <form id="enquiry-form">
+      <div class="modal-field">
+        <label for="eq-name">Your name *</label>
+        <input type="text" id="eq-name" name="buyer_name" placeholder="e.g. James" required data-fs-field/>
+        <span data-fs-error="buyer_name" style="font-size:12px; color:#C0392B;"></span>
+      </div>
+      <div class="modal-field">
+        <label for="eq-email">Your email *</label>
+        <input type="email" id="eq-email" name="email" placeholder="you@example.com" required data-fs-field/>
+        <span data-fs-error="email" style="font-size:12px; color:#C0392B;"></span>
+      </div>
+      <div class="modal-field">
+        <label for="eq-child-height">Your child's height</label>
+        <input type="text" id="eq-child-height" name="child_height" placeholder="e.g. 130cm / 4ft 3in"/>
+      </div>
+      <div class="modal-field">
+        <label for="eq-msg">Message to seller *</label>
+        <textarea id="eq-msg" name="message" placeholder="Hi, I'm interested in your clubs. Is this price negotiable? Are they still available?" required data-fs-field></textarea>
+        <span data-fs-error="message" style="font-size:12px; color:#C0392B;"></span>
+      </div>
+      <!-- Hidden fields — listing context -->
+      <input type="hidden" name="listing_id" id="eq-listing-id"/>
+      <input type="hidden" name="listing_title" id="eq-listing-title"/>
+      <input type="hidden" name="seller_email" id="eq-seller-email"/>
+      <input type="hidden" name="_subject" id="eq-subject"/>
+      <input type="hidden" name="_replyto" id="eq-replyto"/>
+
+      <button type="submit" class="modal-submit" data-fs-submit-btn>Send enquiry →</button>
+      <p class="modal-note">The seller will reply directly to your email address. JuniorCaddie does not handle payments.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // ── Supabase ──
+  const { createClient } = supabase;
+  const sb = createClient(
+    'https://amwwngkktfxqrpisxqza.supabase.co',
+    'sb_publishable_CtB5nuLgIa97TjKGMHfGTQ_v8eENfnG'
+  );
+
+  // ── State ──
+  let allListings = [];
+  let currentListing = null;
+
+  // ── Type labels ──
+  const typeLabels = {
+    full_set: 'Full set', irons: 'Iron set', driver: 'Driver',
+    woods: 'Fairway woods', hybrid: 'Hybrid', wedge: 'Wedge(s)',
+    putter: 'Putter', other: 'Other'
+  };
+
+  // ── Load listings ──
+  async function loadListings() {
+    try {
+      const { data, error } = await sb
+        .from('listings')
+        .select('*')
+        .eq('status', 'active')
+        .order('created_at', { ascending: false });
+
+      document.getElementById('loading').classList.remove('visible');
+
+      if (error) throw error;
+      allListings = data || [];
+      document.getElementById('listing-count').textContent = allListings.length;
+      renderListings(allListings);
+    } catch (err) {
+      console.error(err);
+      document.getElementById('loading').classList.remove('visible');
+      document.getElementById('empty-state').classList.add('visible');
+    }
+  }
+
+  // ── Render ──
+  function renderListings(listings) {
+    const grid = document.getElementById('listings-grid');
+    const empty = document.getElementById('empty-state');
+    const count = document.getElementById('results-count');
+
+    grid.innerHTML = '';
+
+    if (listings.length === 0) {
+      empty.classList.add('visible');
+      count.textContent = '';
+      return;
+    }
+
+    empty.classList.remove('visible');
+    count.textContent = `${listings.length} listing${listings.length !== 1 ? 's' : ''}`;
+
+    listings.forEach(l => {
+      const price = l.price ? `£${(l.price / 100).toFixed(0)}` : 'POA';
+      const heightLabel = l.player_height_min && l.player_height_max && l.player_height_min > 0
+        ? `${l.player_height_min}–${l.player_height_max}cm`
+        : 'Height in description';
+      const condLabel = l.condition ? l.condition.charAt(0).toUpperCase() + l.condition.slice(1) : '';
+      const typeLabel = typeLabels[l.club_type] || l.club_type || '';
+
+      const card = document.createElement('div');
+      card.className = 'listing-card';
+      card.innerHTML = `
+        <div class="card-photo">
+          ${l.photo_url
+            ? `<img src="${l.photo_url}" alt="${l.club_brand} ${typeLabel}" loading="lazy"/>`
+            : '🏌️'}
+        </div>
+        <div class="card-body">
+          <div class="card-brand">${l.club_brand || ''}</div>
+          <div class="card-title">${l.club_brand || ''} ${typeLabel}</div>
+          <div class="card-height">📏 Player height: ${heightLabel}</div>
+          <div class="card-tags">
+            ${condLabel ? `<span class="card-tag condition-${l.condition}">${condLabel} condition</span>` : ''}
+            ${typeLabel ? `<span class="card-tag">${typeLabel}</span>` : ''}
+          </div>
+          <div class="card-desc">${l.description || ''}</div>
+          <div class="card-footer">
+            <div>
+              <div class="card-price">${price}</div>
+              <div class="card-county">📍 ${l.seller_county || ''}</div>
+            </div>
+            <button class="card-enquire" onclick="openEnquiry(${JSON.stringify(l).replace(/"/g, '&quot;')})">Enquire →</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // ── Filters ──
+  function applyFilters() {
+    let filtered = [...allListings];
+
+    const height = document.getElementById('f-height').value;
+    if (height) {
+      const [min, max] = height.split('-').map(Number);
+      filtered = filtered.filter(l =>
+        l.player_height_min >= min && l.player_height_max <= max + 15
+      );
+    }
+
+    const type = document.getElementById('f-type').value;
+    if (type) filtered = filtered.filter(l => l.club_type === type);
+
+    const county = document.getElementById('f-county').value;
+    if (county) filtered = filtered.filter(l => l.seller_county === county);
+
+    const price = document.getElementById('f-price').value;
+    if (price) {
+      const [min, max] = price.split('-').map(Number);
+      filtered = filtered.filter(l => {
+        const p = l.price / 100;
+        return p >= min && p <= max;
+      });
+    }
+
+    renderListings(filtered);
+  }
+
+  function resetFilters() {
+    ['f-height','f-type','f-county','f-price'].forEach(id => {
+      document.getElementById(id).selectedIndex = 0;
+    });
+    renderListings(allListings);
+  }
+
+  // ── Enquiry modal ──
+  function openEnquiry(listing) {
+    currentListing = listing;
+    const typeLabel = typeLabels[listing.club_type] || listing.club_type || '';
+    const price = listing.price ? `£${(listing.price / 100).toFixed(0)}` : 'POA';
+
+    document.getElementById('modal-title').textContent = `Enquire — ${listing.club_brand} ${typeLabel}`;
+    document.getElementById('modal-summary').innerHTML =
+      `<strong>${listing.club_brand} ${typeLabel}</strong> · ${price} · ${listing.seller_county}<br>
+       <span style="font-size:12px;">${listing.description?.substring(0, 120) || ''}${listing.description?.length > 120 ? '...' : ''}</span>`;
+
+    // Set hidden fields for Formspree context
+    document.getElementById('eq-listing-id').value = listing.id;
+    document.getElementById('eq-listing-title').value = `${listing.club_brand} ${typeLabel}`;
+    document.getElementById('eq-seller-email').value = listing.seller_email;
+    document.getElementById('eq-subject').value = `JuniorCaddie enquiry — ${listing.club_brand} ${typeLabel}`;
+    document.getElementById('eq-replyto').value = listing.seller_email;
+
+    document.getElementById('modal-overlay').classList.add('visible');
+    document.body.style.overflow = 'hidden';
+
+    // Init Formspree on this form with seller email as recipient
+    window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', {
+      formElement: '#enquiry-form',
+      formId: 'xgojwvag'
+    });
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('visible');
+    document.body.style.overflow = '';
+    // Reset form
+    document.getElementById('enquiry-form').reset();
+    const successEl = document.querySelector('[data-fs-success]');
+    if (successEl) successEl.style.display = 'none';
+    document.getElementById('enquiry-form').style.display = 'block';
+  }
+
+  function closeModalOnOverlay(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModal();
+  }
+
+  // Escape key closes modal
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ── Init ──
+  loadListings();
+</script>
+
+<!-- Formspree Ajax init -->
+<script>
+  window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
+</script>
+
+</body>
+</html>
