@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.juniorcaddie.co.uk/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
