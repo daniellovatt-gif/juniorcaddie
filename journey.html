@@ -1,830 +1,1168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Junior Golf Journey — From First Swing to Adult Golf | JuniorCaddie</title>
-  <meta name="description" content="Expert guidance for every stage of your child's junior golf journey. Stage 1 to Stage 5 — from first clubs and lessons through to county golf, college golf and the transition to adult competition." />
-  <link rel="canonical" href="https://www.juniorcaddie.co.uk/journey.html" />
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.juniorcaddie.co.uk/journey.html" />
-  <meta property="og:title" content="The Junior Golf Journey — Expert Guidance for Every Stage" />
-  <meta property="og:description" content="From first swing to first handicap to county squad — expert coaching guidance for every stage of your child's junior golf journey, written by a PGA junior development coach." />
-  <meta property="og:site_name" content="JuniorCaddie" />
-  <meta property="og:image" content="https://www.juniorcaddie.co.uk/og-image.png" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Junior Golf Journey — Expert Guidance for Every Stage" />
-  <meta name="twitter:description" content="From first swing to first handicap to county squad — expert coaching guidance for every stage of your child's junior golf journey, written by a PGA junior development coach." />
-  <!-- Additional SEO -->
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="JuniorCaddie" />
+  <meta name="description" content="Expert guidance for every stage of your child's junior golf journey. Stage 1 to Stage 5 — from first clubs and lessons through to county golf and beyond."/>
+  <link rel="canonical" href="https://www.juniorcaddie.co.uk/journey.html"/>
+  <meta property="og:title" content="The Junior Golf Journey — Expert Guidance for Every Stage"/>
+  <meta property="og:description" content="From first swing to county squad — expert coaching guidance for every stage of your child's junior golf journey."/>
+  <meta property="og:site_name" content="JuniorCaddie"/>
+  <meta name="robots" content="index, follow"/>
+  <script defer src="/_vercel/insights/script.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      background: #EEF4FB;
-      color: #0B3D6B;
-      line-height: 1.6;
+      background: #F8F6F0;
+      color: #1A2A1A;
       -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
     }
-    a { color: inherit; text-decoration: none; }
+    a { text-decoration: none; color: inherit; }
+
     :root {
-      --navy:  #0B3D6B;
-      --mid:   #1A6EA8;
-      --sky:   #5AAAD4;
+      --navy: #0B3D6B;
+      --mid: #1A6EA8;
+      --sky: #5AAAD4;
       --light: #7BBDE0;
-      --pale:  #B8D8F0;
-      --bg:    #EEF4FB;
-      --white: #ffffff;
-      --serif: Georgia, 'Times New Roman', serif;
+      --pale: #B8D8F0;
+      --serif: Georgia, serif;
+      /* Stage colours */
+      --s1: #2D6A1F; --s1l: #E8F5E0; --s1d: #1A4A10;
+      --s2: #1A5A8A; --s2l: #E0F0FF; --s2d: #0F3A60;
+      --s3: #7A3A00; --s3l: #FFF0E0; --s3d: #5A2800;
+      --s4: #5A0A7A; --s4l: #F5E8FF; --s4d: #3A0050;
+      --s5: #8A1A1A; --s5l: #FFE8E8; --s5d: #5A0000;
     }
 
-    /* Nav */
+    /* ── NAV ── */
     nav {
-      background: var(--bg);
-      border-bottom: 0.5px solid var(--pale);
-      padding: 16px 48px;
+      background: var(--navy); padding: 14px 48px;
       display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 100;
+      position: sticky; top: 0; z-index: 200;
+      border-bottom: 0.5px solid rgba(255,255,255,0.1);
     }
-    .nav-logo { display: flex; align-items: center; gap: 14px; }
-    .logo-junior { font-family: var(--serif); font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1; }
-    .logo-caddie { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--mid); letter-spacing: -0.5px; line-height: 1; }
-    .nav-back { font-size: 14px; color: var(--mid); }
-    .nav-back:hover { color: var(--navy); }
+    .nav-logo { text-decoration: none; }
+    .nl-junior { font-family: var(--serif); font-size: 11px; font-weight: 700; color: var(--pale); text-transform: uppercase; line-height: 0.9; display: flex; align-items: center; gap: 4px; }
+    .nl-rule { height: 1.5px; background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0); border-radius: 1px; margin: 2px 0; }
+    .nl-caddie { font-family: var(--serif); font-size: 18px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: -0.8px; line-height: 0.9; }
+    .nav-back { font-size: 13px; color: var(--sky); }
+    .nav-back:hover { color: white; }
 
-    /* Hero */
+    /* ── HERO ── */
     .hero {
       background: var(--navy);
-      padding: 64px 24px 0;
+      padding: 56px 24px 0;
       text-align: center;
+      overflow: hidden;
+      position: relative;
     }
     .hero-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
     .hero h1 {
       font-family: var(--serif);
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 700; color: #EEF4FB;
-      line-height: 1.1; letter-spacing: -1.5px;
-      margin-bottom: 20px;
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 700; color: white;
+      letter-spacing: -1.5px; line-height: 1.05;
+      margin-bottom: 16px;
     }
-    .hero h1 span { color: var(--light); }
-    .hero-sub {
-      font-size: 18px; color: var(--light);
-      max-width: 580px; margin: 0 auto 40px;
-      line-height: 1.65;
+    .hero h1 em { color: var(--light); font-style: normal; }
+    .hero-sub { font-size: 17px; color: var(--light); max-width: 520px; margin: 0 auto 40px; line-height: 1.65; }
+
+    /* Journey timeline graphic */
+    .journey-graphic {
+      max-width: 900px; margin: 0 auto;
+      padding: 0 24px;
     }
 
-    /* Stage nav pills */
-    .stage-nav {
-      display: flex; gap: 8px; justify-content: center;
-      flex-wrap: wrap; padding-bottom: 0;
+    /* ── STAGE SELECTOR ── */
+    .stage-selector {
+      background: white;
+      border-top: 3px solid var(--navy);
+      position: sticky; top: 57px; z-index: 100;
+      overflow-x: auto; scrollbar-width: none;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
-    .stage-pill {
-      font-size: 13px; color: var(--light);
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.08);
-      border-radius: 20px; padding: 8px 18px;
-      cursor: pointer; transition: all 0.15s;
-      text-decoration: none; display: inline-block;
-      margin-bottom: -1px;
+    .stage-selector::-webkit-scrollbar { display: none; }
+    .stage-tabs { display: flex; width: max-content; min-width: 100%; }
+    .stage-tab {
+      flex: 1; min-width: 160px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 14px 16px;
+      cursor: pointer; border: none;
+      background: white; border-bottom: 3px solid transparent;
+      transition: all 0.2s; text-align: center;
+      border-right: 1px solid #F0EDE8;
     }
-    .stage-pill:hover { background: rgba(255,255,255,0.15); color: white; }
-    .stage-pill.active {
-      background: white; color: var(--navy);
-      border-color: white; font-weight: 600;
+    .stage-tab:last-child { border-right: none; }
+    .stage-tab-num { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; opacity: 0.5; }
+    .stage-tab-name { font-size: 13px; font-weight: 700; color: #333; }
+    .stage-tab-age { font-size: 10px; color: #999; margin-top: 2px; }
+
+    .stage-tab[data-s="1"]:hover, .stage-tab[data-s="1"].active { border-bottom-color: var(--s1); background: var(--s1l); }
+    .stage-tab[data-s="2"]:hover, .stage-tab[data-s="2"].active { border-bottom-color: var(--s2); background: var(--s2l); }
+    .stage-tab[data-s="3"]:hover, .stage-tab[data-s="3"].active { border-bottom-color: var(--s3); background: var(--s3l); }
+    .stage-tab[data-s="4"]:hover, .stage-tab[data-s="4"].active { border-bottom-color: var(--s4); background: var(--s4l); }
+    .stage-tab[data-s="5"]:hover, .stage-tab[data-s="5"].active { border-bottom-color: var(--s5); background: var(--s5l); }
+
+    .stage-tab[data-s="1"].active .stage-tab-num { color: var(--s1); opacity: 1; }
+    .stage-tab[data-s="2"].active .stage-tab-num { color: var(--s2); opacity: 1; }
+    .stage-tab[data-s="3"].active .stage-tab-num { color: var(--s3); opacity: 1; }
+    .stage-tab[data-s="4"].active .stage-tab-num { color: var(--s4); opacity: 1; }
+    .stage-tab[data-s="5"].active .stage-tab-num { color: var(--s5); opacity: 1; }
+
+    /* ── STAGE CONTENT ── */
+    .stage { display: none; }
+    .stage.active { display: block; }
+
+    /* Stage hero banner */
+    .stage-banner {
+      padding: 52px 24px 40px;
+      position: relative; overflow: hidden;
+    }
+    .s1 .stage-banner { background: linear-gradient(135deg, var(--s1d) 0%, var(--s1) 100%); }
+    .s2 .stage-banner { background: linear-gradient(135deg, var(--s2d) 0%, var(--s2) 100%); }
+    .s3 .stage-banner { background: linear-gradient(135deg, var(--s3d) 0%, var(--s3) 100%); }
+    .s4 .stage-banner { background: linear-gradient(135deg, var(--s4d) 0%, var(--s4) 100%); }
+    .s5 .stage-banner { background: linear-gradient(135deg, var(--s5d) 0%, var(--s5) 100%); }
+
+    .banner-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 32px; align-items: center;
+    }
+    .banner-stage-num { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+    .banner-title { font-family: var(--serif); font-size: clamp(34px, 5vw, 56px); font-weight: 700; color: white; letter-spacing: -1.5px; line-height: 1; margin-bottom: 12px; }
+    .banner-hook { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.6; max-width: 480px; margin-bottom: 20px; }
+    .banner-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+    .banner-tag { font-size: 11px; background: rgba(255,255,255,0.15); color: white; border-radius: 20px; padding: 4px 14px; border: 1px solid rgba(255,255,255,0.2); }
+    .banner-illustration { flex-shrink: 0; opacity: 0.9; }
+
+    /* Body */
+    .stage-body {
+      max-width: 800px; margin: 0 auto;
+      padding: 52px 24px 80px;
     }
 
-    /* Stage sections */
-    .stage-section {
-      max-width: 860px; margin: 0 auto;
-      padding: 72px 24px 80px;
-      display: none;
-    }
-    .stage-section.active { display: block; }
-
-    /* Stage header */
-    .stage-header {
-      display: flex; align-items: flex-start;
-      gap: 24px; margin-bottom: 48px;
-      padding-bottom: 32px;
-      border-bottom: 2px solid var(--pale);
-    }
-    .stage-number {
-      font-family: var(--serif);
-      font-size: 72px; font-weight: 700;
-      color: var(--pale); line-height: 1;
-      flex-shrink: 0; margin-top: -8px;
-    }
-    .stage-title-block {}
-    .stage-label-top { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
-    .stage-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--navy); letter-spacing: -1px; margin-bottom: 12px; line-height: 1.1; }
-    .stage-subtitle { font-size: 17px; color: var(--mid); line-height: 1.6; }
-
-    /* Age/height bar */
-    .stage-meta {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-    .meta-tag {
-      font-size: 13px; color: var(--mid);
-      background: var(--white);
-      border: 0.5px solid var(--pale);
-      border-radius: 20px; padding: 6px 16px;
-    }
-
-    /* Body text */
-    .stage-body { margin-bottom: 48px; }
-    .stage-body p {
-      font-size: 17px; color: #2A5070;
-      line-height: 1.85; margin-bottom: 20px;
-    }
-    .stage-body p:last-child { margin-bottom: 0; }
-    .stage-body p strong { color: var(--navy); font-weight: 600; }
-
-    /* Section headings within stage */
-    .stage-body h3 {
+    /* Sections within body */
+    .section { margin-bottom: 52px; }
+    .section h3 {
       font-family: var(--serif);
       font-size: 22px; font-weight: 700;
-      color: var(--navy); margin: 36px 0 16px;
+      color: #1A1A1A; margin-bottom: 16px;
       letter-spacing: -0.3px;
+      display: flex; align-items: center; gap: 10px;
     }
+    .section h3 .h3-icon { font-size: 20px; }
+    p.body-text {
+      font-size: 16px; color: #3A4A3A;
+      line-height: 1.85; margin-bottom: 16px;
+    }
+    p.body-text:last-child { margin-bottom: 0; }
+    p.body-text strong { color: #1A1A1A; font-weight: 600; }
 
     /* Pull quote */
     .pull-quote {
-      border-left: 4px solid var(--mid);
-      padding: 20px 28px; margin: 36px 0;
-      background: var(--white); border-radius: 0 10px 10px 0;
+      margin: 32px 0;
+      padding: 24px 28px 24px 24px;
+      position: relative;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .pull-quote::before {
+      content: '\201C';
+      font-family: var(--serif);
+      font-size: 80px;
+      color: var(--pale);
+      position: absolute;
+      top: -10px; left: 16px;
+      line-height: 1;
     }
     .pull-quote p {
       font-family: var(--serif);
-      font-size: 19px; color: var(--navy);
-      line-height: 1.6; font-style: italic; margin: 0;
+      font-size: 18px; color: var(--navy);
+      line-height: 1.65; font-style: italic;
+      padding-top: 20px;
     }
+    .pull-quote-attr { font-size: 12px; color: var(--sky); margin-top: 10px; letter-spacing: 0.04em; }
 
-    /* What to focus on grid */
-    .focus-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px; margin: 28px 0;
-    }
-    .focus-card {
-      background: var(--white);
-      border: 0.5px solid var(--pale);
-      border-radius: 10px; padding: 20px;
-    }
-    .focus-card-label { font-size: 11px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-    .focus-card-title { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    .focus-card-body { font-size: 13px; color: var(--mid); line-height: 1.6; }
-
-    /* Warning / parent note box */
-    .parent-note {
-      background: #FFF8EC;
-      border: 0.5px solid #E8C97A;
-      border-radius: 10px; padding: 20px 24px;
+    /* Big stat callout */
+    .stat-callout {
+      display: flex; gap: 16px; flex-wrap: wrap;
       margin: 28px 0;
     }
-    .parent-note-label { font-size: 11px; color: #B8922A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-    .parent-note p { font-size: 14px; color: #6B5000; line-height: 1.7; margin: 0; }
+    .stat-card {
+      flex: 1; min-width: 140px;
+      background: white; border-radius: 12px;
+      padding: 20px; text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .stat-number { font-family: var(--serif); font-size: 42px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; color: #666; line-height: 1.4; }
 
-    /* Equipment guidance */
-    .equipment-box {
-      background: var(--navy);
-      border-radius: 12px; padding: 28px;
+    .s1 .stat-number { color: var(--s1); }
+    .s2 .stat-number { color: var(--s2); }
+    .s3 .stat-number { color: var(--s3); }
+    .s4 .stat-number { color: var(--s4); }
+    .s5 .stat-number { color: var(--s5); }
+
+    /* Development cards */
+    .dev-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
+    .dev-card {
+      background: white; border-radius: 10px;
+      padding: 18px; box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+      border-top: 3px solid transparent;
+    }
+    .s1 .dev-card { border-top-color: var(--s1); }
+    .s2 .dev-card { border-top-color: var(--s2); }
+    .s3 .dev-card { border-top-color: var(--s3); }
+    .s4 .dev-card { border-top-color: var(--s4); }
+    .s5 .dev-card { border-top-color: var(--s5); }
+    .dev-card-icon { font-size: 24px; margin-bottom: 8px; }
+    .dev-card-title { font-size: 14px; font-weight: 700; color: #1A1A1A; margin-bottom: 4px; }
+    .dev-card-body { font-size: 13px; color: #666; line-height: 1.5; }
+
+    /* Parent note */
+    .parent-note {
+      background: #FFFBF0;
+      border: 1.5px solid #E8C97A;
+      border-radius: 12px; padding: 24px 28px;
       margin: 32px 0;
     }
-    .equipment-box-label { font-size: 11px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-    .equipment-box h4 { font-family: var(--serif); font-size: 20px; font-weight: 700; color: white; margin-bottom: 14px; }
-    .equipment-box p { font-size: 14px; color: var(--light); line-height: 1.7; margin-bottom: 10px; }
-    .equipment-box p:last-child { margin-bottom: 0; }
-
-    /* Stage navigation arrows */
-    .stage-nav-arrows {
-      display: flex; justify-content: space-between;
-      align-items: center; padding-top: 48px;
-      border-top: 0.5px solid var(--pale);
-      margin-top: 48px;
-    }
-    .arrow-btn {
+    .parent-note-header {
       display: flex; align-items: center; gap: 10px;
-      font-size: 14px; color: var(--mid); cursor: pointer;
-      background: none; border: 0.5px solid var(--pale);
-      border-radius: 8px; padding: 10px 18px;
-      transition: all 0.15s;
+      margin-bottom: 16px;
     }
-    .arrow-btn:hover { background: var(--white); color: var(--navy); border-color: var(--mid); }
-    .arrow-btn.invisible { visibility: hidden; }
+    .parent-note-icon { font-size: 24px; }
+    .parent-note-title { font-family: var(--serif); font-size: 17px; font-weight: 700; color: #6B5000; }
+    .parent-note p { font-size: 14px; color: #5A4200; line-height: 1.75; margin-bottom: 12px; }
+    .parent-note p:last-child { margin: 0; }
+    .parent-note strong { color: #3A2800; font-weight: 700; }
+
+    /* Equipment */
+    .equipment-box {
+      background: var(--navy); border-radius: 12px;
+      padding: 28px; margin: 32px 0;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 24px; align-items: start;
+    }
+    .eq-label { font-size: 10px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .eq-title { font-family: var(--serif); font-size: 19px; font-weight: 700; color: white; margin-bottom: 14px; }
+    .eq-body p { font-size: 14px; color: var(--light); line-height: 1.7; margin-bottom: 10px; }
+    .eq-body p:last-child { margin: 0; }
+    .eq-icon { font-size: 48px; opacity: 0.6; }
+
+    /* Ready to move on */
+    .ready-box {
+      border-radius: 12px; padding: 28px;
+      margin: 40px 0 0;
+    }
+    .s1 .ready-box { background: var(--s1l); border: 2px solid var(--s1); }
+    .s2 .ready-box { background: var(--s2l); border: 2px solid var(--s2); }
+    .s3 .ready-box { background: var(--s3l); border: 2px solid var(--s3); }
+    .s4 .ready-box { background: var(--s4l); border: 2px solid var(--s4); }
+    .s5 .ready-box { background: var(--s5l); border: 2px solid var(--s5); }
+    .ready-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .ready-icon { font-size: 24px; }
+    .ready-title { font-family: var(--serif); font-size: 18px; font-weight: 700; }
+    .s1 .ready-title { color: var(--s1d); }
+    .s2 .ready-title { color: var(--s2d); }
+    .s3 .ready-title { color: var(--s3d); }
+    .s4 .ready-title { color: var(--s4d); }
+    .s5 .ready-title { color: var(--s5d); }
+    .ready-signs { display: flex; flex-direction: column; gap: 10px; }
+    .ready-sign { display: flex; gap: 12px; align-items: flex-start; }
+    .ready-tick { width: 22px; height: 22px; border-radius: 50%; background: #22C55E; color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .ready-text { font-size: 14px; color: #333; line-height: 1.55; }
+
+    /* Nav arrows */
+    .nav-arrows {
+      display: flex; justify-content: space-between;
+      padding: 32px 24px;
+      max-width: 800px; margin: 0 auto;
+      border-top: 1px solid #E8E4DC;
+    }
+    .arr-btn {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--navy);
+      background: white; border: 1.5px solid #DDD;
+      border-radius: 8px; padding: 10px 18px;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .arr-btn:hover { border-color: var(--navy); background: var(--navy); color: white; }
+    .arr-btn.hidden { visibility: hidden; }
 
     /* Divider */
-    .divider { height: 1px; background: var(--pale); margin: 36px 0; }
+    .section-divider {
+      height: 1px; background: #E8E4DC;
+      margin: 40px 0;
+    }
 
     /* Footer */
-    footer {
-      background: var(--navy); padding: 28px 48px;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-    }
+    footer { background: var(--navy); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .footer-copy { font-size: 12px; color: var(--sky); }
     .footer-links { display: flex; gap: 18px; }
     .footer-links a { font-size: 12px; color: var(--light); }
 
     @media (max-width: 640px) {
-      nav { padding: 14px 16px; }
-      .stage-header { flex-direction: column; gap: 12px; }
-      .stage-number { font-size: 48px; }
+      nav { padding: 12px 16px; }
+      .banner-inner { grid-template-columns: 1fr; }
+      .banner-illustration { display: none; }
+      .dev-grid { grid-template-columns: 1fr; }
+      .equipment-box { grid-template-columns: 1fr; }
+      .eq-icon { display: none; }
+      .stage-body { padding: 36px 16px 60px; }
+      .nav-arrows { padding: 24px 16px; }
       footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
     }
-
-    /* ── Logo E — Flag inline with JUNIOR ── */
-    .nav-logo { text-decoration: none; display: inline-flex; align-items: center; }
-    .logo-e { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
-    .logo-e-junior {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 15px; font-weight: 700;
-      color: #EEF4FB; letter-spacing: -0.5px;
-      text-transform: uppercase; line-height: 0.9;
-      display: flex; align-items: center; gap: 5px;
-    }
-    .logo-e-flag {
-      width: 14px; height: 28px;
-      color: #EEF4FB; flex-shrink: 0;
-      margin-bottom: -2px;
-    }
-    .logo-e-rule {
-      height: 2px;
-      width: 100%;
-      background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0);
-      border-radius: 1px;
-      margin: 3px 0;
-    }
-    .logo-e-caddie {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 22px; font-weight: 700;
-      color: #7BBDE0; letter-spacing: -1px;
-      text-transform: uppercase; line-height: 0.9;
-    }
-    /* Light version (for light nav backgrounds) */
-    .logo-e.light .logo-e-junior { color: #0B3D6B; }
-    .logo-e.light .logo-e-flag { color: #0B3D6B; }
-    .logo-e.light .logo-e-rule { background: linear-gradient(to right, #0B3D6B, #1A6EA8, #7BBDE0); }
-    .logo-e.light .logo-e-caddie { color: #1A6EA8; }
-
   </style>
-  <script defer src="/_vercel/insights/script.js"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "The Junior Golf Journey — From First Swing to Adult Golf",
-    "description": "A guide to the five stages of junior golf development in the UK, from first lessons to county and national competition.",
-    "url": "https://www.juniorcaddie.co.uk/journey.html",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "name": "Stage 1 — First Swing",
-        "text": "Just starting out. Ages 4-8. The focus is entirely on fun and building a love for the game. Short sessions, no pressure, borrowed clubs."
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Stage 2 — Finding the Game",
-        "text": "Ages 7-11. The child is committed and improving. Equipment starts to matter. First holes on a real course. Short game development is key."
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Stage 3 — Taking it to the Course",
-        "text": "Ages 9-13. First handicap, first competitions. The most important developmental stage for competitive golf. Managing the mental game becomes a priority."
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Stage 4 — Serious Junior",
-        "text": "Ages 12-16. County level golf. Structured training, proper club fitting, sports psychology. The county pathway becomes relevant."
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Stage 5 — The Transition",
-        "text": "Ages 15-18. Moving to adult equipment and adult competition. College golf pathways, national amateur events, and the beginning of the adult game."
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
-    <svg width="20" height="60" viewBox="0 0 32 96" fill="none">
-      <line x1="8" y1="2" x2="8" y2="86" stroke="#0B3D6B" stroke-width="4" stroke-linecap="round"/>
-      <path d="M8 2 L30 12 L8 22 Z" fill="#1A6EA8"/>
-      <path d="M8 22 L26 30 L8 38 Z" fill="#7BBDE0"/>
-      <ellipse cx="8" cy="88" rx="8" ry="3" fill="#B8D8F0"/>
-    </svg>
-    <div>
-      <div class="logo-junior">Junior</div>
-      <div class="logo-caddie">Caddie</div>
+    <div class="nl-junior">Junior
+      <svg width="10" height="20" viewBox="0 0 32 68" fill="none">
+        <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+        <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+        <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+      </svg>
     </div>
+    <div class="nl-rule"></div>
+    <div class="nl-caddie">Caddie</div>
   </a>
   <a href="index.html" class="nav-back">← Back to home</a>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
   <p class="hero-label">The Junior Golf Journey</p>
-  <h1>Every junior golfer<br><span>moves through five stages.</span></h1>
+  <h1>Five stages.<br><em>One incredible journey.</em></h1>
   <p class="hero-sub">Understanding which stage your child is at — and what they need at each one — is the most important thing a golf parent can know.</p>
-  <div class="stage-nav" id="stage-nav">
-    <a class="stage-pill active" onclick="showStage(1, this)" href="#">Stage 1 — First Swing</a>
-    <a class="stage-pill" onclick="showStage(2, this)" href="#">Stage 2 — Finding the Game</a>
-    <a class="stage-pill" onclick="showStage(3, this)" href="#">Stage 3 — Taking it to the Course</a>
-    <a class="stage-pill" onclick="showStage(4, this)" href="#">Stage 4 — Serious Junior</a>
-    <a class="stage-pill" onclick="showStage(5, this)" href="#">Stage 5 — The Transition</a>
+
+  <!-- Journey path SVG -->
+  <div class="journey-graphic">
+    <svg viewBox="0 0 880 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:880px;">
+      <!-- Ground line -->
+      <path d="M20 90 Q220 70 440 80 Q660 90 860 60" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/>
+      <!-- Dotted path -->
+      <path d="M20 90 Q220 70 440 80 Q660 90 860 60" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
+      <!-- Stage 1: tiny child with club -->
+      <g transform="translate(20,52)">
+        <circle cx="0" cy="0" r="18" fill="#2D6A1F" opacity="0.9"/>
+        <text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="16">⛳</text>
+        <text x="0" y="28" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Georgia,serif">Stage 1</text>
+      </g>
+      <!-- Stage 2 -->
+      <g transform="translate(230,50)">
+        <circle cx="0" cy="0" r="18" fill="#1A5A8A" opacity="0.9"/>
+        <text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="16">🏌️</text>
+        <text x="0" y="28" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Georgia,serif">Stage 2</text>
+      </g>
+      <!-- Stage 3 -->
+      <g transform="translate(440,52)">
+        <circle cx="0" cy="0" r="18" fill="#7A3A00" opacity="0.9"/>
+        <text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="16">📋</text>
+        <text x="0" y="28" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Georgia,serif">Stage 3</text>
+      </g>
+      <!-- Stage 4 -->
+      <g transform="translate(650,46)">
+        <circle cx="0" cy="0" r="18" fill="#5A0A7A" opacity="0.9"/>
+        <text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="16">🏆</text>
+        <text x="0" y="28" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Georgia,serif">Stage 4</text>
+      </g>
+      <!-- Stage 5: flag -->
+      <g transform="translate(860,40)">
+        <circle cx="0" cy="0" r="18" fill="#8A1A1A" opacity="0.9"/>
+        <text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="16">🎓</text>
+        <text x="0" y="28" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Georgia,serif">Stage 5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
-<!-- STAGE 1 -->
-<!-- ═══════════════════════════════════════ -->
-<section class="stage-section active" id="stage-1">
-
-  <div class="stage-header">
-    <div class="stage-number">1</div>
-    <div class="stage-title-block">
-      <div class="stage-label-top">Stage One</div>
-      <h2 class="stage-title">First Swing</h2>
-      <p class="stage-subtitle">The beginning of the journey. Your child has picked up a club for the first time — or is about to. This stage is entirely about igniting curiosity and building a love for the game.</p>
-    </div>
+<!-- STAGE SELECTOR -->
+<div class="stage-selector" id="stage-selector">
+  <div class="stage-tabs">
+    <button class="stage-tab active" data-s="1" onclick="showStage(1)">
+      <div class="stage-tab-num">Stage 1</div>
+      <div class="stage-tab-name">First Swing</div>
+      <div class="stage-tab-age">Ages 4–8</div>
+    </button>
+    <button class="stage-tab" data-s="2" onclick="showStage(2)">
+      <div class="stage-tab-num">Stage 2</div>
+      <div class="stage-tab-name">Finding the Game</div>
+      <div class="stage-tab-age">Ages 7–11</div>
+    </button>
+    <button class="stage-tab" data-s="3" onclick="showStage(3)">
+      <div class="stage-tab-num">Stage 3</div>
+      <div class="stage-tab-name">On the Course</div>
+      <div class="stage-tab-age">Ages 9–13</div>
+    </button>
+    <button class="stage-tab" data-s="4" onclick="showStage(4)">
+      <div class="stage-tab-num">Stage 4</div>
+      <div class="stage-tab-name">Serious Junior</div>
+      <div class="stage-tab-age">Ages 12–16</div>
+    </button>
+    <button class="stage-tab" data-s="5" onclick="showStage(5)">
+      <div class="stage-tab-num">Stage 5</div>
+      <div class="stage-tab-name">The Transition</div>
+      <div class="stage-tab-age">Ages 15–18</div>
+    </button>
   </div>
+</div>
 
-  <div class="stage-meta">
-    <span class="meta-tag">Typical age: 4–8</span>
-    <span class="meta-tag">Player height: under 4ft (120cm)</span>
-    <span class="meta-tag">Handicap: none yet</span>
-    <span class="meta-tag">Duration: 6–18 months</span>
-  </div>
 
-  <div class="stage-body">
+<!-- ═══════════════════ STAGE 1 ═══════════════════ -->
+<div class="stage s1 active" id="stage-1">
 
-    <h3>What this stage is really about</h3>
-    <p>Stage 1 is not about golf. It is about play. At this age, the brain is at its most receptive to new movement patterns — but only when the child is having fun. The moment lessons feel like work, or a parent's expectation starts to feel like pressure, the child disengages. The research on early sports development is unambiguous: children who are introduced to sport through joy and exploration are significantly more likely to continue into serious competition than those who are introduced through structured instruction too early.</p>
-
-    <p>A child at Stage 1 should be hitting balls, chasing them, laughing, getting bored, wandering off, and coming back. That is exactly what success looks like. <strong>The goal of Stage 1 is not technique. The goal is that the child asks to go again next week.</strong></p>
-
-    <h3>What good coaching looks like at this stage</h3>
-    <p>A skilled junior development coach working with a Stage 1 child will spend very little time on grip, stance or swing mechanics. Instead they will build the session around games and targets — hitting at coloured cones, chipping into hula hoops, scoring points, competing in small challenges. The learning is embedded in the play rather than separated from it.</p>
-
-    <p>Sessions should be short — 30 to 45 minutes maximum. Young children's concentration windows are brief, and pushing past them produces frustration rather than progress. Three enthusiastic half-hour sessions are worth considerably more than one exhausting two-hour lesson.</p>
-
-    <div class="pull-quote">
-      <p>"At Stage 1, the coach's job is not to teach golf. It is to make the child fall in love with it. Technique follows passion — it never precedes it."</p>
-    </div>
-
-    <h3>What parents should and shouldn't do</h3>
-    <p>The most common mistake at Stage 1 is well-intentioned over-involvement. A parent who watches every shot, comments on every miss, or repeats the coach's instructions on the drive home is adding pressure to an experience that must remain pressure-free. At this stage, your job as a parent is to be enthusiastic, to celebrate effort rather than outcome, and to get out of the way.</p>
-
-    <p>Ask your child one question after a session: "Did you enjoy it?" Not "Did you hit it well?" Not "What did the coach say?" Just "Did you enjoy it?" If the answer is yes, the session was a success.</p>
-
-    <div class="parent-note">
-      <div class="parent-note-label">A note for parents</div>
-      <p>Resist comparing your child to others at this stage. Junior golf development is non-linear. A child who shows little apparent progress at age five may flourish at seven. A child who looks talented at six may plateau. The only meaningful measure at Stage 1 is enthusiasm — and enthusiasm cannot be rushed.</p>
-    </div>
-
-    <h3>Key developmental milestones</h3>
-    <div class="focus-grid">
-      <div class="focus-card">
-        <div class="focus-card-label">Physical</div>
-        <div class="focus-card-title">Basic movement pattern</div>
-        <div class="focus-card-body">A recognisable swing action with rotation. Not technically correct — but consistent. The body is learning to move as a unit.</div>
+  <div class="stage-banner">
+    <div class="banner-inner">
+      <div>
+        <div class="banner-stage-num">Stage One</div>
+        <div class="banner-title">First Swing</div>
+        <div class="banner-hook">Your child has picked up a golf club for the first time. This is the most important stage of all — and the easiest to get wrong.</div>
+        <div class="banner-meta">
+          <span class="banner-tag">Ages 4–8</span>
+          <span class="banner-tag">No handicap yet</span>
+          <span class="banner-tag">Duration: 6–18 months</span>
+        </div>
       </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Technical</div>
-        <div class="focus-card-title">Club face awareness</div>
-        <div class="focus-card-body">The child understands that the direction the ball goes is related to something they did. Cause and effect is the first technical concept.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Mental</div>
-        <div class="focus-card-title">Resilience with failure</div>
-        <div class="focus-card-body">Missing shots without frustration. Golf has a very high miss rate even for professionals. Learning to laugh at a miss is a critical early lesson.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Social</div>
-        <div class="focus-card-title">Taking turns</div>
-        <div class="focus-card-body">Waiting while others play. Being still when someone is hitting. The first lessons in golf's etiquette are entirely social and entirely appropriate for this age.</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="equipment-box">
-    <div class="equipment-box-label">Equipment at Stage 1</div>
-    <h4>Keep it simple — and don't spend much.</h4>
-    <p>A child at Stage 1 needs three clubs at most: a driver or fairway wood, a mid-iron, and a putter. Junior sets marketed at this age group often include far too many clubs. Fewer clubs means fewer decisions and more focus on the act of hitting.</p>
-    <p>The most important factor is length and weight. Clubs that are too long or too heavy will force a child into compensating movements that build bad habits. US Kids Golf's height-based sizing system is the most reliable guide — always size by height, never by age.</p>
-    <p>Buy second-hand at this stage without hesitation. A quality pre-loved starter set from JuniorCaddie will serve a Stage 1 child just as well as anything new — and when they outgrow it in 12 months, you can sell it on for close to what you paid.</p>
-  </div>
-
-  <div class="stage-nav-arrows">
-    <button class="arrow-btn invisible">← Previous</button>
-    <button class="arrow-btn" onclick="showStageByDirection(2)">Stage 2 — Finding the Game →</button>
-  </div>
-
-</section>
-
-<!-- ═══════════════════════════════════════ -->
-<!-- STAGE 2 -->
-<!-- ═══════════════════════════════════════ -->
-<section class="stage-section" id="stage-2">
-
-  <div class="stage-header">
-    <div class="stage-number">2</div>
-    <div class="stage-title-block">
-      <div class="stage-label-top">Stage Two</div>
-      <h2 class="stage-title">Finding the Game</h2>
-      <p class="stage-subtitle">The child is committed. Golf is no longer an experiment — it is something they look forward to. Equipment starts to matter. The golf course is becoming a real part of their world.</p>
-    </div>
-  </div>
-
-  <div class="stage-meta">
-    <span class="meta-tag">Typical age: 7–11</span>
-    <span class="meta-tag">Player height: 4ft to 4ft 9in (120–145cm)</span>
-    <span class="meta-tag">Handicap: none to 36</span>
-    <span class="meta-tag">Duration: 1–3 years</span>
-  </div>
-
-  <div class="stage-body">
-
-    <h3>What this stage is really about</h3>
-    <p>Stage 2 is where the game takes hold. The child has survived the initial dropout period — typically around 18 months in — and made an internal decision that golf is theirs. They are thinking about it between sessions. They are watching it on television. They are practising in the back garden. This intrinsic motivation is extraordinarily valuable and fragile. Everything at Stage 2 should be designed to nurture it.</p>
-
-    <p>Technically, this is the most important developmental window in a junior golfer's career. <strong>The movement patterns established between ages seven and eleven will form the foundation of a player's swing for life.</strong> This is not the stage to make wholesale changes or impose a technically perfect model — but it is the stage where good habits, properly embedded, pay compound interest for the next decade.</p>
-
-    <h3>What good coaching looks like at this stage</h3>
-    <p>A good Stage 2 coach will balance skill acquisition with continued enjoyment. Sessions will become more structured — there will be genuine technical work on grip, posture and swing path — but the best coaches at this level remain masters of making technical improvement feel like a game rather than a chore.</p>
-
-    <p>Short game development becomes increasingly important at Stage 2. Many junior development programmes make the mistake of focusing almost exclusively on the full swing. But a child who can chip and putt — who can get up and down from around the green — has a competitive tool that allows them to score on a real golf course, which in turn generates the confidence and motivation to continue developing.</p>
-
-    <div class="pull-quote">
-      <p>"The child who learns to love chipping and putting at age eight will outscore the long hitter at age twelve. The short game is where junior golf is actually played — and where confidence is built or lost."</p>
-    </div>
-
-    <h3>Playing on a real golf course</h3>
-    <p>Stage 2 is typically when a child plays their first holes on a real golf course, and this is a milestone that deserves to be handled thoughtfully. A child's first experience on a course should be low-pressure, short in duration — nine holes at most — and focused entirely on enjoyment rather than scoring. Playing with a supportive parent or coach rather than in a competitive environment allows the child to absorb the experience of the golf course without the anxiety of performance.</p>
-
-    <p>Many clubs run excellent junior academy programmes that introduce the course environment gradually — from short par 3 courses to the full layout — and this staged introduction is considerably more effective than throwing a child onto an 18-hole course before they are ready.</p>
-
-    <div class="parent-note">
-      <div class="parent-note-label">A note for parents</div>
-      <p>Stage 2 is when parents often begin to have strong opinions about their child's technique. Before offering swing advice — however well-intentioned — consider two things. First, your child's coach has a plan. Commentary from a parent that contradicts or complicates that plan is one of the most common sources of confusion in junior development. Second, the drive home after golf is sacred. Keep it positive or keep it quiet. Many junior golfers identify the car journey home as the place where their enjoyment of the game was most consistently undermined.</p>
-    </div>
-
-    <h3>Key developmental milestones</h3>
-    <div class="focus-grid">
-      <div class="focus-card">
-        <div class="focus-card-label">Physical</div>
-        <div class="focus-card-title">Consistent impact position</div>
-        <div class="focus-card-body">The child can repeatedly return the club face to the ball with reasonable consistency. Ball-striking is becoming predictable rather than random.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Technical</div>
-        <div class="focus-card-title">Short game foundation</div>
-        <div class="focus-card-body">A reliable putting stroke and a basic chip shot. The ability to get the ball from within 20 yards of the green onto the green and close to the hole.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Mental</div>
-        <div class="focus-card-title">Managing frustration</div>
-        <div class="focus-card-body">The ability to recover from a bad shot without it affecting the next one. Golf's most important mental skill, and one that begins to be teachable at this stage.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Rules & etiquette</div>
-        <div class="focus-card-title">Basic rules knowledge</div>
-        <div class="focus-card-body">Understanding how to play the ball as it lies, what to do in common situations, and the etiquette of the course — pace of play, care of the surface, respect for others.</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="equipment-box">
-    <div class="equipment-box-label">Equipment at Stage 2</div>
-    <h4>This is when equipment quality starts to matter.</h4>
-    <p>A Stage 2 player needs a properly fitted set — typically seven to nine clubs including woods, irons, a wedge and a putter. The key variables are shaft length (based on player height), shaft flex (almost always graphite at this stage for the majority of juniors) and club weight (lighter is better for a still-developing swing speed).</p>
-    <p>US Kids Golf dominates this category for good reason. Their height-based fitting system is genuinely reliable, their clubs are properly designed for junior swing speeds, and their resale value is excellent. A set of US Kids clubs at the right height specification will serve a Stage 2 player significantly better than a cheap adult set cut down to junior length — which is a false economy that produces poor strike patterns.</p>
-    <p>Expect to resize every 12 to 18 months as your child grows. Budget accordingly — and sell the outgrown set promptly through JuniorCaddie while it still has strong resale value.</p>
-  </div>
-
-  <div class="stage-nav-arrows">
-    <button class="arrow-btn" onclick="showStageByDirection(1)">← Stage 1 — First Swing</button>
-    <button class="arrow-btn" onclick="showStageByDirection(3)">Stage 3 — Taking it to the Course →</button>
-  </div>
-
-</section>
-
-<!-- ═══════════════════════════════════════ -->
-<!-- STAGE 3 -->
-<!-- ═══════════════════════════════════════ -->
-<section class="stage-section" id="stage-3">
-
-  <div class="stage-header">
-    <div class="stage-number">3</div>
-    <div class="stage-title-block">
-      <div class="stage-label-top">Stage Three</div>
-      <h2 class="stage-title">Taking it to the Course</h2>
-      <p class="stage-subtitle">The child has their first handicap and is entering competitions. This is one of the most exciting — and most sensitive — transitions in junior golf. How it is handled will determine whether the child goes on to fulfil their potential.</p>
-    </div>
-  </div>
-
-  <div class="stage-meta">
-    <span class="meta-tag">Typical age: 9–13</span>
-    <span class="meta-tag">Player height: 4ft 6in to 5ft 2in (137–158cm)</span>
-    <span class="meta-tag">Handicap: 36 to 18</span>
-    <span class="meta-tag">Duration: 1–3 years</span>
-  </div>
-
-  <div class="stage-body">
-
-    <h3>What this stage is really about</h3>
-    <p>Stage 3 is the moment the game becomes real. A first handicap is a rite of passage — the formal recognition that this child is a golfer, measured and recorded, part of the structure of the game. For many juniors it is the first time they have a number that reflects their ability in any sport, and the emotional weight of that should not be underestimated.</p>
-
-    <p>Competition introduces pressures that practice never can. The child must now perform under scrutiny — from other players, from parents watching, from the scoreboard. They will experience the full emotional range that golf provides: the elation of a birdie in competition, the frustration of a card-wrecking hole, the particular agony of a putt that lips out when it matters. <strong>How they learn to process these experiences will shape them not just as golfers but as people.</strong></p>
-
-    <h3>What good coaching looks like at this stage</h3>
-    <p>The best junior development coaches at Stage 3 shift their focus significantly toward the mental game. Technical work continues, but a player who has a strong technical foundation and a fragile mental game will consistently underperform in competition relative to their range ability. The reverse — a player with a slightly imperfect technique but a strong, process-focused competitive mindset — will often overperform.</p>
-
-    <p>Coaches should be introducing pre-shot routines, teaching players how to manage score during a round (neither celebrating too early nor catastrophising too soon), and building the habit of playing one shot at a time. These habits, established at Stage 3, become the framework for competitive golf at every subsequent level.</p>
-
-    <p>Course management becomes a coaching priority. A Stage 3 player should be learning to think before every shot — not just "how do I hit this" but "where is the best place to miss this" and "what score can I realistically make from here." Junior golfers who develop strategic thinking early have a significant advantage over peers who simply aim at every flag.</p>
-
-    <div class="pull-quote">
-      <p>"The transition from practice to competition is the most significant in junior golf. A child who has never competed has never really been tested. How they respond to that test — with resilience, with honesty, with grace — tells you everything about their development as a golfer and as a person."</p>
-    </div>
-
-    <h3>Competition — getting the balance right</h3>
-    <p>One of the most common mistakes at Stage 3 is over-competing. A parent who enters their child in every available competition, every weekend, across multiple tour circuits, is not accelerating development — they are compressing it. Junior golfers need time to practise what they are working on in lessons. If every weekend is a competition, there is no time to embed technical changes, and the child spends all their golf time managing rather than developing.</p>
-
-    <p>A well-structured Stage 3 season includes meaningful competition — enough to build competitive experience and maintain a handicap — balanced with practice time, fun golf with friends and family, and rest. Burnout at Stage 3 is real. Children who play 40+ competitive rounds a year at age 10 are significantly more likely to disengage from the game by age 14.</p>
-
-    <div class="parent-note">
-      <div class="parent-note-label">A note for parents</div>
-      <p>This is the stage where parental behaviour at competitions matters most. Junior golf research consistently identifies parental behaviour on the course as one of the strongest predictors of whether a child continues competing. Be quiet when your child is playing. React the same way to a birdie as to a bogey — with calm positivity. Never discuss the scorecard during a round. The debrief can happen later, at home, and even then the ratio should be three positive observations for every area of improvement discussed. Your child knows when they played badly. They do not need you to tell them.</p>
-    </div>
-
-    <h3>Key developmental milestones</h3>
-    <div class="focus-grid">
-      <div class="focus-card">
-        <div class="focus-card-label">Technical</div>
-        <div class="focus-card-title">Shot shaping awareness</div>
-        <div class="focus-card-body">Beginning to understand how to move the ball in different directions and trajectories for different situations on the course.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Mental</div>
-        <div class="focus-card-title">Pre-shot routine</div>
-        <div class="focus-card-body">A consistent, repeatable routine before every shot that manages attention, controls arousal and builds confidence. The foundation of competitive golf.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Strategic</div>
-        <div class="focus-card-title">Course management</div>
-        <div class="focus-card-body">Making smart decisions — knowing when to attack, when to play safe, and how to manage a scorecard through an 18-hole round.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Character</div>
-        <div class="focus-card-title">Honest scorekeeping</div>
-        <div class="focus-card-body">Calling their own penalties. Signing an accurate card. Playing by the rules even when nobody is watching. These are character tests, not just golf rules.</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="equipment-box">
-    <div class="equipment-box-label">Equipment at Stage 3</div>
-    <h4>Quality matters. Fitting matters. Resale planning matters.</h4>
-    <p>A Stage 3 player competing regularly needs a properly fitted set with a full complement of clubs — driver, fairway wood, hybrids, irons (typically 5 or 6 iron through pitching wedge), a sand wedge and a putter. A rangefinder becomes a valuable addition at this stage for developing course management skills.</p>
-    <p>The investment in a proper club fitting with a PGA Professional experienced in junior fitting is justified at Stage 3. Incorrect lie angles and shaft lengths at this level actively impede technique development — the player compensates for the equipment rather than developing their natural swing.</p>
-    <p>Equally important: plan for the next resize before you need it. A junior at Stage 3 is typically growing rapidly. Having the right clubs for a few months, then the wrong clubs for the rest of the season, is a false economy. Sell through JuniorCaddie as soon as the clubs are outgrown — demand for good quality Stage 3 equipment is high.</p>
-  </div>
-
-  <div class="stage-nav-arrows">
-    <button class="arrow-btn" onclick="showStageByDirection(2)">← Stage 2 — Finding the Game</button>
-    <button class="arrow-btn" onclick="showStageByDirection(4)">Stage 4 — Serious Junior →</button>
-  </div>
-
-</section>
-
-<!-- ═══════════════════════════════════════ -->
-<!-- STAGE 4 -->
-<!-- ═══════════════════════════════════════ -->
-<section class="stage-section" id="stage-4">
-
-  <div class="stage-header">
-    <div class="stage-number">4</div>
-    <div class="stage-title-block">
-      <div class="stage-label-top">Stage Four</div>
-      <h2 class="stage-title">Serious Junior</h2>
-      <p class="stage-subtitle">The child has made a genuine commitment to the game. County squad or pushing toward it. Handicap in single figures. Training is structured. The family is navigating a more complex competitive landscape — and higher stakes in every sense.</p>
-    </div>
-  </div>
-
-  <div class="stage-meta">
-    <span class="meta-tag">Typical age: 12–16</span>
-    <span class="meta-tag">Player height: 5ft to 5ft 8in (152–173cm)</span>
-    <span class="meta-tag">Handicap: under 10</span>
-    <span class="meta-tag">Duration: 2–4 years</span>
-  </div>
-
-  <div class="stage-body">
-
-    <h3>What this stage is really about</h3>
-    <p>Stage 4 is where junior golf becomes a serious pursuit. The child is training with intent, competing at county level or above, and investing significant time and energy in their development. For families, this stage brings new complexity — the competitive calendar is more demanding, the equipment is more expensive, the coaching is more specialised, and the emotional stakes are higher for everyone.</p>
-
-    <p>It is also the stage where the best junior development coaches spend considerable time on something most families never discuss explicitly: <strong>identity.</strong> A junior golfer at Stage 4 needs a healthy relationship with their performance — one where they understand they are not defined by their handicap, their county ranking, or their tournament results. Players who tie their self-worth to their scores are fragile. Players who see golf as something they do, rather than something they are, are resilient — and resilience is what separates those who fulfil their potential from those who don't.</p>
-
-    <h3>What good coaching looks like at this stage</h3>
-    <p>At Stage 4, the coach-player relationship becomes considerably more sophisticated. Technical work is ongoing but increasingly refined — we are no longer building a swing, we are refining one. The focus shifts toward consistency under pressure, managing technical changes during a competitive season, and developing a practice methodology that matches the demands of competition.</p>
-
-    <p>Physical development becomes a coaching consideration for the first time. A Stage 4 junior is typically going through or approaching puberty — a period of rapid physical change that can temporarily disrupt ball-striking that was previously reliable. A good coach will anticipate this, prepare the player for it, and manage expectations through the adjustment period rather than making reactive technical changes in response to what is actually a temporary physical phenomenon.</p>
-
-    <p>Sports psychology — whether delivered by the coach or a specialist — becomes a meaningful investment at Stage 4. The mental skills required for county-level competition are qualitatively different from those needed at Stage 3. Players at this level are competing against genuinely talented peers, in front of selectors, for places on county teams. The ability to manage this environment is a skill that must be developed, not assumed.</p>
-
-    <div class="pull-quote">
-      <p>"The players who make it from Stage 4 to elite amateur golf are rarely the most talented children at twelve. They are the ones who stayed curious, stayed resilient, and stayed in love with the game when it was hard. Talent is the starting point. Character is the destination."</p>
-    </div>
-
-    <h3>The county pathway</h3>
-    <p>Stage 4 is when most juniors engage seriously with the county structure for the first time. County squads, county championships, inter-county matches — these are significant competitive environments that provide experience no club competition can replicate. The team element of inter-county golf, in particular, introduces a dimension of responsibility and collective purpose that is enormously valuable for a young player's development.</p>
-
-    <p>Selection for county squads is typically based on handicap index, competitive results in county events, and assessment by county coaches. The process varies between counties — contact your county golf union directly for specific criteria. The best preparation for county selection is consistent performance in county-organised events, where selectors are most likely to see you play.</p>
-
-    <div class="parent-note">
-      <div class="parent-note-label">A note for parents</div>
-      <p>Stage 4 is where parental involvement is most likely to become problematic. The stakes feel higher, the investment is greater, and it is natural to feel more emotionally engaged in outcomes. But a Stage 4 junior who is being managed too closely by their parents — whose coaching decisions are second-guessed, whose practice schedule is dictated, whose results are discussed too intensely — is a junior who is playing golf for their parents rather than for themselves. The most effective thing a parent can do at Stage 4 is provide logistical support, emotional stability, and genuine perspective. Your child's golf is their golf. Your job is to make it possible — not to make it happen.</p>
-    </div>
-
-    <h3>Key developmental milestones</h3>
-    <div class="focus-grid">
-      <div class="focus-card">
-        <div class="focus-card-label">Technical</div>
-        <div class="focus-card-title">Pressure performance</div>
-        <div class="focus-card-body">The ability to execute technical skills under competitive pressure — to play on the course the way they play on the range. The gap between these two environments should be narrowing.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Physical</div>
-        <div class="focus-card-title">Strength and mobility</div>
-        <div class="focus-card-body">Golf-specific physical conditioning becomes appropriate. Flexibility, rotational strength and stability training can meaningfully support technical development and injury prevention.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Mental</div>
-        <div class="focus-card-title">Identity resilience</div>
-        <div class="focus-card-body">A healthy separation between self-worth and performance. The ability to play a bad round, learn from it, and return to the next competition with full confidence intact.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Strategic</div>
-        <div class="focus-card-title">Shot selection mastery</div>
-        <div class="focus-card-body">Consistently choosing the right shot for the situation rather than the exciting shot. Understanding percentages, risk-reward and how to protect a score.</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="equipment-box">
-    <div class="equipment-box-label">Equipment at Stage 4</div>
-    <h4>This is when proper fitting becomes non-negotiable.</h4>
-    <p>A Stage 4 player should have been properly fitted by a PGA Professional with junior fitting experience. The variables that matter at this level — shaft flex, lie angle, loft, grip size, club length — have a direct and measurable impact on ball-striking. Off-the-shelf equipment, however expensive, will not perform as well as properly fitted equipment for an individual player.</p>
-    <p>Many Stage 4 players are beginning to transition into adult-specification equipment, particularly in irons and wedges. This transition should be managed with a coach and fitter — it is not simply a matter of switching from junior to adult clubs on a birthday. The right moment depends on the player's height, swing speed, strength and technical maturity.</p>
-    <p>A rangefinder is standard at this level. GPS watches are useful training tools. Ball selection begins to matter — a Stage 4 player should be using a ball appropriate to their swing speed and short game development, not simply the cheapest option available.</p>
-  </div>
-
-  <div class="stage-nav-arrows">
-    <button class="arrow-btn" onclick="showStageByDirection(3)">← Stage 3 — Taking it to the Course</button>
-    <button class="arrow-btn" onclick="showStageByDirection(5)">Stage 5 — The Transition →</button>
-  </div>
-
-</section>
-
-<!-- ═══════════════════════════════════════ -->
-<!-- STAGE 5 -->
-<!-- ═══════════════════════════════════════ -->
-<section class="stage-section" id="stage-5">
-
-  <div class="stage-header">
-    <div class="stage-number">5</div>
-    <div class="stage-title-block">
-      <div class="stage-label-top">Stage Five</div>
-      <h2 class="stage-title">The Transition</h2>
-      <p class="stage-subtitle">The junior chapter is closing. The player is moving into adult golf — adult equipment, adult competitions, and a new set of questions about what comes next. This stage is the beginning of the rest of their golfing life.</p>
-    </div>
-  </div>
-
-  <div class="stage-meta">
-    <span class="meta-tag">Typical age: 15–18</span>
-    <span class="meta-tag">Player height: 5ft 5in+ (165cm+)</span>
-    <span class="meta-tag">Handicap: scratch to 5</span>
-    <span class="meta-tag">Duration: 1–3 years</span>
-  </div>
-
-  <div class="stage-body">
-
-    <h3>What this stage is really about</h3>
-    <p>The Transition is not a single moment — it is a gradual process that typically takes one to three years and touches every aspect of a junior golfer's game. Equipment transitions from junior to adult specification. Competition moves from junior events into adult amateur golf. The coaching relationship deepens as the player begins to take genuine ownership of their own development.</p>
-
-    <p>For many families, Stage 5 also brings a set of questions that the earlier stages never raised. <strong>What does this player want to do with golf?</strong> Is there a pathway to elite amateur golf? Is college golf in the UK or the United States a possibility? Is a professional career a realistic ambition? These are significant questions, and they deserve honest, well-informed answers — not the overoptimistic projections of people who have never navigated this landscape, and not the dismissive caution of people who underestimate what is possible.</p>
-
-    <h3>The equipment transition</h3>
-    <p>The physical transition to adult equipment is one of the most significant technical events in a junior golfer's career, and it is frequently mismanaged. The temptation is to switch everything to adult specification at once — adult irons, adult driver, adult shaft flex — as if the player's body has suddenly changed overnight. In reality the transition should be gradual, managed carefully with a coach and fitter, and timed to the player's physical and technical readiness rather than their age.</p>
-
-    <p>Most Stage 5 players will transition to adult-length clubs while remaining on junior or regular flex shafts until their swing speed justifies stiffer options. The lie angles and lofts of adult irons are different from junior specifications, and these need to be properly fitted rather than assumed. A Stage 5 player who jumps from junior specifications to unfit adult clubs will experience a temporary but sometimes significant deterioration in ball-striking — not because they have got worse, but because the equipment no longer fits.</p>
-
-    <div class="pull-quote">
-      <p>"The transition to adult golf is not a graduation — it is an introduction. The player who arrives in adult amateur golf with humility, curiosity and good habits will learn and improve faster than one who arrives believing the junior chapter has already proved everything."</p>
-    </div>
-
-    <h3>The competitive transition</h3>
-    <p>Moving from junior competitions into adult amateur golf is a significant step up in competitive standard. The best junior players in any county will find that adult club competitions, county amateur championships and national amateur events represent a higher and more consistent level of play than anything they have experienced before.</p>
-
-    <p>This is entirely positive. Playing against better competition is the fastest route to improvement. A Stage 5 player who seeks out the strongest possible competition — club monthly medals, county open amateur events, regional and national amateur championships — will develop faster than one who continues to compete primarily against peers of the same age.</p>
-
-    <h3>The pathway question</h3>
-    <p>For families where college golf is a possibility — either in the UK or the United States — Stage 5 is the time to begin gathering information and making informed decisions. The US college golf pathway, in particular, requires early planning: NCAA recruiting timelines begin earlier than most families realise, and the process of identifying the right college programmes, building a player profile and making initial contact with college coaches is one that benefits enormously from being started at 15 or 16 rather than 17 or 18.</p>
-
-    <p>UK university golf has grown significantly in recent years and offers competitive opportunities at a high standard for players who choose to remain in this country. The British Universities and Colleges Sport (BUCS) golf circuit provides genuine competition throughout the academic year and has produced a number of players who have gone on to professional careers.</p>
-
-    <div class="parent-note">
-      <div class="parent-note-label">A note for parents</div>
-      <p>Stage 5 is where the parental role changes most fundamentally. The child who started with a plastic starter set is now a young adult making their own decisions about their golf and their future. Your role has shifted from logistics and support to something more like a trusted advisor — available when asked, silent when not. The parents who navigate this transition most successfully are those who resist the temptation to plan their child's future for them, and instead provide the emotional security that allows a young golfer to make brave decisions on their own terms.</p>
-    </div>
-
-    <h3>Key developmental milestones</h3>
-    <div class="focus-grid">
-      <div class="focus-card">
-        <div class="focus-card-label">Technical</div>
-        <div class="focus-card-title">Adult specification mastery</div>
-        <div class="focus-card-body">Full command of adult-specification equipment. Ball-striking at the level required for scratch amateur golf or better.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Autonomous</div>
-        <div class="focus-card-title">Self-coached practice</div>
-        <div class="focus-card-body">The ability to design and execute their own practice sessions with purpose and discipline. The player who can coach themselves will never stop improving.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Competitive</div>
-        <div class="focus-card-title">Adult amateur performance</div>
-        <div class="focus-card-body">Competing effectively in adult amateur events. Comfortable with the higher standard, the different environment, and the expectation of excellence.</div>
-      </div>
-      <div class="focus-card">
-        <div class="focus-card-label">Personal</div>
-        <div class="focus-card-title">Ownership of their game</div>
-        <div class="focus-card-body">A clear sense of their own game — their strengths, their tendencies, their patterns under pressure — and a personal strategy for managing it on the course.</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="equipment-box">
-    <div class="equipment-box-label">Equipment at Stage 5</div>
-    <h4>Sell the junior set. Fund the adult one.</h4>
-    <p>The transition moment is when the outgrown junior set has its highest resale value — a complete, well-maintained set of Stage 4 junior clubs is in significant demand from families entering Stage 3 and 4. List on JuniorCaddie promptly and use the proceeds to offset the cost of the adult set.</p>
-    <p>The adult set at Stage 5 represents the most significant equipment investment of the junior journey. A proper custom fitting is essential — not a brief session with a fitter who primarily works with adult club golfers, but a session with someone who understands the specific challenges of the junior-to-adult transition. The investment in a thorough fitting will pay dividends for years.</p>
-    <p>At this level, club selection becomes personal and nuanced. Some Stage 5 players will benefit from player's irons; others are better served by cavity-back designs. Wedge selection, driver shaft specification, and putter fitting all deserve individual attention. The days of buying off the shelf are over.</p>
-  </div>
-
-  <div class="stage-nav-arrows">
-    <button class="arrow-btn" onclick="showStageByDirection(4)">← Stage 4 — Serious Junior</button>
-    <button class="arrow-btn invisible">Next →</button>
-  </div>
-
-</section>
-
-<footer>
-  <div style="display:flex; flex-direction:column; align-items:flex-start; line-height:1;">
-      <div style="font-family:Georgia,serif; font-size:11px; font-weight:700; color:#EEF4FB; letter-spacing:-0.3px; text-transform:uppercase; line-height:0.9; display:flex; align-items:center; gap:4px;">
-        Junior
-        <svg width="10" height="20" viewBox="0 0 32 68" fill="none">
-          <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
-          <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
-          <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+      <div class="banner-illustration">
+        <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+          <!-- Grass -->
+          <ellipse cx="80" cy="145" rx="70" ry="12" fill="rgba(255,255,255,0.1)"/>
+          <!-- Child body -->
+          <circle cx="80" cy="55" r="18" fill="rgba(255,255,255,0.9)"/>
+          <text x="80" y="58" text-anchor="middle" font-size="22">😊</text>
+          <!-- Body -->
+          <rect x="68" y="72" width="24" height="35" rx="8" fill="rgba(255,255,255,0.7)"/>
+          <!-- Legs -->
+          <rect x="68" y="104" width="10" height="28" rx="5" fill="rgba(255,255,255,0.6)"/>
+          <rect x="82" y="104" width="10" height="28" rx="5" fill="rgba(255,255,255,0.6)"/>
+          <!-- Club - oversized, fun -->
+          <line x1="92" y1="75" x2="130" y2="130" stroke="rgba(255,255,255,0.8)" stroke-width="4" stroke-linecap="round"/>
+          <rect x="120" y="124" width="20" height="8" rx="3" fill="rgba(255,255,255,0.9)" transform="rotate(-30 130 128)"/>
+          <!-- Stars/sparkles around -->
+          <text x="28" y="50" font-size="16" opacity="0.7">✨</text>
+          <text x="118" y="40" font-size="14" opacity="0.6">⭐</text>
+          <text x="30" y="100" font-size="12" opacity="0.5">✦</text>
+          <!-- Ball on ground -->
+          <circle cx="118" cy="138" r="7" fill="white" opacity="0.8"/>
         </svg>
       </div>
-      <div style="height:1.5px; background:linear-gradient(to right,#EEF4FB,#1A6EA8,#7BBDE0); border-radius:1px; margin:2px 0; width:100%;"></div>
-      <div style="font-family:Georgia,serif; font-size:16px; font-weight:700; color:#7BBDE0; letter-spacing:-0.8px; text-transform:uppercase; line-height:0.9;">Caddie</div>
     </div>
-    <p class="footer-copy">© 2026 JuniorCaddie. juniorcaddie.co.uk</p>
+  </div>
+
+  <div class="stage-body">
+
+    <div class="stat-callout">
+      <div class="stat-card">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Goal: make them want to come back next week</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">30</div>
+        <div class="stat-label">Minutes — the ideal lesson length at this stage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Technical corrections needed — passion precedes talent</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3><span class="h3-icon">🎯</span> What this stage is really about</h3>
+      <p class="body-text">Stage 1 has one purpose and one purpose only: to make your child fall in love with golf. Not to produce a technically correct swing. Not to enter competitions. Not to prove they have talent. <strong>The sole measure of success at Stage 1 is whether your child wants to come back next week.</strong></p>
+      <p class="body-text">The brain of a young child is extraordinarily receptive to new movement patterns — but only when the learning is wrapped in play and enjoyment. The moment it feels like work, the moment pressure enters the room, the brain switches off. Junior golfers who fall in love with the game at Stage 1 are the ones who are still playing at eighteen. Those who are pushed too hard, too technically, too soon, are the ones who quietly stop going to lessons and find a reason not to go to the club.</p>
+
+      <div class="pull-quote">
+        <p>At Stage 1, the coach's entire job is to make the child fall in love with the game. Technique follows passion — it never precedes it. A coach who spends 45 minutes correcting a six-year-old's grip is a coach who is killing the game in that child.</p>
+        <div class="pull-quote-attr">— PGA Junior Development Coach</div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+      <h3><span class="h3-icon">🌱</span> How your child will develop</h3>
+      <p class="body-text">Progress at Stage 1 is rarely linear and almost never looks impressive from the outside. Your child will swing and miss repeatedly. They will show flashes of genuine contact followed by complete regression the following week. They will get bored and wander off. <strong>All of this is entirely normal.</strong></p>
+      <p class="body-text">What you are looking for is not technical improvement. You are looking for a growing enthusiasm for being at the golf course. You are looking for your child asking when they can go again. You are looking for them practising in the garden or asking questions about golf on the way home. These are the signs that Stage 1 is working.</p>
+
+      <div class="dev-grid">
+        <div class="dev-card">
+          <div class="dev-card-icon">🎾</div>
+          <div class="dev-card-title">Basic movement pattern</div>
+          <div class="dev-card-body">A recognisable swing with some rotation. Not technically correct — but consistent enough to make contact reasonably often.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">😄</div>
+          <div class="dev-card-title">Resilience with failure</div>
+          <div class="dev-card-body">Learns to laugh at a miss rather than get frustrated. Golf has a high miss rate even for professionals — this lesson starts here.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">🤝</div>
+          <div class="dev-card-title">Golf etiquette basics</div>
+          <div class="dev-card-body">Taking turns. Standing still when others play. The first lessons in consideration for others that golf uniquely demands.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">💡</div>
+          <div class="dev-card-title">Cause and effect</div>
+          <div class="dev-card-body">Begins to connect what the club does at impact with where the ball goes. The first technical concept and the foundation of everything that follows.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+      <h3><span class="h3-icon">👨‍🏫</span> What good coaching looks like</h3>
+      <p class="body-text">A skilled Stage 1 coach builds every session around games and targets rather than technical instruction. They hit at coloured cones, chip into hula hoops, score points in small competitions, play games that make the child laugh. The technical learning is embedded invisibly in the fun.</p>
+      <p class="body-text">Sessions should be short — 30 to 45 minutes at most. A young child's concentration window is brief. Three enthusiastic 30-minute sessions are worth more than one exhausting two-hour lesson. If your child's coach is spending large portions of each lesson in technical correction and your child is showing boredom or reluctance — that is a warning sign.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="parent-note">
+      <div class="parent-note-header">
+        <div class="parent-note-icon">💛</div>
+        <div class="parent-note-title">How to support your child at Stage 1</div>
+      </div>
+      <p><strong>Ask one question after every session: "Did you enjoy it?"</strong> Not "Did you hit it well?" Not "What did the coach say?" Just: did you enjoy it. If the answer is yes, the session was a success, regardless of what happened technically.</p>
+      <p><strong>Never repeat the coach's technical instructions on the drive home.</strong> This is the most common mistake golf parents make. The coach has a plan. Adding to it, contradicting it, or repeating it creates confusion and pressure. The drive home should be about what they enjoyed, not what they need to improve.</p>
+      <p><strong>Resist comparing your child to others.</strong> Junior golf development is completely non-linear. A child who appears to make no progress at five may suddenly flourish at seven. The only meaningful measure at Stage 1 is enthusiasm.</p>
+    </div>
+
+    <div class="equipment-box">
+      <div class="eq-body">
+        <div class="eq-label">Equipment at Stage 1</div>
+        <div class="eq-title">Keep it simple. Don't spend much.</div>
+        <p>Three clubs at most — a driver or fairway wood, a mid-iron, and a putter. Always size by height, never by age. US Kids Golf's height-based sizing is the most reliable guide.</p>
+        <p>Buy second-hand without hesitation. A quality pre-loved starter set serves a Stage 1 child just as well as anything new — and when they outgrow it in 12 months, you sell it on for close to what you paid.</p>
+      </div>
+      <div class="eq-icon">🏌️</div>
+    </div>
+
+    <div class="ready-box">
+      <div class="ready-header">
+        <div class="ready-icon">✅</div>
+        <div class="ready-title">Ready to move to Stage 2? Look for these signs.</div>
+      </div>
+      <div class="ready-signs">
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Your child asks to go to golf without being prompted — enthusiasm is intrinsic, not parent-driven</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">They can make consistent contact — the club meets the ball more often than not</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">They understand the basic concept of golf — lowest score wins</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">They handle a miss without significant frustration — they laugh it off and try again</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Their coach indicates they are ready for more structured skill development</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="nav-arrows">
+    <button class="arr-btn hidden">←</button>
+    <button class="arr-btn" onclick="showStage(2)">Stage 2 — Finding the Game →</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════ STAGE 2 ═══════════════════ -->
+<div class="stage s2" id="stage-2">
+
+  <div class="stage-banner">
+    <div class="banner-inner">
+      <div>
+        <div class="banner-stage-num">Stage Two</div>
+        <div class="banner-title">Finding the Game</div>
+        <div class="banner-hook">The child is committed. Golf is no longer an experiment — it's something they look forward to. This is the most important developmental window in a junior golfer's career.</div>
+        <div class="banner-meta">
+          <span class="banner-tag">Ages 7–11</span>
+          <span class="banner-tag">No handicap yet</span>
+          <span class="banner-tag">Duration: 1–3 years</span>
+        </div>
+      </div>
+      <div class="banner-illustration">
+        <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+          <!-- Golf course scene -->
+          <rect x="0" y="110" width="160" height="50" rx="0" fill="rgba(255,255,255,0.08)"/>
+          <!-- Fairway -->
+          <ellipse cx="80" cy="120" rx="65" ry="18" fill="rgba(255,255,255,0.1)"/>
+          <!-- Flag -->
+          <line x1="120" y1="30" x2="120" y2="115" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M120 30 L148 42 L120 54 Z" fill="rgba(255,255,255,0.8)"/>
+          <!-- Child hitting -->
+          <circle cx="50" cy="72" r="14" fill="rgba(255,255,255,0.85)"/>
+          <text x="50" y="75" text-anchor="middle" font-size="18">🧒</text>
+          <rect x="40" y="85" width="20" height="28" rx="7" fill="rgba(255,255,255,0.6)"/>
+          <!-- Club and ball -->
+          <line x1="58" y1="88" x2="85" y2="110" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="88" cy="113" r="5" fill="white" opacity="0.9"/>
+          <!-- Motion lines -->
+          <path d="M88 113 Q102 105 115 113" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage-body">
+
+    <div class="stat-callout">
+      <div class="stat-card">
+        <div class="stat-number">7–11</div>
+        <div class="stat-label">The most critical developmental window in junior golf</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">50%</div>
+        <div class="stat-label">Of a junior's scoring improvement comes from short game development</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">9</div>
+        <div class="stat-label">Holes first — not 18. The course in small doses at this stage</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3><span class="h3-icon">🔥</span> What this stage is really about</h3>
+      <p class="body-text">Stage 2 is where the game takes hold. Your child has survived the initial dropout period — typically 12 to 18 months in — and made an internal decision that golf is theirs. They think about it between sessions. They practise in the garden. They ask questions about professional golfers. This intrinsic motivation is one of the most valuable things in junior development — and it is surprisingly fragile.</p>
+      <p class="body-text">Technically, Stage 2 is the most important developmental window in a junior golfer's career. <strong>The movement patterns embedded between the ages of seven and eleven will form the foundation of a player's swing for life.</strong> A coach who gets Stage 2 right gives their pupil a foundation that makes everything easier at every subsequent stage. A coach who builds compensations into the swing at this stage creates problems that can take years to undo.</p>
+
+      <div class="pull-quote">
+        <p>The child who learns to love chipping and putting at age eight will outscore the long hitter at age twelve every time. The short game is where junior golf is actually played — and where confidence is built or lost.</p>
+        <div class="pull-quote-attr">— PGA Junior Development Coach</div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+      <h3><span class="h3-icon">📈</span> How your child will develop</h3>
+      <p class="body-text">At Stage 2, genuine technical development begins. Your child will develop a more consistent ball-striking pattern, better coordination between body rotation and arm swing, and a growing understanding of how different clubs produce different results. Their short game becomes increasingly important — a Stage 2 child who has a reliable putting stroke and a basic chip shot has a tool that lets them score on a real golf course.</p>
+      <p class="body-text">Mentally, Stage 2 introduces managing frustration. At Stage 1, most children are so new that a bad shot is simply part of the experience. At Stage 2, expectations develop — and with expectations come frustration. Learning to absorb a bad shot, reset, and play the next one with full focus is one of the most important skills in golf, and it begins to be teachable here.</p>
+
+      <div class="dev-grid">
+        <div class="dev-card">
+          <div class="dev-card-icon">🎯</div>
+          <div class="dev-card-title">Consistent ball-striking</div>
+          <div class="dev-card-body">The club returns to the ball with increasing reliability. Strike is becoming predictable rather than random — the foundation of everything.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">⛳</div>
+          <div class="dev-card-title">Short game foundation</div>
+          <div class="dev-card-body">A reliable putting stroke and a basic chip shot. The scoring skill that makes the game playable at any level.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">🧠</div>
+          <div class="dev-card-title">Managing frustration</div>
+          <div class="dev-card-body">Beginning to recover from a bad shot without it affecting the next one. The most important mental skill in golf.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">📜</div>
+          <div class="dev-card-title">Rules knowledge</div>
+          <div class="dev-card-body">Understanding the fundamental rules — play it as it lies, lost ball procedures, penalties. The framework of the game.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="parent-note">
+      <div class="parent-note-header">
+        <div class="parent-note-icon">💛</div>
+        <div class="parent-note-title">How to support your child at Stage 2</div>
+      </div>
+      <p><strong>The drive home from golf is sacred.</strong> Research on junior sport development consistently identifies the car journey home as the place where a child's enjoyment is most frequently undermined. Keep it positive. Ask what they enjoyed. Don't discuss what went wrong unless they bring it up.</p>
+      <p><strong>Don't offer technical advice.</strong> Your child's coach has a plan. Well-intentioned swing tips from a parent — however accurate — contradict that plan and create confusion. If you have concerns about technical development, raise them with the coach directly. Not in the car.</p>
+      <p><strong>Play with them.</strong> If you play golf, getting on the course with your child at Stage 2 is one of the greatest gifts you can give them. Keep it casual, fun, and let them set the pace. If you don't play, consider learning — not to become a competitor, but to share an experience that connects you for decades.</p>
+    </div>
+
+    <div class="equipment-box">
+      <div class="eq-body">
+        <div class="eq-label">Equipment at Stage 2</div>
+        <div class="eq-title">This is when equipment quality starts to matter.</div>
+        <p>A properly fitted set — typically seven to nine clubs. Shaft length based on height, shaft flex almost always graphite. Lighter is better for a developing swing speed.</p>
+        <p>US Kids Golf dominate this category for good reason. Their height-based fitting system is genuinely reliable. A set at the right specification will serve your child significantly better than an adult set cut down — which produces poor strike patterns and builds bad habits.</p>
+      </div>
+      <div class="eq-icon">🏷️</div>
+    </div>
+
+    <div class="ready-box">
+      <div class="ready-header">
+        <div class="ready-icon">✅</div>
+        <div class="ready-title">Ready to move to Stage 3? Look for these signs.</div>
+      </div>
+      <div class="ready-signs">
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Your child can play nine holes on a real golf course without significant frustration</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">They have a reliable short game — chip and putt consistently enough to finish holes</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">They understand and apply the basic rules correctly during a round</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">They actively want to keep score and know how they compare</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Their coach confirms they are ready to pursue a handicap and begin competitive golf</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="nav-arrows">
+    <button class="arr-btn" onclick="showStage(1)">← Stage 1 — First Swing</button>
+    <button class="arr-btn" onclick="showStage(3)">Stage 3 — On the Course →</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════ STAGE 3 ═══════════════════ -->
+<div class="stage s3" id="stage-3">
+
+  <div class="stage-banner">
+    <div class="banner-inner">
+      <div>
+        <div class="banner-stage-num">Stage Three</div>
+        <div class="banner-title">On the Course</div>
+        <div class="banner-hook">First handicap. First competition. One of the most exciting — and most sensitive — transitions in junior golf.</div>
+        <div class="banner-meta">
+          <span class="banner-tag">Ages 9–13</span>
+          <span class="banner-tag">Handicap: 54 to 18</span>
+          <span class="banner-tag">Duration: 1–3 years</span>
+        </div>
+      </div>
+      <div class="banner-illustration">
+        <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+          <!-- Scoreboard -->
+          <rect x="20" y="20" width="120" height="70" rx="8" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <rect x="20" y="20" width="120" height="22" rx="8" fill="rgba(255,255,255,0.2)"/>
+          <text x="80" y="35" text-anchor="middle" font-size="11" fill="white" font-family="Georgia,serif" font-weight="700">SCORECARD</text>
+          <text x="38" y="58" font-size="9" fill="rgba(255,255,255,0.7)">Hole 1</text>
+          <text x="38" y="72" font-size="9" fill="rgba(255,255,255,0.7)">Hole 2</text>
+          <text x="38" y="86" font-size="9" fill="rgba(255,255,255,0.7)">Hole 3</text>
+          <text x="110" y="58" text-anchor="middle" font-size="10" fill="white" font-weight="700">5</text>
+          <text x="110" y="72" text-anchor="middle" font-size="10" fill="#90EE90">3</text>
+          <text x="110" y="86" text-anchor="middle" font-size="10" fill="white">4</text>
+          <!-- Pencil -->
+          <line x1="115" y1="100" x2="140" y2="130" stroke="rgba(255,255,255,0.6)" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="140,130 134,136 130,126" fill="rgba(255,255,255,0.8)"/>
+          <!-- Player -->
+          <circle cx="55" cy="120" r="16" fill="rgba(255,255,255,0.85)"/>
+          <text x="55" y="123" text-anchor="middle" font-size="20">🧒</text>
+          <!-- Trophy small -->
+          <text x="100" y="128" font-size="22">🏅</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage-body">
+
+    <div class="stat-callout">
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Rounds needed to establish a first handicap index in England</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">54</div>
+        <div class="stat-label">Maximum starting handicap — every junior begins here</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3:1</div>
+        <div class="stat-label">Positives before criticism in any post-round debrief</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3><span class="h3-icon">🎯</span> What this stage is really about</h3>
+      <p class="body-text">Stage 3 is the moment the game becomes real. A first handicap is a rite of passage — the formal recognition that this child is a golfer, measured and recorded within the structure of the game. For many juniors it is the first time they have a number that reflects their ability in any sport, and the emotional weight of that should not be underestimated.</p>
+      <p class="body-text">Competition introduces pressures that practice and casual golf never can. Your child must now perform under scrutiny — from other players, from the scoreboard, often from parents watching. They will experience the full emotional range that golf provides: the elation of a birdie in competition, the frustration of a card-wrecking hole. <strong>How they learn to process these experiences will shape them not just as golfers but as people.</strong></p>
+
+      <div class="pull-quote">
+        <p>The transition from practice to competition is the biggest in junior golf. A child can be technically excellent on the range and fall apart on the course. The difference is almost always mental — and at Stage 3 the mental game is enormously influenced by what the parents do and say.</p>
+        <div class="pull-quote-attr">— PGA Junior Development Coach</div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+      <h3><span class="h3-icon">🗺️</span> Getting the competition balance right</h3>
+      <p class="body-text">One of the most common mistakes at Stage 3 is over-competing. A parent who enters their child in every available competition every weekend creates a schedule that leaves no time for practice, no time for rest, and no time to embed the technical changes their coach is working on. <strong>If every weekend is a competition, there is no time to develop a better game.</strong></p>
+      <p class="body-text">A well-structured Stage 3 season includes meaningful competition balanced with dedicated practice time, fun golf with friends and family, and genuine rest. Junior golf burnout at Stage 3 is real. Children who play 40+ competitive rounds a year at age 10 or 11 are significantly more likely to disengage from the game by their early teens.</p>
+
+      <div class="dev-grid">
+        <div class="dev-card">
+          <div class="dev-card-icon">🧘</div>
+          <div class="dev-card-title">Pre-shot routine</div>
+          <div class="dev-card-body">A consistent sequence before every shot. The foundation of performing under pressure — established here, refined at every stage.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">🗺️</div>
+          <div class="dev-card-title">Course management</div>
+          <div class="dev-card-body">Making smart decisions — knowing when to attack, when to play safe, and how to protect a score across 18 holes.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">💪</div>
+          <div class="dev-card-title">Competitive resilience</div>
+          <div class="dev-card-body">The ability to experience a disaster hole, reset completely, and play the next one with full focus. The defining mental skill.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">✍️</div>
+          <div class="dev-card-title">Honest scorekeeping</div>
+          <div class="dev-card-body">Calling their own penalties. Signing an accurate card. Playing by the rules without being watched. Character tests, not just golf rules.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="parent-note">
+      <div class="parent-note-header">
+        <div class="parent-note-icon">💛</div>
+        <div class="parent-note-title">How to support your child at Stage 3</div>
+      </div>
+      <p><strong>Your behaviour at competitions matters more than you know.</strong> Junior golf research consistently identifies parental behaviour during competition as one of the strongest predictors of whether a child continues to compete. Be quiet when your child is playing. React identically to a birdie and a bogey. Never discuss the scorecard during a round.</p>
+      <p><strong>The debrief has a formula.</strong> Three positive observations before any area of improvement is discussed. Ask your child what they think first — they almost always know what went wrong. What they need from you is not analysis. It is stability.</p>
+      <p><strong>Watch for signs of burnout.</strong> A child who is reluctant to go to golf, who complains of fatigue before competitions, who becomes emotional around competition days — these are warning signs. Talk to the coach. Consider reducing the schedule. The long-term relationship with the game is worth more than any short-term result.</p>
+    </div>
+
+    <div class="equipment-box">
+      <div class="eq-body">
+        <div class="eq-label">Equipment at Stage 3</div>
+        <div class="eq-title">Quality and fitting both matter now.</div>
+        <p>A full set — driver, fairway wood or hybrid, irons through to sand wedge, putter. A proper club fitting with a PGA Professional experienced in junior fitting is now justified. Incorrect lie angles and shaft lengths at this level actively impede technique — the player compensates for the equipment.</p>
+        <p>Plan for the next resize before you need it. A rapidly growing Stage 3 junior with the wrong clubs for six months of the season is a false economy. Sell through JuniorCaddie promptly — demand for quality Stage 3 equipment is high.</p>
+      </div>
+      <div class="eq-icon">🔧</div>
+    </div>
+
+    <div class="ready-box">
+      <div class="ready-header">
+        <div class="ready-icon">✅</div>
+        <div class="ready-title">Ready to move to Stage 4? Look for these signs.</div>
+      </div>
+      <div class="ready-signs">
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Handicap is consistently improving and approaching single figures</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">They show genuine strategic awareness on the course — smart decisions, not just hitting and hoping</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">A bad hole doesn't derail the rest of the round</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">County competition or county squad involvement is becoming realistic</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Their motivation is entirely intrinsic — they are playing for themselves, not for their parents</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="nav-arrows">
+    <button class="arr-btn" onclick="showStage(2)">← Stage 2 — Finding the Game</button>
+    <button class="arr-btn" onclick="showStage(4)">Stage 4 — Serious Junior →</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════ STAGE 4 ═══════════════════ -->
+<div class="stage s4" id="stage-4">
+
+  <div class="stage-banner">
+    <div class="banner-inner">
+      <div>
+        <div class="banner-stage-num">Stage Four</div>
+        <div class="banner-title">Serious Junior</div>
+        <div class="banner-hook">County squad or pushing toward it. Single-figure handicap. Higher stakes, more complex decisions, and the defining question of junior golf development.</div>
+        <div class="banner-meta">
+          <span class="banner-tag">Ages 12–16</span>
+          <span class="banner-tag">Handicap: under 10</span>
+          <span class="banner-tag">Duration: 2–4 years</span>
+        </div>
+      </div>
+      <div class="banner-illustration">
+        <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+          <!-- Trophy -->
+          <path d="M60 40 L100 40 L95 80 Q80 95 65 80 Z" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+          <rect x="72" y="80" width="16" height="20" fill="rgba(255,255,255,0.3)"/>
+          <rect x="60" y="98" width="40" height="8" rx="4" fill="rgba(255,255,255,0.4)"/>
+          <!-- Star on trophy -->
+          <text x="80" y="68" text-anchor="middle" font-size="18">⭐</text>
+          <!-- Handles -->
+          <path d="M60 50 Q42 50 42 64 Q42 78 60 78" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none"/>
+          <path d="M100 50 Q118 50 118 64 Q118 78 100 78" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none"/>
+          <!-- Podium -->
+          <rect x="15" y="125" width="40" height="28" rx="4" fill="rgba(255,255,255,0.15)"/>
+          <text x="35" y="143" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.6)">2nd</text>
+          <rect x="60" y="110" width="40" height="43" rx="4" fill="rgba(255,255,255,0.25)"/>
+          <text x="80" y="135" text-anchor="middle" font-size="12" fill="white" font-weight="700">1st</text>
+          <rect x="105" y="130" width="40" height="23" rx="4" fill="rgba(255,255,255,0.12)"/>
+          <text x="125" y="145" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)">3rd</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage-body">
+
+    <div class="stat-callout">
+      <div class="stat-card">
+        <div class="stat-number">↑</div>
+        <div class="stat-label">Technical work shifts from construction to refinement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">≠</div>
+        <div class="stat-label">Handicap does not equal identity — the key lesson of Stage 4</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">68≠84</div>
+        <div class="stat-label">A parent's reaction should be identical after both scorecards</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3><span class="h3-icon">🎯</span> What this stage is really about</h3>
+      <p class="body-text">Stage 4 is where junior golf becomes a serious pursuit. The child is training with intent, competing at county level or above, and investing significant time and energy in their development. For families, this stage brings new complexity — the competitive calendar is more demanding, the coaching is more specialised, and the emotional stakes are higher for everyone.</p>
+      <p class="body-text">It is also the stage where the best coaches spend considerable time on something most families never discuss explicitly: <strong>identity</strong>. A junior at Stage 4 needs a healthy relationship with their performance — one where they understand they are not defined by their handicap, their county ranking, or their results. Players who tie their self-worth to their scores are fragile. Players who see golf as something they do rather than something they are — are resilient.</p>
+
+      <div class="pull-quote">
+        <p>The players who make it from Stage 4 to elite amateur golf are rarely the most talented children at twelve. They are almost always the ones who stayed curious, stayed coachable, and stayed in love with the game when it was hard. Talent is the starting point. Character is the destination.</p>
+        <div class="pull-quote-attr">— PGA Junior Development Coach</div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+      <h3><span class="h3-icon">🏛️</span> The county pathway</h3>
+      <p class="body-text">Stage 4 is when most juniors engage seriously with the county structure for the first time. County squads, county championships, inter-county matches — these are environments that no club competition can replicate. The team element of inter-county golf introduces collective purpose and responsibility that is enormously valuable for a young player's development.</p>
+      <p class="body-text">Selection for county squads varies between counties. The best preparation is consistent performance in county-organised events — the JuniorCaddie competition finder lists these across England. County coaches attend these events specifically to identify talent.</p>
+
+      <div class="dev-grid">
+        <div class="dev-card">
+          <div class="dev-card-icon">🎯</div>
+          <div class="dev-card-title">Pressure performance</div>
+          <div class="dev-card-body">Executing technical skills under competitive pressure. The gap between range ability and course performance narrows significantly.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">💪</div>
+          <div class="dev-card-title">Physical conditioning</div>
+          <div class="dev-card-body">Rotational strength, flexibility and core stability begin to complement technical development. Injury prevention becomes a priority.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">🧠</div>
+          <div class="dev-card-title">Identity resilience</div>
+          <div class="dev-card-body">A healthy separation between self-worth and performance. The ability to play a bad round and return to the next with full confidence.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">♟️</div>
+          <div class="dev-card-title">Shot selection mastery</div>
+          <div class="dev-card-body">Consistently choosing the right shot for the situation. Understanding percentages, risk-reward and how to protect a score.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="parent-note">
+      <div class="parent-note-header">
+        <div class="parent-note-icon">💛</div>
+        <div class="parent-note-title">How to support your child at Stage 4</div>
+      </div>
+      <p><strong>This is the stage where parental involvement most often becomes counterproductive.</strong> The stakes feel higher and it is natural to feel more emotionally engaged in outcomes. But a Stage 4 junior who is being managed too closely by their parents — whose coaching decisions are second-guessed, whose results are discussed too intensely — is a junior who is playing golf for their parents rather than for themselves.</p>
+      <p><strong>Your role is logistics and emotional stability.</strong> You get them to training and competitions. You manage the schedule so they have enough rest and variety in their life. You are the same person after a 68 as after an 84. You trust the coach and the process.</p>
+      <p><strong>Watch for identity fusion.</strong> If your child's mood and self-esteem become tightly linked to their golf results, this is a warning sign. A bad round should not ruin a weekend. The goal is perspective — golf is what they do, not who they are.</p>
+    </div>
+
+    <div class="equipment-box">
+      <div class="eq-body">
+        <div class="eq-label">Equipment at Stage 4</div>
+        <div class="eq-title">Proper fitting is non-negotiable at this level.</div>
+        <p>A Stage 4 player should have been fitted by a PGA Professional with junior fitting experience. The variables at this level — shaft flex, lie angle, loft, grip size — have a direct and measurable impact on ball-striking. Off-the-shelf equipment, however expensive, will not perform as well as properly fitted equipment.</p>
+        <p>Many Stage 4 players begin transitioning toward adult-specification equipment. This should be managed with coach and fitter — it is not simply a matter of switching at a certain age. The right moment depends on physical development, swing speed, and technical maturity.</p>
+      </div>
+      <div class="eq-icon">⚙️</div>
+    </div>
+
+    <div class="ready-box">
+      <div class="ready-header">
+        <div class="ready-icon">✅</div>
+        <div class="ready-title">Ready to move to Stage 5? Look for these signs.</div>
+      </div>
+      <div class="ready-signs">
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Handicap index at or approaching scratch — genuinely competing at the top of the county junior structure</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Physically ready for adult-length clubs in irons — the junior equipment is becoming too short</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Being considered for adult county amateur events alongside junior competition</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Beginning to think seriously about the pathway beyond junior golf</div></div>
+        <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Self-directed in practice — the motivation is entirely their own</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="nav-arrows">
+    <button class="arr-btn" onclick="showStage(3)">← Stage 3 — On the Course</button>
+    <button class="arr-btn" onclick="showStage(5)">Stage 5 — The Transition →</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════ STAGE 5 ═══════════════════ -->
+<div class="stage s5" id="stage-5">
+
+  <div class="stage-banner">
+    <div class="banner-inner">
+      <div>
+        <div class="banner-stage-num">Stage Five</div>
+        <div class="banner-title">The Transition</div>
+        <div class="banner-hook">The junior chapter is closing. Adult equipment, adult competitions, and entirely new questions about what comes next. The most important decisions of the journey.</div>
+        <div class="banner-meta">
+          <span class="banner-tag">Ages 15–18</span>
+          <span class="banner-tag">Handicap: scratch to +2</span>
+          <span class="banner-tag">Duration: 1–3 years</span>
+        </div>
+      </div>
+      <div class="banner-illustration">
+        <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+          <!-- Graduation cap -->
+          <polygon points="80,20 140,50 80,80 20,50" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+          <rect x="60" y="50" width="40" height="35" rx="3" fill="rgba(255,255,255,0.15)"/>
+          <!-- Tassel -->
+          <line x1="140" y1="50" x2="140" y2="80" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+          <circle cx="140" cy="83" r="4" fill="rgba(255,255,255,0.6)"/>
+          <!-- Road/path forward -->
+          <path d="M30 150 Q80 120 130 110" stroke="rgba(255,255,255,0.3)" stroke-width="3" fill="none" stroke-dasharray="6 3"/>
+          <!-- Arrow -->
+          <polygon points="130,103 138,110 130,117" fill="rgba(255,255,255,0.5)"/>
+          <!-- Small golfer walking -->
+          <circle cx="55" cy="118" r="10" fill="rgba(255,255,255,0.7)"/>
+          <text x="55" y="121" text-anchor="middle" font-size="13">🎓</text>
+          <!-- Stars -->
+          <text x="105" y="38" font-size="14" opacity="0.6">✨</text>
+          <text x="22" y="42" font-size="12" opacity="0.5">⭐</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage-body">
+
+    <div class="stat-callout">
+      <div class="stat-card">
+        <div class="stat-number">16</div>
+        <div class="stat-label">The age to start researching US college golf — earlier than most families realise</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">↗</div>
+        <div class="stat-label">Adult competition — the fastest route to further improvement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">The game your child now carries for the rest of their life</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3><span class="h3-icon">🚀</span> What this stage is really about</h3>
+      <p class="body-text">The Transition is not a single moment — it is a gradual process that typically takes one to three years and touches every aspect of a junior golfer's game. Equipment transitions from junior to adult specification. Competition moves from junior events into adult amateur golf. The coaching relationship deepens as the player begins to take genuine ownership of their own development.</p>
+      <p class="body-text"><strong>The most important thing a family can do at Stage 5 is have honest conversations about the pathway.</strong> What does this player want to do with golf? Is college golf in the UK or United States a possibility? Is a professional career a realistic ambition? These questions deserve honest, well-informed answers — not overoptimistic projections, and not dismissive caution.</p>
+
+      <div class="pull-quote">
+        <p>The transition to adult golf is not a graduation — it is an introduction. The player who arrives with humility, curiosity, and good habits will learn and improve faster than one who believes the junior chapter has already proved everything.</p>
+        <div class="pull-quote-attr">— PGA Junior Development Coach</div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+      <h3><span class="h3-icon">🎓</span> The pathway question</h3>
+      <p class="body-text">For families where college golf is a possibility — in the UK or the United States — Stage 5 is the time to gather information and begin making decisions. The UK university golf pathway has grown significantly, with BUCS golf offering competitive opportunities that have launched a number of professional careers.</p>
+      <p class="body-text">The US college golf pathway requires early planning. NCAA recruiting timelines begin earlier than most families realise. The process of identifying suitable college programmes, building a player profile, and making initial contact with college coaches benefits enormously from starting at 15 or 16 rather than 17 or 18.</p>
+      <p class="body-text">For players considering the professional game: the pathway from promising amateur to professional golfer is long, expensive, and uncertain. This is not a reason not to pursue the professional dream — but it is a reason to pursue it with clear eyes, a financial plan, and a fallback that protects the player's future regardless of the outcome on the course.</p>
+
+      <div class="dev-grid">
+        <div class="dev-card">
+          <div class="dev-card-icon">🏌️</div>
+          <div class="dev-card-title">Adult spec mastery</div>
+          <div class="dev-card-body">Full command of adult-specification equipment. Ball-striking at the level required for scratch amateur golf and beyond.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">📝</div>
+          <div class="dev-card-title">Self-coached practice</div>
+          <div class="dev-card-body">The ability to design and execute their own practice sessions with purpose. The player who can coach themselves never stops improving.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">🏆</div>
+          <div class="dev-card-title">Adult competition</div>
+          <div class="dev-card-body">Competing effectively in adult events against a higher standard. This is where the next chapter of development happens.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">🧭</div>
+          <div class="dev-card-title">Ownership of their game</div>
+          <div class="dev-card-body">A clear, honest understanding of their own game — strengths, tendencies under pressure, and a personal strategy for managing it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="parent-note">
+      <div class="parent-note-header">
+        <div class="parent-note-icon">💛</div>
+        <div class="parent-note-title">How to support your child at Stage 5</div>
+      </div>
+      <p><strong>Your role changes fundamentally at Stage 5.</strong> The child who started with a plastic starter set is now a young adult making their own decisions. Your role has shifted from logistics and support to something closer to a trusted advisor — available when asked, quiet when not. The parents who navigate Stage 5 most successfully are those who resist planning their child's future for them and instead provide stability that allows a young golfer to make brave decisions on their own terms.</p>
+      <p><strong>Have honest conversations about the pathway.</strong> What are their academic options? What does a golf career actually look like financially? What happens if it doesn't work out? These conversations, handled with care and honesty, are among the most important things a parent can do at this stage.</p>
+      <p><strong>Celebrate what they have already achieved.</strong> Whatever happens next, a junior golfer who has reached Stage 5 has developed character, resilience, discipline, and social skills that will serve them for the rest of their life. They have played extraordinary courses and been part of a sport that values honesty above almost everything else. That is not a consolation prize. It is the point.</p>
+    </div>
+
+    <div class="equipment-box">
+      <div class="eq-body">
+        <div class="eq-label">Equipment at Stage 5</div>
+        <div class="eq-title">Sell the junior set. Invest properly in the adult one.</div>
+        <p>The transition moment is when the outgrown junior set has its highest resale value. A complete, well-maintained set of Stage 4 junior clubs is in significant demand. List on JuniorCaddie promptly and use the proceeds to offset the cost of the adult set.</p>
+        <p>A proper custom fitting is essential at Stage 5 — with someone who understands the specific challenges of the junior-to-adult transition. Wedge specification, driver shaft selection, and putter fitting all deserve individual attention. This is the most significant equipment investment of the junior journey.</p>
+      </div>
+      <div class="eq-icon">🎓</div>
+    </div>
+
+    <!-- Final CTA -->
+    <div style="background:var(--navy);border-radius:14px;padding:32px;text-align:center;margin-top:40px;">
+      <div style="font-size:11px;color:var(--sky);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">Ready to find competitions at every stage?</div>
+      <p style="font-family:var(--serif);font-size:22px;font-weight:700;color:white;margin-bottom:8px;line-height:1.2;">160+ junior golf competitions across England.</p>
+      <p style="font-size:14px;color:var(--light);margin-bottom:24px;">From first opens to county championships — all in one place.</p>
+      <a href="competitions.html" style="display:inline-block;background:#1A6EA8;color:white;font-size:15px;font-weight:700;padding:14px 32px;border-radius:9px;text-decoration:none;">Find competitions ↗</a>
+    </div>
+
+  </div>
+  <div class="nav-arrows">
+    <button class="arr-btn" onclick="showStage(4)">← Stage 4 — Serious Junior</button>
+    <button class="arr-btn hidden">→</button>
+  </div>
+</div>
+
+
+<footer>
+  <div>
+    <div class="nl-junior" style="font-size:10px;">Junior
+      <svg width="8" height="16" viewBox="0 0 32 68" fill="none">
+        <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+        <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+        <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+      </svg>
+    </div>
+    <div class="nl-rule" style="width:70px;"></div>
+    <div class="nl-caddie" style="font-size:14px;">Caddie</div>
+  </div>
+  <p class="footer-copy">© 2026 JuniorCaddie · juniorcaddie.co.uk</p>
   <div class="footer-links">
     <a href="index.html">Home</a>
-    <a href="about.html">Our story</a>
     <a href="competitions.html">Competitions</a>
+    <a href="about.html">Our story</a>
     <a href="mailto:hello@juniorcaddie.co.uk">Contact</a>
   </div>
 </footer>
 
 <script>
-  let currentStage = 1;
-
-  function showStage(num, clickedBtn) {
-    document.querySelectorAll('.stage-section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.stage-pill').forEach(p => p.classList.remove('active'));
-    document.getElementById('stage-' + num).classList.add('active');
-    if (clickedBtn) clickedBtn.classList.add('active');
-    currentStage = num;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function showStageByDirection(num) {
-    const pills = document.querySelectorAll('.stage-pill');
-    showStage(num, pills[num - 1]);
+  function showStage(n) {
+    document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('stage-' + n).classList.add('active');
+    document.querySelector(`.stage-tab[data-s="${n}"]`).classList.add('active');
+    // Scroll tab into view
+    document.querySelector(`.stage-tab[data-s="${n}"]`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    // Scroll to selector
+    const sel = document.getElementById('stage-selector');
+    window.scrollTo({ top: sel.offsetTop - 57, behavior: 'smooth' });
   }
 </script>
 
