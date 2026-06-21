@@ -3,169 +3,108 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sell Junior Golf Clubs — JuniorCaddie Marketplace</title>
-  <meta name="description" content="List your outgrown junior golf clubs for free on JuniorCaddie. Reach golf families across the UK."/>
+  <title>Sell Junior Golf Clubs & Clothing — JuniorCaddie Marketplace</title>
+  <meta name="description" content="List your outgrown junior golf clubs and clothing for free on JuniorCaddie. Reach golf families across the UK."/>
   <script defer src="/_vercel/insights/script.js"></script>
-  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- Cloudinary Upload Widget -->
   <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      background: #EEF4FB; color: #0B3D6B;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; background: #EEF4FB; color: #0B3D6B; -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; color: inherit; }
-    :root {
-      --navy: #0B3D6B; --mid: #1A6EA8; --sky: #5AAAD4;
-      --light: #7BBDE0; --pale: #B8D8F0; --bg: #EEF4FB;
-      --white: #fff; --serif: Georgia, serif;
-    }
+    :root { --navy: #0B3D6B; --mid: #1A6EA8; --sky: #5AAAD4; --light: #7BBDE0; --pale: #B8D8F0; --bg: #EEF4FB; --white: #fff; --serif: Georgia, serif; }
 
-    /* Nav */
-    nav {
-      background: var(--navy); padding: 14px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 100;
-    }
+    nav { background: var(--navy); padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
     .nav-logo { text-decoration: none; }
     .nl-junior { font-family: var(--serif); font-size: 11px; font-weight: 700; color: var(--pale); text-transform: uppercase; line-height: 0.9; display: flex; align-items: center; gap: 4px; }
     .nl-rule { height: 1.5px; background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0); border-radius: 1px; margin: 2px 0; }
     .nl-caddie { font-family: var(--serif); font-size: 18px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: -0.8px; line-height: 0.9; }
     .nav-back { font-size: 13px; color: var(--sky); }
 
-    /* Hero */
     .hero { background: var(--navy); padding: 48px 24px 40px; text-align: center; }
     .hero-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
     .hero h1 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: white; letter-spacing: -1px; margin-bottom: 12px; }
     .hero-sub { font-size: 16px; color: var(--light); max-width: 480px; margin: 0 auto; line-height: 1.6; }
 
-    /* Form wrapper */
-    .form-wrap {
-      max-width: 640px; margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
+    .form-wrap { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; }
 
-    /* Section headings */
+    /* Category chooser */
+    .category-chooser { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+    .cat-btn {
+      border: 2px solid var(--pale); border-radius: 12px; padding: 20px 16px;
+      text-align: center; cursor: pointer; background: white; transition: all 0.15s;
+    }
+    .cat-btn:hover { border-color: var(--mid); }
+    .cat-btn.selected { border-color: var(--navy); background: var(--navy); color: white; }
+    .cat-btn.selected .cat-emoji { filter: none; }
+    .cat-emoji { font-size: 32px; display: block; margin-bottom: 8px; }
+    .cat-title { font-family: var(--serif); font-size: 18px; font-weight: 700; display: block; margin-bottom: 4px; }
+    .cat-desc { font-size: 12px; opacity: 0.7; display: block; }
+    .cat-btn.selected .cat-desc { opacity: 0.8; }
+
     .form-section { margin-bottom: 32px; }
-    .form-section-title {
-      font-family: var(--serif); font-size: 18px; font-weight: 700;
-      color: var(--navy); margin-bottom: 16px; padding-bottom: 10px;
-      border-bottom: 2px solid var(--pale);
-      display: flex; align-items: center; gap: 8px;
-    }
+    .form-section-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--pale); display: flex; align-items: center; gap: 8px; }
 
-    /* Fields */
     .field { margin-bottom: 16px; }
     .field label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
     .field .hint { font-size: 11px; color: var(--sky); margin-bottom: 5px; }
-    .field input, .field select, .field textarea {
-      width: 100%; padding: 11px 14px;
-      border: 1.5px solid var(--pale); border-radius: 8px;
-      font-size: 15px; color: var(--navy);
-      background: var(--white); transition: border-color 0.15s;
-      font-family: inherit;
-    }
-    .field input:focus, .field select:focus, .field textarea:focus {
-      outline: none; border-color: var(--mid);
-    }
+    .field input, .field select, .field textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--pale); border-radius: 8px; font-size: 15px; color: var(--navy); background: white; transition: border-color 0.15s; font-family: inherit; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--mid); }
     .field textarea { min-height: 90px; resize: vertical; }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-    /* Height selector — visual */
-    .height-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
-      margin-top: 4px;
-    }
-    .height-option {
-      border: 1.5px solid var(--pale); border-radius: 8px;
-      padding: 12px 8px; text-align: center; cursor: pointer;
-      background: white; transition: all 0.15s;
-    }
-    .height-option:hover { border-color: var(--mid); background: var(--bg); }
-    .height-option.selected { border-color: var(--mid); background: var(--mid); color: white; }
-    .height-option input { display: none; }
-    .height-opt-range { font-size: 14px; font-weight: 700; display: block; }
-    .height-opt-label { font-size: 10px; opacity: 0.7; display: block; margin-top: 2px; }
+    /* Visual selectors */
+    .option-grid { display: grid; gap: 8px; margin-top: 4px; }
+    .option-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .option-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .option-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .option-item { border: 1.5px solid var(--pale); border-radius: 8px; padding: 12px 8px; text-align: center; cursor: pointer; background: white; transition: all 0.15s; }
+    .option-item:hover { border-color: var(--mid); background: var(--bg); }
+    .option-item.selected { border-color: var(--navy); background: var(--navy); color: white; }
+    .opt-main { font-size: 14px; font-weight: 700; display: block; }
+    .opt-sub { font-size: 10px; opacity: 0.65; display: block; margin-top: 2px; }
+    .option-item.selected .opt-sub { opacity: 0.8; }
+    .opt-emoji { font-size: 22px; display: block; margin-bottom: 4px; }
 
-    /* Condition selector */
-    .condition-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
-    .condition-option {
-      border: 1.5px solid var(--pale); border-radius: 8px;
-      padding: 14px 8px; text-align: center; cursor: pointer;
-      background: white; transition: all 0.15s;
-    }
-    .condition-option:hover { border-color: var(--mid); }
-    .condition-option.selected { border-color: var(--mid); background: var(--mid); color: white; }
-    .condition-option input { display: none; }
-    .cond-emoji { font-size: 22px; display: block; margin-bottom: 4px; }
-    .cond-label { font-size: 13px; font-weight: 700; display: block; }
-    .cond-desc { font-size: 10px; opacity: 0.7; display: block; margin-top: 2px; }
-
-    /* Photo upload */
-    .photo-zone {
-      border: 2px dashed var(--pale); border-radius: 10px;
-      padding: 28px; text-align: center; cursor: pointer;
-      background: white; transition: all 0.15s;
-      margin-top: 4px;
-    }
+    /* Photo */
+    .photo-zone { border: 2px dashed var(--pale); border-radius: 10px; padding: 28px; text-align: center; cursor: pointer; background: white; transition: all 0.15s; margin-top: 4px; }
     .photo-zone:hover { border-color: var(--mid); background: var(--bg); }
     .photo-zone-icon { font-size: 32px; margin-bottom: 8px; }
     .photo-zone-text { font-size: 14px; color: var(--mid); font-weight: 600; }
     .photo-zone-hint { font-size: 12px; color: var(--sky); margin-top: 4px; }
-    .photo-preview {
-      display: none; margin-top: 12px;
-      border-radius: 8px; overflow: hidden;
-      max-height: 200px; width: 100%; object-fit: cover;
-    }
+    .photo-preview { display: none; margin-top: 12px; border-radius: 8px; overflow: hidden; max-height: 200px; width: 100%; object-fit: cover; }
     .photo-preview.visible { display: block; }
     .photo-change { font-size: 12px; color: var(--mid); cursor: pointer; margin-top: 6px; text-decoration: underline; display: none; }
     .photo-change.visible { display: block; }
 
-    /* Free notice */
-    .free-notice {
-      background: #F0FFF0; border: 1.5px solid #5ACA5A;
-      border-radius: 10px; padding: 14px 18px; margin-bottom: 24px;
-      display: flex; gap: 10px; align-items: flex-start;
-    }
+    .free-notice { background: #F0FFF0; border: 1.5px solid #5ACA5A; border-radius: 10px; padding: 14px 18px; margin-bottom: 24px; display: flex; gap: 10px; align-items: flex-start; }
     .free-notice-icon { font-size: 20px; flex-shrink: 0; }
     .free-notice-text { font-size: 13px; color: #1A5A1A; line-height: 1.6; }
 
-    /* Submit button */
-    .submit-btn {
-      width: 100%; background: var(--navy); color: white;
-      border: none; padding: 16px; border-radius: 10px;
-      font-size: 17px; font-weight: 700; cursor: pointer;
-      transition: background 0.15s; margin-top: 8px;
-    }
+    .submit-btn { width: 100%; background: var(--navy); color: white; border: none; padding: 16px; border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer; transition: background 0.15s; margin-top: 8px; }
     .submit-btn:hover { background: var(--mid); }
     .submit-btn:disabled { background: var(--pale); cursor: not-allowed; }
 
-    /* Success */
-    .success-wrap {
-      display: none; text-align: center;
-      background: white; border-radius: 14px;
-      padding: 48px 32px; margin-top: 40px;
-      box-shadow: 0 2px 20px rgba(11,61,107,0.08);
-    }
+    .success-wrap { display: none; text-align: center; background: white; border-radius: 14px; padding: 48px 32px; margin-top: 40px; box-shadow: 0 2px 20px rgba(11,61,107,0.08); }
     .success-wrap.visible { display: block; }
     .success-icon { font-size: 56px; margin-bottom: 16px; }
     .success-title { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
     .success-sub { font-size: 15px; color: var(--mid); line-height: 1.6; margin-bottom: 24px; }
     .success-btn { display: inline-block; background: var(--mid); color: white; padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; }
 
-    /* Error */
     .error-msg { font-size: 12px; color: #C0392B; margin-top: 4px; display: none; }
     .error-msg.visible { display: block; }
+
+    .hidden-section { display: none; }
+    .visible-section { display: block; }
 
     @media (max-width: 640px) {
       nav { padding: 12px 16px; }
       .form-wrap { padding: 28px 16px 60px; }
       .field-row { grid-template-columns: 1fr; }
-      .height-grid { grid-template-columns: repeat(2, 1fr); }
+      .option-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+      .option-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
@@ -188,263 +127,292 @@
 
 <div class="hero">
   <p class="hero-label">JuniorCaddie Marketplace</p>
-  <h1>List your clubs for free</h1>
-  <p class="hero-sub">Reach junior golf families across the UK. Sized by height — so the right clubs find the right child.</p>
+  <h1>List your item for free</h1>
+  <p class="hero-sub">Clubs or clothing — reach junior golf families across the UK. Free to list, goes live instantly.</p>
 </div>
 
 <div class="form-wrap">
 
   <div class="free-notice">
     <div class="free-notice-icon">🎉</div>
-    <div class="free-notice-text"><strong>Completely free to list.</strong> No fees, no registration required. Your listing goes live instantly and reaches families searching by their child's height.</div>
+    <div class="free-notice-text"><strong>Completely free to list.</strong> No fees, no registration. Your listing goes live instantly and reaches families searching across the UK.</div>
   </div>
 
-  <!-- The form -->
   <div id="listing-form">
 
-    <!-- About the clubs -->
+    <!-- Step 1: Category -->
     <div class="form-section">
-      <div class="form-section-title">🏌️ About the clubs</div>
-
-      <div class="field">
-        <label>Club brand *</label>
-        <select id="f-brand">
-          <option value="">Select brand</option>
-          <option>US Kids Golf</option>
-          <option>Ping</option>
-          <option>TaylorMade</option>
-          <option>Callaway</option>
-          <option>Titleist</option>
-          <option>Cleveland</option>
-          <option>Wilson</option>
-          <option>Cobra</option>
-          <option>Srixon</option>
-          <option>Other / Unknown</option>
-        </select>
-        <div class="error-msg" id="err-brand">Please select a brand</div>
-      </div>
-
-      <div class="field">
-        <label>What are you selling? *</label>
-        <select id="f-type">
-          <option value="">Select type</option>
-          <option value="full_set">Full set</option>
-          <option value="irons">Iron set</option>
-          <option value="driver">Driver</option>
-          <option value="woods">Fairway woods</option>
-          <option value="hybrid">Hybrid</option>
-          <option value="wedge">Wedge(s)</option>
-          <option value="putter">Putter</option>
-          <option value="other">Other</option>
-        </select>
-        <div class="error-msg" id="err-type">Please select what you're selling</div>
-      </div>
-
-      <div class="field">
-        <label>Brief description *</label>
-        <div class="hint">Model name if known, number of clubs, any accessories included</div>
-        <textarea id="f-desc" placeholder="e.g. US Kids Golf UL54 full set — 7 clubs including putter. Bought new 2023, used for one season. Bag included."></textarea>
-        <div class="error-msg" id="err-desc">Please add a description</div>
-      </div>
-    </div>
-
-    <!-- Player height -->
-    <div class="form-section">
-      <div class="form-section-title">📏 Player height these clubs suit</div>
-      <div class="field">
-        <div class="hint">Select the height range these clubs are designed for. This is how buyers will find them.</div>
-        <div class="height-grid" id="height-grid">
-          <label class="height-option" onclick="selectHeight(this, 91, 100)">
-            <span class="height-opt-range">91–100cm</span>
-            <span class="height-opt-label">Under 3ft 4in</span>
-          </label>
-          <label class="height-option" onclick="selectHeight(this, 100, 110)">
-            <span class="height-opt-range">100–110cm</span>
-            <span class="height-opt-label">3ft 4in – 3ft 7in</span>
-          </label>
-          <label class="height-option" onclick="selectHeight(this, 110, 120)">
-            <span class="height-opt-range">110–120cm</span>
-            <span class="height-opt-label">3ft 7in – 3ft 11in</span>
-          </label>
-          <label class="height-option" onclick="selectHeight(this, 120, 130)">
-            <span class="height-opt-range">120–130cm</span>
-            <span class="height-opt-label">3ft 11in – 4ft 3in</span>
-          </label>
-          <label class="height-option" onclick="selectHeight(this, 130, 145)">
-            <span class="height-opt-range">130–145cm</span>
-            <span class="height-opt-label">4ft 3in – 4ft 9in</span>
-          </label>
-          <label class="height-option" onclick="selectHeight(this, 145, 160)">
-            <span class="height-opt-range">145–160cm</span>
-            <span class="height-opt-label">4ft 9in – 5ft 3in</span>
-          </label>
-          <label class="height-option" onclick="selectHeight(this, 160, 175)">
-            <span class="height-opt-range">160–175cm</span>
-            <span class="height-opt-label">5ft 3in – 5ft 9in</span>
-          </label>
-          <label class="height-option" onclick="selectHeight(this, 175, 200)">
-            <span class="height-opt-range">175cm+</span>
-            <span class="height-opt-label">5ft 9in and above</span>
-          </label>
-          <label class="height-option" onclick="selectHeight(this, 0, 0)">
-            <span class="height-opt-range">Not sure</span>
-            <span class="height-opt-label">I'll describe in listing</span>
-          </label>
+      <div class="form-section-title">What are you selling?</div>
+      <div class="category-chooser">
+        <div class="cat-btn" onclick="selectCategory('clubs', this)">
+          <span class="cat-emoji">🏌️</span>
+          <span class="cat-title">Golf clubs</span>
+          <span class="cat-desc">Full sets, irons, drivers, putters & more</span>
         </div>
-        <div class="error-msg" id="err-height">Please select a height range</div>
+        <div class="cat-btn" onclick="selectCategory('clothing', this)">
+          <span class="cat-emoji">👕</span>
+          <span class="cat-title">Clothing</span>
+          <span class="cat-desc">Polo shirts, waterproofs, jumpers, trousers</span>
+        </div>
       </div>
+      <div class="error-msg" id="err-category">Please select what you're selling</div>
     </div>
 
-    <!-- Condition -->
-    <div class="form-section">
-      <div class="form-section-title">⭐ Condition</div>
-      <div class="field">
-        <div class="condition-grid">
-          <label class="condition-option" onclick="selectCondition(this, 'excellent')">
-            <span class="cond-emoji">✨</span>
-            <span class="cond-label">Excellent</span>
-            <span class="cond-desc">Barely used, like new</span>
-          </label>
-          <label class="condition-option" onclick="selectCondition(this, 'good')">
-            <span class="cond-emoji">👍</span>
-            <span class="cond-label">Good</span>
-            <span class="cond-desc">Normal use, some marks</span>
-          </label>
-          <label class="condition-option" onclick="selectCondition(this, 'fair')">
-            <span class="cond-emoji">✅</span>
-            <span class="cond-label">Fair</span>
-            <span class="cond-desc">Well used but works well</span>
-          </label>
+    <!-- CLUBS FIELDS -->
+    <div id="clubs-fields" class="hidden-section">
+
+      <div class="form-section">
+        <div class="form-section-title">🏌️ About the clubs</div>
+        <div class="field">
+          <label>Club brand *</label>
+          <select id="f-brand">
+            <option value="">Select brand</option>
+            <option>US Kids Golf</option>
+            <option>Ping</option>
+            <option>TaylorMade</option>
+            <option>Callaway</option>
+            <option>Titleist</option>
+            <option>Cleveland</option>
+            <option>Wilson</option>
+            <option>Cobra</option>
+            <option>Srixon</option>
+            <option>Other / Unknown</option>
+          </select>
+          <div class="error-msg" id="err-brand">Please select a brand</div>
+        </div>
+        <div class="field">
+          <label>What are you selling? *</label>
+          <select id="f-type">
+            <option value="">Select type</option>
+            <option value="full_set">Full set</option>
+            <option value="irons">Iron set</option>
+            <option value="driver">Driver</option>
+            <option value="woods">Fairway woods</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="wedge">Wedge(s)</option>
+            <option value="putter">Putter</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="error-msg" id="err-type">Please select what you're selling</div>
+        </div>
+        <div class="field">
+          <label>Brief description *</label>
+          <div class="hint">Model name if known, number of clubs, any accessories included</div>
+          <textarea id="f-desc-clubs" placeholder="e.g. US Kids Golf UL54 full set — 7 clubs including putter. Bought new 2023, used for one season. Bag included."></textarea>
+          <div class="error-msg" id="err-desc-clubs">Please add a description</div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">📏 Player height these clubs suit</div>
+        <div class="field">
+          <div class="hint">Select the height range these clubs are designed for. This is how buyers find them.</div>
+          <div class="option-grid cols-3" id="height-grid">
+            <div class="option-item" onclick="selectHeight(this, 91, 100)"><span class="opt-main">91–100cm</span><span class="opt-sub">Under 3ft 4in</span></div>
+            <div class="option-item" onclick="selectHeight(this, 100, 110)"><span class="opt-main">100–110cm</span><span class="opt-sub">3ft 4in – 3ft 7in</span></div>
+            <div class="option-item" onclick="selectHeight(this, 110, 120)"><span class="opt-main">110–120cm</span><span class="opt-sub">3ft 7in – 3ft 11in</span></div>
+            <div class="option-item" onclick="selectHeight(this, 120, 130)"><span class="opt-main">120–130cm</span><span class="opt-sub">3ft 11in – 4ft 3in</span></div>
+            <div class="option-item" onclick="selectHeight(this, 130, 145)"><span class="opt-main">130–145cm</span><span class="opt-sub">4ft 3in – 4ft 9in</span></div>
+            <div class="option-item" onclick="selectHeight(this, 145, 160)"><span class="opt-main">145–160cm</span><span class="opt-sub">4ft 9in – 5ft 3in</span></div>
+            <div class="option-item" onclick="selectHeight(this, 160, 175)"><span class="opt-main">160–175cm</span><span class="opt-sub">5ft 3in – 5ft 9in</span></div>
+            <div class="option-item" onclick="selectHeight(this, 175, 200)"><span class="opt-main">175cm+</span><span class="opt-sub">5ft 9in and above</span></div>
+            <div class="option-item" onclick="selectHeight(this, 0, 0)"><span class="opt-main">Not sure</span><span class="opt-sub">I'll describe in listing</span></div>
+          </div>
+          <div class="error-msg" id="err-height">Please select a height range</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CLOTHING FIELDS -->
+    <div id="clothing-fields" class="hidden-section">
+
+      <div class="form-section">
+        <div class="form-section-title">👕 About the clothing</div>
+
+        <div class="field">
+          <label>Garment type *</label>
+          <div class="option-grid cols-3">
+            <div class="option-item" onclick="selectOpt(this, 'clothing-type', 'polo')"><span class="opt-emoji">👔</span><span class="opt-main">Polo shirt</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-type', 'waterproof')"><span class="opt-emoji">🌧️</span><span class="opt-main">Waterproof</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-type', 'jumper')"><span class="opt-emoji">🧥</span><span class="opt-main">Jumper / Sweater</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-type', 'trousers')"><span class="opt-emoji">👖</span><span class="opt-main">Trousers</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-type', 'shorts')"><span class="opt-emoji">🩳</span><span class="opt-main">Shorts</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-type', 'other')"><span class="opt-emoji">🎽</span><span class="opt-main">Other</span></div>
+          </div>
+          <div class="error-msg" id="err-clothing-type">Please select a garment type</div>
+        </div>
+
+        <div class="field">
+          <label>Gender *</label>
+          <div class="option-grid cols-3">
+            <div class="option-item" onclick="selectOpt(this, 'clothing-gender', 'boys')"><span class="opt-emoji">👦</span><span class="opt-main">Boys</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-gender', 'girls')"><span class="opt-emoji">👧</span><span class="opt-main">Girls</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-gender', 'unisex')"><span class="opt-emoji">🧒</span><span class="opt-main">Unisex</span></div>
+          </div>
+          <div class="error-msg" id="err-clothing-gender">Please select a gender</div>
+        </div>
+
+        <div class="field">
+          <label>Size *</label>
+          <div class="option-grid cols-4">
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '3-4y')"><span class="opt-main">3–4y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '4-5y')"><span class="opt-main">4–5y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '5-6y')"><span class="opt-main">5–6y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '6-7y')"><span class="opt-main">6–7y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '7-8y')"><span class="opt-main">7–8y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '8-9y')"><span class="opt-main">8–9y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '9-10y')"><span class="opt-main">9–10y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '10-11y')"><span class="opt-main">10–11y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '11-12y')"><span class="opt-main">11–12y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '12-13y')"><span class="opt-main">12–13y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', '13-14y')"><span class="opt-main">13–14y</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', 'XS')"><span class="opt-main">XS</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', 'S')"><span class="opt-main">S</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', 'M')"><span class="opt-main">M</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', 'L')"><span class="opt-main">L</span></div>
+            <div class="option-item" onclick="selectOpt(this, 'clothing-size', 'other')"><span class="opt-main">Other</span></div>
+          </div>
+          <div class="error-msg" id="err-clothing-size">Please select a size</div>
+        </div>
+
+        <div class="field">
+          <label>Brand</label>
+          <input type="text" id="f-clothing-brand" placeholder="e.g. Ping, FootJoy, Galvin Green, Under Armour"/>
+        </div>
+
+        <div class="field">
+          <label>Description *</label>
+          <div class="hint">Colour, any specific details, reason for selling</div>
+          <textarea id="f-desc-clothing" placeholder="e.g. Navy blue Ping polo shirt, worn twice, in perfect condition. Selling as my son has grown out of it."></textarea>
+          <div class="error-msg" id="err-desc-clothing">Please add a description</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SHARED: Condition (both clubs and clothing) -->
+    <div id="shared-fields" class="hidden-section">
+
+      <div class="form-section">
+        <div class="form-section-title">⭐ Condition</div>
+        <div class="option-grid cols-3">
+          <div class="option-item" onclick="selectOpt(this, 'condition', 'excellent')"><span class="opt-emoji">✨</span><span class="opt-main">Excellent</span><span class="opt-sub">Barely used, like new</span></div>
+          <div class="option-item" onclick="selectOpt(this, 'condition', 'good')"><span class="opt-emoji">👍</span><span class="opt-main">Good</span><span class="opt-sub">Normal use, some marks</span></div>
+          <div class="option-item" onclick="selectOpt(this, 'condition', 'fair')"><span class="opt-emoji">✅</span><span class="opt-main">Fair</span><span class="opt-sub">Well used but works well</span></div>
         </div>
         <div class="error-msg" id="err-condition">Please select a condition</div>
       </div>
-    </div>
 
-    <!-- Photo -->
-    <div class="form-section">
-      <div class="form-section-title">📸 Photo</div>
-      <div class="field">
-        <div class="hint">A clear photo makes your listing sell faster. Recommended but not required.</div>
-        <div class="photo-zone" id="photo-zone" onclick="openUploadWidget()">
-          <div class="photo-zone-icon">📷</div>
-          <div class="photo-zone-text">Click to add a photo</div>
-          <div class="photo-zone-hint">JPG or PNG · Max 10MB</div>
-        </div>
-        <img class="photo-preview" id="photo-preview" src="" alt="Listing photo"/>
-        <div class="photo-change" id="photo-change" onclick="openUploadWidget()">Change photo</div>
-      </div>
-    </div>
-
-    <!-- Pricing -->
-    <div class="form-section">
-      <div class="form-section-title">💷 Price</div>
-      <div class="field">
-        <label>Asking price (£) *</label>
-        <div class="hint">What price are you looking for? Buyers may make offers.</div>
-        <input type="number" id="f-price" placeholder="e.g. 75" min="1" max="999"/>
-        <div class="error-msg" id="err-price">Please enter a price</div>
-      </div>
-    </div>
-
-    <!-- Your details -->
-    <div class="form-section">
-      <div class="form-section-title">👤 Your details</div>
-
-      <div class="field-row">
+      <div class="form-section">
+        <div class="form-section-title">📸 Photo</div>
         <div class="field">
-          <label>Your first name *</label>
-          <input type="text" id="f-name" placeholder="e.g. Sarah" autocomplete="given-name"/>
-          <div class="error-msg" id="err-name">Please enter your name</div>
+          <div class="hint">A clear photo makes your listing sell faster. Recommended but not required.</div>
+          <div class="photo-zone" id="photo-zone" onclick="openUploadWidget()">
+            <div class="photo-zone-icon">📷</div>
+            <div class="photo-zone-text">Click to add a photo</div>
+            <div class="photo-zone-hint">JPG or PNG · Max 10MB</div>
+          </div>
+          <img class="photo-preview" id="photo-preview" src="" alt="Listing photo"/>
+          <div class="photo-change" id="photo-change" onclick="openUploadWidget()">Change photo</div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">💷 Price</div>
+        <div class="field">
+          <label>Asking price (£) *</label>
+          <input type="number" id="f-price" placeholder="e.g. 25" min="1" max="999"/>
+          <div class="error-msg" id="err-price">Please enter a price</div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">👤 Your details</div>
+        <div class="field-row">
+          <div class="field">
+            <label>Your first name *</label>
+            <input type="text" id="f-name" placeholder="e.g. Sarah" autocomplete="given-name"/>
+            <div class="error-msg" id="err-name">Please enter your name</div>
+          </div>
+          <div class="field">
+            <label>County *</label>
+            <select id="f-county">
+              <option value="">Select county</option>
+              <option>Hertfordshire</option><option>Essex</option><option>Middlesex</option>
+              <option>Surrey</option><option>Sussex</option><option>Hampshire</option>
+              <option>Kent</option><option>Bedfordshire</option><option>Cambridgeshire</option>
+              <option>Lancashire</option><option>Yorkshire</option><option>Cheshire</option>
+              <option>Gloucestershire</option><option>Devon</option><option>Norfolk</option>
+              <option>Suffolk</option><option>Oxfordshire</option><option>Berkshire</option>
+              <option>Other England</option><option>Scotland</option><option>Wales</option>
+            </select>
+            <div class="error-msg" id="err-county">Please select your county</div>
+          </div>
         </div>
         <div class="field">
-          <label>County *</label>
-          <select id="f-county">
-            <option value="">Select county</option>
-            <option>Hertfordshire</option>
-            <option>Essex</option>
-            <option>Middlesex</option>
-            <option>Surrey</option>
-            <option>Sussex</option>
-            <option>Hampshire</option>
-            <option>Kent</option>
-            <option>Bedfordshire</option>
-            <option>Cambridgeshire</option>
-            <option>Lancashire</option>
-            <option>Yorkshire</option>
-            <option>Cheshire</option>
-            <option>Gloucestershire</option>
-            <option>Devon</option>
-            <option>Norfolk</option>
-            <option>Suffolk</option>
-            <option>Oxfordshire</option>
-            <option>Berkshire</option>
-            <option>Other England</option>
-            <option>Scotland</option>
-            <option>Wales</option>
-          </select>
-          <div class="error-msg" id="err-county">Please select your county</div>
+          <label>Contact email *</label>
+          <div class="hint">Buyers contact you directly. Never shown publicly.</div>
+          <input type="email" id="f-email" placeholder="you@example.com" autocomplete="email"/>
+          <div class="error-msg" id="err-email">Please enter a valid email</div>
+        </div>
+        <div class="field" style="background:#EEF4FB; border-radius:8px; padding:12px 14px; font-size:13px; color:#2A5070; line-height:1.6;">
+          🔒 Your email is only shared with buyers who click "Enquire." It won't appear publicly.
         </div>
       </div>
 
-      <div class="field">
-        <label>Contact email *</label>
-        <div class="hint">Buyers will contact you directly at this address. We never share it publicly.</div>
-        <input type="email" id="f-email" placeholder="you@example.com" autocomplete="email"/>
-        <div class="error-msg" id="err-email">Please enter a valid email address</div>
-      </div>
+      <button class="submit-btn" id="submit-btn" onclick="submitListing()">List my item for free →</button>
+      <p style="font-size:12px; color:var(--sky); text-align:center; margin-top:10px;">Your listing goes live instantly. No approval needed.</p>
 
-      <div class="field" style="background:#EEF4FB; border-radius:8px; padding:12px 14px; font-size:13px; color:#2A5070; line-height:1.6;">
-        🔒 Your email is only shared with buyers who click "Enquire" on your listing. It won't appear publicly on the page.
-      </div>
     </div>
-
-    <button class="submit-btn" id="submit-btn" onclick="submitListing()">
-      List my clubs for free →
-    </button>
-    <p style="font-size:12px; color:var(--sky); text-align:center; margin-top:10px;">Your listing goes live instantly. No approval needed.</p>
 
   </div>
 
-  <!-- Success state -->
+  <!-- Success -->
   <div class="success-wrap" id="success-wrap">
     <div class="success-icon">⛳</div>
-    <div class="success-title">Your clubs are listed!</div>
-    <div class="success-sub">Your listing is now live on the JuniorCaddie marketplace. Interested buyers will contact you directly at the email you provided.<br><br>Thank you for helping keep junior golf affordable.</div>
+    <div class="success-title">Your listing is live!</div>
+    <div class="success-sub">Interested buyers will contact you directly. Thank you for helping keep junior golf affordable.</div>
     <a href="marketplace.html" class="success-btn">View the marketplace →</a>
   </div>
 
 </div>
 
 <script>
-  // ── Supabase ──
   const { createClient } = supabase;
-  const sb = createClient(
-    'https://amwwngkktfxqrpisxqza.supabase.co',
-    'sb_publishable_CtB5nuLgIa97TjKGMHfGTQ_v8eENfnG'
-  );
+  const sb = createClient('https://amwwngkktfxqrpisxqza.supabase.co', 'sb_publishable_CtB5nuLgIa97TjKGMHfGTQ_v8eENfnG');
 
-  // ── State ──
+  let selectedCategory = null;
   let selectedHeight = null;
-  let selectedCondition = null;
   let uploadedPhotoUrl = null;
+  const selections = {};
 
-  // ── Height selector ──
+  function selectCategory(cat, el) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedCategory = cat;
+    document.getElementById('err-category').classList.remove('visible');
+    document.getElementById('clubs-fields').className = cat === 'clubs' ? 'visible-section' : 'hidden-section';
+    document.getElementById('clothing-fields').className = cat === 'clothing' ? 'visible-section' : 'hidden-section';
+    document.getElementById('shared-fields').className = 'visible-section';
+  }
+
+  function selectOpt(el, group, val) {
+    el.closest('.option-grid').querySelectorAll('.option-item').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selections[group] = val;
+    const errEl = document.getElementById('err-' + group);
+    if (errEl) errEl.classList.remove('visible');
+  }
+
   function selectHeight(el, min, max) {
-    document.querySelectorAll('.height-option').forEach(o => o.classList.remove('selected'));
+    document.querySelectorAll('#height-grid .option-item').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
     selectedHeight = { min, max };
     document.getElementById('err-height').classList.remove('visible');
   }
 
-  // ── Condition selector ──
-  function selectCondition(el, val) {
-    document.querySelectorAll('.condition-option').forEach(o => o.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedCondition = val;
-    document.getElementById('err-condition').classList.remove('visible');
-  }
-
-  // ── Cloudinary Upload Widget ──
   function openUploadWidget() {
     cloudinary.openUploadWidget({
       cloudName: 'dywsk8iat',
@@ -452,25 +420,8 @@
       sources: ['local', 'camera'],
       multiple: false,
       maxFileSize: 10000000,
-      clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp'],
-      cropping: false,
-      styles: {
-        palette: {
-          window: '#FFFFFF',
-          sourceBg: '#EEF4FB',
-          windowBorder: '#B8D8F0',
-          tabIcon: '#0B3D6B',
-          inactiveTabIcon: '#7BBDE0',
-          menuIcons: '#0B3D6B',
-          link: '#1A6EA8',
-          action: '#0B3D6B',
-          inProgress: '#1A6EA8',
-          complete: '#22C55E',
-          error: '#C0392B',
-          textDark: '#0B3D6B',
-          textLight: '#FFFFFF'
-        }
-      }
+      clientAllowedFormats: ['jpg','jpeg','png','webp'],
+      styles: { palette: { window:'#FFFFFF', sourceBg:'#EEF4FB', windowBorder:'#B8D8F0', tabIcon:'#0B3D6B', link:'#1A6EA8', action:'#0B3D6B', complete:'#22C55E', error:'#C0392B', textDark:'#0B3D6B', textLight:'#FFFFFF' } }
     }, (error, result) => {
       if (!error && result && result.event === 'success') {
         uploadedPhotoUrl = result.info.secure_url;
@@ -483,53 +434,85 @@
     });
   }
 
-  // ── Validation ──
   function validate() {
     let ok = true;
-    const checks = [
-      ['f-brand', 'err-brand', v => v !== ''],
-      ['f-type', 'err-type', v => v !== ''],
-      ['f-desc', 'err-desc', v => v.trim().length > 10],
-      ['f-price', 'err-price', v => v > 0 && v < 1000],
-      ['f-name', 'err-name', v => v.trim().length > 1],
-      ['f-county', 'err-county', v => v !== ''],
-      ['f-email', 'err-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],
-    ];
-    checks.forEach(([fieldId, errId, check]) => {
-      const el = document.getElementById(fieldId);
-      const err = document.getElementById(errId);
-      const val = el.value;
-      if (!check(val)) { err.classList.add('visible'); ok = false; }
-      else err.classList.remove('visible');
-    });
-    if (!selectedHeight) { document.getElementById('err-height').classList.add('visible'); ok = false; }
-    if (!selectedCondition) { document.getElementById('err-condition').classList.add('visible'); ok = false; }
+
+    if (!selectedCategory) { document.getElementById('err-category').classList.add('visible'); ok = false; }
+
+    if (selectedCategory === 'clubs') {
+      if (!document.getElementById('f-brand').value) { document.getElementById('err-brand').classList.add('visible'); ok = false; }
+      else document.getElementById('err-brand').classList.remove('visible');
+      if (!document.getElementById('f-type').value) { document.getElementById('err-type').classList.add('visible'); ok = false; }
+      else document.getElementById('err-type').classList.remove('visible');
+      if (document.getElementById('f-desc-clubs').value.trim().length < 5) { document.getElementById('err-desc-clubs').classList.add('visible'); ok = false; }
+      else document.getElementById('err-desc-clubs').classList.remove('visible');
+      if (!selectedHeight) { document.getElementById('err-height').classList.add('visible'); ok = false; }
+    }
+
+    if (selectedCategory === 'clothing') {
+      if (!selections['clothing-type']) { document.getElementById('err-clothing-type').classList.add('visible'); ok = false; }
+      else document.getElementById('err-clothing-type').classList.remove('visible');
+      if (!selections['clothing-gender']) { document.getElementById('err-clothing-gender').classList.add('visible'); ok = false; }
+      else document.getElementById('err-clothing-gender').classList.remove('visible');
+      if (!selections['clothing-size']) { document.getElementById('err-clothing-size').classList.add('visible'); ok = false; }
+      else document.getElementById('err-clothing-size').classList.remove('visible');
+      if (document.getElementById('f-desc-clothing').value.trim().length < 5) { document.getElementById('err-desc-clothing').classList.add('visible'); ok = false; }
+      else document.getElementById('err-desc-clothing').classList.remove('visible');
+    }
+
+    if (!selections['condition']) { document.getElementById('err-condition').classList.add('visible'); ok = false; }
+    else document.getElementById('err-condition').classList.remove('visible');
+
+    const price = parseFloat(document.getElementById('f-price').value);
+    if (!price || price < 1) { document.getElementById('err-price').classList.add('visible'); ok = false; }
+    else document.getElementById('err-price').classList.remove('visible');
+
+    if (document.getElementById('f-name').value.trim().length < 2) { document.getElementById('err-name').classList.add('visible'); ok = false; }
+    else document.getElementById('err-name').classList.remove('visible');
+
+    if (!document.getElementById('f-county').value) { document.getElementById('err-county').classList.add('visible'); ok = false; }
+    else document.getElementById('err-county').classList.remove('visible');
+
+    const email = document.getElementById('f-email').value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('err-email').classList.add('visible'); ok = false; }
+    else document.getElementById('err-email').classList.remove('visible');
+
     return ok;
   }
 
-  // ── Submit ──
   async function submitListing() {
     if (!validate()) {
       document.querySelector('.error-msg.visible')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
     const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    btn.textContent = 'Listing your clubs...';
+    btn.disabled = true; btn.textContent = 'Listing your item...';
+
+    const isClubs = selectedCategory === 'clubs';
+    const desc = isClubs
+      ? document.getElementById('f-desc-clubs').value.trim()
+      : document.getElementById('f-desc-clothing').value.trim();
 
     const listing = {
+      category: selectedCategory,
       seller_name: document.getElementById('f-name').value.trim(),
       seller_email: document.getElementById('f-email').value.trim(),
       seller_county: document.getElementById('f-county').value,
-      club_brand: document.getElementById('f-brand').value,
-      club_type: document.getElementById('f-type').value,
-      player_height_min: selectedHeight.min,
-      player_height_max: selectedHeight.max,
-      condition: selectedCondition,
+      condition: selections['condition'],
       price: Math.round(parseFloat(document.getElementById('f-price').value) * 100),
-      description: document.getElementById('f-desc').value.trim(),
+      description: desc,
       photo_url: uploadedPhotoUrl || null,
-      status: 'active'
+      status: 'active',
+      // Clubs
+      club_brand: isClubs ? document.getElementById('f-brand').value : null,
+      club_type: isClubs ? document.getElementById('f-type').value : null,
+      player_height_min: isClubs && selectedHeight ? selectedHeight.min : null,
+      player_height_max: isClubs && selectedHeight ? selectedHeight.max : null,
+      // Clothing
+      clothing_type: !isClubs ? selections['clothing-type'] : null,
+      clothing_gender: !isClubs ? selections['clothing-gender'] : null,
+      clothing_size: !isClubs ? selections['clothing-size'] : null,
+      clothing_brand: !isClubs ? (document.getElementById('f-clothing-brand').value.trim() || null) : null,
     };
 
     try {
@@ -540,12 +523,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       console.error(err);
-      btn.disabled = false;
-      btn.textContent = 'List my clubs for free →';
+      btn.disabled = false; btn.textContent = 'List my item for free →';
       alert('Something went wrong. Please try again or email hello@juniorcaddie.co.uk');
     }
   }
 </script>
-
 </body>
 </html>
