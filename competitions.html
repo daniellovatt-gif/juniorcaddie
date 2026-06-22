@@ -213,6 +213,49 @@
     .logo-e.light .logo-e-rule { background: linear-gradient(to right, #0B3D6B, #1A6EA8, #7BBDE0); }
     .logo-e.light .logo-e-caddie { color: #1A6EA8; }
 
+    /* ── EMAIL GATE ── */
+    .gate-overlay {
+      position: fixed; inset: 0;
+      background: rgba(11,61,107,0.55);
+      backdrop-filter: blur(3px);
+      z-index: 500; display: none;
+      align-items: flex-end; justify-content: center;
+    }
+    .gate-overlay.visible { display: flex; }
+    .gate-panel {
+      background: white; border-radius: 20px 20px 0 0;
+      width: min(520px, 100vw); padding: 32px 28px 40px;
+      animation: gateUp 0.35s cubic-bezier(0.34,1.2,0.64,1);
+    }
+    @keyframes gateUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .gate-dismiss {
+      position: absolute; top: 14px; right: 16px;
+      background: #EEF4FB; border: none; border-radius: 50%;
+      width: 28px; height: 28px; font-size: 14px;
+      cursor: pointer; color: var(--sky);
+    }
+    .gate-dismiss:hover { background: var(--pale); color: var(--navy); }
+    .gate-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+    .gate-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.2; }
+    .gate-sub { font-size: 14px; color: var(--mid); line-height: 1.6; margin-bottom: 20px; }
+    .gate-form { display: flex; gap: 8px; }
+    .gate-input {
+      flex: 1; padding: 12px 14px; border: 1.5px solid var(--pale);
+      border-radius: 8px; font-size: 15px; color: var(--navy);
+      background: #F8FBFF;
+    }
+    .gate-input:focus { outline: none; border-color: var(--mid); }
+    .gate-btn {
+      background: var(--navy); color: white; border: none;
+      padding: 12px 20px; border-radius: 8px;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      white-space: nowrap; transition: background 0.15s;
+    }
+    .gate-btn:hover { background: var(--mid); }
+    .gate-skip { font-size: 12px; color: var(--sky); text-align: center; margin-top: 10px; cursor: pointer; }
+    .gate-skip:hover { color: var(--navy); }
+    .gate-reassurance { font-size: 11px; color: #AAA; text-align: center; margin-top: 6px; }
+
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
   <script type="application/ld+json">
@@ -2774,6 +2817,89 @@
   }
 
   init();
+</script>
+
+<!-- ── EMAIL GATE ── -->
+<div class="gate-overlay" id="gate-overlay">
+  <div class="gate-panel" style="position:relative;">
+    <button class="gate-dismiss" onclick="dismissGate()" aria-label="Close">✕</button>
+    <span class="gate-icon">⛳</span>
+    <div class="gate-title">New competitions added every week.</div>
+    <div class="gate-sub">Leave your email and we'll let you know when new competitions are added near you. No spam — one email at most per week.</div>
+    <div class="gate-form">
+      <input class="gate-input" id="gate-email" type="email" placeholder="your@email.com" autocomplete="email"/>
+      <button class="gate-btn" onclick="submitGate()">Notify me</button>
+    </div>
+    <div class="gate-skip" onclick="dismissGate()">No thanks, just browsing</div>
+    <div class="gate-reassurance">Free. Unsubscribe any time.</div>
+  </div>
+</div>
+
+<script>
+  // Gate logic — show after scrolling past 8 competition cards
+  const GATE_KEY = 'jc_gate_dismissed';
+  let gateFired = false;
+
+  function maybeShowGate() {
+    if (gateFired) return;
+    if (sessionStorage.getItem(GATE_KEY)) return;
+    const cards = document.querySelectorAll('.comp-card');
+    if (cards.length < 8) return;
+    const card8 = cards[7];
+    const rect = card8.getBoundingClientRect();
+    if (rect.bottom < window.innerHeight) {
+      gateFired = true;
+      setTimeout(() => {
+        document.getElementById('gate-overlay').classList.add('visible');
+      }, 600);
+    }
+  }
+
+  window.addEventListener('scroll', maybeShowGate, { passive: true });
+
+  function dismissGate() {
+    document.getElementById('gate-overlay').classList.remove('visible');
+    sessionStorage.setItem(GATE_KEY, '1');
+  }
+
+  async function submitGate() {
+    const email = document.getElementById('gate-email').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('gate-email').style.borderColor = '#E05A5A';
+      document.getElementById('gate-email').focus();
+      return;
+    }
+    const btn = document.querySelector('.gate-btn');
+    btn.disabled = true; btn.textContent = 'Saving...';
+    try {
+      const res = await fetch('https://formspree.io/f/xbdewqvn', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email, source: 'competition-finder-gate', _subject: 'New signup from competition finder' })
+      });
+      if (res.ok) {
+        document.querySelector('.gate-panel').innerHTML = `
+          <div style="text-align:center; padding:16px 0;">
+            <div style="font-size:48px; margin-bottom:16px;">✅</div>
+            <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; color:#0B3D6B; margin-bottom:8px;">You're on the list.</div>
+            <div style="font-size:14px; color:#1A6EA8; margin-bottom:20px; line-height:1.6;">We'll email you when new competitions are added. Happy golfing.</div>
+            <button onclick="dismissGate()" style="background:#0B3D6B;color:white;border:none;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">Back to competitions</button>
+          </div>`;
+        sessionStorage.setItem(GATE_KEY, '1');
+      } else throw new Error();
+    } catch(e) {
+      btn.disabled = false; btn.textContent = 'Notify me';
+      window.location.href = `mailto:hello@juniorcaddie.co.uk?subject=Signup&body=Email: ${email}`;
+    }
+  }
+
+  // Close on overlay click
+  document.getElementById('gate-overlay').addEventListener('click', function(e) {
+    if (e.target === this) dismissGate();
+  });
+
+  // Close on escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') dismissGate(); });
 </script>
 
 </body>

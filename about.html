@@ -1,325 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About JuniorCaddie — Why We Built the Home of Junior Golf in the UK</title>
-  <meta name="description" content="JuniorCaddie is built by a golf parent who has navigated every stage of the junior golf journey. Our mission: make junior golf accessible, affordable and clearly signposted for every family in the UK." />
-  <link rel="canonical" href="https://www.juniorcaddie.co.uk/about.html" />
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.juniorcaddie.co.uk/about.html" />
-  <meta property="og:title" content="About JuniorCaddie — Built by a Golf Parent, For Every Golf Family" />
-  <meta property="og:description" content="The story behind JuniorCaddie — why we built it, what we believe, and why golf is the antidote to the screen in your child's pocket." />
-  <meta property="og:site_name" content="JuniorCaddie" />
-  <meta property="og:image" content="https://www.juniorcaddie.co.uk/og-image.png" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About JuniorCaddie — Built by a Golf Parent, For Every Golf Family" />
-  <meta name="twitter:description" content="The story behind JuniorCaddie — why we built it, what we believe, and why golf is the antidote to the screen in your child's pocket." />
-  <!-- Additional SEO -->
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="JuniorCaddie" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About JuniorCaddie — Our Story</title>
+  <meta name="description" content="JuniorCaddie was built by Dan Lovatt, a football coach and junior golf organiser from Hertfordshire. Great coaches, great competitions, great clubs — brought together in one place."/>
+  <link rel="canonical" href="https://www.juniorcaddie.co.uk/about.html"/>
+  <meta property="og:title" content="About JuniorCaddie — Built for Every Junior Golf Family"/>
+  <meta property="og:description" content="Great coaches, great competitions, great clubs. Just fragmented. JuniorCaddie brings it all together — free, for every family."/>
+  <meta property="og:site_name" content="JuniorCaddie"/>
+  <meta name="robots" content="index, follow"/>
+  <script defer src="/_vercel/insights/script.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      background: #EEF4FB;
-      color: #0B3D6B;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      background: #F8F6F0; color: #1A1A1A;
+      -webkit-font-smoothing: antialiased; line-height: 1.6;
     }
-    a { color: inherit; text-decoration: none; }
+    a { text-decoration: none; color: inherit; }
     :root {
-      --navy:  #0B3D6B;
-      --mid:   #1A6EA8;
-      --sky:   #5AAAD4;
-      --light: #7BBDE0;
-      --pale:  #B8D8F0;
-      --bg:    #EEF4FB;
-      --white: #ffffff;
-      --serif: Georgia, 'Times New Roman', serif;
-      --max:   760px;
+      --navy: #0B3D6B; --mid: #1A6EA8; --sky: #5AAAD4;
+      --light: #7BBDE0; --pale: #B8D8F0; --bg: #EEF4FB;
+      --white: #fff; --serif: Georgia, serif; --max: 720px;
     }
 
-    /* Nav */
     nav {
-      background: var(--bg);
-      border-bottom: 0.5px solid var(--pale);
-      padding: 16px 48px;
+      background: var(--navy); padding: 14px 48px;
       display: flex; align-items: center; justify-content: space-between;
       position: sticky; top: 0; z-index: 100;
+      border-bottom: 0.5px solid rgba(255,255,255,0.1);
     }
-    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-    .logo-junior { font-family: var(--serif); font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1; }
-    .logo-caddie { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--mid); letter-spacing: -0.5px; line-height: 1; }
-    .nav-back { font-size: 14px; color: var(--mid); text-decoration: none; }
-    .nav-back:hover { color: var(--navy); }
+    .nav-logo { text-decoration: none; }
+    .nl-junior { font-family: var(--serif); font-size: 11px; font-weight: 700; color: var(--pale); text-transform: uppercase; line-height: 0.9; display: flex; align-items: center; gap: 4px; }
+    .nl-rule { height: 1.5px; background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0); border-radius: 1px; margin: 2px 0; }
+    .nl-caddie { font-family: var(--serif); font-size: 18px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: -0.8px; line-height: 0.9; }
+    .nav-back { font-size: 13px; color: var(--sky); }
+    .nav-back:hover { color: white; }
 
-    /* Hero */
-    .hero {
+    /* Opening statement — bold, full bleed */
+    .opening {
       background: var(--navy);
       padding: 64px 24px 56px;
       text-align: center;
     }
-    .hero-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
-    .hero h1 {
+    .opening-question {
       font-family: var(--serif);
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 700; color: #EEF4FB;
-      line-height: 1.1; letter-spacing: -1.5px;
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 700; color: white;
+      letter-spacing: -1px; line-height: 1.15;
+      max-width: 680px; margin: 0 auto 20px;
+    }
+    .opening-question em { color: var(--light); font-style: normal; }
+    .opening-answer {
+      font-size: 17px; color: var(--light);
+      max-width: 520px; margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Antidote block — standalone, prominent */
+    .antidote {
+      background: #0A3560;
+      border-top: 3px solid var(--mid);
+      padding: 52px 24px;
+    }
+    .antidote-inner { max-width: var(--max); margin: 0 auto; }
+    .antidote-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; display: block; }
+    .antidote h2 {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700; color: white;
+      letter-spacing: -0.8px; line-height: 1.1;
       margin-bottom: 20px;
     }
-    .hero h1 span { color: var(--light); }
-    .hero-sub {
-      font-size: 18px; color: var(--light);
-      max-width: 560px; margin: 0 auto;
-      line-height: 1.65;
+    .antidote h2 em { color: var(--light); font-style: normal; }
+    .antidote p { font-size: 16px; color: var(--light); line-height: 1.85; margin-bottom: 16px; }
+    .antidote p strong { color: white; }
+    .antidote p:last-child { margin: 0; }
+
+    /* Friendship callout within antidote */
+    .friendship-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin: 28px 0;
     }
+    .friendship-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 18px 16px; text-align: center;
+    }
+    .friendship-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+    .friendship-text { font-size: 13px; color: var(--light); line-height: 1.55; }
+    .friendship-text strong { color: white; display: block; margin-bottom: 3px; font-size: 14px; }
 
     /* Body */
-    .body-wrap {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 64px 24px 80px;
+    .body-wrap { max-width: var(--max); margin: 0 auto; padding: 52px 24px 80px; }
+
+    /* Photo timeline */
+    .photo-timeline {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 10px; margin: 0 0 48px;
     }
-
-    .section { margin-bottom: 56px; }
-
-    .section-label {
-      font-size: 11px; color: var(--sky);
-      letter-spacing: 3px; text-transform: uppercase;
-      margin-bottom: 16px; display: block;
+    .timeline-item { text-align: center; }
+    .timeline-photo {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      border-radius: 10px; display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      background: var(--bg);
     }
+    .timeline-year { font-family: var(--serif); font-size: 13px; font-weight: 700; color: var(--navy); margin-top: 8px; display: block; }
+    .timeline-caption { font-size: 11px; color: #666; line-height: 1.4; margin-top: 3px; }
 
-    h2 {
-      font-family: var(--serif);
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 700; color: var(--navy);
-      letter-spacing: -0.5px; margin-bottom: 20px;
-      line-height: 1.2;
+    /* Body text */
+    .body-wrap p { font-size: 17px; color: #2A2A2A; line-height: 1.85; margin-bottom: 20px; }
+    .body-wrap p strong { color: #1A1A1A; font-weight: 600; }
+    .body-wrap h2 {
+      font-family: var(--serif); font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; color: var(--navy); letter-spacing: -0.5px;
+      margin: 44px 0 14px; line-height: 1.15;
     }
-
-    p {
-      font-size: 17px; color: #2A5070;
-      line-height: 1.8; margin-bottom: 18px;
-    }
-    p:last-child { margin-bottom: 0; }
-
-    p strong { color: var(--navy); font-weight: 600; }
+    .section-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 8px; }
 
     /* Pull quote */
     .pull-quote {
-      border-left: 4px solid var(--mid);
-      padding: 20px 28px;
-      margin: 36px 0;
-      background: var(--white);
+      border-left: 4px solid var(--mid); padding: 16px 24px;
+      margin: 32px 0; background: white;
       border-radius: 0 10px 10px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
-    .pull-quote p {
-      font-family: var(--serif);
-      font-size: 20px; color: var(--navy);
-      line-height: 1.6; font-style: italic;
-      margin: 0;
-    }
+    .pull-quote p { font-family: var(--serif); font-size: 18px; color: var(--navy); line-height: 1.65; font-style: italic; margin: 0; }
 
-    /* Vision/Purpose cards */
-    .vp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
-    .vp-card {
-      background: var(--white);
-      border: 0.5px solid var(--pale);
-      border-radius: 12px; padding: 28px;
+    /* Inline photo */
+    .inline-photo-wrap { margin: 32px 0; }
+    .inline-photo { width: 100%; border-radius: 12px; display: block; box-shadow: 0 4px 24px rgba(0,0,0,0.12); max-height: 480px; object-fit: cover; object-position: top; background: var(--bg); }
+    .inline-photo-caption { font-size: 12px; color: #888; margin-top: 8px; text-align: center; line-height: 1.4; }
+
+    /* Father-son */
+    .father-son-wrap { margin: 36px -24px; position: relative; overflow: hidden; }
+    .father-son-photo { width: 100%; display: block; max-height: 400px; object-fit: cover; object-position: top; background: var(--bg); }
+    .father-son-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(11,61,107,0.88), transparent);
+      padding: 36px 24px 16px; font-size: 13px; color: white; line-height: 1.5;
     }
-    .vp-label { font-size: 11px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-    .vp-text { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.35; }
 
     /* Divider */
-    .divider { height: 1px; background: var(--pale); margin: 48px 0; }
+    .divider { height: 1px; background: #E8E4DC; margin: 44px 0; }
 
-    /* Footer */
-    footer {
-      background: var(--navy); padding: 28px 48px;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    /* Commitment cards */
+    .commitment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+    .commitment-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 1px 8px rgba(0,0,0,0.06); border-top: 3px solid var(--mid); }
+    .commitment-icon { font-size: 24px; margin-bottom: 8px; }
+    .commitment-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .commitment-body { font-size: 13px; color: #555; line-height: 1.55; }
+
+    /* Closing manifesto */
+    .manifesto {
+      background: var(--navy); border-radius: 14px;
+      padding: 32px; text-align: center; margin-top: 44px;
     }
+    .manifesto p { font-family: var(--serif); font-size: clamp(17px, 2.5vw, 22px); color: white; line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+    .manifesto-attr { font-size: 12px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 28px; display: block; }
+    .manifesto-btn { display: inline-block; background: white; color: var(--navy); font-size: 15px; font-weight: 700; padding: 13px 28px; border-radius: 9px; }
+
+    footer { background: var(--navy); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .footer-copy { font-size: 12px; color: var(--sky); }
     .footer-links { display: flex; gap: 18px; }
-    .footer-links a { font-size: 12px; color: var(--light); text-decoration: none; }
+    .footer-links a { font-size: 12px; color: var(--light); }
 
     @media (max-width: 640px) {
-      nav { padding: 14px 16px; }
-      .body-wrap { padding: 40px 16px 56px; }
-      .vp-grid { grid-template-columns: 1fr; }
+      nav { padding: 12px 16px; }
+      .body-wrap { padding: 36px 16px 60px; }
+      .photo-timeline { grid-template-columns: repeat(2, 1fr); }
+      .friendship-strip { grid-template-columns: 1fr; }
+      .commitment-grid { grid-template-columns: 1fr; }
+      .father-son-wrap { margin: 36px -16px; }
       footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
     }
-
-    /* ── Logo E — Flag inline with JUNIOR ── */
-    .nav-logo { text-decoration: none; display: inline-flex; align-items: center; }
-    .logo-e { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
-    .logo-e-junior {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 15px; font-weight: 700;
-      color: #EEF4FB; letter-spacing: -0.5px;
-      text-transform: uppercase; line-height: 0.9;
-      display: flex; align-items: center; gap: 5px;
-    }
-    .logo-e-flag {
-      width: 14px; height: 28px;
-      color: #EEF4FB; flex-shrink: 0;
-      margin-bottom: -2px;
-    }
-    .logo-e-rule {
-      height: 2px;
-      width: 100%;
-      background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0);
-      border-radius: 1px;
-      margin: 3px 0;
-    }
-    .logo-e-caddie {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 22px; font-weight: 700;
-      color: #7BBDE0; letter-spacing: -1px;
-      text-transform: uppercase; line-height: 0.9;
-    }
-    /* Light version (for light nav backgrounds) */
-    .logo-e.light .logo-e-junior { color: #0B3D6B; }
-    .logo-e.light .logo-e-flag { color: #0B3D6B; }
-    .logo-e.light .logo-e-rule { background: linear-gradient(to right, #0B3D6B, #1A6EA8, #7BBDE0); }
-    .logo-e.light .logo-e-caddie { color: #1A6EA8; }
-
   </style>
-  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <svg width="20" height="60" viewBox="0 0 32 96" fill="none">
-      <line x1="8" y1="2" x2="8" y2="86" stroke="#0B3D6B" stroke-width="4" stroke-linecap="round"/>
-      <path d="M8 2 L30 12 L8 22 Z" fill="#1A6EA8"/>
-      <path d="M8 22 L26 30 L8 38 Z" fill="#7BBDE0"/>
-      <ellipse cx="8" cy="88" rx="8" ry="3" fill="#B8D8F0"/>
-    </svg>
-    <div>
-      <div class="logo-junior">Junior</div>
-      <div class="logo-caddie">Caddie</div>
+    <div class="nl-junior">Junior
+      <svg width="10" height="20" viewBox="0 0 32 68" fill="none">
+        <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+        <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+        <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+      </svg>
     </div>
+    <div class="nl-rule"></div>
+    <div class="nl-caddie">Caddie</div>
   </a>
   <a href="index.html" class="nav-back">← Back to home</a>
 </nav>
 
-<section class="hero">
-  <p class="hero-label">About JuniorCaddie</p>
-  <h1>Built by a golf parent.<br><span>For every golf family.</span></h1>
-  <p class="hero-sub">This is the platform we wished had existed when we started the journey. We built it so you don't have to figure it all out alone.</p>
-</section>
+<!-- BOLD OPENING -->
+<div class="opening">
+  <h1 class="opening-question">When did you last watch your child put their phone down <em>for four hours?</em></h1>
+  <p class="opening-answer">Junior golf does that. Every single time. And it does something else that almost nothing else in a child's life manages — it builds real friendships, in real time, with real people they've never met before.</p>
+</div>
 
+<!-- PERSONAL STORY -->
 <div class="body-wrap">
 
-  <!-- Vision & Purpose -->
-  <div class="section">
-    <span class="section-label">Who we are</span>
-    <div class="vp-grid">
-      <div class="vp-card">
-        <div class="vp-label">Our Vision</div>
-        <div class="vp-text">To be the home of junior golf in the UK.</div>
+  <span class="section-label">Our story</span>
+  <h2>Hi, I'm Dan. I built this for families like ours.</h2>
+
+  <!-- Photo timeline -->
+  <div class="photo-timeline">
+    <div class="timeline-item">
+      <img class="timeline-photo" src="https://res.cloudinary.com/dywsk8iat/image/upload/about/jacob-toddler.jpg" alt="Jacob age 2 putting in the hallway at home"/>
+      <span class="timeline-year">Age 2</span>
+      <span class="timeline-caption">The hallway at home. It had to start somewhere.</span>
+    </div>
+    <div class="timeline-item">
+      <img class="timeline-photo" src="https://res.cloudinary.com/dywsk8iat/image/upload/about/jacob-driving-range.jpg" alt="Jacob age 6 on the driving range at Letchworth"/>
+      <span class="timeline-year">Age 6</span>
+      <span class="timeline-caption">First lessons. Letchworth Family Park 3 Course.</span>
+    </div>
+    <div class="timeline-item">
+      <img class="timeline-photo" src="https://res.cloudinary.com/dywsk8iat/image/upload/about/jacob-st-andrews.jpg" alt="Jacob age 14 on the Old Course at St Andrews"/>
+      <span class="timeline-year">Age 14</span>
+      <span class="timeline-caption">The Old Course, St Andrews. The golfing trip of a lifetime.</span>
+    </div>
+    <div class="timeline-item">
+      <img class="timeline-photo" src="https://res.cloudinary.com/dywsk8iat/image/upload/about/jacob-now.jpg" alt="Jacob age 15 at Letchworth Golf Club"/>
+      <span class="timeline-year">Age 15</span>
+      <span class="timeline-caption">Letchworth Golf Club. Still loving every round.</span>
+    </div>
+  </div>
+
+  <p>I'm a football coach and junior golf organiser at Letchworth Golf Club in Hertfordshire. My son Jacob picked up a golf club at home when he was about two — not on a course, in our hallway, putting a ball against the skirting board. By the time he was six we were on the driving range at Letchworth's Family Park 3 Course, him in a Bayern Munich cap with a teddy bear clipped to his bag.</p>
+
+  <p>He's fifteen now. He plays off a low single-figure handicap. He has played the Old Course at St Andrews on a tournament camp. And the friendships he has made through junior golf — the children he met at competitions across Hertfordshire and beyond — are the ones he talks about most.</p>
+
+  <div class="pull-quote">
+    <p>"I didn't set out to build a platform. I set out to answer the questions every golf parent faces — and realised nobody had put the answers in one place."</p>
+  </div>
+
+  <p>Junior golf in the UK has everything it needs. There are outstanding coaches at clubs across the country. There are dedicated county organisers who give enormous amounts of their time for no recognition. There are brilliant competitions — from first junior opens to the county championships — that give children experiences they will never forget. The raw material is extraordinary.</p>
+
+  <p><strong>But it is fragmented.</strong> Competitions scattered across county websites. Guidance buried in club newsletters. Equipment advice that contradicts itself. No single place where a family arriving in junior golf for the first time can find everything they need.</p>
+
+  <p>JuniorCaddie is an attempt to change that — to bring together what already exists and make it accessible to every family, not just those who already know the right people.</p>
+
+  <!-- Father and son -->
+  <div class="father-son-wrap" style="margin-top:36px;">
+    <img class="father-son-photo" src="https://res.cloudinary.com/dywsk8iat/image/upload/about/dan-and-jacob.jpg" alt="Dan and Jacob Lovatt at Letchworth Golf Club"/>
+    <div class="father-son-caption">Dan and Jacob at Letchworth Golf Club, 2026.</div>
+  </div>
+
+</div>
+
+<!-- ANTIDOTE SECTION -->
+<div class="antidote">
+  <div class="antidote-inner">
+    <span class="antidote-label">Why golf matters more than ever</span>
+    <h2>The antidote to the screen <em>in their pocket.</em></h2>
+
+    <p>Think about what a round of junior golf actually asks of a child. They walk up to the first tee, introduce themselves to three people they have never met, and then spend four hours in conversation — outdoors, without an audience, without a feed, without likes. They have to listen. They have to be present. They have to keep going when it goes wrong.</p>
+
+    <p><strong>These are not soft skills. They are the foundational capacities of a functioning human being.</strong> And they are precisely what the architecture of social media is designed to bypass.</p>
+
+    <div class="friendship-strip">
+      <div class="friendship-card">
+        <span class="friendship-icon">🤝</span>
+        <div class="friendship-text"><strong>Real friendships</strong>Built over four hours of shared honesty — not a group chat or a comment thread.</div>
       </div>
-      <div class="vp-card">
-        <div class="vp-label">Our Purpose</div>
-        <div class="vp-text">To give junior golf families the knowledge, community and equipment they need to make the most of everything the game offers their child.</div>
+      <div class="friendship-card">
+        <span class="friendship-icon">🌿</span>
+        <div class="friendship-text"><strong>Four hours outdoors</strong>Walking, talking, thinking. No algorithm deciding what they see next.</div>
+      </div>
+      <div class="friendship-card">
+        <span class="friendship-icon">⚖️</span>
+        <div class="friendship-text"><strong>Character under pressure</strong>Calling your own penalties. Congratulating someone beating you. Golf teaches this every round.</div>
       </div>
     </div>
+
+    <p>The friendships built in junior golf are some of the most enduring in a young person's life. Not because golf is special — but because the format is. Four hours. Walking side by side. Talking about everything and nothing. You cannot fake that kind of connection, and you cannot replicate it on a screen.</p>
+
+    <p>The etiquette of golf is not a relic of a more formal era. It is load-bearing. You rake the bunker for the next player. You stand still when someone is playing. You shake hands at the end, whatever the result. <strong>A daily practice in consideration for others that most modern experiences simply do not require.</strong></p>
   </div>
+</div>
 
-  <div class="divider"></div>
+<!-- COMMITMENT -->
+<div class="body-wrap">
 
-  <!-- The antidote section -->
-  <div class="section">
-    <span class="section-label">Why golf. Why now.</span>
-    <h2>The antidote to the screen in their pocket.</h2>
+  <span class="section-label">Our commitment</span>
+  <h2>The game is too good to be gatekept.</h2>
 
-    <p>We live in an age of curated profiles, instant validation and consequence-free interaction. Social media has handed an entire generation a version of connection that requires no patience, no vulnerability and no grace. The results are visible in the mental health statistics of almost every country in the developed world.</p>
+  <p>Junior golf has a cost barrier. Clubs, coaching, competitions, county membership — the investment adds up quickly. And because juniors outgrow their equipment every twelve to eighteen months, the cost never stops. This creates a two-tier junior game. JuniorCaddie exists to help dismantle it.</p>
 
-    <p>Golf offers something almost no other activity can match in 2026. <strong>Four hours. Outdoors. With another person you've never met. Without a phone.</strong></p>
-
-    <p>Think about what that actually asks of a child. They have to introduce themselves and sustain a conversation for the length of a round. They have to read another person's mood and adjust. They have to handle conflict — a disputed ruling, a bad bounce — with composure and honesty. They have to congratulate someone who is beating them. They have to sit with failure, in real time, in front of another person, and keep going.</p>
-
-    <p>These are not soft skills. They are the foundational capacities of a functioning human being — empathy, self-regulation, delayed gratification, honest competition — and they are precisely what the architecture of social media is designed to bypass.</p>
-
-    <div class="pull-quote">
-      <p>"Where else can a child walk around with someone they've never met for four hours and just talk? No phones, no audience, no performance. Just golf, fresh air and conversation."</p>
+  <div class="commitment-grid">
+    <div class="commitment-card">
+      <div class="commitment-icon">🗺️</div>
+      <div class="commitment-title">A journey, not a destination</div>
+      <div class="commitment-body">From first swing to county squad — JuniorCaddie supports every stage of your child's development, with guides, competitions and advice that grow with them.</div>
     </div>
-
-    <p>The etiquette of golf is not a relic of a more formal era. It is load-bearing. You call your own penalties. You rake the bunker for the next player. You stand still when someone is playing their shot. You shake hands at the end, whatever the result. These are not arbitrary rules — they are a daily practice in consideration for others that most modern experiences simply do not require.</p>
-
-    <p>We believe golf can take a place in the lives of young people that nobody quite anticipated. Not as an elite sport. Not as a leisure activity for the privileged. But as one of the most effective character-forming environments available to a child growing up in the digital age.</p>
-
-    <p><strong>JuniorCaddie exists to make sure that environment is open to every child — not just those whose families can afford the entry cost.</strong></p>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- The founder section -->
-  <div class="section">
-    <span class="section-label">The founder</span>
-    <h2>We've been on this journey. That's the point.</h2>
-
-    <p>JuniorCaddie was founded by a golf parent who has spent the last decade standing on the side of fairways, in car parks after junior opens, and in clubhouses after county competitions — answering the same questions from other parents again and again.</p>
-
-    <p>What clubs does my child need? How do they get a handicap? Which competitions should we enter? How does the county structure work? Where do I sell the set they've just grown out of?</p>
-
-    <p>These questions have good answers. But finding them requires knowing the right people, belonging to the right networks, and having the time to piece together information scattered across county union websites, Facebook groups and word of mouth. For a family new to the game — or a family without the right connections — the junior golf ecosystem can feel impenetrable.</p>
-
-    <p>The founder's son picked up a golf club at age five. Over the next ten years he progressed through every stage of the junior game — from borrowed starter clubs and first lessons, through early competitions and a first handicap, to county squad golf and single-figure competition. That journey covered every question this platform now exists to answer.</p>
-
-    <div class="pull-quote">
-      <p>"I watched families drop out of junior golf not because their child stopped loving it, but because the equipment became too expensive to keep up with, or because they couldn't navigate the competition structure, or simply because nobody told them what to do next."</p>
+    <div class="commitment-card">
+      <div class="commitment-icon">🏌️</div>
+      <div class="commitment-title">Second-hand is smart</div>
+      <div class="commitment-body">Our marketplace keeps quality clubs circulating. A well-maintained second-hand set performs as well as anything new — and costs a fraction of the price.</div>
     </div>
-
-    <p>That son is now a competitive junior golfer with a handicap index in the low single figures — and is beginning to explore the possibility of college golf in the United States. A journey that started with a plastic starter set on a driving range has opened doors that, a decade ago, none of us could have predicted.</p>
-
-    <p>JuniorCaddie is built on that experience. Every piece of guidance on this platform has been lived, not researched. Every answer in Ask JuniorCaddie comes from a family that has been through it. Every competition in our finder was found the hard way — so that you don't have to.</p>
-
-    <p><strong>We are not a golf business that decided to build a platform. We are a golf family that built the platform we needed.</strong></p>
+    <div class="commitment-card">
+      <div class="commitment-icon">🗺️</div>
+      <div class="commitment-title">The map we never had</div>
+      <div class="commitment-body">220+ competitions, guides for every stage, plain English explanations. Everything a family needs — in one place, for the first time.</div>
+    </div>
+    <div class="commitment-card">
+      <div class="commitment-icon">🤝</div>
+      <div class="commitment-title">Built with the community</div>
+      <div class="commitment-body">Shaped by coaches, county organisers, club juniors secretaries and golf parents. JuniorCaddie belongs to everyone who uses it.</div>
+    </div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- The inclusion mission -->
-  <div class="section">
-    <span class="section-label">Our commitment</span>
-    <h2>Every child deserves a fair shot at the game.</h2>
-
-    <p>Junior golf in the UK has a price barrier problem. A properly fitted set of clubs, competition entry fees, coaching costs, county membership — the financial commitment of taking junior golf seriously can be significant. And because junior golfers outgrow their equipment every twelve to eighteen months, the cost doesn't stop.</p>
-
-    <p>This creates a two-tier junior game. Children from well-resourced families progress. Children whose families can't keep pace with the equipment cycle drop out — not because they lack talent or love for the game, but because the economics become unsustainable.</p>
-
-    <p>Our marketplace exists to change that equation. A quality second-hand set of junior clubs bought through JuniorCaddie for £80 performs as well as a new set costing four times as much. The child who receives that set gets the same four hours of outdoor conversation, the same etiquette lessons, the same character-forming competition as any other junior golfer on the course.</p>
-
-    <p>Equipment should not determine who gets to play. JuniorCaddie is the infrastructure that makes junior golf more affordable — and in doing so, more inclusive.</p>
-
-    <p><strong>That is what we are building. We hope you'll be part of it.</strong></p>
+  <!-- Closing manifesto -->
+  <div class="manifesto">
+    <p>"Junior golf grew our son. Every child deserves the same chance — and the same clear path to get there."</p>
+    <span class="manifesto-attr">— Dan Lovatt, founder, JuniorCaddie</span>
+    <a href="competitions.html" class="manifesto-btn">Find competitions near you →</a>
   </div>
 
 </div>
 
 <footer>
-  <div style="display:flex; flex-direction:column; align-items:flex-start; line-height:1;">
-      <div style="font-family:Georgia,serif; font-size:11px; font-weight:700; color:#EEF4FB; letter-spacing:-0.3px; text-transform:uppercase; line-height:0.9; display:flex; align-items:center; gap:4px;">
-        Junior
-        <svg width="10" height="20" viewBox="0 0 32 68" fill="none">
-          <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
-          <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
-          <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
-        </svg>
-      </div>
-      <div style="height:1.5px; background:linear-gradient(to right,#EEF4FB,#1A6EA8,#7BBDE0); border-radius:1px; margin:2px 0; width:100%;"></div>
-      <div style="font-family:Georgia,serif; font-size:16px; font-weight:700; color:#7BBDE0; letter-spacing:-0.8px; text-transform:uppercase; line-height:0.9;">Caddie</div>
+  <div>
+    <div class="nl-junior" style="font-size:10px;">Junior
+      <svg width="8" height="16" viewBox="0 0 32 68" fill="none">
+        <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+        <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+        <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+      </svg>
     </div>
-    <p class="footer-copy">© 2026 JuniorCaddie. juniorcaddie.co.uk</p>
+    <div class="nl-rule" style="width:70px;"></div>
+    <div class="nl-caddie" style="font-size:14px;">Caddie</div>
+  </div>
+  <p class="footer-copy">© 2026 JuniorCaddie · juniorcaddie.co.uk</p>
   <div class="footer-links">
     <a href="index.html">Home</a>
     <a href="competitions.html">Competitions</a>
+    <a href="journey.html">The journey</a>
     <a href="mailto:hello@juniorcaddie.co.uk">Contact</a>
   </div>
 </footer>
