@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Junior Golf Yardage Chart — JuniorCaddie</title>
+  <meta name="description" content="A printable yardage chart for junior golfers. Record your exact carry distances for every club and wedge swing speed."/>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #EEF4FB; color: #0B3D6B;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --navy: #0B3D6B; --mid: #1A6EA8; --sky: #5AAAD4;
+      --light: #7BBDE0; --pale: #B8D8F0; --bg: #EEF4FB;
+      --serif: Georgia, serif;
+    }
+
+    nav {
+      background: var(--navy); padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { text-decoration: none; }
+    .nl-junior { font-family: var(--serif); font-size: 11px; font-weight: 700; color: var(--pale); text-transform: uppercase; line-height: 0.9; display: flex; align-items: center; gap: 4px; }
+    .nl-rule { height: 1.5px; background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0); border-radius: 1px; margin: 2px 0; }
+    .nl-caddie { font-family: var(--serif); font-size: 18px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: -0.8px; line-height: 0.9; }
+    .nav-back { font-size: 13px; color: var(--sky); text-decoration: none; }
+
+    .hero {
+      background: var(--navy); padding: 40px 24px 36px; text-align: center;
+    }
+    .hero h1 { font-family: var(--serif); font-size: clamp(26px, 4vw, 40px); font-weight: 700; color: white; letter-spacing: -1px; margin-bottom: 10px; }
+    .hero p { font-size: 15px; color: var(--light); max-width: 520px; margin: 0 auto 20px; line-height: 1.6; }
+    .print-btn {
+      display: inline-block; background: white; color: var(--navy);
+      font-size: 14px; font-weight: 700; padding: 11px 24px;
+      border-radius: 8px; cursor: pointer; border: none; margin-right: 8px;
+    }
+    .print-btn:hover { background: var(--pale); }
+
+    .wrap { max-width: 800px; margin: 0 auto; padding: 32px 24px 80px; }
+
+    /* Instructions */
+    .instructions {
+      background: white; border-radius: 12px; padding: 20px 24px;
+      margin-bottom: 24px; border-left: 4px solid var(--mid);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .instructions h3 { font-family: var(--serif); font-size: 16px; color: var(--navy); margin-bottom: 8px; }
+    .instructions p { font-size: 13px; color: #2A5070; line-height: 1.7; }
+    .instructions ul { font-size: 13px; color: #2A5070; line-height: 1.8; padding-left: 18px; margin-top: 8px; }
+
+    /* Chart section headings */
+    .chart-section { margin-bottom: 24px; }
+    .chart-label {
+      font-size: 11px; color: var(--sky); letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 8px; display: block;
+    }
+    .chart-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+    thead { background: var(--navy); }
+    thead th { color: white; font-size: 12px; font-weight: 600; padding: 10px 14px; text-align: left; letter-spacing: 0.03em; }
+    thead th:not(:first-child) { text-align: center; }
+    tbody tr { border-bottom: 1px solid var(--pale); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:nth-child(even) { background: #F8FBFF; }
+    tbody td { padding: 10px 14px; font-size: 14px; color: var(--navy); }
+    tbody td:not(:first-child) { text-align: center; }
+    .club-name { font-weight: 600; }
+    .input-cell { background: #FFF9F0; border: 1px solid #E8C97A; border-radius: 4px; width: 70px; text-align: center; font-size: 14px; color: var(--navy); padding: 4px 6px; }
+    .input-cell:focus { outline: none; border-color: var(--mid); background: white; }
+    .divider-row td { background: var(--navy) !important; color: white; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 14px; }
+
+    /* Notes section */
+    .notes-box {
+      background: white; border-radius: 10px; padding: 20px 24px;
+      margin-top: 24px; box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .notes-box h3 { font-family: var(--serif); font-size: 16px; color: var(--navy); margin-bottom: 12px; }
+    .notes-line { border: none; border-bottom: 1.5px solid var(--pale); display: block; width: 100%; margin-bottom: 16px; height: 28px; }
+
+    /* Footer info */
+    .chart-footer { margin-top: 24px; font-size: 12px; color: var(--sky); text-align: center; line-height: 1.6; }
+
+    /* Print styles */
+    @media print {
+      nav, .hero, .print-btn, .instructions { display: none !important; }
+      body { background: white; }
+      .wrap { padding: 0; max-width: 100%; }
+      .chart-section { page-break-inside: avoid; }
+      table { box-shadow: none; }
+      .input-cell { border: 1px solid #CCC; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 12px 16px; }
+      .wrap { padding: 24px 12px 60px; }
+      table { font-size: 13px; }
+      thead th, tbody td { padding: 8px 10px; }
+      .input-cell { width: 56px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nl-junior">Junior
+      <svg width="10" height="20" viewBox="0 0 32 68" fill="none">
+        <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+        <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+        <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+      </svg>
+    </div>
+    <div class="nl-rule"></div>
+    <div class="nl-caddie">Caddie</div>
+  </a>
+  <a href="journey.html" class="nav-back">← Back to the journey</a>
+</nav>
+
+<div class="hero">
+  <h1>📐 Your Personal Yardage Chart</h1>
+  <p>Record your exact carry distances for every club. Fill it in online or print it and complete it after a launch monitor session with your coach.</p>
+  <button class="print-btn" onclick="window.print()">🖨️ Print this chart</button>
+  <button class="print-btn" onclick="saveChart()">💾 Save my yardages</button>
+</div>
+
+<div class="wrap">
+
+  <div class="instructions">
+    <h3>How to use this chart</h3>
+    <p>Record your <strong>carry distance</strong> — how far the ball travels through the air — not total distance including roll. All distances should be measured on a calm day with a launch monitor or accurate GPS.</p>
+    <ul>
+      <li>Fill in full swing carry for every club</li>
+      <li>Record three wedge distances: full, three-quarter and half swing</li>
+      <li>Note your swing speed — distances will shift as you grow</li>
+      <li>Review and update every 4–6 months</li>
+      <li>Print a copy for your bag and refer to it on every approach shot</li>
+    </ul>
+  </div>
+
+  <!-- Player info -->
+  <div class="chart-section">
+    <span class="chart-label">Player details</span>
+    <table>
+      <tbody>
+        <tr>
+          <td class="club-name" style="width:35%;">Player name</td>
+          <td><input class="input-cell" style="width:180px;" type="text" placeholder="Your name"/></td>
+          <td class="club-name">Date recorded</td>
+          <td><input class="input-cell" style="width:120px;" type="text" placeholder="DD/MM/YY"/></td>
+        </tr>
+        <tr>
+          <td class="club-name">Handicap index</td>
+          <td><input class="input-cell" type="text" placeholder="+2.1"/></td>
+          <td class="club-name">Driver swing speed</td>
+          <td><input class="input-cell" type="text" placeholder="mph"/></td>
+        </tr>
+        <tr>
+          <td class="club-name">Club brand / model</td>
+          <td colspan="3"><input class="input-cell" style="width:300px;" type="text" placeholder="e.g. Titleist T200 irons, 2024"/></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Woods and hybrids -->
+  <div class="chart-section">
+    <span class="chart-label">Woods & hybrids</span>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:40%;">Club</th>
+          <th>Carry (yards)</th>
+          <th>Total (yards)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="club-name">Driver</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">3 Wood</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">5 Wood</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">Hybrid / Rescue</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">3 Iron / Long iron</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Irons -->
+  <div class="chart-section">
+    <span class="chart-label">Irons</span>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:40%;">Club</th>
+          <th>Carry (yards)</th>
+          <th>Total (yards)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="club-name">4 Iron</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">5 Iron</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">6 Iron</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">7 Iron</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">8 Iron</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">9 Iron</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+        <tr><td class="club-name">Pitching Wedge (PW)</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:100px;" type="text" placeholder=""/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Wedges — the critical section -->
+  <div class="chart-section">
+    <span class="chart-label">Wedges — record three swing speeds</span>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:32%;">Club & loft</th>
+          <th>Full (yards)</th>
+          <th>¾ swing (yards)</th>
+          <th>½ swing (yards)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="divider-row"><td colspan="5">Gap Wedge</td></tr>
+        <tr><td class="club-name">GW (loft: <input class="input-cell" style="width:40px;" type="text" placeholder="50°"/>)</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:80px;" type="text"/></td></tr>
+        <tr class="divider-row"><td colspan="5">Sand Wedge</td></tr>
+        <tr><td class="club-name">SW (loft: <input class="input-cell" style="width:40px;" type="text" placeholder="54°"/>)</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:80px;" type="text"/></td></tr>
+        <tr class="divider-row"><td colspan="5">Lob Wedge</td></tr>
+        <tr><td class="club-name">LW (loft: <input class="input-cell" style="width:40px;" type="text" placeholder="58°"/>)</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" style="width:80px;" type="text"/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Scoring zones -->
+  <div class="chart-section">
+    <span class="chart-label">Key scoring zone gaps — check these carefully</span>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:50%;">Gap to check</th>
+          <th>Shorter club (yards)</th>
+          <th>Longer club (yards)</th>
+          <th>Gap (yards)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="club-name">PW → Gap Wedge</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—" style="background:#F0FFF0;border-color:#5ACA5A;"/></td></tr>
+        <tr><td class="club-name">Gap Wedge → Sand Wedge</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—" style="background:#F0FFF0;border-color:#5ACA5A;"/></td></tr>
+        <tr><td class="club-name">Sand Wedge → Lob Wedge</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—" style="background:#F0FFF0;border-color:#5ACA5A;"/></td></tr>
+        <tr><td class="club-name">Longest iron → Hybrid / Rescue</td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—"/></td><td><input class="input-cell" type="number" placeholder="—" style="background:#F0FFF0;border-color:#5ACA5A;"/></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--mid);margin-top:8px;line-height:1.6;">Aim for gaps of 10–15 yards between each club. A gap larger than 20 yards is a scoring hole — consider adding a club to fill it. A gap smaller than 8 yards means two clubs are doing the same job.</p>
+  </div>
+
+  <!-- Notes -->
+  <div class="notes-box">
+    <h3>Course management notes</h3>
+    <p style="font-size:13px;color:#666;margin-bottom:16px;">Record anything that affects your decision-making on the course — preferred miss direction, comfort distances, clubs to avoid under pressure.</p>
+    <span class="notes-line"></span>
+    <span class="notes-line"></span>
+    <span class="notes-line"></span>
+    <span class="notes-line"></span>
+  </div>
+
+  <div class="chart-footer">
+    <p>JuniorCaddie Yardage Chart · juniorcaddie.co.uk · Update every 4–6 months or after a launch monitor session</p>
+    <p style="margin-top:4px;">Record carry distances only. All distances measured on a calm day with no wind.</p>
+  </div>
+
+</div>
+
+<script>
+  // Save yardages to localStorage
+  function saveChart() {
+    const inputs = document.querySelectorAll('input');
+    const data = {};
+    inputs.forEach((input, i) => { data[i] = input.value; });
+    localStorage.setItem('jc_yardages', JSON.stringify(data));
+    alert('Yardages saved! They will still be here next time you visit this page on this device.');
+  }
+
+  // Load saved yardages
+  function loadChart() {
+    const saved = localStorage.getItem('jc_yardages');
+    if (!saved) return;
+    const data = JSON.parse(saved);
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach((input, i) => { if (data[i]) input.value = data[i]; });
+  }
+
+  loadChart();
+</script>
+
+</body>
+</html>
