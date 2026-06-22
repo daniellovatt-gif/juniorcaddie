@@ -80,34 +80,34 @@
     /* ── FEATURE TABS ── */
     .tabs-bar {
       background: var(--navy);
-      padding: 0 48px 20px;
+      padding: 0 24px 24px;
     }
     .tabs-inner {
       max-width: var(--max); margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
     }
     .tab {
       display: flex; flex-direction: column;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 10px; padding: 14px 16px;
+      background: rgba(255,255,255,0.10);
+      border: 0.5px solid rgba(255,255,255,0.18);
+      border-radius: 12px; padding: 16px 14px;
       text-decoration: none; transition: all 0.15s;
-      position: relative;
+      position: relative; gap: 6px;
     }
-    .tab:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.25); transform: translateY(-1px); }
-    .tab.live { background: rgba(26,110,168,0.3); border-color: var(--mid); }
-    .tab.live:hover { background: rgba(26,110,168,0.45); }
+    .tab:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+    .tab.live { background: rgba(26,110,168,0.25); border-color: rgba(90,170,212,0.4); }
+    .tab.live:hover { background: rgba(26,110,168,0.38); }
+    .tab-icon { font-size: 24px; line-height: 1; margin-bottom: 2px; }
     .tab-badge {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; padding: 2px 8px;
-      border-radius: 20px; margin-bottom: 8px;
-      display: inline-block; align-self: flex-start;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 2px 7px;
+      border-radius: 4px; display: inline-block; align-self: flex-start;
     }
     .badge-live { background: #22C55E; color: white; }
     .badge-soon { background: rgba(255,255,255,0.15); color: var(--light); }
-    .tab-title { font-size: 14px; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 4px; }
+    .tab-title { font-size: 14px; font-weight: 700; color: white; line-height: 1.2; }
     .tab-desc { font-size: 11px; color: var(--light); line-height: 1.4; }
 
     /* ── HERO ── */
@@ -320,12 +320,8 @@
     @media (max-width: 768px) {
       .nav { padding: 12px 16px; }
       .nav-links { display: none; }
-      .tabs-bar { padding: 0 12px 14px; }
-      .tabs-inner { grid-template-columns: repeat(3, 1fr); gap: 6px; }
-      .tab { padding: 10px 10px; }
-      .tab-desc { display: none; }
-      .tab-badge { font-size: 8px; padding: 2px 6px; margin-bottom: 5px; }
-      .tab-title { font-size: 12px; }
+      .tabs-bar { padding: 0 12px 16px; }
+      .tabs-inner { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .hero { padding: 48px 20px 56px; }
       .hero h1 { font-size: 30px; }
       .hero-sub { font-size: 16px; }
@@ -371,38 +367,44 @@
 
     <a href="competitions.html" class="tab live">
       <span class="tab-badge badge-live">Live now</span>
+      <div class="tab-icon">🏆</div>
       <div class="tab-title">Competition Finder</div>
-      <div class="tab-desc">160+ competitions across 13 counties & national tours</div>
+      <div class="tab-desc">220+ competitions across England</div>
     </a>
 
     <a href="golf-formats.html" class="tab live">
       <span class="tab-badge badge-live">New</span>
+      <div class="tab-icon">📋</div>
       <div class="tab-title">Golf Formats</div>
       <div class="tab-desc">Stableford, Matchplay & more in plain English</div>
     </a>
 
     <a href="rules-card-final.html" class="tab live">
       <span class="tab-badge badge-live">Free</span>
-      <div class="tab-title">⛳ Rules Card</div>
+      <div class="tab-icon">🃏</div>
+      <div class="tab-title">Rules Card</div>
       <div class="tab-desc">Print, laminate & clip to your bag</div>
     </a>
 
     <a href="journey.html" class="tab live">
       <span class="tab-badge badge-live">Live now</span>
+      <div class="tab-icon">🗺️</div>
       <div class="tab-title">Junior Journey</div>
       <div class="tab-desc">Expert guidance for every stage</div>
     </a>
 
     <a href="about.html" class="tab live">
       <span class="tab-badge badge-live">Our story</span>
+      <div class="tab-icon">👤</div>
       <div class="tab-title">About Us</div>
       <div class="tab-desc">Built by a golf parent. Why we exist.</div>
     </a>
 
     <a href="marketplace.html" class="tab live">
       <span class="tab-badge badge-live">New</span>
+      <div class="tab-icon">🏌️</div>
       <div class="tab-title">Marketplace</div>
-      <div class="tab-desc">Clubs & Clothes — buy & sell second-hand junior golf kit</div>
+      <div class="tab-desc">Clubs & Clothes — buy & sell second-hand kit</div>
     </a>
 
   </div>
@@ -654,17 +656,6 @@
 
 </section>
 
-<!-- ── EMAIL CAPTURE ── -->
-<section class="capture">
-  <h2>Stay in the loop.</h2>
-  <p class="capture-sub">New competitions added every week. New guides launching soon. Leave your email and we'll keep you posted — no spam, ever.</p>
-  <div class="email-form">
-    <input id="capture-email" class="email-input" type="email" placeholder="Your email address"/>
-    <button class="email-btn" onclick="handleSignup('footer')">Join the list</button>
-  </div>
-  <p class="reassurance">No spam. One email at most per week.</p>
-</section>
-
 <!-- ── FOOTER ── -->
 <footer>
   <div>
@@ -684,7 +675,7 @@
     <a href="journey.html">The journey</a>
     <a href="competitions.html">Competitions</a>
     <a href="golf-formats.html">Golf formats</a>
-    <a href="https://instagram.com/juniorcaddie" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://instagram.com/juniorcaddie" target="_blank" rel="noopener" style="color:white; font-weight:600;">📸 Instagram</a>
     <a href="mailto:hello@juniorcaddie.co.uk">Contact</a>
   </div>
 </footer>
