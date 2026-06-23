@@ -388,13 +388,9 @@
     <span>All 220+ competitions are now unlocked. We'll let you know when new ones are added near you.</span>
   </div>
 
-  <!-- Development notice -->
-  <div style="background:#FFF8EC; border:1.5px solid #E8C97A; border-radius:10px; padding:14px 20px; margin-bottom:16px; display:flex; gap:12px; align-items:flex-start;">
-    <div style="font-size:20px; flex-shrink:0;">🚧</div>
-    <div>
-      <div style="font-size:13px; font-weight:700; color:#6B5000; margin-bottom:4px;">This page is under active development</div>
-      <div style="font-size:13px; color:#8B6800; line-height:1.6;">We're adding competitions every week. Some entry links go directly to club entry forms — others go to the county website where you'll find the entry link. Where we have specific entry links we show them; where we don't, we say so. If you spot a missing competition or a broken link, email us at <a href="mailto:hello@juniorcaddie.co.uk" style="color:#6B5000; font-weight:600;">hello@juniorcaddie.co.uk</a> and we'll fix it.</div>
-    </div>
+  <!-- Growing notice -->
+  <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 18px; margin-bottom:16px; font-size:13px; color:var(--mid); line-height:1.6;">
+    We're adding new competitions every week. Some links go directly to club entry forms — others go to the county website. Spot something missing? Email <a href="mailto:hello@juniorcaddie.co.uk" style="color:var(--mid); font-weight:600;">hello@juniorcaddie.co.uk</a> and we'll add it.
   </div>
 
   <div class="info-box">
@@ -2712,11 +2708,9 @@
   </div>
 
   <div class="info-box" style="margin-top:12px;">
-    <h3>🚧 Still growing — help us improve it</h3>
-    <p>JuniorCaddie's competition finder is under active development. We currently list 160+ individual competitions across Hertfordshire, Essex, Middlesex, Surrey, Sussex, Hampshire, Kent, Bedfordshire, Cambridgeshire, Lancashire plus the BJGT, Faldo Series, England Golf national championships and English Schools Golf.</p>
-    <p style="margin-top:10px;"><strong>Link quality varies by county.</strong> Where we have direct entry links we show them. Where we only have a county website link, we say so clearly. We're working to improve every link as we go.</p>
-    <p style="margin-top:10px;"><strong>Coming soon:</strong> Yorkshire, Gloucestershire, Cheshire, Devon, Norfolk, Suffolk, Oxfordshire and more.</p>
-    <p style="margin-top:10px;">Know of a competition we've missed or a broken link? Email <a href="mailto:hello@juniorcaddie.co.uk" style="color:#1A6EA8;">hello@juniorcaddie.co.uk</a> and we'll fix it within 24 hours.</p>
+    <h3>Always growing</h3>
+    <p>JuniorCaddie currently lists 220+ individual competitions across Hertfordshire, Essex, Middlesex, Surrey, Sussex, Hampshire, Kent, Bedfordshire, Cambridgeshire, Lancashire, Yorkshire, Gloucestershire, Norfolk plus the BJGT, Faldo Series, England Golf national championships and English Schools Golf.</p>
+    <p style="margin-top:10px;"><strong>Coming soon:</strong> Cheshire, Devon, Suffolk, Oxfordshire and more. Know of a competition we've missed? Email <a href="mailto:hello@juniorcaddie.co.uk" style="color:#1A6EA8;">hello@juniorcaddie.co.uk</a> and we'll add it.</p>
   </div>
 
 </main>
@@ -2872,15 +2866,13 @@
 
   function applyGate() {
     if (isMember()) {
-      // Already a member — unlock everything
       unlockAll();
       return;
     }
-    // Lock cards beyond the 6th visible one
+    // Lock cards beyond the 6th
     const cards = document.querySelectorAll('.comp-card:not(.past)');
     let visibleCount = 0;
     cards.forEach(card => {
-      // Only count and lock cards in currently visible county sections
       const section = card.closest('.county-section');
       if (section && section.style.display === 'none') return;
       visibleCount++;
@@ -2889,13 +2881,22 @@
       }
     });
 
-    // If any cards are locked, show the gate after a short delay
-    const lockedCards = document.querySelectorAll('.comp-card.locked');
-    if (lockedCards.length > 0) {
-      setTimeout(() => {
-        document.getElementById('gate-overlay').classList.add('visible');
-      }, 800);
-    }
+    // Fire gate when the 6th card scrolls into view
+    const sixthCard = document.querySelectorAll('.comp-card:not(.past)')[FREE_COUNT - 1];
+    if (!sixthCard) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isMember()) {
+          setTimeout(() => {
+            document.getElementById('gate-overlay').classList.add('visible');
+          }, 400);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(sixthCard);
   }
 
   function unlockAll() {
