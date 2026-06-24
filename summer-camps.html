@@ -175,10 +175,43 @@
 
 <!-- GRID -->
 <div class="grid-wrap">
-  <div class="results-count" id="results-count">11 camps listed in Hertfordshire</div>
+  <div class="results-count" id="results-count">12 camps listed in Hertfordshire</div>
   <div class="camps-grid" id="camps-grid">
 
-    <!-- 1 -->
+    <!-- FEATURED — Neil Mac Golf -->
+    <div class="camp-card" data-county="herts" data-level="beginner advanced" data-duration="halfday" style="border:2px solid #E8C97A; grid-column: 1 / -1; background:#FFFBF0;">
+      <div class="card-header" style="background:#FFF8EC; border-bottom:1px solid #E8C97A;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap;">
+          <span style="font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:#E8C97A; color:#6B5000; border-radius:4px; padding:2px 10px;">⭐ Featured</span>
+          <span class="card-county-badge">Hertfordshire</span>
+        </div>
+        <div class="card-name">Neil Mac Golf — Junior Summer Camps 2026</div>
+        <div class="card-location">📍 Letchworth Golf Club</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tags">
+          <span class="card-tag highlight">Every Wed & Thu in August</span>
+          <span class="card-tag">PGA Professional</span>
+          <span class="card-tag">All abilities</span>
+        </div>
+        <div class="card-desc">Junior summer camps with Neil McLauchlan, PGA Professional at Letchworth Golf Club, every Wednesday and Thursday throughout August 2026.</div>
+        <div style="background:white; border-radius:8px; padding:12px 14px; border:1px solid #E8C97A; margin-top:4px;">
+          <div style="display:flex; align-items:baseline; gap:8px; margin-bottom:4px; flex-wrap:wrap;">
+            <span style="font-size:20px; font-weight:700; font-family:Georgia,serif; color:var(--navy);">£50</span>
+            <span style="font-size:13px; color:#666;">per session</span>
+            <span style="font-size:13px; color:#2D6A1F; font-weight:600;">· Book 3+ for £45 each</span>
+          </div>
+          <div style="font-size:12px; color:#666; line-height:1.7;">
+            📧 <a href="mailto:letchworthproshop@gmail.com" style="color:var(--mid); font-weight:600;">letchworthproshop@gmail.com</a><br>
+            📞 <a href="tel:01462683203" style="color:var(--mid); font-weight:600;">01462 683203</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer" style="background:#FFF8EC; border-top:1px solid #E8C97A;">
+        <div class="card-contact" style="font-size:12px; color:#6B5000;">Book with Neil at Letchworth pro shop</div>
+        <a href="mailto:letchworthproshop@gmail.com" class="card-website" style="background:#6B5000;">Book now →</a>
+      </div>
+    </div>
     <div class="camp-card" data-county="herts" data-level="beginner advanced" data-duration="halfday">
       <div class="card-header">
         <span class="card-county-badge">Hertfordshire</span>
@@ -421,6 +454,24 @@
     </div>
 
   </div>
+
+  <!-- Soft signup prompt -->
+  <div style="background:var(--navy); border-radius:14px; padding:24px 28px; margin-top:24px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+    <div style="flex:1; min-width:200px;">
+      <div style="font-family:var(--serif); font-size:17px; font-weight:700; color:white; margin-bottom:4px;">New camps added every week.</div>
+      <div style="font-size:13px; color:var(--light); line-height:1.55;">Join the JuniorCaddie community and we'll let you know when camps are added near you.</div>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <input id="camps-email" type="email" placeholder="Your email" autocomplete="email"
+        style="padding:10px 13px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none; width:190px;"
+        onkeydown="if(event.key==='Enter') submitCampsSignup()"/>
+      <button onclick="submitCampsSignup()"
+        style="background:white; color:var(--navy); border:none; padding:10px 18px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
+        Join free
+      </button>
+    </div>
+  </div>
+
 </div>
 
 <!-- SUBMIT A CAMP -->
@@ -527,8 +578,29 @@
       `${count} camp${count !== 1 ? 's' : ''} found`;
   }
 
-  // Submit camp
-  async function submitCamp() {
+  // Camps page signup
+  async function submitCampsSignup() {
+    const emailEl = document.getElementById('camps-email');
+    const email = emailEl.value.trim();
+    if (!email || !email.includes('@')) { emailEl.style.borderColor='#E05A5A'; emailEl.focus(); return; }
+    const btn = emailEl.nextElementSibling;
+    btn.disabled = true; btn.textContent = 'Joining...';
+    try {
+      await fetch('https://formspree.io/f/xbdewqvn', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email, source: 'summer-camps-page', _subject: 'New JuniorCaddie signup — camps page' })
+      });
+    } finally {
+      localStorage.setItem('jc_community_member', '1');
+      emailEl.closest('div').parentElement.innerHTML = `
+        <div style="text-align:center; width:100%;">
+          <span style="font-size:22px;">✅</span>
+          <span style="font-family:Georgia,serif; font-size:16px; font-weight:700; color:white; margin-left:10px;">You're in. We'll keep you posted.</span>
+        </div>`;
+    }
+  }
+</script>
     const name = document.getElementById('sf-name').value.trim();
     const county = document.getElementById('sf-county').value;
     const desc = document.getElementById('sf-desc').value.trim();
