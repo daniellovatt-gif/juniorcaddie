@@ -216,8 +216,7 @@
     /* ── EMAIL GATE ── */
     .gate-overlay {
       position: fixed; inset: 0;
-      background: rgba(11,61,107,0.65);
-      backdrop-filter: blur(4px);
+      background: rgba(11,61,107,0.5);
       z-index: 500; display: none;
       align-items: flex-end; justify-content: center;
     }
@@ -255,10 +254,8 @@
 
     /* Locked cards blur effect */
     .comp-card.locked {
-      filter: blur(3px);
       pointer-events: none;
       user-select: none;
-      opacity: 0.6;
     }
 
     /* Welcome banner */
@@ -2845,8 +2842,8 @@
 <div class="gate-overlay" id="gate-overlay">
   <div class="gate-panel">
     <span class="gate-icon">⛳</span>
-    <div class="gate-title">Join the growing JuniorCaddie community — and never miss a junior golf competition near you.</div>
-    <div class="gate-sub">You've seen 10 competitions. <strong>Sign up free</strong> to unlock all 220+ across England — and we'll let you know when new ones are added near you.</div>
+    <div class="gate-title">Join the growing JuniorCaddie community</div>
+    <div class="gate-sub">Sign up free to unlock all 220+ competitions across England.</div>
     <div class="gate-form">
       <input class="gate-input" id="gate-email" type="email" placeholder="Your email address" autocomplete="email"/>
       <button class="gate-btn" onclick="submitGate()">Join free</button>
