@@ -318,6 +318,9 @@
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
+      .stages-grid { grid-template-columns: repeat(3, 1fr) !important; }
+      .stages-grid a:nth-child(4) { grid-column: 1; }
+      .stages-grid a:nth-child(5) { grid-column: 2; }
       .nav { padding: 12px 16px; }
       .nav-links { display: none; }
       .tabs-bar { padding: 0 12px 16px; }
@@ -361,8 +364,33 @@
   <a href="about.html" class="nav-back" style="font-size:13px; color:var(--sky);">Our story</a>
 </nav>
 
-<!-- ── FEATURE TABS ── -->
-<div class="tabs-bar">
+<!-- ── HERO ── -->
+<section class="hero">
+
+  <!-- Large logo mark above headline -->
+  <div style="margin-bottom: 24px;">
+    <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+      <div style="font-family:Georgia,serif; font-size:18px; font-weight:700; color:var(--pale); text-transform:uppercase; line-height:0.9; display:flex; align-items:center; gap:6px; margin-bottom:4px;">
+        Junior
+        <svg width="16" height="32" viewBox="0 0 32 68" fill="none">
+          <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
+          <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
+          <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
+        </svg>
+      </div>
+      <div style="height:2px; background:linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0); border-radius:1px; width:120px; margin:4px 0;"></div>
+      <div style="font-family:Georgia,serif; font-size:42px; font-weight:700; color:white; text-transform:uppercase; letter-spacing:-2px; line-height:0.9;">Caddie</div>
+    </div>
+  </div>
+
+  <span class="hero-eyebrow">The home of junior golf in the UK</span>
+  <h1>Everything a junior<br><span>golf family needs.</span></h1>
+  <p class="hero-sub">Competitions, guides, formats and equipment — for every stage of your child's journey.</p>
+
+</section>
+
+<!-- ── FEATURE CARDS ── -->
+<div class="tabs-bar" style="padding-top:20px; padding-bottom:24px;">
   <div class="tabs-inner">
 
     <a href="competitions.html" class="tab live">
@@ -410,72 +438,74 @@
   </div>
 </div>
 
-<!-- ── HERO ── -->
-<section class="hero">
-
-  <!-- Large logo mark above headline -->
-  <div style="margin-bottom: 28px;">
-    <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
-      <div style="font-family:Georgia,serif; font-size:18px; font-weight:700; color:var(--pale); text-transform:uppercase; line-height:0.9; display:flex; align-items:center; gap:6px; margin-bottom:4px;">
-        Junior
-        <svg width="16" height="32" viewBox="0 0 32 68" fill="none">
-          <rect x="1" y="0" width="5" height="62" rx="2.5" fill="#EEF4FB"/>
-          <path d="M6 1 L32 12 L6 23 Z" fill="#EEF4FB"/>
-          <path d="M6 23 L28 32 L6 41 Z" fill="#7BBDE0"/>
-        </svg>
-      </div>
-      <div style="height:2px; background:linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0); border-radius:1px; width:120px; margin:4px 0;"></div>
-      <div style="font-family:Georgia,serif; font-size:42px; font-weight:700; color:white; text-transform:uppercase; letter-spacing:-2px; line-height:0.9;">Caddie</div>
+<!-- ── COMMUNITY SIGNUP ── -->
+<section style="background:var(--navy); padding:32px 24px 36px; border-top:1px solid rgba(255,255,255,0.08);">
+  <div style="max-width:460px; margin:0 auto; text-align:center;">
+    <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; color:white; margin-bottom:6px; letter-spacing:-0.3px;">Join the JuniorCaddie community</div>
+    <div style="font-size:14px; color:var(--light); margin-bottom:18px; line-height:1.6;">New competitions, guides and updates — direct to your inbox.</div>
+    <div style="display:flex; gap:8px;">
+      <input id="capture-email" type="email" placeholder="Your email address" autocomplete="email"
+        style="flex:1; padding:12px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:9px; font-size:15px; background:rgba(255,255,255,0.1); color:white; outline:none;"
+        onkeydown="if(event.key==='Enter') handleSignup('hero')"/>
+      <button onclick="handleSignup('hero')"
+        style="background:white; color:var(--navy); border:none; padding:12px 20px; border-radius:9px; font-size:15px; font-weight:700; cursor:pointer; white-space:nowrap;">
+        Join now
+      </button>
     </div>
-  </div>
-
-  <span class="hero-eyebrow">The home of junior golf in the UK</span>
-  <h1>Everything a junior<br><span>golf family needs.</span></h1>
-  <p class="hero-sub">Competitions, guides, formats and equipment — for every stage of your child's journey.</p>
-  <!-- Community email signup -->
-  <div style="margin-top: 28px; max-width: 460px; margin-left: auto; margin-right: auto;">
-    <div style="background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 24px 24px 20px;">
-      <div style="font-family:Georgia,serif; font-size:18px; font-weight:700; color:white; margin-bottom:6px; letter-spacing:-0.3px;">Join the JuniorCaddie community</div>
-      <div style="font-size:13px; color:var(--light); margin-bottom:16px; line-height:1.55;">New competitions, guides and updates — direct to your inbox.</div>
-      <div style="display:flex; gap:8px;">
-        <input id="capture-email" type="email" placeholder="Your email address" autocomplete="email"
-          style="flex:1; padding:11px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none;"
-          onkeydown="if(event.key==='Enter') handleSignup('hero')"/>
-        <button onclick="handleSignup('hero')"
-          style="background:white; color:var(--navy); border:none; padding:11px 18px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
-          Join now
-        </button>
-      </div>
-      <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:8px; text-align:center;">No spam. Unsubscribe any time.</div>
-    </div>
+    <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:8px;">No spam. Unsubscribe any time.</div>
   </div>
 </section>
 
-<!-- ── JARGON STRIP ── -->
-<section class="jargon">
-  <div class="jargon-inner">
-    <span class="jargon-label">New to junior golf? Plain English only.</span>
-    <div class="jargon-grid">
-      <div class="jargon-item">
-        <div class="jargon-term">Handicap</div>
-        <div class="jargon-def">A number showing ability. Lower = better. Beginners start around 54.</div>
-      </div>
-      <div class="jargon-item">
-        <div class="jargon-term">Stableford</div>
-        <div class="jargon-def">Points per hole. Bad holes cost nothing. Most junior opens use this.</div>
-      </div>
-      <div class="jargon-item">
-        <div class="jargon-term">Strokeplay / Medal</div>
-        <div class="jargon-def">Count every shot. Lowest total wins. Used in county championships.</div>
-      </div>
-      <div class="jargon-item">
-        <div class="jargon-term">Order of Merit</div>
-        <div class="jargon-def">A season-long county leaderboard. Points earned at junior opens.</div>
-      </div>
-      <div class="jargon-item">
-        <div class="jargon-term">CDH Number</div>
-        <div class="jargon-def">Your child's unique ID in the England Golf handicap system.</div>
-      </div>
+<!-- ── FIVE STAGES ── -->
+<section style="background:#F8F6F0; padding:44px 24px 40px;">
+  <div style="max-width:1040px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:28px;">
+      <span style="font-size:11px; color:var(--sky); letter-spacing:3px; text-transform:uppercase; display:block; margin-bottom:10px;">The Junior Golf Journey</span>
+      <h2 style="font-family:var(--serif); font-size:clamp(22px,3vw,30px); font-weight:700; color:var(--navy); letter-spacing:-0.5px; margin-bottom:8px;">Where is your child right now?</h2>
+      <p style="font-size:15px; color:var(--mid); max-width:460px; margin:0 auto; line-height:1.6;">Every junior golfer follows the same five-stage journey. Tap your child's stage to find out exactly what they need next.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:10px;" class="stages-grid">
+
+      <a href="journey.html" style="text-decoration:none; background:white; border-radius:12px; padding:16px 12px; text-align:center; border-top:4px solid #2D6A1F; box-shadow:0 1px 8px rgba(0,0,0,0.06); transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:22px; margin-bottom:6px;">⛳</div>
+        <div style="font-size:10px; font-weight:700; color:#2D6A1F; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Stage 1</div>
+        <div style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; line-height:1.2;">First Swing</div>
+        <div style="font-size:11px; color:#666; line-height:1.4;">Ages 4–8. Making golf fun and building a love for the game.</div>
+      </a>
+
+      <a href="journey.html" style="text-decoration:none; background:white; border-radius:12px; padding:16px 12px; text-align:center; border-top:4px solid #1A5A8A; box-shadow:0 1px 8px rgba(0,0,0,0.06); transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:22px; margin-bottom:6px;">🏌️</div>
+        <div style="font-size:10px; font-weight:700; color:#1A5A8A; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Stage 2</div>
+        <div style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; line-height:1.2;">Finding the Game</div>
+        <div style="font-size:11px; color:#666; line-height:1.4;">Ages 7–11. Developing skills and getting on the course.</div>
+      </a>
+
+      <a href="journey.html" style="text-decoration:none; background:white; border-radius:12px; padding:16px 12px; text-align:center; border-top:4px solid #7A3A00; box-shadow:0 1px 8px rgba(0,0,0,0.06); transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:22px; margin-bottom:6px;">📋</div>
+        <div style="font-size:10px; font-weight:700; color:#7A3A00; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Stage 3</div>
+        <div style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; line-height:1.2;">On the Course</div>
+        <div style="font-size:11px; color:#666; line-height:1.4;">Ages 9–13. First handicap, first competitions, first county events.</div>
+      </a>
+
+      <a href="journey.html" style="text-decoration:none; background:white; border-radius:12px; padding:16px 12px; text-align:center; border-top:4px solid #5A0A7A; box-shadow:0 1px 8px rgba(0,0,0,0.06); transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:22px; margin-bottom:6px;">🏆</div>
+        <div style="font-size:10px; font-weight:700; color:#5A0A7A; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Stage 4</div>
+        <div style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; line-height:1.2;">Serious Junior</div>
+        <div style="font-size:11px; color:#666; line-height:1.4;">Ages 12–16. County squad, single figures, structured training.</div>
+      </a>
+
+      <a href="journey.html" style="text-decoration:none; background:white; border-radius:12px; padding:16px 12px; text-align:center; border-top:4px solid #8A1A1A; box-shadow:0 1px 8px rgba(0,0,0,0.06); transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:22px; margin-bottom:6px;">🎓</div>
+        <div style="font-size:10px; font-weight:700; color:#8A1A1A; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Stage 5</div>
+        <div style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; line-height:1.2;">Transition & College</div>
+        <div style="font-size:11px; color:#666; line-height:1.4;">Ages 15–18. Adult golf, equipment transition, college pathways.</div>
+      </a>
+
+    </div>
+
+    <div style="text-align:center; margin-top:20px;">
+      <a href="journey.html" style="font-size:13px; color:var(--mid); font-weight:600;">Read the full Junior Journey guide →</a>
     </div>
   </div>
 </section>
