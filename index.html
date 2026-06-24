@@ -745,10 +745,12 @@
         body: JSON.stringify({ email, source, _subject: `New JuniorCaddie signup` })
       });
       if (res.ok) {
+        localStorage.setItem('jc_community_member', '1');
         input.value = ''; input.placeholder = "You're on the list. Thank you.";
         btn.textContent = 'Done ✓'; btn.style.background = '#5AAAD4';
       } else throw new Error();
     } catch(e) {
+      localStorage.setItem('jc_community_member', '1');
       window.location.href = `mailto:hello@juniorcaddie.co.uk?subject=Signup&body=Email: ${email}`;
       btn.textContent = 'Sent ✓';
     }
