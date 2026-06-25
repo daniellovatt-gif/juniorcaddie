@@ -219,50 +219,6 @@
     .logo-e.light .logo-e-caddie { color: #1A6EA8; }
 
     /* ── EMAIL GATE ── */
-    .gate-overlay {
-      position: fixed; inset: 0;
-      background: rgba(11,61,107,0.5);
-      z-index: 500; display: none;
-      align-items: flex-end; justify-content: center;
-    }
-    .gate-overlay.visible { display: flex; }
-    .gate-panel {
-      background: white; border-radius: 20px 20px 0 0;
-      width: min(520px, 100vw); padding: 36px 28px 44px;
-      animation: gateUp 0.35s cubic-bezier(0.34,1.2,0.64,1);
-      position: relative;
-    }
-    @keyframes gateUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    .gate-icon { font-size: 40px; margin-bottom: 14px; display: block; text-align: center; }
-    .gate-title {
-      font-family: var(--serif); font-size: 24px; font-weight: 700;
-      color: var(--navy); margin-bottom: 10px; line-height: 1.15;
-      text-align: center;
-    }
-    .gate-sub { font-size: 15px; color: var(--mid); line-height: 1.65; margin-bottom: 24px; text-align: center; }
-    .gate-sub strong { color: var(--navy); }
-    .gate-form { display: flex; gap: 8px; margin-bottom: 10px; }
-    .gate-input {
-      flex: 1; padding: 13px 14px; border: 1.5px solid var(--pale);
-      border-radius: 9px; font-size: 15px; color: var(--navy);
-      background: #F8FBFF;
-    }
-    .gate-input:focus { outline: none; border-color: var(--mid); }
-    .gate-btn {
-      background: var(--navy); color: white; border: none;
-      padding: 13px 22px; border-radius: 9px;
-      font-size: 15px; font-weight: 700; cursor: pointer;
-      white-space: nowrap; transition: background 0.15s;
-    }
-    .gate-btn:hover { background: var(--mid); }
-    .gate-reassurance { font-size: 11px; color: #AAA; text-align: center; }
-
-    /* Locked cards blur effect */
-    .comp-card.locked {
-      pointer-events: none;
-      user-select: none;
-    }
-
     /* Welcome banner */
     .welcome-banner {
       display: none;
@@ -2837,132 +2793,47 @@
   }
 
   init();
-  // Apply gate after init renders cards
-  setTimeout(() => {
-    if (typeof applyGate === 'function') applyGate();
-  }, 500);
 </script>
 
-<!-- ── EMAIL GATE ── -->
-<div class="gate-overlay" id="gate-overlay">
-  <div class="gate-panel">
-    <span class="gate-icon">⛳</span>
-    <div class="gate-title">Join the growing JuniorCaddie community</div>
-    <div class="gate-sub">Sign up free to unlock all 220+ competitions across England.</div>
-    <div class="gate-form">
-      <input class="gate-input" id="gate-email" type="email" placeholder="Your email address" autocomplete="email"/>
-      <button class="gate-btn" onclick="submitGate()">Join free</button>
+<!-- Soft community signup -->
+<div style="background:var(--navy); padding:36px 24px; text-align:center;">
+  <div style="max-width:480px; margin:0 auto;" id="soft-signup">
+    <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; color:white; margin-bottom:6px;">Join the JuniorCaddie community</div>
+    <div style="font-size:14px; color:#7BBDE0; margin-bottom:18px; line-height:1.6;">New competitions added every week. We'll let you know when new ones are added near you.</div>
+    <div style="display:flex; gap:8px; max-width:400px; margin:0 auto 8px; flex-wrap:wrap;">
+      <input id="soft-email" type="email" placeholder="Your email address" autocomplete="email"
+        style="flex:1; min-width:180px; padding:11px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none;"
+        onkeydown="if(event.key==='Enter') softSignup()"/>
+      <button onclick="softSignup()"
+        style="background:white; color:#0B3D6B; border:none; padding:11px 20px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
+        Join free
+      </button>
     </div>
-    <div class="gate-reassurance">No spam. Unsubscribe any time.</div>
+    <div style="font-size:11px; color:rgba(255,255,255,0.35);">No spam. Unsubscribe any time.</div>
   </div>
 </div>
 
 <script>
-  // ── HARD GATE — 6 free competitions then locked ──
-  const GATE_KEY = 'jc_community_member';
-  const FREE_COUNT = 10;
-
-  function isMember() {
-    return localStorage.getItem(GATE_KEY) === '1';
-  }
-
-  function applyGate() {
-    if (isMember()) {
-      unlockAll();
-      return;
-    }
-    // Lock cards beyond the 6th
-    const cards = document.querySelectorAll('.comp-card:not(.past)');
-    let visibleCount = 0;
-    cards.forEach(card => {
-      const section = card.closest('.county-section');
-      if (section && section.style.display === 'none') return;
-      visibleCount++;
-      if (visibleCount > FREE_COUNT) {
-        card.classList.add('locked');
-      }
-    });
-
-    // Fire gate when the 6th card scrolls into view
-    const sixthCard = document.querySelectorAll('.comp-card:not(.past)')[FREE_COUNT - 1];
-    if (!sixthCard) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !isMember()) {
-          setTimeout(() => {
-            document.getElementById('gate-overlay').classList.add('visible');
-          }, 400);
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.5 });
-
-    observer.observe(sixthCard);
-  }
-
-  function unlockAll() {
-    document.querySelectorAll('.comp-card.locked').forEach(c => c.classList.remove('locked'));
-    document.getElementById('gate-overlay').classList.remove('visible');
-  }
-
-  async function submitGate() {
-    const emailEl = document.getElementById('gate-email');
+  async function softSignup() {
+    const emailEl = document.getElementById('soft-email');
     const email = emailEl.value.trim();
-    if (!email || !email.includes('@')) {
-      emailEl.style.borderColor = '#E05A5A';
-      emailEl.focus();
-      return;
-    }
-    const btn = document.querySelector('.gate-btn');
+    if (!email || !email.includes('@')) { emailEl.style.borderColor='#E05A5A'; emailEl.focus(); return; }
+    const btn = emailEl.nextElementSibling;
     btn.disabled = true; btn.textContent = 'Joining...';
-
     try {
-      const res = await fetch('https://formspree.io/f/xbdewqvn', {
+      await fetch('https://formspree.io/f/xbdewqvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          email,
-          source: 'competition-finder-gate',
-          _subject: 'New JuniorCaddie community signup'
-        })
+        body: JSON.stringify({ email, source: 'competitions-soft', _subject: 'New JuniorCaddie signup' })
       });
-      if (res.ok) {
-        localStorage.setItem(GATE_KEY, '1');
-        unlockAll();
-        // Show welcome banner
-        const banner = document.getElementById('welcome-banner');
-        banner.classList.add('visible');
-        banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setTimeout(() => banner.classList.remove('visible'), 8000);
-      } else throw new Error();
-    } catch(e) {
-      // Fallback — still unlock so user isn't stranded
-      localStorage.setItem(GATE_KEY, '1');
-      unlockAll();
-      const banner = document.getElementById('welcome-banner');
-      banner.classList.add('visible');
-      setTimeout(() => banner.classList.remove('visible'), 8000);
+    } finally {
+      localStorage.setItem('jc_community_member', '1');
+      document.getElementById('soft-signup').innerHTML = `
+        <div style="font-size:40px; margin-bottom:12px;">✅</div>
+        <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; color:white; margin-bottom:6px;">You're in.</div>
+        <div style="font-size:14px; color:#7BBDE0;">We'll keep you posted on new competitions.</div>`;
     }
   }
-
-  // Re-apply gate whenever filters change
-  const _origApplyFilters = typeof applyFilters === 'function' ? applyFilters : null;
-
-  // Hook into init — run gate after page loads
-  window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(applyGate, 400);
-  });
-
-  // Block escape key — no dismissing without signing up
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') e.preventDefault();
-  });
-
-  // Block clicking the overlay to dismiss
-  document.getElementById('gate-overlay').addEventListener('click', function(e) {
-    e.stopPropagation();
-  });
 </script>
 
 </body>
