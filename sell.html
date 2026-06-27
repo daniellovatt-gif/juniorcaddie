@@ -67,16 +67,27 @@
     .option-item.selected .opt-sub { opacity: 0.8; }
     .opt-emoji { font-size: 22px; display: block; margin-bottom: 4px; }
 
-    /* Photo */
-    .photo-zone { border: 2px dashed var(--pale); border-radius: 10px; padding: 28px; text-align: center; cursor: pointer; background: white; transition: all 0.15s; margin-top: 4px; }
-    .photo-zone:hover { border-color: var(--mid); background: var(--bg); }
-    .photo-zone-icon { font-size: 32px; margin-bottom: 8px; }
-    .photo-zone-text { font-size: 14px; color: var(--mid); font-weight: 600; }
-    .photo-zone-hint { font-size: 12px; color: var(--sky); margin-top: 4px; }
-    .photo-preview { display: none; margin-top: 12px; border-radius: 8px; overflow: hidden; max-height: 200px; width: 100%; object-fit: cover; }
-    .photo-preview.visible { display: block; }
-    .photo-change { font-size: 12px; color: var(--mid); cursor: pointer; margin-top: 6px; text-decoration: underline; display: none; }
-    .photo-change.visible { display: block; }
+    /* Photo grid — 5 slots */
+    .photo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 6px; }
+    .photo-slot {
+      aspect-ratio: 1; border: 2px dashed var(--pale); border-radius: 10px;
+      cursor: pointer; background: white; transition: all 0.15s;
+      overflow: hidden; position: relative; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .photo-slot:hover { border-color: var(--mid); background: var(--bg); }
+    .photo-slot.has-photo { border-style: solid; border-color: var(--mid); }
+    .photo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .slot-inner { text-align: center; padding: 4px; pointer-events: none; }
+    .slot-icon { font-size: 20px; display: block; margin-bottom: 2px; }
+    .slot-label { font-size: 9px; color: var(--mid); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .slot-remove {
+      position: absolute; top: 3px; right: 3px; background: rgba(11,61,107,0.75);
+      color: white; border: none; border-radius: 50%; width: 18px; height: 18px;
+      font-size: 10px; cursor: pointer; display: none; align-items: center; justify-content: center; line-height: 1;
+    }
+    .photo-slot.has-photo .slot-remove { display: flex; }
+    @media (max-width: 480px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .free-notice { background: #F0FFF0; border: 1.5px solid #5ACA5A; border-radius: 10px; padding: 14px 18px; margin-bottom: 24px; display: flex; gap: 10px; align-items: flex-start; }
     .free-notice-icon { font-size: 20px; flex-shrink: 0; }
@@ -306,16 +317,32 @@
       </div>
 
       <div class="form-section">
-        <div class="form-section-title">📸 Photo</div>
+        <div class="form-section-title">📸 Photos (up to 5)</div>
         <div class="field">
-          <div class="hint">A clear photo makes your listing sell faster. Recommended but not required.</div>
-          <div class="photo-zone" id="photo-zone" onclick="openUploadWidget()">
-            <div class="photo-zone-icon">📷</div>
-            <div class="photo-zone-text">Click to add a photo</div>
-            <div class="photo-zone-hint">JPG or PNG · Max 10MB</div>
+          <div class="hint">More photos = faster sales. First photo is your main listing image.</div>
+          <div class="photo-grid" id="photo-grid">
+            <div class="photo-slot" id="slot-0" onclick="openUploadWidget(0)">
+              <div class="slot-inner"><div class="slot-icon">📷</div><div class="slot-label">Main</div></div>
+              <button class="slot-remove" onclick="removePhoto(event,0)">✕</button>
+            </div>
+            <div class="photo-slot" id="slot-1" onclick="openUploadWidget(1)">
+              <div class="slot-inner"><div class="slot-icon">+</div><div class="slot-label">Photo 2</div></div>
+              <button class="slot-remove" onclick="removePhoto(event,1)">✕</button>
+            </div>
+            <div class="photo-slot" id="slot-2" onclick="openUploadWidget(2)">
+              <div class="slot-inner"><div class="slot-icon">+</div><div class="slot-label">Photo 3</div></div>
+              <button class="slot-remove" onclick="removePhoto(event,2)">✕</button>
+            </div>
+            <div class="photo-slot" id="slot-3" onclick="openUploadWidget(3)">
+              <div class="slot-inner"><div class="slot-icon">+</div><div class="slot-label">Photo 4</div></div>
+              <button class="slot-remove" onclick="removePhoto(event,3)">✕</button>
+            </div>
+            <div class="photo-slot" id="slot-4" onclick="openUploadWidget(4)">
+              <div class="slot-inner"><div class="slot-icon">+</div><div class="slot-label">Photo 5</div></div>
+              <button class="slot-remove" onclick="removePhoto(event,4)">✕</button>
+            </div>
           </div>
-          <img class="photo-preview" id="photo-preview" src="" alt="Listing photo"/>
-          <div class="photo-change" id="photo-change" onclick="openUploadWidget()">Change photo</div>
+          <div style="font-size:11px; color:var(--sky); margin-top:6px;">Tap a slot to upload · Tap ✕ to remove · Tap again to change</div>
         </div>
       </div>
 
@@ -385,7 +412,7 @@
 
   let selectedCategory = null;
   let selectedHeight = null;
-  let uploadedPhotoUrl = null;
+  let uploadedPhotoUrls = [null, null, null, null, null];
   const selections = {};
 
   function selectCategory(cat, el) {
@@ -413,7 +440,7 @@
     document.getElementById('err-height').classList.remove('visible');
   }
 
-  function openUploadWidget() {
+  function openUploadWidget(slotIndex) {
     cloudinary.openUploadWidget({
       cloudName: 'dywsk8iat',
       uploadPreset: 'juniorcaddie_marketplace',
@@ -424,14 +451,30 @@
       styles: { palette: { window:'#FFFFFF', sourceBg:'#EEF4FB', windowBorder:'#B8D8F0', tabIcon:'#0B3D6B', link:'#1A6EA8', action:'#0B3D6B', complete:'#22C55E', error:'#C0392B', textDark:'#0B3D6B', textLight:'#FFFFFF' } }
     }, (error, result) => {
       if (!error && result && result.event === 'success') {
-        uploadedPhotoUrl = result.info.secure_url;
-        const preview = document.getElementById('photo-preview');
-        preview.src = uploadedPhotoUrl;
-        preview.classList.add('visible');
-        document.getElementById('photo-change').classList.add('visible');
-        document.getElementById('photo-zone').style.display = 'none';
+        const url = result.info.secure_url;
+        uploadedPhotoUrls[slotIndex] = url;
+        const slot = document.getElementById('slot-' + slotIndex);
+        slot.classList.add('has-photo');
+        // Replace slot inner with image
+        const existing = slot.querySelector('img');
+        if (existing) existing.remove();
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = 'Photo ' + (slotIndex + 1);
+        slot.insertBefore(img, slot.querySelector('.slot-remove'));
+        slot.querySelector('.slot-inner').style.display = 'none';
       }
     });
+  }
+
+  function removePhoto(e, slotIndex) {
+    e.stopPropagation();
+    uploadedPhotoUrls[slotIndex] = null;
+    const slot = document.getElementById('slot-' + slotIndex);
+    slot.classList.remove('has-photo');
+    const img = slot.querySelector('img');
+    if (img) img.remove();
+    slot.querySelector('.slot-inner').style.display = '';
   }
 
   function validate() {
@@ -501,7 +544,8 @@
       condition: selections['condition'],
       price: Math.round(parseFloat(document.getElementById('f-price').value) * 100),
       description: desc,
-      photo_url: uploadedPhotoUrl || null,
+      photo_url: uploadedPhotoUrls[0] || null,
+      photo_urls: uploadedPhotoUrls.filter(Boolean).length > 0 ? uploadedPhotoUrls.filter(Boolean) : null,
       status: 'active',
       // Clubs
       club_brand: isClubs ? document.getElementById('f-brand').value : null,
