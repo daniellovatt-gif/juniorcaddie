@@ -219,6 +219,60 @@
     .logo-e.light .logo-e-caddie { color: #1A6EA8; }
 
     /* ── EMAIL GATE ── */
+    /* ── Community popup modal ── */
+    .popup-overlay {
+      position: fixed; inset: 0; z-index: 900;
+      background: rgba(11,61,107,0.6);
+      backdrop-filter: blur(3px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .popup-overlay.visible { opacity: 1; pointer-events: all; }
+    .popup-panel {
+      background: white; border-radius: 20px;
+      padding: 40px 32px 32px;
+      max-width: 440px; width: 100%;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1);
+      box-shadow: 0 24px 64px rgba(11,61,107,0.25);
+      text-align: center;
+    }
+    .popup-overlay.visible .popup-panel { transform: translateY(0); }
+    .popup-close {
+      position: absolute; top: 14px; right: 16px;
+      background: none; border: none; font-size: 22px;
+      color: #AAA; cursor: pointer; line-height: 1;
+      padding: 4px 8px; border-radius: 6px;
+      transition: color 0.15s;
+    }
+    .popup-close:hover { color: var(--navy); }
+    .popup-icon { font-size: 44px; margin-bottom: 14px; display: block; }
+    .popup-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.15; }
+    .popup-sub { font-size: 14px; color: var(--mid); line-height: 1.65; margin-bottom: 22px; }
+    .popup-field { display: flex; gap: 8px; margin-bottom: 8px; }
+    .popup-input {
+      flex: 1; padding: 12px 14px; border: 1.5px solid var(--pale);
+      border-radius: 9px; font-size: 15px; color: var(--navy);
+      background: #F8FBFF; outline: none;
+    }
+    .popup-input:focus { border-color: var(--mid); }
+    .popup-btn {
+      background: var(--navy); color: white; border: none;
+      padding: 12px 20px; border-radius: 9px;
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      white-space: nowrap; transition: background 0.15s;
+    }
+    .popup-btn:hover { background: var(--mid); }
+    .popup-dismiss { font-size: 12px; color: #AAA; cursor: pointer; margin-top: 4px; }
+    .popup-dismiss:hover { color: var(--navy); }
+    @media (max-width: 480px) {
+      .popup-panel { padding: 36px 20px 24px; }
+      .popup-field { flex-direction: column; }
+    }
+
     /* Welcome banner */
     .welcome-banner {
       display: none;
@@ -561,22 +615,6 @@
         <a href="https://www.verulamgolf.co.uk/competition.php?compid=3867" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
       </div>
 
-      <!-- SOFT GATE — fires after 12th competition -->
-      <div id="inline-gate" style="display:none; grid-column:1/-1; background:var(--navy); border-radius:14px; padding:28px 24px; margin:8px 0; text-align:center;">
-        <div style="font-size:28px; margin-bottom:10px;">⛳</div>
-        <div style="font-family:Georgia,serif; font-size:18px; font-weight:700; color:white; margin-bottom:6px;">Join the growing JuniorCaddie community</div>
-        <div style="font-size:13px; color:#7BBDE0; margin-bottom:18px; line-height:1.6;">More features coming soon. Be the first to know.</div>
-        <div style="display:flex; gap:8px; max-width:380px; margin:0 auto 8px; flex-wrap:wrap; justify-content:center;">
-          <input id="inline-email" type="email" placeholder="Your email address" autocomplete="email"
-            style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none;"
-            onkeydown="if(event.key==='Enter') inlineSignup()"/>
-          <button onclick="inlineSignup()"
-            style="background:white; color:#0B3D6B; border:none; padding:10px 20px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer;">
-            Join free
-          </button>
-        </div>
-        <div style="font-size:11px; color:rgba(255,255,255,0.35);">No spam. Unsubscribe any time.</div>
-      </div>
 
       <div class="comp-card" data-county="herts" data-date="2026-08-17">
         <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
@@ -4568,44 +4606,6 @@
 </div>
 
 <script>
-  // ── INLINE GATE ──
-  const inlineGate = document.getElementById('inline-gate');
-  if (localStorage.getItem('jc_community_member') === '1') {
-    // Already a member — hide gate permanently
-    if (inlineGate) inlineGate.style.display = 'none';
-  } else if (inlineGate) {
-    // Show gate when it scrolls into view
-    const gateObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          inlineGate.style.display = 'block';
-          gateObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.1 });
-    gateObserver.observe(inlineGate);
-  }
-
-  async function inlineSignup() {
-    const emailEl = document.getElementById('inline-email');
-    const email = emailEl.value.trim();
-    if (!email || !email.includes('@')) { emailEl.style.borderColor = '#E05A5A'; emailEl.focus(); return; }
-    const btn = emailEl.nextElementSibling;
-    btn.disabled = true; btn.textContent = 'Joining...';
-    try {
-      await fetch('https://formspree.io/f/xbdewqvn', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email, source: 'competitions-inline-gate', _subject: 'New JuniorCaddie signup' })
-      });
-    } finally {
-      localStorage.setItem('jc_community_member', '1');
-      inlineGate.innerHTML = `
-        <div style="font-size:36px; margin-bottom:8px;">✅</div>
-        <div style="font-family:Georgia,serif; font-size:18px; font-weight:700; color:white; margin-bottom:4px;">You're in.</div>
-        <div style="font-size:13px; color:#7BBDE0;">We'll keep you posted on new features and competitions.</div>`;
-    }
-  }
 
   async function softSignup() {
     const emailEl = document.getElementById('soft-email');
@@ -4625,6 +4625,96 @@
         <div style="font-size:40px; margin-bottom:12px;">✅</div>
         <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; color:white; margin-bottom:6px;">You're in.</div>
         <div style="font-size:14px; color:#7BBDE0;">We'll keep you posted on new competitions.</div>`;
+    }
+  }
+</script>
+
+<!-- ── COMMUNITY POPUP MODAL ── -->
+<div class="popup-overlay" id="popup-overlay">
+  <div class="popup-panel" id="popup-panel">
+    <button class="popup-close" onclick="dismissPopup()" aria-label="Close">✕</button>
+    <div id="popup-inner">
+      <span class="popup-icon">⛳</span>
+      <div class="popup-title">Join the growing JuniorCaddie community</div>
+      <div class="popup-sub">More features coming soon — be the first to know.</div>
+      <div class="popup-field">
+        <input class="popup-input" id="popup-email" type="email" placeholder="Your email address" autocomplete="email"
+          onkeydown="if(event.key==='Enter') popupSignup()"/>
+        <button class="popup-btn" onclick="popupSignup()">Join free</button>
+      </div>
+      <div class="popup-note" style="font-size:11px; color:#AAA; margin-bottom:10px;">No spam. Unsubscribe any time.</div>
+      <div class="popup-dismiss" onclick="dismissPopup()">No thanks, continue browsing</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── POPUP GATE — fires after 12th competition card scrolled past ──
+  (function() {
+    if (localStorage.getItem('jc_community_member') === '1') return;
+
+    // Find the 12th comp-card
+    const cards = document.querySelectorAll('.comp-card');
+    const trigger = cards[11]; // 0-indexed → 12th card
+    if (!trigger) return;
+
+    let fired = false;
+    function checkTrigger() {
+      if (fired) return;
+      const rect = trigger.getBoundingClientRect();
+      // Fire when the bottom of the 12th card passes the middle of the screen
+      if (rect.bottom < window.innerHeight * 0.6) {
+        fired = true;
+        window.removeEventListener('scroll', checkTrigger);
+        setTimeout(showPopup, 400);
+      }
+    }
+
+    window.addEventListener('scroll', checkTrigger, { passive: true });
+
+    function showPopup() {
+      document.getElementById('popup-overlay').classList.add('visible');
+      document.getElementById('popup-email').focus();
+    }
+  })();
+
+  function dismissPopup() {
+    document.getElementById('popup-overlay').classList.remove('visible');
+  }
+
+  // Close on overlay click (not panel click)
+  document.getElementById('popup-overlay').addEventListener('click', function(e) {
+    if (e.target === this) dismissPopup();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') dismissPopup();
+  });
+
+  async function popupSignup() {
+    const emailEl = document.getElementById('popup-email');
+    const email = emailEl.value.trim();
+    if (!email || !email.includes('@')) {
+      emailEl.style.borderColor = '#E05A5A';
+      emailEl.focus();
+      return;
+    }
+    const btn = document.querySelector('.popup-btn');
+    btn.disabled = true; btn.textContent = 'Joining...';
+    try {
+      await fetch('https://formspree.io/f/xbdewqvn', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email, source: 'competitions-popup', _subject: 'New JuniorCaddie signup' })
+      });
+    } finally {
+      localStorage.setItem('jc_community_member', '1');
+      document.getElementById('popup-inner').innerHTML = `
+        <div style="font-size:48px; margin-bottom:14px;">✅</div>
+        <div style="font-family:Georgia,serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:8px;">You're in.</div>
+        <div style="font-size:14px; color:var(--mid); line-height:1.6; margin-bottom:20px;">We'll keep you posted on new competitions and features.</div>
+        <button onclick="dismissPopup()" style="background:var(--navy); color:white; border:none; padding:12px 28px; border-radius:9px; font-size:15px; font-weight:700; cursor:pointer;">Continue browsing →</button>`;
     }
   }
 </script>
