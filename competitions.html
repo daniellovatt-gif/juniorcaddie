@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.juniorcaddie.co.uk/competitions.html" />
   <meta property="og:title" content="Junior Golf Competitions 2026 UK — Find & Enter Junior Opens Near You" />
-  <meta property="og:description" content="87 junior golf competitions listed across England with direct entry links. Hertfordshire, Essex, Surrey, Middlesex, Bedfordshire, Cambridgeshire, BJGT, Faldo Series and national championships." />
+  <meta property="og:description" content="410+ junior golf competitions listed across England and Scotland with direct entry links. Hertfordshire, Essex, Surrey, Middlesex, Bedfordshire, Cambridgeshire, BJGT, Faldo Series and national championships." />
   <meta property="og:site_name" content="JuniorCaddie" />
   <meta property="og:image" content="https://www.juniorcaddie.co.uk/og-image.png" />
   <meta property="og:image:width" content="1200" />
@@ -21,7 +21,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Junior Golf Competitions 2026 UK — Find & Enter Junior Opens Near You" />
-  <meta name="twitter:description" content="87 junior golf competitions listed across England with direct entry links. Hertfordshire, Essex, Surrey, Middlesex, Bedfordshire, Cambridgeshire, BJGT, Faldo Series and national championships." />
+  <meta name="twitter:description" content="410+ junior golf competitions listed across England and Scotland with direct entry links. Hertfordshire, Essex, Surrey, Middlesex, Bedfordshire, Cambridgeshire, BJGT, Faldo Series and national championships." />
   <!-- Additional SEO -->
   <meta name="robots" content="index, follow" />
   <meta name="author" content="JuniorCaddie" />
@@ -302,7 +302,7 @@
 </section>
 
 <div class="stats">
-  <div class="stat"><div class="stat-n" id="total-count">220+</div><div class="stat-l">Competitions individually listed</div></div>
+  <div class="stat"><div class="stat-n" id="total-count">410+</div><div class="stat-l">Competitions individually listed</div></div>
   <div class="stat"><div class="stat-n" id="upcoming-count">—</div><div class="stat-l">Still to come in 2026</div></div>
   <div class="stat"><div class="stat-n">15</div><div class="stat-l">Counties, tours & national bodies</div></div>
   <div class="stat"><div class="stat-n">Growing</div><div class="stat-l">More added every week</div></div>
@@ -325,9 +325,31 @@
     <button class="filter-btn" onclick="filterCounty('yorks', this)">Yorkshire</button>
     <button class="filter-btn" onclick="filterCounty('glos', this)">Gloucestershire</button>
     <button class="filter-btn" onclick="filterCounty('norfolk', this)">Norfolk</button>
+    <button class="filter-btn" onclick="filterCounty('cheshire', this)">Cheshire</button>
+    <button class="filter-btn" onclick="filterCounty('devon', this)">Devon</button>
+    <button class="filter-btn" onclick="filterCounty('warks', this)">Warwickshire</button>
+    <button class="filter-btn" onclick="filterCounty('wilts', this)">Wiltshire</button>
+    <button class="filter-btn" onclick="filterCounty('suffolk', this)">Suffolk</button>
+    <button class="filter-btn" onclick="filterCounty('worcs', this)">Worcestershire</button>
+    <button class="filter-btn" onclick="filterCounty('oxon', this)">Oxfordshire</button>
+    <button class="filter-btn" onclick="filterCounty('lincs', this)">Lincolnshire</button>
+    <button class="filter-btn" onclick="filterCounty('notts', this)">Nottinghamshire</button>
+    <button class="filter-btn" onclick="filterCounty('derby', this)">Derbyshire</button>
+    <button class="filter-btn" onclick="filterCounty('leics', this)">Leicestershire</button>
+    <button class="filter-btn" onclick="filterCounty('durham', this)">Durham</button>
+    <button class="filter-btn" onclick="filterCounty('staffs', this)">Staffordshire</button>
+    <button class="filter-btn" onclick="filterCounty('cornwall', this)">Cornwall</button>
+    <button class="filter-btn" onclick="filterCounty('somerset', this)">Somerset</button>
+    <button class="filter-btn" onclick="filterCounty('dorset', this)">Dorset</button>
+    <button class="filter-btn" onclick="filterCounty('northumb', this)">Northumberland</button>
+    <button class="filter-btn" onclick="filterCounty('shropshire', this)">Shropshire</button>
+    <button class="filter-btn" onclick="filterCounty('scotland', this)">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</button>
+    <button class="filter-btn" onclick="filterCounty('wales', this)">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</button>
   </div>
   <div class="filter-row" style="margin-top:8px;">
     <button class="filter-btn" onclick="filterCounty('bjgt', this)" style="background:#0F4F7A; color:white; border-color:#0F4F7A;">🏆 BJGT</button>
+    <button class="filter-btn" onclick="filterCounty('pingjgt', this)" style="background:#003087; color:white; border-color:#003087;">🏓 PING JGT</button>
+    <button class="filter-btn" onclick="filterCounty('rockgolf', this)" style="background:#8B0000; color:white; border-color:#8B0000;">🪨 Rock Golf</button>
     <button class="filter-btn" onclick="filterCounty('faldo', this)" style="background:#0F4F7A; color:white; border-color:#0F4F7A;">🏆 Faldo Series</button>
     <button class="filter-btn" onclick="filterCounty('england', this)" style="background:#8B0000; color:white; border-color:#8B0000;">🌹 England Golf</button>
     <button class="filter-btn" onclick="filterCounty('schools', this)" style="background:#1A5A1A; color:white; border-color:#1A5A1A;">🏫 English Schools</button>
@@ -343,7 +365,7 @@
   <!-- Welcome banner — shown after signup -->
   <div class="welcome-banner" id="welcome-banner">
     <p>⛳ Welcome to the JuniorCaddie community!</p>
-    <span>All 220+ competitions are now unlocked. We'll let you know when new ones are added near you.</span>
+    <span>All 410+ competitions are now unlocked. We'll let you know when new ones are added near you.</span>
   </div>
 
   <!-- Growing notice -->
@@ -491,7 +513,7 @@
         <div class="comp-name">Letchworth Junior Open</div>
         <div class="comp-venue">Letchworth Golf Club</div>
         <div class="comp-tags"><span class="tag oom">County ranking (36 holes — double points)</span><span class="tag">Boys & Girls</span></div>
-        <a href="https://www.letchworthgolfclub.com/competition2.php?tab=details&compid=12128" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+        <a href="https://hertfordshiregolf.org/wp-content/uploads/2025/09/LGC-Junior-Open-entry-form-2026.pdf" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
       </div>
 
       <div class="comp-card" data-county="herts" data-date="2026-08-10">
@@ -527,7 +549,7 @@
         <div class="comp-name">Harpenden Common Junior Open</div>
         <div class="comp-venue">Harpenden Common Golf Club</div>
         <div class="comp-tags"><span class="tag oom">County ranking</span><span class="tag">Count every shot — lowest score wins</span><span class="tag">Boys & Girls</span></div>
-        <a href="https://harpendencommon.intelligentgolf.co.uk/competition2.php?tab=details&compid=135&go=signup" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+        <a href="https://www.harpendencommongolfclub.co.uk/competition2.php?tab=details&compid=2248" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
       </div>
 
       <div class="comp-card" data-county="herts" data-date="2026-08-14">
@@ -536,7 +558,7 @@
         <div class="comp-name">Verulam Junior Open</div>
         <div class="comp-venue">Verulam Golf Club, St Albans</div>
         <div class="comp-tags"><span class="tag oom">County ranking</span><span class="tag">Count every shot — lowest score wins</span><span class="tag">Boys & Girls</span></div>
-        <a href="https://www.verulamgolf.co.uk/competition2.php?tab=details&compid=1430" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+        <a href="https://www.verulamgolf.co.uk/competition.php?compid=3867" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
       </div>
 
       <div class="comp-card" data-county="herts" data-date="2026-08-17">
@@ -693,7 +715,7 @@
   <div class="county-section" id="section-cambs" data-county="cambs">
     <div class="county-header">
       <span class="county-name">Cambridgeshire</span>
-      <span class="county-count">5 competitions</span>
+      <span class="county-count">7 competitions</span>
       <a href="https://www.cagu.co.uk/" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
     <div class="comps-grid" id="grid-cambs">
@@ -713,7 +735,7 @@
         <div class="comp-name">Peterborough Milton Junior Open</div>
         <div class="comp-venue">Peterborough Milton Golf Club</div>
         <div class="comp-tags"><span class="tag">Count every shot — lowest score wins</span><span class="tag">£19 entry</span><span class="tag">Boys & Girls</span></div>
-        <a href="https://www.cagu.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+        <a href="https://www.pmgc.org.uk/competition2.php?tab=details&compid=2121" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
       </div>
 
       <div class="comp-card" data-county="cambs" data-date="2026-10-27">
@@ -731,7 +753,7 @@
         <div class="comp-name">Gog Magog Junior Open</div>
         <div class="comp-venue">Gog Magog Golf Club, Cambridge</div>
         <div class="comp-tags"><span class="tag">Count every shot — lowest score wins</span><span class="tag">£30 entry</span><span class="tag">Prestigious venue</span></div>
-        <a href="https://www.cagu.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+        <a href="https://www.gogmagog.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
       </div>
 
       <div class="comp-card" data-county="cambs" data-date="2026-11-30">
@@ -1629,10 +1651,26 @@
         <a href="https://www.kentgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter">View details ↗</a>
       </div>
 
+      <div class="comp-card" data-county="cambs" data-date="2026-08-22">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 22 August 2026</span></div>
+        <div class="comp-name">Saffron Walden Junior Open</div>
+        <div class="comp-venue">Saffron Walden Golf Club, Essex</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.swgc.com/competition2.php?tab=details&go=signup&compid=3672" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="cambs" data-date="2026-08-28">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 28 August 2026</span></div>
+        <div class="comp-name">Brampton Park Junior Open</div>
+        <div class="comp-venue">Brampton Park Golf Club, Brampton, Cambridgeshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://bramptonparkgc.co.uk/book-an-open/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
     </div>
   </div>
-
-  <!-- LANCASHIRE -->
   <div class="county-section" id="section-lancs" data-county="lancs">
     <div class="county-header">
       <span class="county-name">Lancashire</span>
@@ -2176,6 +2214,1705 @@
     </div>
   </div>
 
+  <!-- SCOTLAND -->
+  <div class="county-section" id="section-scotland" data-county="scotland">
+    <div class="county-header">
+      <span class="county-name">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</span>
+      <span class="county-count">21 competitions</span>
+      <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="county-link">Junior Tour Scotland ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      Scotland's junior golf is split between <strong>Junior Tour Scotland</strong> (a competitive tour with WAGR ranking points at prestigious venues) and individual <strong>club junior opens</strong> across Central Scotland and the Highlands. Junior Tour Scotland events are open to boys U21, U18, U16, U14 and girls U21. Entry via the Scottish Golf App.
+    </div>
+    <div class="comps-grid" id="grid-scotland">
+
+      <!-- JUNIOR TOUR SCOTLAND -->
+      <div class="comp-card past" data-county="scotland" data-date="2026-04-05">
+        <span class="stage-badge">Stage 4–5 · WAGR & EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> 4–5 April 2026</div>
+        <div class="comp-name">Junior Tour Scotland — Royal Dornoch</div>
+        <div class="comp-venue">Royal Dornoch Golf Club, Sutherland</div>
+        <div class="comp-tags"><span class="tag">54 holes</span><span class="tag">WAGR & EGR ranking</span><span class="tag">Top 100 Links</span><span class="tag">Field full</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter disabled">Closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="scotland" data-date="2026-05-03">
+        <span class="stage-badge">Stage 4–5 · WAGR & EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> 2–3 May 2026</div>
+        <div class="comp-name">Junior Tour Scotland — Portpatrick Dunskey</div>
+        <div class="comp-venue">Portpatrick Dunskey Golf Club, Wigtownshire</div>
+        <div class="comp-tags"><span class="tag">54 holes</span><span class="tag">WAGR & EGR ranking</span><span class="tag">75 places</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter disabled">Closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="scotland" data-date="2026-05-17">
+        <span class="stage-badge">Stage 4–5 · WAGR & EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> 16–17 May 2026</div>
+        <div class="comp-name">Junior Tour Scotland — Alyth & Glenisla</div>
+        <div class="comp-venue">Alyth Golf Club & Glenisla Golf Club, Perthshire</div>
+        <div class="comp-tags"><span class="tag">54 holes</span><span class="tag">WAGR & EGR ranking</span><span class="tag">86 places</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter disabled">Closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="scotland" data-date="2026-06-21">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 21 June 2026</div>
+        <div class="comp-name">Dunblane New Junior Open</div>
+        <div class="comp-venue">Dunblane New Golf Club, Stirlingshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£5</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.scottishgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-06-28">
+        <span class="stage-badge">Stage 4–5 · WAGR & EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge">27–28 June 2026</span></div>
+        <div class="comp-name">Junior Tour Scotland — Hayston</div>
+        <div class="comp-venue">Hayston Golf Club, East Dunbartonshire</div>
+        <div class="comp-tags"><span class="tag">54 holes</span><span class="tag">WAGR & EGR ranking</span><span class="tag">87 places</span><span class="tag">Ballot</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-07-05">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 5 July 2026</span></div>
+        <div class="comp-name">Alness Junior Open</div>
+        <div class="comp-venue">Alness Golf Club, Ross-shire, Highlands</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.scottishgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-07-12">
+        <span class="stage-badge">Stage 4–5 · WAGR & EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge">11–12 July 2026</span></div>
+        <div class="comp-name">Junior Tour Scotland — Tain</div>
+        <div class="comp-venue">Tain Golf Club, Easter Ross, Highlands</div>
+        <div class="comp-tags"><span class="tag">54 holes</span><span class="tag">WAGR & EGR ranking</span><span class="tag">84 places</span><span class="tag">Ballot</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-07-14">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 14 July 2026</span></div>
+        <div class="comp-name">Nairn Dunbar Junior Open</div>
+        <div class="comp-venue">Nairn Dunbar Golf Club, Nairn, Highlands</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Links course</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.scottishgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-07-15">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Wed 15 July 2026</span></div>
+        <div class="comp-name">Muir of Ord Junior Open</div>
+        <div class="comp-venue">Muir of Ord Golf Club, Ross-shire, Highlands</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.scottishgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-07-17">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 17 July 2026</span></div>
+        <div class="comp-name">Invergordon Junior Open</div>
+        <div class="comp-venue">Invergordon Golf Club, Easter Ross, Highlands</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.scottishgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-07-17">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 17 July 2026</span></div>
+        <div class="comp-name">Callander Junior Open</div>
+        <div class="comp-venue">Callander Golf Club, Stirlingshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.scottishgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-07-22">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Wed 22 July 2026</span></div>
+        <div class="comp-name">Lanark Junior Open</div>
+        <div class="comp-venue">Lanark Golf Club, South Lanarkshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.scottishgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-07-24">
+        <span class="stage-badge">Stage 4–5 · EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge">23–24 July 2026</span></div>
+        <div class="comp-name">Junior Tour Scotland — Royal Musselburgh</div>
+        <div class="comp-venue">Royal Musselburgh Golf Club, East Lothian</div>
+        <div class="comp-tags"><span class="tag">36 holes</span><span class="tag">EGR ranking</span><span class="tag">66 places</span><span class="tag">Ballot</span><span class="tag">Historic links</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-08-02">
+        <span class="stage-badge">Stage 4–5 · WAGR & EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge">1–2 August 2026</span></div>
+        <div class="comp-name">Junior Tour Scotland — Peterculter</div>
+        <div class="comp-venue">Peterculter Golf Club, Aberdeenshire</div>
+        <div class="comp-tags"><span class="tag">54 holes</span><span class="tag">WAGR & EGR ranking</span><span class="tag">81 places</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-08-09">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 9 August 2026</span></div>
+        <div class="comp-name">Lenzie Junior Open</div>
+        <div class="comp-venue">Lenzie Golf Club, East Dunbartonshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£5</span><span class="tag">Boys & Girls</span><span class="tag">Two divisions</span></div>
+        <a href="https://www.scottishgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-08-16">
+        <span class="stage-badge">Stage 4–5 · WAGR & EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge">15–16 August 2026</span></div>
+        <div class="comp-name">Junior Tour Scotland — Hilton Park</div>
+        <div class="comp-venue">Hilton Park Golf Club (Allander Course), Glasgow</div>
+        <div class="comp-tags"><span class="tag">54 holes</span><span class="tag">WAGR & EGR ranking</span><span class="tag">72 places</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-08-23">
+        <span class="stage-badge">Stage 4–5 · EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge">22–23 August 2026</span></div>
+        <div class="comp-name">Junior Tour Scotland — Kilspindie</div>
+        <div class="comp-venue">Kilspindie Golf Club, East Lothian</div>
+        <div class="comp-tags"><span class="tag">36 holes</span><span class="tag">EGR ranking</span><span class="tag">69 places</span><span class="tag">Ballot</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-09-06">
+        <span class="stage-badge">Stage 4–5 · WAGR & EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge">5–6 September 2026</span></div>
+        <div class="comp-name">Junior Tour Scotland — Fraserburgh</div>
+        <div class="comp-venue">Fraserburgh Golf Club (Corbiehill Course), Aberdeenshire</div>
+        <div class="comp-tags"><span class="tag">54 holes</span><span class="tag">WAGR & EGR ranking</span><span class="tag">57 places</span><span class="tag">Ballot</span><span class="tag">Links course</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-09-20">
+        <span class="stage-badge">Stage 4–5 · WAGR & EGR Ranking</span>
+        <div class="comp-date"><span class="date-badge">19–20 September 2026</span></div>
+        <div class="comp-name">Junior Tour Scotland — Baberton</div>
+        <div class="comp-venue">Baberton Golf Club, Edinburgh</div>
+        <div class="comp-tags"><span class="tag">54 holes</span><span class="tag">WAGR & EGR ranking</span><span class="tag">60 places</span><span class="tag">Ballot</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-10-16">
+        <span class="stage-badge">Stage 4–5 · Order of Merit Final</span>
+        <div class="comp-date"><span class="date-badge">12–16 October 2026</span></div>
+        <div class="comp-name">Junior Tour Scotland — OOM Final</div>
+        <div class="comp-venue">Enniscrone Golf Club, County Sligo, Ireland</div>
+        <div class="comp-tags"><span class="tag">36 holes</span><span class="tag">Season finale</span><span class="tag">Top players only</span><span class="tag">Links course</span></div>
+        <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="comp-enter">View ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="scotland" data-date="2026-08-01">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Various dates 2026</span></div>
+        <div class="comp-name">More Scottish Junior Opens</div>
+        <div class="comp-venue">Clubs across Central Scotland and the Highlands</div>
+        <div class="comp-tags"><span class="tag">More opens across Scotland</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.scottishgolf.org/junior-competitions" target="_blank" rel="noopener" class="comp-enter">Scottish Golf ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WALES -->
+  <div class="county-section" id="section-wales" data-county="wales">
+    <div class="county-header">
+      <span class="county-name">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</span>
+      <span class="county-count">9 competitions</span>
+      <a href="https://www.walesgolf.org/national-junior-competitions" target="_blank" rel="noopener" class="county-link">Wales Golf ↗</a>
+    </div>
+
+    <div style="background:#FFF8E8; border:0.5px solid #E8C97A; border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#6B5000; line-height:1.6;">
+      <strong>Honest note on Wales coverage:</strong> Wales has an active junior golf scene but competition dates are harder to find publicly than in England. We've listed every open we've been able to verify with confirmed dates. Two key programmes — the <strong>PING Welsh Junior Tour</strong> and the <strong>Wales Mini Masters</strong> — are confirmed as running in 2026 but their specific event dates are managed through Wales Golf directly. We've included them below as signposts so you know they exist. We'll add full listings as dates are confirmed.
+    </div>
+
+    <div class="comps-grid" id="grid-wales">
+
+      <!-- PING Welsh Junior Tour — signpost card -->
+      <div class="comp-card" data-county="wales" data-date="2026-07-01">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Throughout 2026</span></div>
+        <div class="comp-name">PING Welsh Junior Tour</div>
+        <div class="comp-venue">Multiple venues including Hawarden, Milford Haven and Cardiff</div>
+        <div class="comp-tags"><span class="tag">Tour format</span><span class="tag">Order of Merit</span><span class="tag">Boys & Girls</span><span class="tag">All abilities</span></div>
+        <div style="font-size:11px; color:#888; margin-top:6px; margin-bottom:8px;">Specific dates managed by Wales Golf — contact them directly or check their website for the 2026 schedule.</div>
+        <a href="https://www.walesgolf.org/ping-welsh-junior-tour" target="_blank" rel="noopener" class="comp-enter">Wales Golf ↗</a>
+      </div>
+
+      <!-- Wales Mini Masters — signpost card -->
+      <div class="comp-card" data-county="wales" data-date="2026-07-01">
+        <span class="stage-badge">Stage 1–3 · Beginners & high handicaps</span>
+        <div class="comp-date"><span class="date-badge">Throughout 2026</span></div>
+        <div class="comp-name">Wales Mini Masters 2026</div>
+        <div class="comp-venue">Various venues across Wales</div>
+        <div class="comp-tags"><span class="tag">Under 18</span><span class="tag">Beginners welcome</span><span class="tag">Handicap 14–28</span><span class="tag">17th year</span></div>
+        <div style="font-size:11px; color:#888; margin-top:6px; margin-bottom:8px;">A series of qualifying rounds building to a final. Specifically designed for beginners and higher handicaps — ideal for Stage 1–3 juniors new to competition. 2026 dates on their website.</div>
+        <a href="https://www.walesminimasters.co.uk" target="_blank" rel="noopener" class="comp-enter">View dates ↗</a>
+      </div>
+
+      <!-- Confirmed club opens -->
+      <div class="comp-card past" data-county="wales" data-date="2026-05-24">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 24 May 2026</div>
+        <div class="comp-name">Holywell Junior Open</div>
+        <div class="comp-venue">Holywell Golf Club, Flintshire, North Wales</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£5</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.walesgolf.org/juniors-play" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="wales" data-date="2026-05-29">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Fri 29 May 2026</div>
+        <div class="comp-name">Neath Junior Open</div>
+        <div class="comp-venue">Neath Golf Club, Neath, South Wales</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£13</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.walesgolf.org/juniors-play" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="wales" data-date="2026-05-29">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Fri 29 May 2026</div>
+        <div class="comp-name">Haverfordwest Junior Open</div>
+        <div class="comp-venue">Haverfordwest Golf Club, Pembrokeshire, West Wales</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.walesgolf.org/juniors-play" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="wales" data-date="2026-07-28">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 28 July 2026</span></div>
+        <div class="comp-name">Aberdovey Junior Open</div>
+        <div class="comp-venue">Aberdovey Golf Club, Gwynedd, North Wales</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Links course</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.walesgolf.org/juniors-play" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="wales" data-date="2026-07-30">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 30 July 2026</span></div>
+        <div class="comp-name">Nefyn & District Junior Open</div>
+        <div class="comp-venue">Nefyn & District Golf Club, Llŷn Peninsula, North Wales</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">Clifftop links</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.walesgolf.org/juniors-play" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="wales" data-date="2026-08-10">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Mon 10 August 2026</span></div>
+        <div class="comp-name">Llanishen Junior Open</div>
+        <div class="comp-venue">Llanishen Golf Club, Cardiff, South Wales</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span><span class="tag">Cardiff</span></div>
+        <a href="https://www.walesgolf.org/juniors-play" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="wales" data-date="2026-08-23">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 23 August 2026</span></div>
+        <div class="comp-name">Vale of Llangollen Junior Open</div>
+        <div class="comp-venue">Vale of Llangollen Golf Club, Denbighshire, North Wales</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.walesgolf.org/juniors-play" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="wales" data-date="2026-08-25">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 25 August 2026</span></div>
+        <div class="comp-name">Abergele Junior Open</div>
+        <div class="comp-venue">Abergele Golf Club, Conwy, North Wales</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.abergelegolfclub.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="wales" data-date="2026-10-03">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sat 3 October 2026</span></div>
+        <div class="comp-name">Neath Junior Open (Autumn)</div>
+        <div class="comp-venue">Neath Golf Club, Neath, South Wales</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">Price TBC</span><span class="tag">Boys & Girls</span><span class="tag">Season finale</span></div>
+        <a href="https://www.walesgolf.org/juniors-play" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PING JUNIOR GOLF TOUR -->
+  <div class="county-section" id="section-pingjgt" data-county="pingjgt">
+    <div class="county-header">
+      <span class="county-name">🏆 PING Junior Golf Tour</span>
+      <span class="county-count">27 events · 2 tours</span>
+      <a href="https://pingjuniorgolftour.co.uk/events/" target="_blank" rel="noopener" class="county-link">Full schedule ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      The PING Junior Golf Tour runs two products. The <strong>Rookies Tour</strong> is 9-hole events for ages 6–12 — no handicap required, forward tees, beginner-friendly. The <strong>Masters Tour</strong> is 18-hole events for U21s with a WHS handicap — 26 qualifying events building to a Grand Final. Many events sell out quickly. Membership gives priority entry. Entry via Golf Genius.
+    </div>
+    <div class="comps-grid" id="grid-pingjgt">
+
+      <!-- ROOKIES TOUR OVERVIEW CARD -->
+      <div class="comp-card" data-county="pingjgt" data-date="2026-07-01">
+        <span class="stage-badge">Stage 1–2 · Ages 6–12 · No handicap needed</span>
+        <div class="comp-date"><span class="date-badge">Throughout 2026</span></div>
+        <div class="comp-name">PING JGT — Rookies Tour (9-hole)</div>
+        <div class="comp-venue">Multiple venues across the UK</div>
+        <div class="comp-tags"><span class="tag">9 holes</span><span class="tag">Ages 6–12</span><span class="tag">No handicap needed</span><span class="tag">Boys & Girls</span><span class="tag">Forward tees</span></div>
+        <div style="font-size:11px; color:#666; margin-top:6px; margin-bottom:8px; line-height:1.5;">Beginner-friendly 9-hole events. Par 5s capped at 250 yards. Live scoring via Golf Genius app. No handicap required — ideal first competition experience for Stage 1–2 juniors.</div>
+        <a href="https://pingjuniorgolftour.co.uk/rookies-tour/" target="_blank" rel="noopener" class="comp-enter">View Rookies Tour ↗</a>
+      </div>
+
+      <!-- MASTERS TOUR — upcoming events with open entry -->
+      <div class="comp-card" data-county="pingjgt" data-date="2026-05-26">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Tue 26 May 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Aldwickbury Park</div>
+        <div class="comp-venue">Aldwickbury Park Golf Club, Hertfordshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100330940916571585" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-05-27">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Wed 27 May 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Crews Hill</div>
+        <div class="comp-venue">Crews Hill Golf Club, Hertfordshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100340690626551241" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-05-31">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Sun 31 May 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Louth</div>
+        <div class="comp-venue">Louth Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100359124525522393" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-07-23">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Thu 23 July 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Wrekin</div>
+        <div class="comp-venue">Wrekin Golf Club, Shropshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100482491555519507" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-07-26">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Sun 26 July 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Faversham</div>
+        <div class="comp-venue">Faversham Golf Club, Kent</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100499121501117467" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-07-26">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Sun 26 July 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Nelson</div>
+        <div class="comp-venue">Nelson Golf Club, Lancashire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100509497672342563" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-07-27">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Mon 27 July 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Wilpshire</div>
+        <div class="comp-venue">Wilpshire Golf Club, Lancashire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100521538512493611" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-07-30">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Thu 30 July 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Brokenhurst Manor</div>
+        <div class="comp-venue">Brokenhurst Manor Golf Club, Hampshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100549122772180027" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-08-14">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Fri 14 August 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Beamish Park</div>
+        <div class="comp-venue">Beamish Park Golf Club, County Durham</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100555939120159811" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-08-18">
+        <span class="stage-badge">Stage 3–5 · U21 · Major event</span>
+        <div class="comp-date"><span class="date-badge">Tue 18 August 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Essendon Southern Cup (Major)</div>
+        <div class="comp-venue">Essendon Country Club, Hertfordshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Major event</span><span class="tag">Under 21</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100651239948164187" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-08-19">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Wed 19 August 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Norwood Park</div>
+        <div class="comp-venue">Norwood Park Golf Centre, Nottinghamshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100668063972596835" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-08-20">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Thu 20 August 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Horsley Lodge</div>
+        <div class="comp-venue">Horsley Lodge Estate Golf Club, Derbyshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100676486067919979" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-08-23">
+        <span class="stage-badge">Stage 3–5 · U21 · WHS handicap required</span>
+        <div class="comp-date"><span class="date-badge">Sun 23 August 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Melton Mowbray</div>
+        <div class="comp-venue">Melton Mowbray Golf Club, Leicestershire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Under 21</span><span class="tag">Order of Merit</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100682636360424563" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-08-30">
+        <span class="stage-badge">Stage 4–5 · U21 · Major event</span>
+        <div class="comp-date"><span class="date-badge">Sun 30 August 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Minchinhampton (Major)</div>
+        <div class="comp-venue">Minchinhampton Golf Club, Gloucestershire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Major event</span><span class="tag">Under 21</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100688559556533371" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="pingjgt" data-date="2026-09-12">
+        <span class="stage-badge">Stage 4–5 · Grand Final</span>
+        <div class="comp-date"><span class="date-badge">Sat 12 September 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Grand Final (Thonock Park)</div>
+        <div class="comp-venue">Thonock Park Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">Grand Final</span><span class="tag">Qualification required</span><span class="tag">Season finale</span></div>
+        <a href="https://pingjuniorgolftour.co.uk/events/" target="_blank" rel="noopener" class="comp-enter">View ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROCK GOLF LEAGUE (ROBERT ROCK JUNIOR GOLF TOUR) -->
+  <div class="county-section" id="section-rockgolf" data-county="rockgolf">
+    <div class="county-header">
+      <span class="county-name">🏆 Rock Golf League</span>
+      <span class="county-count">15 UK events + 2 WAGR overseas</span>
+      <a href="https://rockgolfleague.com/schedule/" target="_blank" rel="noopener" class="county-link">Full schedule ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      Founded by European Tour winner <strong>Robert Rock</strong>, the Rock Golf League runs individual and team competitions across the Midlands and nationally at prestigious venues. Gross and net competitions. Year-long Order of Merit — best 8 results count. Two WAGR-ranked overseas events at St Andrews and La Manga. Entry via Golf Genius using event spectator codes.
+    </div>
+    <div class="comps-grid" id="grid-rockgolf">
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-06-28">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 28 June 2026</span></div>
+        <div class="comp-name">Rock Golf League — Longcliffe</div>
+        <div class="comp-venue">Longcliffe Golf Club, Loughborough, Leicestershire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/longcliffe-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-07-05">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 5 July 2026</span></div>
+        <div class="comp-name">Rock Golf League — Kedleston Park</div>
+        <div class="comp-venue">Kedleston Park Golf Club, Derby</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/kedleston-park-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-07-12">
+        <span class="stage-badge">Stage 4–5 · WAGR Major</span>
+        <div class="comp-date"><span class="date-badge">Sun 12 July 2026</span></div>
+        <div class="comp-name">Rock Golf League — Thonock Park (PING Major)</div>
+        <div class="comp-venue">Thonock Park Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Major event</span><span class="tag">PING partnership</span></div>
+        <a href="https://rockgolfleague.com/event/thonock-park-ping-major-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-07-19">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 19 July 2026</span></div>
+        <div class="comp-name">Rock Golf League — Wollaton Park</div>
+        <div class="comp-venue">Wollaton Park Golf Club, Nottingham</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/wollaton-park-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-08-03">
+        <span class="stage-badge">Stage 4–5 · Major event</span>
+        <div class="comp-date"><span class="date-badge">Mon 3 August 2026</span></div>
+        <div class="comp-name">Rock Golf League — The Belfry (British Masters Major)</div>
+        <div class="comp-venue">The Belfry, Sutton Coldfield, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Major event</span><span class="tag">Iconic venue</span><span class="tag">Ryder Cup course</span></div>
+        <a href="https://rockgolfleague.com/event/the-belfry-british-masters-major-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-08-06">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 6 August 2026</span></div>
+        <div class="comp-name">Rock Golf League — Burton on Trent</div>
+        <div class="comp-venue">Burton on Trent Golf Club, Derbyshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/burton-on-trent-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-08-10">
+        <span class="stage-badge">Stage 4–5 · WAGR ranking</span>
+        <div class="comp-date"><span class="date-badge">Mon 10 August 2026</span></div>
+        <div class="comp-name">Rock Golf League — World WAGR Series at Fairmont St Andrews</div>
+        <div class="comp-venue">Fairmont St Andrews, St Andrews, Fife</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">WAGR ranking</span><span class="tag">St Andrews</span><span class="tag">Overseas event</span></div>
+        <a href="https://rockgolfleague.com/event/world-wagr-series-fairmont-st-andrews-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-08-19">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Wed 19 August 2026</span></div>
+        <div class="comp-name">Rock Golf League — Worksop</div>
+        <div class="comp-venue">Worksop Golf Club, Nottinghamshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/worksop-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-08-27">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 27 August 2026</span></div>
+        <div class="comp-name">Rock Golf League — Chesterfield</div>
+        <div class="comp-venue">Chesterfield Golf Club, Chesterfield, Derbyshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/chesterfield-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-08-31">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Mon 31 August 2026</span></div>
+        <div class="comp-name">Rock Golf League — Moseley</div>
+        <div class="comp-venue">Moseley Golf Club, Birmingham</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/moseley-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-09-13">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 13 September 2026</span></div>
+        <div class="comp-name">Rock Golf League — Brocton Hall</div>
+        <div class="comp-venue">Brocton Hall Golf Club, Stafford</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/brocton-hall-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-09-20">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 20 September 2026</span></div>
+        <div class="comp-name">Rock Golf League — Stratford on Avon</div>
+        <div class="comp-venue">Stratford on Avon Golf Club, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/stratford-on-avon-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-09-27">
+        <span class="stage-badge">Stage 4–5 · Major event</span>
+        <div class="comp-date"><span class="date-badge">Sun 27 September 2026</span></div>
+        <div class="comp-name">Rock Golf League — Trentham (Major)</div>
+        <div class="comp-venue">Trentham Golf Club, Stoke on Trent</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Major event</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/trentham-golf-club-major-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-10-04">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 4 October 2026</span></div>
+        <div class="comp-name">Rock Golf League — Nuneaton</div>
+        <div class="comp-venue">Nuneaton Golf Club, Nuneaton, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/nuneaton-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="rockgolf" data-date="2026-10-11">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 11 October 2026</span></div>
+        <div class="comp-name">Rock Golf League — Horsley Lodge (Season Finale)</div>
+        <div class="comp-venue">Horsley Lodge Golf Club, Derbyshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Season finale</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/horsley-lodge-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CHESHIRE -->
+  <div class="county-section" id="section-cheshire" data-county="cheshire">
+    <div class="county-header">
+      <span class="county-name">Cheshire</span>
+      <span class="county-count">9 competitions</span>
+      <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      Cheshire has 20 junior opens listed — one of England's strongest county calendars. We've listed all confirmed upcoming events with direct entry links where available.
+    </div>
+    <div class="comps-grid" id="grid-cheshire">
+
+      <div class="comp-card past" data-county="cheshire" data-date="2026-06-28">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 28 June 2026</div>
+        <div class="comp-name">Eaton Junior Open</div>
+        <div class="comp-venue">Eaton Golf Club, Chester</div>
+        <div class="comp-tags"><span class="tag">Individual Stableford</span><span class="tag">£20</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="cheshire" data-date="2026-08-06">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 6 August 2026</span></div>
+        <div class="comp-name">High Legh Park Junior Open</div>
+        <div class="comp-venue">High Legh Park Golf & Country Club, Knutsford</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="cheshire" data-date="2026-08-07">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 7 August 2026</span></div>
+        <div class="comp-name">Didsbury Junior Open</div>
+        <div class="comp-venue">Didsbury Golf Club, Manchester</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="cheshire" data-date="2026-08-10">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Mon 10 August 2026</span></div>
+        <div class="comp-name">Mere Junior Open</div>
+        <div class="comp-venue">Mere Golf Resort & Spa, Knutsford</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£40</span><span class="tag">Boys & Girls</span><span class="tag">Championship venue</span></div>
+        <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="cheshire" data-date="2026-08-11">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 11 August 2026</span></div>
+        <div class="comp-name">Vicars Cross Junior Open</div>
+        <div class="comp-venue">Vicars Cross Golf Club, Chester</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="cheshire" data-date="2026-08-13">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 13 August 2026</span></div>
+        <div class="comp-name">Delamere Forest Junior Open</div>
+        <div class="comp-venue">Delamere Forest Golf Club, Northwich</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£35</span><span class="tag">Heathland course</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="cheshire" data-date="2026-08-16">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 16 August 2026</span></div>
+        <div class="comp-name">Heswall Junior Open</div>
+        <div class="comp-venue">Heswall Golf Club, Wirral</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="cheshire" data-date="2026-08-17">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Mon 17 August 2026</span></div>
+        <div class="comp-name">Sandiway Junior Open</div>
+        <div class="comp-venue">Sandiway Golf Club, Northwich</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Under 18</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.sandiway.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="cheshire" data-date="2026-08-25">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 25 August 2026</span></div>
+        <div class="comp-name">Romiley Junior Open</div>
+        <div class="comp-venue">Romiley Golf Club, Stockport</div>
+        <div class="comp-tags"><span class="tag">Individual Stableford</span><span class="tag">£15</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.romileygolfclub.co.uk/open-competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="cheshire" data-date="2026-09-06">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 6 September 2026</span></div>
+        <div class="comp-name">Bramhall Junior Open</div>
+        <div class="comp-venue">Bramhall Golf Club, Stockport</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£5</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DEVON -->
+  <div class="county-section" id="section-devon" data-county="devon">
+    <div class="county-header">
+      <span class="county-name">Devon</span>
+      <span class="county-count">7 competitions</span>
+      <a href="https://www.eastdevongolf.co.uk/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      Devon has 19 junior opens including two adult-junior pairs events. Saunton is a Top 100 links course. Royal North Devon is England's oldest golf course (1864). Two exceptional venues for a junior bucket list.
+    </div>
+    <div class="comps-grid" id="grid-devon">
+
+      <div class="comp-card past" data-county="devon" data-date="2026-05-03">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 3 May 2026</div>
+        <div class="comp-name">East Devon Junior Open</div>
+        <div class="comp-venue">East Devon Golf Club, Budleigh Salterton</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£30</span><span class="tag">Clifftop heathland</span></div>
+        <a href="https://www.eastdevongolf.co.uk/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="devon" data-date="2026-07-30">
+        <span class="stage-badge">Stage 3–4 · Adult & Junior pairs</span>
+        <div class="comp-date"><span class="date-badge">Thu 30 July 2026</span></div>
+        <div class="comp-name">Saunton Adult–Junior Pairs Open</div>
+        <div class="comp-venue">Saunton Golf Club, Braunton, North Devon</div>
+        <div class="comp-tags"><span class="tag">Pairs format</span><span class="tag">£50 per pair</span><span class="tag">Top 100 Links</span><span class="tag">Parent & child</span></div>
+        <a href="https://www.sauntongolf.co.uk/open_week_2026" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="devon" data-date="2026-08-02">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 2 August 2026</span></div>
+        <div class="comp-name">Tiverton Junior Open</div>
+        <div class="comp-venue">Tiverton Golf Club, Mid Devon</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£16</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.tiverton.intelligentgolf.co.uk/competition2.php?tab=details&compid=2088&div=all" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="devon" data-date="2026-08-16">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 16 August 2026</span></div>
+        <div class="comp-name">Saunton Junior Open</div>
+        <div class="comp-venue">Saunton Golf Club (East Course), Braunton, North Devon</div>
+        <div class="comp-tags"><span class="tag">Individual Stableford</span><span class="tag">£20</span><span class="tag">Top 100 Links</span><span class="tag">9-hole option for high handicaps</span></div>
+        <a href="https://www.sauntongolf.co.uk/competition2.php?tab=details&compid=12909&go=signup" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="devon" data-date="2026-08-18">
+        <span class="stage-badge">Stage 3–4 · Adult & Junior pairs</span>
+        <div class="comp-date"><span class="date-badge">Tue 18 August 2026</span></div>
+        <div class="comp-name">Royal North Devon Adult–Junior Pairs</div>
+        <div class="comp-venue">Royal North Devon Golf Club, Westward Ho!, Devon</div>
+        <div class="comp-tags"><span class="tag">Pairs format</span><span class="tag">£50 per pair</span><span class="tag">England's oldest course (1864)</span><span class="tag">Parent & child</span></div>
+        <a href="https://www.royalnorthdevongolfclub.co.uk/open_entry_forms" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="devon" data-date="2026-08-19">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Wed 19 August 2026</span></div>
+        <div class="comp-name">Royal North Devon Junior Open</div>
+        <div class="comp-venue">Royal North Devon Golf Club, Westward Ho!, Devon</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">England's oldest course</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.royalnorthdevongolfclub.co.uk/open_entry_forms" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="devon" data-date="2026-08-18">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 18 August 2026</span></div>
+        <div class="comp-name">Honiton Junior Open</div>
+        <div class="comp-venue">Honiton Golf Club, East Devon</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£6</span><span class="tag">Great value</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.honitongolfclub.co.uk/competition2.php?tab=details&compid=1244&go=signup" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="devon" data-date="2026-10-04">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 4 October 2026</span></div>
+        <div class="comp-name">Yelverton Junior Open</div>
+        <div class="comp-venue">Yelverton Golf Club, Dartmoor, Devon</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Dartmoor moorland</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.yelvertongolf.co.uk/visitors/opens/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WARWICKSHIRE -->
+  <div class="county-section" id="section-warks" data-county="warks">
+    <div class="county-header">
+      <span class="county-name">Warwickshire</span>
+      <span class="county-count">8 competitions</span>
+      <a href="https://www.warwickshiregolf.com/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-warks">
+
+      <div class="comp-card past" data-county="warks" data-date="2026-04-09">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Thu 9 April 2026</div>
+        <div class="comp-name">Stratford on Avon Junior Open</div>
+        <div class="comp-venue">Stratford on Avon Golf Club, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.warwickshiregolf.com/junior-golf/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="warks" data-date="2026-05-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Wed 27 May 2026</div>
+        <div class="comp-name">Edgbaston Junior Open</div>
+        <div class="comp-venue">Edgbaston Golf Club, Birmingham</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">H.S. Colt design</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.warwickshiregolf.com/junior-golf/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="warks" data-date="2026-06-21">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 21 June 2026</div>
+        <div class="comp-name">Stratford Oaks Junior Open</div>
+        <div class="comp-venue">Stratford Oaks Golf Club, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.warwickshiregolf.com/junior-golf/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="warks" data-date="2026-08-03">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Mon 3 August 2026</span></div>
+        <div class="comp-name">Ladbrook Park Junior Open</div>
+        <div class="comp-venue">Ladbrook Park Golf Club, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.ladbrookparkgolf.co.uk/opens-2/juniors-4/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="warks" data-date="2026-08-25">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 25 August 2026</span></div>
+        <div class="comp-name">Stonebridge Junior Open</div>
+        <div class="comp-venue">Stonebridge Golf Club, Meriden, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.stonebridge-golf.co.uk/open-competitions/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="warks" data-date="2026-10-04">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 4 October 2026</span></div>
+        <div class="comp-name">Olton Junior Open</div>
+        <div class="comp-venue">Olton Golf Club, Solihull, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£30</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.warwickshiregolf.com/junior-golf/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WILTSHIRE -->
+  <div class="county-section" id="section-wilts" data-county="wilts">
+    <div class="county-header">
+      <span class="county-name">Wiltshire</span>
+      <span class="county-count">5 competitions</span>
+      <a href="https://www.highpost.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-wilts">
+
+      <div class="comp-card past" data-county="wilts" data-date="2026-04-26">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 26 April 2026</div>
+        <div class="comp-name">High Post Junior Open</div>
+        <div class="comp-venue">High Post Golf Club, Salisbury</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.highpost.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="wilts" data-date="2026-06-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sat 27 June 2026</span></div>
+        <div class="comp-name">Tidworth Garrison Junior Open</div>
+        <div class="comp-venue">Tidworth Garrison Golf Club, Tidworth</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.tidworth.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="wilts" data-date="2026-07-30">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 30 July 2026</span></div>
+        <div class="comp-name">Marlborough Junior Open</div>
+        <div class="comp-venue">Marlborough Golf Club, Marlborough</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Boys & Girls</span><span class="tag">Downland course</span></div>
+        <a href="https://www.marlboroughgolfclub.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="wilts" data-date="2026-07-31">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 31 July 2026</span></div>
+        <div class="comp-name">Kingsdown Junior Open</div>
+        <div class="comp-venue">Kingsdown Golf Club, Corsham</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.kingsdown.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="wilts" data-date="2026-08-13">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 13 August 2026</span></div>
+        <div class="comp-name">Chippenham Junior Open</div>
+        <div class="comp-venue">Chippenham Golf Club, Wiltshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£18</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.chippenham.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUFFOLK -->
+  <div class="county-section" id="section-suffolk" data-county="suffolk">
+    <div class="county-header">
+      <span class="county-name">Suffolk</span>
+      <span class="county-count">4 competitions</span>
+      <a href="https://www.suffolkgolfunion.com/juniors" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-suffolk">
+
+      <div class="comp-card" data-county="suffolk" data-date="2026-07-04">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sat 4 July 2026</span></div>
+        <div class="comp-name">Halesworth Junior Open</div>
+        <div class="comp-venue">Halesworth Golf Club, Suffolk Heritage Coast</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.halesworth.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="suffolk" data-date="2026-07-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Mon 27 July 2026</span></div>
+        <div class="comp-name">Stowmarket Junior Open</div>
+        <div class="comp-venue">Stowmarket Golf Club, Stowmarket</div>
+        <div class="comp-tags"><span class="tag">Individual Stableford</span><span class="tag">£25</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.stowmarket.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="suffolk" data-date="2026-09-06">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 6 September 2026</span></div>
+        <div class="comp-name">Bury St Edmunds Junior Open</div>
+        <div class="comp-venue">Bury St Edmunds Golf Club, Suffolk</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.burystedmunds.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WORCESTERSHIRE -->
+  <div class="county-section" id="section-worcs" data-county="worcs">
+    <div class="county-header">
+      <span class="county-name">Worcestershire</span>
+      <span class="county-count">5 competitions</span>
+      <a href="https://www.kidderminster.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-worcs">
+
+      <div class="comp-card past" data-county="worcs" data-date="2026-05-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Wed 27 May 2026</div>
+        <div class="comp-name">Kings Norton Junior Open</div>
+        <div class="comp-venue">Kings Norton Golf Club, Worcestershire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.kidderminster.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card past" data-county="worcs" data-date="2026-06-07">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 7 June 2026</div>
+        <div class="comp-name">Kidderminster Junior Open</div>
+        <div class="comp-venue">Kidderminster Golf Club, Worcestershire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Under 18</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.kidderminster.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="worcs" data-date="2026-07-05">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 5 July 2026</span></div>
+        <div class="comp-name">Hollywood Junior Open</div>
+        <div class="comp-venue">Hollywood Golf Club, Birmingham</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.hollywoodgolfclub.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="worcs" data-date="2026-09-06">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 6 September 2026</span></div>
+        <div class="comp-name">Kidderminster Junior Open (Autumn)</div>
+        <div class="comp-venue">Kidderminster Golf Club, Worcestershire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.kidderminster.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="worcs" data-date="2026-09-12">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sat 12 September 2026</span></div>
+        <div class="comp-name">The Vale Junior Open</div>
+        <div class="comp-venue">The Vale Golf & Country Club, Bishampton</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Championship venue</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.thevalegolf.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OXFORDSHIRE -->
+  <div class="county-section" id="section-oxon" data-county="oxon">
+    <div class="county-header">
+      <span class="county-name">Oxfordshire</span>
+      <span class="county-count">7 competitions</span>
+      <a href="https://www.oxfordshiregolf.org.uk/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      Badgemore Park junior open is <strong>free to enter</strong> — unusual and worth highlighting. Frilford Heath is one of England's finest three-course clubs. Entry links direct to club pages where available.
+    </div>
+    <div class="comps-grid" id="grid-oxon">
+
+      <div class="comp-card past" data-county="oxon" data-date="2026-05-29">
+        <span class="stage-badge">Stage 2–3 · Adult & Junior pairs</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Fri 29 May 2026</div>
+        <div class="comp-name">Kirtlington Adult–Junior Pairs</div>
+        <div class="comp-venue">Kirtlington Golf Club, Oxfordshire</div>
+        <div class="comp-tags"><span class="tag">Pairs format</span><span class="tag">£30 per pair</span><span class="tag">Parent & child</span></div>
+        <a href="https://www.oxfordshiregolf.org.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+
+      <div class="comp-card" data-county="oxon" data-date="2026-07-31">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 31 July 2026</span></div>
+        <div class="comp-name">Frilford Heath Junior Open</div>
+        <div class="comp-venue">Frilford Heath Golf Club, Abingdon</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£50</span><span class="tag">Three championship courses</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.frilford.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="oxon" data-date="2026-08-03">
+        <span class="stage-badge">Stage 2–3 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Mon 3 August 2026</span></div>
+        <div class="comp-name">Shrivenham Park Junior Open</div>
+        <div class="comp-venue">Shrivenham Park Golf Club, Oxfordshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span><span class="tag">Great value</span></div>
+        <a href="https://www.oxfordshiregolf.org.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="oxon" data-date="2026-08-06">
+        <span class="stage-badge">Stage 2–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 6 August 2026</span></div>
+        <div class="comp-name">Badgemore Park Junior Open</div>
+        <div class="comp-venue">Badgemore Park Golf Club, Henley-on-Thames</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag highlight">FREE to enter</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.oxfordshiregolf.org.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="oxon" data-date="2026-08-28">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 28 August 2026</span></div>
+        <div class="comp-name">Tadmarton Heath Junior Open</div>
+        <div class="comp-venue">Tadmarton Heath Golf Club, Banbury</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">Heathland course</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.oxfordshiregolf.org.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="oxon" data-date="2026-09-06">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 6 September 2026</span></div>
+        <div class="comp-name">Feldon Valley Junior Open</div>
+        <div class="comp-venue">Feldon Valley Golf Club, Oxfordshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£30</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.oxfordshiregolf.org.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="oxon" data-date="2026-09-26">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sat 26 September 2026</span></div>
+        <div class="comp-name">Burford Junior Open</div>
+        <div class="comp-venue">Burford Golf Club, Cotswolds, Oxfordshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">Cotswolds setting</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.oxfordshiregolf.org.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- LINCOLNSHIRE -->
+  <div class="county-section" id="section-lincs" data-county="lincs">
+    <div class="county-header">
+      <span class="county-name">Lincolnshire</span>
+      <span class="county-count">6 competitions</span>
+      <a href="https://www.lugc.co.uk/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      Woodhall Spa is home to England Golf and the Hotchkin Course — consistently rated one of the finest inland courses in Britain. Playing a junior open there is genuinely special.
+    </div>
+    <div class="comps-grid" id="grid-lincs">
+      <div class="comp-card past" data-county="lincs" data-date="2026-05-29">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Fri 29 May 2026</div>
+        <div class="comp-name">Market Rasen Junior Open</div>
+        <div class="comp-venue">Market Rasen Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span></div>
+        <a href="https://www.lugc.co.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card past" data-county="lincs" data-date="2026-06-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sat 27 June 2026</div>
+        <div class="comp-name">Thonock Park Junior Open</div>
+        <div class="comp-venue">Thonock Park Golf Club, Gainsborough</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span></div>
+        <a href="https://www.lugc.co.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card past" data-county="lincs" data-date="2026-07-05">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 5 July 2026</div>
+        <div class="comp-name">Cleethorpes Junior Open</div>
+        <div class="comp-venue">Cleethorpes Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£8</span><span class="tag">Great value</span></div>
+        <a href="https://www.lugc.co.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card" data-county="lincs" data-date="2026-08-28">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 28 August 2026</span></div>
+        <div class="comp-name">Woodhall Spa Junior Open</div>
+        <div class="comp-venue">Woodhall Spa Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">England Golf HQ</span><span class="tag">Top 10 inland course</span></div>
+        <a href="https://www.lugc.co.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="lincs" data-date="2026-09-01">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 1 September 2026</span></div>
+        <div class="comp-name">Sleaford Junior Open</div>
+        <div class="comp-venue">Sleaford Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.lugc.co.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="lincs" data-date="2026-10-25">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 25 October 2026</span></div>
+        <div class="comp-name">Lincoln Junior Open</div>
+        <div class="comp-venue">Lincoln Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.lugc.co.uk/junior-golf/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="lincs" data-date="2026-11-22">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 22 November 2026</span></div>
+        <div class="comp-name">Lincoln Junior Open (Autumn)</div>
+        <div class="comp-venue">Lincoln Golf Club, Lincolnshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://lincolngolfclub.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NOTTINGHAMSHIRE -->
+  <div class="county-section" id="section-notts" data-county="notts">
+    <div class="county-header">
+      <span class="county-name">Nottinghamshire</span>
+      <span class="county-count">5 competitions</span>
+      <a href="https://www.worksopgolfclub.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-notts">
+      <div class="comp-card past" data-county="notts" data-date="2026-05-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Wed 27 May 2026</div>
+        <div class="comp-name">Worksop Junior Open</div>
+        <div class="comp-venue">Worksop Golf Club, Nottinghamshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span></div>
+        <a href="https://www.worksopgolfclub.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card" data-county="notts" data-date="2026-08-18">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 18 August 2026</span></div>
+        <div class="comp-name">Wollaton Park Junior Open</div>
+        <div class="comp-venue">Wollaton Park Golf Club, Nottingham</div>
+        <div class="comp-tags"><span class="tag">Individual Stableford</span><span class="tag">£15</span><span class="tag">Historic deer park</span></div>
+        <a href="https://www.wollatonparkgolfclub.com/visitors/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="notts" data-date="2026-08-20">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 20 August 2026</span></div>
+        <div class="comp-name">Newark Junior Open</div>
+        <div class="comp-venue">Newark Golf Club, Nottinghamshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£17.50</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.newarkgolfclub.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="notts" data-date="2026-08-21">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 21 August 2026</span></div>
+        <div class="comp-name">Sherwood Forest Junior Open</div>
+        <div class="comp-venue">Sherwood Forest Golf Club, Mansfield</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£24</span><span class="tag">Top heathland course</span></div>
+        <a href="https://www.sherwoodforest.intelligentgolf.co.uk/competition.php?compid=13281" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="notts" data-date="2026-08-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 27 August 2026</span></div>
+        <div class="comp-name">Norwood Park Junior Open</div>
+        <div class="comp-venue">Norwood Park Golf Centre, Southwell</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.norwoodpark.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="notts" data-date="2026-09-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 27 September 2026</span></div>
+        <div class="comp-name">Rushcliffe Junior Open</div>
+        <div class="comp-venue">Rushcliffe Golf Club, Nottinghamshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.rushcliffe.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DERBYSHIRE -->
+  <div class="county-section" id="section-derby" data-county="derby">
+    <div class="county-header">
+      <span class="county-name">Derbyshire</span>
+      <span class="county-count">4 competitions</span>
+      <a href="https://www.derbyshirecountygolf.co.uk/junior-golf" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-derby">
+      <div class="comp-card past" data-county="derby" data-date="2026-06-13">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sat 13 June 2026</div>
+        <div class="comp-name">Breadsall Priory Junior Open</div>
+        <div class="comp-venue">Breadsall Priory Golf & Country Club, Derby</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£8</span></div>
+        <a href="https://www.breadsallpriory.co.uk/golf/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card" data-county="derby" data-date="2026-08-14">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 14 August 2026</span></div>
+        <div class="comp-name">Mickleover Junior Open</div>
+        <div class="comp-venue">Mickleover Golf Club, Derby</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£6</span><span class="tag">Great value</span></div>
+        <a href="https://www.mickleover.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="derby" data-date="2026-09-06">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 6 September 2026</span></div>
+        <div class="comp-name">Ashbourne Junior Open</div>
+        <div class="comp-venue">Ashbourne Golf Club, Peak District edge</div>
+        <div class="comp-tags"><span class="tag">Individual Stableford</span><span class="tag">£10</span><span class="tag">Oldest club in Derbyshire</span></div>
+        <a href="https://www.ashbournegolfclub.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="derby" data-date="2026-10-11">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 11 October 2026</span></div>
+        <div class="comp-name">Horsley Lodge Junior Open</div>
+        <div class="comp-venue">Horsley Lodge Golf Club, Derbyshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://rockgolfleague.com/event/horsley-lodge-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEICESTERSHIRE -->
+  <div class="county-section" id="section-leics" data-county="leics">
+    <div class="county-header">
+      <span class="county-name">Leicestershire</span>
+      <span class="county-count">4 competitions</span>
+      <a href="https://www.lingdale.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-leics">
+      <div class="comp-card past" data-county="leics" data-date="2026-04-19">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 19 April 2026</div>
+        <div class="comp-name">Charnwood Forest Junior Open</div>
+        <div class="comp-venue">Charnwood Forest Golf Club, Loughborough</div>
+        <div class="comp-tags"><span class="tag">Individual Stableford</span><span class="tag">£10</span><span class="tag">James Braid 9-hole heathland</span></div>
+        <a href="https://www.lingdale.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card" data-county="leics" data-date="2026-07-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Mon 27 July 2026</span></div>
+        <div class="comp-name">Lutterworth Junior Open</div>
+        <div class="comp-venue">Lutterworth Golf Club, Leicestershire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.lutterworth.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="leics" data-date="2026-08-06">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 6 August 2026</span></div>
+        <div class="comp-name">Lingdale Junior Open</div>
+        <div class="comp-venue">Lingdale Golf Club, Charnwood Forest, Loughborough</div>
+        <div class="comp-tags"><span class="tag">Individual Stableford</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.lingdale.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="leics" data-date="2026-09-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 27 September 2026</span></div>
+        <div class="comp-name">Northamptonshire County Junior Open</div>
+        <div class="comp-venue">Northamptonshire County Golf Club, Church Brampton</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Harry Colt design</span><span class="tag">UK Top 100</span></div>
+        <a href="https://www.northantscounty.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DURHAM -->
+  <div class="county-section" id="section-durham" data-county="durham">
+    <div class="county-header">
+      <span class="county-name">Durham</span>
+      <span class="county-count">6 competitions</span>
+      <a href="https://www.brancepethcastle.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      Seaton Carew is a Top 100 links on the Durham coast — playing a junior open there at £10 is exceptional value.
+    </div>
+    <div class="comps-grid" id="grid-durham">
+      <div class="comp-card past" data-county="durham" data-date="2026-05-25">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Mon 25 May 2026</div>
+        <div class="comp-name">Seaton Carew Junior Open</div>
+        <div class="comp-venue">Seaton Carew Golf Club, Hartlepool</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Top 100 links</span></div>
+        <a href="https://www.brancepethcastle.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card past" data-county="durham" data-date="2026-05-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Wed 27 May 2026</div>
+        <div class="comp-name">Ramside Hall Junior Open</div>
+        <div class="comp-venue">Ramside Hall Golf Club, Durham</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£12.50</span></div>
+        <a href="https://www.brancepethcastle.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card" data-county="durham" data-date="2026-08-09">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 9 August 2026</span></div>
+        <div class="comp-name">Brancepeth Castle Junior Open</div>
+        <div class="comp-venue">Brancepeth Castle Golf Club, Durham</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£7</span><span class="tag">Castle grounds</span><span class="tag">Great value</span></div>
+        <a href="https://www.brancepethcastle.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="durham" data-date="2026-08-17">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Mon 17 August 2026</span></div>
+        <div class="comp-name">Durham City Junior Open</div>
+        <div class="comp-venue">Durham City Golf Club, Durham</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.brancepethcastle.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="durham" data-date="2026-08-21">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 21 August 2026</span></div>
+        <div class="comp-name">Houghton-le-Spring Junior Open</div>
+        <div class="comp-venue">Houghton-le-Spring Golf Club, Tyne & Wear</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£7</span><span class="tag">Great value</span></div>
+        <a href="https://www.brancepethcastle.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="durham" data-date="2026-08-30">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 30 August 2026</span></div>
+        <div class="comp-name">Tyneside Juniors & Youths Open</div>
+        <div class="comp-venue">Tyneside Golf Club, Ryton, Tyne & Wear</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.brancepethcastle.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="warks" data-date="2026-08-13">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 13 August 2026</span></div>
+        <div class="comp-name">Coventry Junior Open</div>
+        <div class="comp-venue">Coventry Golf Club, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.coventrygolfclub.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="warks" data-date="2026-08-21">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 21 August 2026</span></div>
+        <div class="comp-name">Kenilworth Junior Open</div>
+        <div class="comp-venue">Kenilworth Golf Club, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://kenilworth.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+      <div class="comp-card" data-county="warks" data-date="2026-08-27">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 27 August 2026</span></div>
+        <div class="comp-name">Maxstoke Park Junior Open</div>
+        <div class="comp-venue">Maxstoke Park Golf Club, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.maxstokeparkgolfclub.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STAFFORDSHIRE -->
+  <div class="county-section" id="section-staffs" data-county="staffs">
+    <div class="county-header">
+      <span class="county-name">Staffordshire</span>
+      <span class="county-count">3 competitions</span>
+      <a href="https://www.staffsgolf.co.uk/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-staffs">
+      <div class="comp-card" data-county="staffs" data-date="2026-08-11">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Tue 11 August 2026</span></div>
+        <div class="comp-name">South Staffordshire Junior Open</div>
+        <div class="comp-venue">South Staffordshire Golf Club, Wolverhampton</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.southstaffs.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="staffs" data-date="2026-09-13">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 13 September 2026</span></div>
+        <div class="comp-name">Rock Golf League — Brocton Hall</div>
+        <div class="comp-venue">Brocton Hall Golf Club, Stafford</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/brocton-hall-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="staffs" data-date="2026-09-27">
+        <span class="stage-badge">Stage 4–5 · Major event</span>
+        <div class="comp-date"><span class="date-badge">Sun 27 September 2026</span></div>
+        <div class="comp-name">Rock Golf League — Trentham (Major)</div>
+        <div class="comp-venue">Trentham Golf Club, Stoke-on-Trent</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Major event</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/trentham-golf-club-major-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORNWALL -->
+  <div class="county-section" id="section-cornwall" data-county="cornwall">
+    <div class="county-header">
+      <span class="county-name">Cornwall</span>
+      <span class="county-count">6 competitions</span>
+      <a href="https://www.st-enodoc.co.uk/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      St Enodoc is a Top 100 links opposite Padstow — John Betjeman is buried on the course. West Cornwall at Lelant is one of the oldest links in England (1889). Playing juniors opens in Cornwall means genuinely special venues at accessible prices.
+    </div>
+    <div class="comps-grid" id="grid-cornwall">
+      <div class="comp-card past" data-county="cornwall" data-date="2026-04-26">
+        <span class="stage-badge">Stage 4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 26 April 2026</div>
+        <div class="comp-name">St Enodoc Junior Open</div>
+        <div class="comp-venue">St Enodoc Golf Club, Rock, North Cornwall</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Top 100 links</span></div>
+        <a href="https://www.st-enodoc.co.uk/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card past" data-county="cornwall" data-date="2026-05-17">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 17 May 2026</div>
+        <div class="comp-name">Falmouth Junior Open</div>
+        <div class="comp-venue">Falmouth Golf Club, Cornwall</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span></div>
+        <a href="https://www.st-enodoc.co.uk/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card past" data-county="cornwall" data-date="2026-06-21">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 21 June 2026</div>
+        <div class="comp-name">Mullion Junior Open</div>
+        <div class="comp-venue">Mullion Golf Club, Lizard Peninsula, Cornwall</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span><span class="tag">Clifftop course</span></div>
+        <a href="https://www.st-enodoc.co.uk/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card" data-county="cornwall" data-date="2026-08-23">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 23 August 2026</span></div>
+        <div class="comp-name">West Cornwall Junior Open</div>
+        <div class="comp-venue">West Cornwall Golf Club, Lelant, St Ives</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£5</span><span class="tag">Links 1889</span><span class="tag">Outstanding value</span></div>
+        <a href="https://www.westcornwall.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="cornwall" data-date="2026-08-26">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Wed 26 August 2026</span></div>
+        <div class="comp-name">Newquay Junior Open</div>
+        <div class="comp-venue">Newquay Golf Club, Newquay, Cornwall</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£6</span><span class="tag">Great value</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.newquay.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="cornwall" data-date="2026-08-28">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Fri 28 August 2026</span></div>
+        <div class="comp-name">Launceston Junior Open</div>
+        <div class="comp-venue">Launceston Golf Club, Cornwall</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">Dartmoor & Bodmin views</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.launcestongolfclub.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="cornwall" data-date="2026-08-30">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 30 August 2026</span></div>
+        <div class="comp-name">Bowood Park Junior Open</div>
+        <div class="comp-venue">Bowood Park Golf Club, Camelford, North Cornwall</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£15</span><span class="tag">Black Prince's deer park</span></div>
+        <a href="https://www.bowoodparkgolf.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOMERSET -->
+  <div class="county-section" id="section-somerset" data-county="somerset">
+    <div class="county-header">
+      <span class="county-name">Somerset</span>
+      <span class="county-count">4 competitions</span>
+      <a href="https://www.saltford.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-somerset">
+      <div class="comp-card past" data-county="somerset" data-date="2026-05-17">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 17 May 2026</div>
+        <div class="comp-name">Saltford Junior Open</div>
+        <div class="comp-venue">Saltford Golf Club, near Bath</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£10</span></div>
+        <a href="https://www.saltford.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card" data-county="somerset" data-date="2026-05-31">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 31 May 2026</span></div>
+        <div class="comp-name">Cricket St Thomas Junior Open</div>
+        <div class="comp-venue">Cricket St Thomas Golf Club, Chard, Somerset</div>
+        <div class="comp-tags"><span class="tag">Individual Stableford</span><span class="tag">£15</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.cricketstthomas.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="somerset" data-date="2026-07-19">
+        <span class="stage-badge">Stage 2–3 · Parent & child</span>
+        <div class="comp-date"><span class="date-badge">Sun 19 July 2026</span></div>
+        <div class="comp-name">Bristol & Clifton Adult–Junior Pairs</div>
+        <div class="comp-venue">Bristol & Clifton Golf Club, Somerset</div>
+        <div class="comp-tags"><span class="tag">Pairs format</span><span class="tag">£40 per pair</span><span class="tag">Parent & child</span></div>
+        <a href="https://www.gloucestershiregolfunion.co.uk/club_open_competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="somerset" data-date="2026-09-06">
+        <span class="stage-badge">Stage 2–3 · Family</span>
+        <div class="comp-date"><span class="date-badge">Sun 6 September 2026</span></div>
+        <div class="comp-name">Minehead & West Somerset Family Pairs</div>
+        <div class="comp-venue">Minehead & West Somerset Golf Club</div>
+        <div class="comp-tags"><span class="tag">Family pairs format</span><span class="tag">£80 per pair</span><span class="tag">Exmoor coast</span></div>
+        <a href="https://www.mineheadgolf.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DORSET -->
+  <div class="county-section" id="section-dorset" data-county="dorset">
+    <div class="county-header">
+      <span class="county-name">Dorset</span>
+      <span class="county-count">3 competitions</span>
+      <a href="https://www.shirleygolfclub.co.uk/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-dorset">
+      <div class="comp-card" data-county="dorset" data-date="2026-08-13">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 13 August 2026</span></div>
+        <div class="comp-name">Ashley Wood Junior Open</div>
+        <div class="comp-venue">Ashley Wood Golf Club, Blandford Forum, Dorset</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£25</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.ashleywood.intelligentgolf.co.uk/competition.php" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="dorset" data-date="2026-07-30">
+        <span class="stage-badge">Stage 3–4 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 30 July 2026</span></div>
+        <div class="comp-name">Shirely Junior Open</div>
+        <div class="comp-venue">Shirley Golf Club, Dorset</div>
+        <div class="comp-tags"><span class="tag">Individual Strokeplay</span><span class="tag">£20</span><span class="tag">Boys & Girls</span></div>
+        <a href="https://www.shirleygolfclub.co.uk/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="dorset" data-date="2026-08-22">
+        <span class="stage-badge">Stage 2–3 · Family</span>
+        <div class="comp-date"><span class="date-badge">Sat 22 August 2026</span></div>
+        <div class="comp-name">Cottesmore Family Pairs Open</div>
+        <div class="comp-venue">Cottesmore Golf & Country Club, West Sussex/Dorset border</div>
+        <div class="comp-tags"><span class="tag">Family pairs</span><span class="tag">£50 per pair</span><span class="tag">Parent & child</span></div>
+        <a href="https://www.gloucestershiregolfunion.co.uk/club_open_competitions" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NORTHUMBERLAND -->
+  <div class="county-section" id="section-northumb" data-county="northumb">
+    <div class="county-header">
+      <span class="county-name">Northumberland</span>
+      <span class="county-count">3 competitions</span>
+      <a href="https://www.northumberlandgolfunion.co.uk/juniors" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
+      Northumberland has spectacular links golf. The PING JGT Scratch Trophy at Dunstanburgh Castle on 7–8 April was one of 2026's most exciting new events for older juniors.
+    </div>
+    <div class="comps-grid" id="grid-northumb">
+      <div class="comp-card past" data-county="northumb" data-date="2026-04-08">
+        <span class="stage-badge">Stage 5 · U25 scratch</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> 7–8 April 2026</div>
+        <div class="comp-name">PING Scratch Trophy — Dunstanburgh Castle</div>
+        <div class="comp-venue">Dunstanburgh Castle Golf Course, Northumberland</div>
+        <div class="comp-tags"><span class="tag">36 holes</span><span class="tag">Scratch</span><span class="tag">Under 25</span><span class="tag">Coastal links</span></div>
+        <a href="https://www.golfgenius.com/pages/12161533872563035534" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card" data-county="northumb" data-date="2026-08-16">
+        <span class="stage-badge">Stage 4–5 · U21</span>
+        <div class="comp-date"><span class="date-badge">Sun 16 August 2026</span></div>
+        <div class="comp-name">PING JGT Masters — The Northumberland</div>
+        <div class="comp-venue">The Northumberland Golf Club, Newcastle</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Sold out — waiting list</span><span class="tag">WHS handicap required</span></div>
+        <a href="https://pingjuniorgolftour.co.uk/events/" target="_blank" rel="noopener" class="comp-enter">Waiting list ↗</a>
+      </div>
+      <div class="comp-card" data-county="northumb" data-date="2026-09-12">
+        <span class="stage-badge">Stage 4–5 · PING JGT Major</span>
+        <div class="comp-date"><span class="date-badge">Sat 12 September 2026</span></div>
+        <div class="comp-name">PING JGT Grand Final — Thonock Park</div>
+        <div class="comp-venue">Thonock Park, Lincolnshire (qualification required)</div>
+        <div class="comp-tags"><span class="tag">Grand Final</span><span class="tag">Qualification via season events</span></div>
+        <a href="https://pingjuniorgolftour.co.uk/events/" target="_blank" rel="noopener" class="comp-enter">View ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHROPSHIRE -->
+  <div class="county-section" id="section-shropshire" data-county="shropshire">
+    <div class="county-header">
+      <span class="county-name">Shropshire</span>
+      <span class="county-count">4 competitions</span>
+      <a href="https://www.shugc.com/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+    </div>
+    <div class="comps-grid" id="grid-shropshire">
+      <div class="comp-card past" data-county="shropshire" data-date="2026-05-10">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 10 May 2026</div>
+        <div class="comp-name">Rock Golf League — The Astbury</div>
+        <div class="comp-venue">The Astbury Golf Club, Shropshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span></div>
+        <a href="https://rockgolfleague.com/event/the-astbury-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card past" data-county="shropshire" data-date="2026-07-12">
+        <span class="stage-badge">Stage-4 · Charity</span>
+        <div class="comp-date"><span class="date-badge past-badge">Past</span> Sun 12 July 2026</div>
+        <div class="comp-name">Enville Charity Adult–Junior Pairs</div>
+        <div class="comp-venue">Enville Golf Club, Stourbridge/Shropshire border</div>
+        <div class="comp-tags"><span class="tag">Pairs format</span><span class="tag">£40 per pair</span><span class="tag">Charity event</span></div>
+        <a href="https://www.gloucestershiregolfunion.co.uk/club_open_competitions" target="_blank" rel="noopener" class="comp-enter disabled">Entry closed</a>
+      </div>
+      <div class="comp-card" data-county="shropshire" data-date="2026-07-23">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Thu 23 July 2026</span></div>
+        <div class="comp-name">PING JGT Masters — Wrekin</div>
+        <div class="comp-venue">Wrekin Golf Club, Shropshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">U21</span><span class="tag">WHS handicap required</span><span class="tag">Entry open</span></div>
+        <a href="https://www.golfgenius.com/pages/12100482491555519507" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+      <div class="comp-card" data-county="shropshire" data-date="2026-09-20">
+        <span class="stage-badge">Stage 3–5 · Boys & Girls</span>
+        <div class="comp-date"><span class="date-badge">Sun 20 September 2026</span></div>
+        <div class="comp-name">Rock Golf League — Stratford on Avon</div>
+        <div class="comp-venue">Stratford on Avon Golf Club, Warwickshire</div>
+        <div class="comp-tags"><span class="tag">18 holes</span><span class="tag">Net & gross</span><span class="tag">Order of Merit</span></div>
+        <a href="https://rockgolfleague.com/event/stratford-on-avon-golf-club-2026/" target="_blank" rel="noopener" class="comp-enter">Enter ↗</a>
+      </div>
+    </div>
+  </div>
+
+
+
   <!-- BJGT — NATIONAL TOUR -->
   <div class="county-section" id="section-bjgt" data-county="bjgt">
     <div class="county-header">
@@ -2667,7 +4404,7 @@
 
   <div class="info-box" style="margin-top:12px;">
     <h3>Always growing</h3>
-    <p>JuniorCaddie currently lists 220+ individual competitions across Hertfordshire, Essex, Middlesex, Surrey, Sussex, Hampshire, Kent, Bedfordshire, Cambridgeshire, Lancashire, Yorkshire, Gloucestershire, Norfolk plus the BJGT, Faldo Series, England Golf national championships and English Schools Golf.</p>
+    <p>JuniorCaddie currently lists 410+ individual competitions across Hertfordshire, Essex, Middlesex, Surrey, Sussex, Hampshire, Kent, Bedfordshire, Cambridgeshire, Lancashire, Yorkshire, Gloucestershire, Norfolk plus the BJGT, Faldo Series, England Golf national championships and English Schools Golf.</p>
     <p style="margin-top:10px;"><strong>Coming soon:</strong> Cheshire, Devon, Suffolk, Oxfordshire and more. Know of a competition we've missed? Email <a href="mailto:hello@juniorcaddie.co.uk" style="color:#1A6EA8;">hello@juniorcaddie.co.uk</a> and we'll add it.</p>
   </div>
 
@@ -2747,7 +4484,7 @@
     });
 
     // Show/hide county sections
-    ['herts','beds','cambs','essex','middx','surrey','sussex','hants','kent','lancs','yorks','glos','norfolk','bjgt','faldo','england','schools'].forEach(c => {
+    ['herts','beds','cambs','essex','middx','surrey','sussex','hants','kent','lancs','yorks','glos','norfolk','cheshire','devon','warks','wilts','suffolk','worcs','oxon','scotland','wales','pingjgt','rockgolf','bjgt','faldo','england','schools'].forEach(c => {
       const section = document.getElementById('section-' + c);
       const grid = document.getElementById('grid-' + c);
       if (!section || !grid) return;
