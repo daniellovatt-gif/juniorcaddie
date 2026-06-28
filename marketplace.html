@@ -64,6 +64,13 @@
     .card-photo-slide { min-width: 100%; width: 100%; height: 210px; flex-shrink: 0; overflow: hidden; }
     .card-photo-slide img { width: 100%; height: 210px; object-fit: cover; object-position: center; display: block; }
     .card-photo-placeholder { display: flex; align-items: center; justify-content: center; font-size: 48px; color: var(--pale); height: 210px; }
+    .card-photo-slide img { cursor: zoom-in; }
+
+    /* Lightbox */
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+    #lightbox-close { position: absolute; top: 20px; right: 28px; font-size: 36px; color: white; cursor: pointer; line-height: 1; background: none; border: none; }
     .carousel-btn {
       position: absolute; top: 50%; transform: translateY(-50%);
       background: rgba(11,61,107,0.65); color: white; border: none;
@@ -411,9 +418,15 @@
       const hasMultiple = photos.length > 1;
       const carouselId = `carousel-${l.id}`;
 
+      // Transform Cloudinary URLs to crop at source (600x420, fill crop)
+      function cloudinaryThumb(url) {
+        if (!url || !url.includes('res.cloudinary.com')) return url;
+        return url.replace('/upload/', '/upload/w_600,h_420,c_fill,g_auto/');
+      }
+
       const photoHtml = photos.length > 0
         ? `<div class="card-photo-track" id="${carouselId}">
-            ${photos.map(url => `<div class="card-photo-slide"><img src="${url}" alt="${title}" loading="lazy"/></div>`).join('')}
+            ${photos.map(url => `<div class="card-photo-slide"><img src="${cloudinaryThumb(url)}" data-full="${url}" alt="${title}" loading="lazy" onclick="openLightbox(this)"/></div>`).join('')}
            </div>
            ${hasMultiple ? `
              <button class="carousel-btn carousel-btn-prev" onclick="carouselPrev(event,'${carouselId}',${photos.length})">‹</button>
@@ -537,8 +550,21 @@
     if (e.target === document.getElementById('modal-overlay')) closeModal();
   }
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeLightbox(); } });
   window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
+
+  // Lightbox
+  function openLightbox(img) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = img.dataset.full || img.src;
+    lb.classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
 
   // Carousel
   const carouselState = {};
@@ -566,5 +592,11 @@
 
   loadListings();
 </script>
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Full size photo"/>
+</div>
+
 </body>
 </html>
