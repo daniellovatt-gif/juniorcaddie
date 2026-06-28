@@ -410,6 +410,13 @@
 
       // Build photo carousel
       const photos = [];
+      if (l.photo_urls && Array.isArray(l.photo_urls) && l.photo_urls.length > 0) {
+        photos.push(...l.photo_urls);
+      } else if (l.photo_url) {
+        photos.push(l.photo_url);
+      }
+      const hasMultiple = photos.length > 1;
+      const carouselId = `carousel-${l.id}`;
 
       const photoHtml = photos.length > 0
         ? `<div class="card-photo-track" id="${carouselId}">
