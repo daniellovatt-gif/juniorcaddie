@@ -554,11 +554,9 @@
     lb.classList.add('open');
   }
   function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
+    const lb = document.getElementById('lightbox');
+    if (lb) lb.classList.remove('open');
   }
-  document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
-  });
 
   // Carousel
   const carouselState = {};
@@ -593,7 +591,7 @@
   loadListings();
 </script>
 <!-- Lightbox -->
-<div id="lightbox">
+<div id="lightbox" onclick="if(event.target===this)closeLightbox()">
   <button id="lightbox-close" onclick="closeLightbox()">✕</button>
   <img id="lightbox-img" src="" alt="Full size photo"/>
 </div>
