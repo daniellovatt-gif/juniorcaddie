@@ -403,6 +403,20 @@
   <div class="stat"><div class="stat-n">Growing</div><div class="stat-l">More added every week</div></div>
 </div>
 
+<!-- ── FIRST-TIME PARENT SIGNPOST ── -->
+<div style="background:linear-gradient(135deg, #0B3D6B 0%, #1A6EA8 100%); padding:20px 24px;">
+  <div style="max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+    <div style="display:flex; align-items:center; gap:16px;">
+      <div style="width:48px; height:48px; background:rgba(255,255,255,0.12); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;">🗓️</div>
+      <div>
+        <div style="font-size:15px; font-weight:700; color:white; margin-bottom:3px;">First time at a junior golf competition?</div>
+        <div style="font-size:13px; color:#7BBDE0; line-height:1.5;">Where to stand, what to bring, how to support your child — without getting in the way.</div>
+      </div>
+    </div>
+    <a href="competition-day-guide.html" style="background:white; color:#0B3D6B; font-size:13px; font-weight:700; padding:11px 22px; border-radius:8px; white-space:nowrap; flex-shrink:0; box-shadow:0 2px 8px rgba(0,0,0,0.15);">Read the parent's guide →</a>
+  </div>
+</div>
+
 <div class="filters">
   <div class="filter-label">Filter by county or tour</div>
   <div class="filter-row">
@@ -4653,7 +4667,7 @@
     const email = emailEl.value.trim();
     if (!email || !email.includes('@')) { emailEl.style.borderColor='#E05A5A'; emailEl.focus(); return; }
     const btn = emailEl.nextElementSibling;
-    btn.disabled = true; btn.textContent = 'Just a sec...';
+    btn.disabled = true; btn.textContent = 'Joining...';
     try {
       await fetch('https://formspree.io/f/xbdewqvn', {
         method: 'POST',
@@ -4673,45 +4687,35 @@
 <!-- ── COMMUNITY POPUP MODAL ── -->
 <div class="popup-overlay" id="popup-overlay">
   <div class="popup-panel" id="popup-panel">
-    <button class="popup-close" onclick="dismissPopup()" aria-label="Close">✕</button>
     <div id="popup-inner">
       <span class="popup-icon">⛳</span>
-      <div class="popup-title">Free access to 410+ junior golf competitions</div>
-      <div class="popup-sub">Get competition updates for your county straight to your inbox — new events added every week.</div>
-      <div style="display:flex; flex-direction:column; gap:6px; text-align:left; margin-bottom:18px;">
-        <div style="font-size:13px; color:#0B3D6B; display:flex; gap:8px; align-items:flex-start;"><span>📅</span><span>New competitions for your county, straight to your inbox</span></div>
-        <div style="font-size:13px; color:#0B3D6B; display:flex; gap:8px; align-items:flex-start;"><span>🔗</span><span>Direct entry links — no hunting around county websites</span></div>
-        <div style="font-size:13px; color:#0B3D6B; display:flex; gap:8px; align-items:flex-start;"><span>🆓</span><span>Always free. Unsubscribe any time.</span></div>
-      </div>
+      <div class="popup-title">Join the growing JuniorCaddie community and Unlock all Competitions</div>
+      <div class="popup-sub">More features coming soon — be the first to know.</div>
       <div class="popup-field">
         <input class="popup-input" id="popup-email" type="email" placeholder="Your email address" autocomplete="email"
           onkeydown="if(event.key==='Enter') popupSignup()"/>
-        <button class="popup-btn" onclick="popupSignup()">Get free access</button>
+        <button class="popup-btn" onclick="popupSignup()">Join free</button>
       </div>
       <div class="popup-note" style="font-size:11px; color:#AAA; margin-bottom:10px;">No spam. Unsubscribe any time.</div>
-      <div class="popup-dismiss" onclick="dismissPopup()">I'll just browse without updates</div>
     </div>
   </div>
 </div>
 
 <script>
-  // ── POPUP GATE — fires after 10th competition card scrolled past ──
+  // ── POPUP GATE — fires after 12th competition card scrolled past ──
   (function() {
     if (localStorage.getItem('jc_community_member') === '1') return;
 
-    // 24-hour cooldown after dismiss
-    const dismissed = localStorage.getItem('jc_gate_dismissed');
-    if (dismissed && Date.now() - parseInt(dismissed) < 86400000) return;
-
-    // Find the 10th comp-card
+    // Find the 12th comp-card
     const cards = document.querySelectorAll('.comp-card');
-    const trigger = cards[9]; // 0-indexed → 10th card
+    const trigger = cards[11]; // 0-indexed → 12th card
     if (!trigger) return;
 
     let fired = false;
     function checkTrigger() {
       if (fired) return;
       const rect = trigger.getBoundingClientRect();
+      // Fire when the bottom of the 12th card passes the middle of the screen
       if (rect.bottom < window.innerHeight * 0.6) {
         fired = true;
         window.removeEventListener('scroll', checkTrigger);
@@ -4728,18 +4732,17 @@
   })();
 
   function dismissPopup() {
-    document.getElementById('popup-overlay').classList.remove('visible');
-    localStorage.setItem('jc_gate_dismissed', Date.now());
+    // Hard gate — only dismissed on successful signup
   }
 
-  // Close on overlay click (not panel click)
+  // Hard gate — overlay click does not close
   document.getElementById('popup-overlay').addEventListener('click', function(e) {
-    if (e.target === this) dismissPopup();
+    e.stopPropagation();
   });
 
-  // Close on Escape
+  // Hard gate — Escape does not close
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') dismissPopup();
+    if (e.key === 'Escape') e.preventDefault();
   });
 
   async function popupSignup() {
@@ -4751,7 +4754,7 @@
       return;
     }
     const btn = document.querySelector('.popup-btn');
-    btn.disabled = true; btn.textContent = 'Just a sec...';
+    btn.disabled = true; btn.textContent = 'Joining...';
     try {
       await fetch('https://formspree.io/f/xbdewqvn', {
         method: 'POST',
@@ -4762,9 +4765,9 @@
       localStorage.setItem('jc_community_member', '1');
       document.getElementById('popup-inner').innerHTML = `
         <div style="font-size:48px; margin-bottom:14px;">✅</div>
-        <div style="font-family:Georgia,serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:8px;">You're in. Welcome!</div>
-        <div style="font-size:14px; color:var(--mid); line-height:1.6; margin-bottom:20px;">All 410+ competitions are now unlocked. We'll keep you posted when new ones are added near you.</div>
-        <button onclick="dismissPopup()" style="background:var(--navy); color:white; border:none; padding:12px 28px; border-radius:9px; font-size:15px; font-weight:700; cursor:pointer;">Let's go ⛳</button>`;
+        <div style="font-family:Georgia,serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:8px;">You're in.</div>
+        <div style="font-size:14px; color:var(--mid); line-height:1.6; margin-bottom:20px;">We'll keep you posted on new competitions and features.</div>
+        <button onclick="dismissPopup()" style="background:var(--navy); color:white; border:none; padding:12px 28px; border-radius:9px; font-size:15px; font-weight:700; cursor:pointer;">Continue browsing →</button>`;
     }
   }
 </script>
