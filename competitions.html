@@ -4732,6 +4732,7 @@
 <!-- ── COMMUNITY POPUP MODAL ── -->
 <div class="popup-overlay" id="popup-overlay">
   <div class="popup-panel" id="popup-panel">
+    <button class="popup-close" onclick="dismissPopup()" aria-label="Close">✕</button>
     <div id="popup-inner">
       <span class="popup-icon">⛳</span>
       <div class="popup-title">Join the growing JuniorCaddie community and Unlock all Competitions</div>
@@ -4742,6 +4743,7 @@
         <button class="popup-btn" onclick="popupSignup()">Join free</button>
       </div>
       <div class="popup-note" style="font-size:11px; color:#AAA; margin-bottom:10px;">No spam. Unsubscribe any time.</div>
+      <div class="popup-dismiss" onclick="dismissPopup()">No thanks, continue browsing</div>
     </div>
   </div>
 </div>
@@ -4777,17 +4779,17 @@
   })();
 
   function dismissPopup() {
-    // Hard gate — only dismissed on successful signup
+    document.getElementById('popup-overlay').classList.remove('visible');
   }
 
-  // Hard gate — overlay click does not close
+  // Close on overlay click (not panel click)
   document.getElementById('popup-overlay').addEventListener('click', function(e) {
-    e.stopPropagation();
+    if (e.target === this) dismissPopup();
   });
 
-  // Hard gate — Escape does not close
+  // Close on Escape
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') e.preventDefault();
+    if (e.key === 'Escape') dismissPopup();
   });
 
   async function popupSignup() {
