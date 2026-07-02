@@ -195,6 +195,72 @@
     .tab-title { font-size: 14px; font-weight: 700; color: white; line-height: 1.2; }
     .tab-desc { font-size: 11px; color: var(--light); line-height: 1.4; }
 
+    /* ── HERO QUOTE: SAVED MY LIFE (standalone) ── */
+    .hero-quote {
+      background: var(--navy);
+      padding: 56px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--serif);
+      font-size: 220px;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-quote-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-quote-credentials {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 22px;
+    }
+    .hero-quote-text {
+      font-family: var(--serif);
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      color: white;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+    .hero-quote-text em {
+      font-style: normal;
+      color: var(--light);
+    }
+    .hero-quote-rule {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(to right, var(--sky), var(--light));
+      border-radius: 2px;
+      margin: 0 auto 16px;
+    }
+    .hero-quote-attr {
+      font-size: 13px;
+      color: var(--sky);
+      line-height: 1.5;
+    }
+    .hero-quote-attr strong {
+      color: white;
+      font-weight: 700;
+    }
+
     /* ── OPTION 4: TESTIMONIAL CARDS ── */
     .testimonials {
       background: var(--bg);
@@ -477,11 +543,6 @@
       </div>
       <div class="proof-divider"></div>
       <div class="proof-quote">
-        <div class="proof-quote-text">"This simplifies everything relevant for juniors."</div>
-        <div class="proof-quote-attr">PGA Coach & Golf Ops Manager</div>
-      </div>
-      <div class="proof-divider"></div>
-      <div class="proof-quote">
         <div class="proof-quote-text">"Brilliant. We will now circulate."</div>
         <div class="proof-quote-attr">Junior organiser, Hertfordshire</div>
       </div>
@@ -543,12 +604,22 @@
   </div>
 </div>
 
+<!-- HERO QUOTE: SAVED MY LIFE (standalone) -->
+<section class="hero-quote">
+  <div class="hero-quote-inner">
+    <div class="hero-quote-credentials">PGA Junior Coach · Junior Organiser · Golf Ops Manager</div>
+    <div class="hero-quote-text">"You've saved my life. <em>This simplifies everything relevant for juniors.</em>"</div>
+    <div class="hero-quote-rule"></div>
+    <div class="hero-quote-attr">One message from someone who works in junior golf <strong>every single day.</strong></div>
+  </div>
+</section>
+
 <!-- OPTION 4: TESTIMONIAL CARDS -->
 <section class="testimonials">
   <div class="testimonials-inner">
-    <span class="testimonials-label">What the junior golf community says</span>
-    <h2>Trusted by parents, coaches and organisers</h2>
-    <div class="testimonials-grid">
+    <span class="testimonials-label">More from the junior golf community</span>
+    <h2>Trusted by parents and organisers</h2>
+    <div class="testimonials-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 640px; margin: 0 auto;">
 
       <div class="t-card">
         <div class="t-card-quote">
@@ -559,19 +630,6 @@
           <div>
             <div class="t-card-role">Junior organiser</div>
             <div class="t-card-context">Hertfordshire</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="t-card">
-        <div class="t-card-quote">
-          You've saved my life. As a PGA Junior Coach, Junior Organiser and Golf Ops Manager — this simplifies everything relevant for juniors.
-        </div>
-        <div class="t-card-footer">
-          <div class="t-card-avatar">🏌️</div>
-          <div>
-            <div class="t-card-role">PGA Coach & Golf Ops Manager</div>
-            <div class="t-card-context">Launch day</div>
           </div>
         </div>
       </div>
