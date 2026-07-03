@@ -202,7 +202,7 @@
   <h1>Junior golf camps<br><em>across Hertfordshire.</em></h1>
   <p class="hero-sub">Half-term camps, summer holiday coaching and junior academies — for every age and ability. Updated for 2026.</p>
   <div class="stats-bar">
-    <div class="stat"><div class="stat-n">11</div><div class="stat-l">Camps listed</div></div>
+    <div class="stat"><div class="stat-n">13</div><div class="stat-l">Camps listed</div></div>
     <div class="stat"><div class="stat-n">1</div><div class="stat-l">County so far</div></div>
     <div class="stat"><div class="stat-n">All</div><div class="stat-l">Ages & abilities</div></div>
   </div>
@@ -223,7 +223,7 @@
 
 <!-- GRID -->
 <div class="grid-wrap">
-  <div class="results-count" id="results-count">12 camps listed in Hertfordshire</div>
+  <div class="results-count" id="results-count">13 camps listed in Hertfordshire</div>
   <div class="camps-grid" id="camps-grid">
 
     <!-- FEATURED — Neil Mac Golf -->
@@ -260,6 +260,39 @@
         <a href="mailto:letchworthproshop@gmail.com" class="card-website" style="background:#6B5000;">Book now →</a>
       </div>
     </div>
+    <!-- JG Golf Academy -->
+    <div class="camp-card" data-county="herts" data-level="beginner advanced" data-duration="halfday">
+      <div class="card-header">
+        <span class="card-county-badge">Hertfordshire</span>
+        <div class="card-name">JG Golf Academy — Junior Summer Camps 2026</div>
+        <div class="card-location">📍 Old Fold Manor Golf Club, Barnet</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tags">
+          <span class="card-tag highlight">6 weeks · Tue–Thu, 21 Jul–27 Aug</span>
+          <span class="card-tag">Ages 4+</span>
+          <span class="card-tag">9am–12pm</span>
+          <span class="card-tag">Equipment provided</span>
+        </div>
+        <div class="card-desc">Six weeks of summer camp running every Tuesday to Thursday from 21st July to 27th August 2026. Fun games and challenges, structured coaching on full swing, short game and putting, on-course play, team competitions, prizes, certificates and a junior camp gift pack. No experience needed — all equipment provided.</div>
+        <div style="background:var(--bg); border-radius:8px; padding:12px 14px; border:1px solid var(--pale); margin-top:4px;">
+          <div style="display:flex; align-items:baseline; gap:8px; margin-bottom:4px; flex-wrap:wrap;">
+            <span style="font-size:20px; font-weight:700; font-family:Georgia,serif; color:var(--navy);">£45</span>
+            <span style="font-size:13px; color:#666;">per day</span>
+            <span style="font-size:13px; color:#2D6A1F; font-weight:600;">· £120 for all 3 days (best value)</span>
+          </div>
+          <div style="font-size:12px; color:#666; line-height:1.7;">
+            📧 <a href="mailto:joe@joegoodallgolfacademy.co.uk" style="color:var(--mid); font-weight:600;">joe@joegoodallgolfacademy.co.uk</a><br>
+            📞 <a href="tel:07345591862" style="color:var(--mid); font-weight:600;">07345 591862</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-contact">Old Fold Lane, Hadley Green, Barnet, EN5 4QN</div>
+        <a href="mailto:joe@joegoodallgolfacademy.co.uk" class="card-website">Book now →</a>
+      </div>
+    </div>
+
     <div class="camp-card" data-county="herts" data-level="beginner advanced" data-duration="halfday">
       <div class="card-header">
         <span class="card-county-badge">Hertfordshire</span>
@@ -648,7 +681,8 @@
         </div>`;
     }
   }
-</script>
+
+  async function submitCamp() {
     const name = document.getElementById('sf-name').value.trim();
     const county = document.getElementById('sf-county').value;
     const desc = document.getElementById('sf-desc').value.trim();
