@@ -60,17 +60,10 @@
     .listing-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(11,61,107,0.1); }
     /* Photo carousel */
     .card-photo { width: 100%; height: 210px; background: var(--bg); position: relative; overflow: hidden; flex-shrink: 0; }
-    .card-photo-track { display: flex; transition: transform 0.3s ease; height: 210px; width: 100%; will-change: transform; }
-    .card-photo-slide { min-width: 100%; width: 100%; height: 210px; flex-shrink: 0; overflow: hidden; }
-    .card-photo-slide img { width: 100%; height: 210px; object-fit: cover; object-position: center; display: block; }
+    .card-photo-track { display: flex; transition: transform 0.3s ease; height: 210px; will-change: transform; }
+    .card-photo-slide { min-width: 100%; width: 100%; height: 210px; flex-shrink: 0; position: relative; }
+    .card-photo-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .card-photo-placeholder { display: flex; align-items: center; justify-content: center; font-size: 48px; color: var(--pale); height: 210px; }
-    .card-photo-slide img { cursor: zoom-in; }
-
-    /* Lightbox */
-    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; }
-    #lightbox.open { display: flex; }
-    #lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
-    #lightbox-close { position: absolute; top: 20px; right: 28px; font-size: 36px; color: white; cursor: pointer; line-height: 1; background: none; border: none; }
     .carousel-btn {
       position: absolute; top: 50%; transform: translateY(-50%);
       background: rgba(11,61,107,0.65); color: white; border: none;
@@ -155,11 +148,11 @@
     "@type": "WebPage",
     "name": "Junior Golf Marketplace — Clubs & Clothing",
     "description": "Buy and sell second-hand junior golf clubs and clothing. Free to list. Direct contact with sellers.",
-    "url": "https://www.juniorcaddie.co.uk/marketplace.html",
+    "url": "https://juniorcaddie.co.uk/marketplace.html",
     "isPartOf": {
       "@type": "WebSite",
       "name": "JuniorCaddie",
-      "url": "https://www.juniorcaddie.co.uk"
+      "url": "https://juniorcaddie.co.uk"
     }
   }
   </script>
@@ -420,7 +413,7 @@
 
       const photoHtml = photos.length > 0
         ? `<div class="card-photo-track" id="${carouselId}">
-            ${photos.map(url => `<div class="card-photo-slide"><img src="${cloudinaryThumb(url)}" data-full="${url}" alt="${title}" loading="lazy" onclick="openLightbox(this)"/></div>`).join('')}
+            ${photos.map(url => `<div class="card-photo-slide"><img src="${url}" alt="${title}" loading="lazy"/></div>`).join('')}
            </div>
            ${hasMultiple ? `
              <button class="carousel-btn carousel-btn-prev" onclick="carouselPrev(event,'${carouselId}',${photos.length})">‹</button>
@@ -544,19 +537,8 @@
     if (e.target === document.getElementById('modal-overlay')) closeModal();
   }
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeLightbox(); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
-
-  // Lightbox
-  function openLightbox(img) {
-    const lb = document.getElementById('lightbox');
-    document.getElementById('lightbox-img').src = img.dataset.full || img.src;
-    lb.classList.add('open');
-  }
-  function closeLightbox() {
-    const lb = document.getElementById('lightbox');
-    if (lb) lb.classList.remove('open');
-  }
 
   // Carousel
   const carouselState = {};
@@ -582,19 +564,7 @@
     carouselGo(e, id, (cur - 1 + total) % total, total);
   }
 
-  // Transform Cloudinary URLs to crop at source (600x420, fill crop)
-  function cloudinaryThumb(url) {
-    if (!url || !url.includes('res.cloudinary.com')) return url;
-    return url.replace('/upload/', '/upload/w_600,h_420,c_fill,g_auto/');
-  }
-
   loadListings();
 </script>
-<!-- Lightbox -->
-<div id="lightbox" onclick="if(event.target===this)closeLightbox()">
-  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt="Full size photo"/>
-</div>
-
 </body>
 </html>
