@@ -224,6 +224,32 @@
     .s4 .stat-number { color: var(--s4); }
     .s5 .stat-number { color: var(--s5); }
 
+    /* Jump-link stat card (e.g. Stage 5 → WAGR deep dive) */
+    .stat-card-jump { cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+    .stat-card-jump:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+    .stat-card-jump-arrow { font-size: 11px; font-weight: 700; margin-top: 6px; }
+    .s5 .stat-card-jump-arrow { color: var(--s5); }
+
+    /* Numbered subsection box (e.g. Stage 5.2 — WAGR) */
+    .subsection-box { border-radius: 14px; padding: 32px; margin: 40px 0; scroll-margin-top: 24px; }
+    .s1 .subsection-box { background: var(--s1l); border: 2px solid var(--s1); }
+    .s2 .subsection-box { background: var(--s2l); border: 2px solid var(--s2); }
+    .s3 .subsection-box { background: var(--s3l); border: 2px solid var(--s3); }
+    .s4 .subsection-box { background: var(--s4l); border: 2px solid var(--s4); }
+    .s5 .subsection-box { background: var(--s5l); border: 2px solid var(--s5); }
+    .subsection-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: white; padding: 5px 14px; border-radius: 20px; margin-bottom: 18px;
+    }
+    .s1 .subsection-eyebrow { background: var(--s1); }
+    .s2 .subsection-eyebrow { background: var(--s2); }
+    .s3 .subsection-eyebrow { background: var(--s3); }
+    .s4 .subsection-eyebrow { background: var(--s4); }
+    .s5 .subsection-eyebrow { background: var(--s5); }
+    /* Inside a subsection-box, pull-quote and dev-card sit on white so they still lift off the tinted background */
+    .subsection-box .pull-quote, .subsection-box .dev-card { background: white; }
+
     /* Development cards */
     .dev-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
     .dev-card {
@@ -1128,6 +1154,11 @@
         <div class="stat-number">∞</div>
         <div class="stat-label">The game your child now carries for the rest of their life</div>
       </div>
+      <a href="#wagr-section" class="stat-card stat-card-jump">
+        <div class="stat-number">6.5</div>
+        <div class="stat-label">WAGR points needed to become visible to US college recruiters</div>
+        <div class="stat-card-jump-arrow">Jump to Stage 5.2 — WAGR explained ↓</div>
+      </a>
     </div>
 
     <div class="section">
@@ -1153,7 +1184,8 @@
 
     <div class="section-divider"></div>
 
-    <div class="section">
+    <div class="section" id="us-college-section">
+      <div style="font-size:11px;color:var(--sky);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:10px;">Stage 5.1</div>
       <h3><span class="h3-icon">🇺🇸</span> American college golf — the pathway every family should understand</h3>
       <p class="body-text">The United States college golf system is one of the most significant opportunities available to a talented British junior golfer — and one of the least understood. Every year, a small number of UK players navigate the NCAA system successfully and come back transformed as golfers and as people. Most families who could pursue this pathway simply don't know it exists, or leave it too late to act.</p>
 
@@ -1196,6 +1228,53 @@
       <p class="body-text"><strong>An honest assessment of the process:</strong> Getting a full Division I scholarship to a top 25 golf programme is extremely competitive and requires exceptional ability. But the system is large — there are over 300 Division I programmes, over 250 Division II programmes, and hundreds of NAIA and Division III schools. A player who approaches the process intelligently, starts early, and is realistic about the right level of programme for their ability will find opportunities. The mistake most families make is either not trying at all or aiming only at the highest-profile programmes.</p>
 
       <p class="body-text">JuniorCaddie recommends speaking with a specialist US college golf placement consultant if you are serious about this pathway. The landscape changes frequently and specialist knowledge of which programmes are actively recruiting UK players, which coaches are responsive, and how to position a player's profile correctly makes a significant difference to outcomes.</p>
+      <p class="body-text" style="margin-top:20px;"><a href="#wagr-section" style="color:var(--s5);font-weight:700;">→ Continue to Stage 5.2: WAGR — the ranking system coaches check first</a></p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="section subsection-box" id="wagr-section">
+      <div class="subsection-eyebrow">Stage 5.2 · Deep dive</div>
+      <h3><span class="h3-icon">🏆</span> WAGR — the ranking system that opens American doors</h3>
+      <p class="body-text">If there is one part of the American recruiting pathway that catches UK families out, it is WAGR — the World Amateur Golf Ranking. It is thinly explained anywhere in British junior golf, yet it sits behind almost every serious conversation a US college coach has about a UK recruit. A handicap index tells a coach how good a player is on paper. WAGR tells them how a player actually performs against ranked opposition — and it is the number most Division I and II coaches check first when a UK name lands in their inbox.</p>
+
+      <p class="body-text"><strong>What WAGR actually is.</strong> WAGR is run jointly by The R&A and the USGA and has been the official world ranking for amateur golf since 2007. It tracks results from thousands of approved ("counting") events worldwide over a rolling two-year period, with more recent results weighted more heavily than older ones. Every ranked amateur golfer in the world — male and female, junior and adult — sits somewhere on the same list. For a UK college prospect, a WAGR ranking is effectively an internationally recognised, independently verified form guide. It is why coaches trust it more than a handicap certificate they cannot easily check.</p>
+
+      <div class="pull-quote">
+        <p>A handicap tells me a number. WAGR tells me who a player actually beat, and how strong that field was. When I'm recruiting from outside the US, WAGR is often the only reliable, independent evidence I have.</p>
+        <div class="pull-quote-attr">— NCAA Division I Assistant Golf Coach</div>
+      </div>
+
+      <p class="body-text"><strong>How WAGR points are actually earned.</strong> A player only earns WAGR points by competing in a "counting event" — a tournament that WAGR has approved as meeting its standards for format, course setup and the Rules of Amateur Status. Every counting event is given a strength-of-field rating, known as its "Power." Power is calculated from the WAGR standing of everyone in the field — a county junior open with no ranked players in it will have a low Power rating; a national championship full of already-ranked players will have a high one. A player's points for that event are then a function of two things only: <strong>how strong the field was (the event's Power), and where the player finished in it.</strong> Win a high-Power event and the points on offer can be substantial. Win a low-Power event and the points on offer are modest — sometimes not enough to register at all.</p>
+
+      <p class="body-text"><strong>The number every parent should know: 6.5.</strong> A player does not appear on the WAGR list at all until they earn at least 6.5 ranking points in a single counting event. Until that happens, a junior golfer — however good — is simply not "on WAGR" as far as a college coach's database search is concerned. This is the single most common reason a talented UK junior is invisible to US recruiters: not lack of ability, but never having played in an event strong enough, or finished high enough, to cross that threshold. Once a player is on the list, subsequent events become easier to gain points from, because the player now has a points average to defend and build on rather than a threshold to clear from zero.</p>
+
+      <div class="dev-grid">
+        <div class="dev-card">
+          <div class="dev-card-icon">🎯</div>
+          <div class="dev-card-title">Get "on" WAGR first</div>
+          <div class="dev-card-body">The priority before anything else is crossing the 6.5-point threshold. This usually means a strong finish — ideally a win or a top few placing — in a genuinely competitive event, not simply entering the biggest name on the calendar.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">📊</div>
+          <div class="dev-card-title">Choose events strategically</div>
+          <div class="dev-card-body">A win at a modest county open and a mid-table finish at a national championship can produce very similar points. Coaches and performance-minded families increasingly plan a season around field strength, not just prestige.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">📈</div>
+          <div class="dev-card-title">Protect the average, don't just chase points</div>
+          <div class="dev-card-body">WAGR compares each new result to a player's current points average. A weak finish in a strong field can pull a ranking down as easily as a good finish lifts it. Consistency across a season matters more than one standout week.</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-card-icon">🔗</div>
+          <div class="dev-card-title">Put the ranking on the player profile</div>
+          <div class="dev-card-body">A current WAGR position — or even a clear points total if not yet ranked — belongs on the same player profile as the handicap index, tournament record and highlight video sent to US coaches.</div>
+        </div>
+      </div>
+
+      <p class="body-text"><strong>UK events that count.</strong> For English, Scottish, Welsh and Irish juniors, the main WAGR counting events at age-group level include The R&A's Boys and Girls Amateur Championships, the home unions' national age-group championships (such as the England Golf, Scottish Golf and Wales Golf boys' and girls' championships), and the stronger county and regional championships. Smaller local junior opens are very unlikely to carry enough Power on their own to move a ranking meaningfully, though they remain valuable for competitive experience and confidence at earlier stages of the journey.</p>
+
+      <p class="body-text"><strong>An honest note on where WAGR fits.</strong> WAGR is one input among several a US college coach weighs — alongside handicap, academic record, references and a highlight video — not a replacement for any of them. It rewards results in strong fields over time, so it favours players who are already competing regularly at a high standard rather than juniors just starting out. Families should treat it as a tool for a player already deep into Stage 4 or Stage 5 who is serious about the US pathway, not as something to chase for its own sake at younger ages.</p>
     </div>
 
     <div class="section-divider"></div>
