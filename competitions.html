@@ -160,6 +160,18 @@
     .comp-enter.club-site { background: var(--sky); }
     .comp-enter.club-site:hover { background: var(--mid); }
 
+    /* Add to calendar button — sits beside Enter, injected via JS for every card */
+    .comp-btn-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .comp-cal-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 13px; font-weight: 600; color: var(--navy);
+      background: var(--white); border: 1.5px solid var(--pale);
+      border-radius: 6px; padding: 7px 14px; cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .comp-cal-btn:hover { border-color: var(--mid); background: #EAF4FC; }
+    .comp-cal-btn.added { background: #DCFCE7; border-color: #15803D; color: #15803D; }
+
     /* Stage badge */
     .stage-badge {
       font-size: 10px; color: var(--sky);
@@ -169,6 +181,54 @@
 
     /* No results */
     .no-results { text-align: center; padding: 48px 24px; color: var(--sky); display: none; }
+
+    /* ===== View toggle (List / Calendar) — prominent, sits above the county filters ===== */
+    .view-toggle-wrap { max-width: var(--max); margin: 20px auto 4px; padding: 0 24px; }
+    .view-toggle-card { background: linear-gradient(135deg, #0B3D6B 0%, #1A6EA8 100%); border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(11,61,107,0.18); }
+    .view-toggle-label { font-size: 13px; color: #EEF4FB; font-weight: 600; }
+    .view-toggle-label span { display: block; font-size: 11px; color: #7BBDE0; font-weight: 500; margin-top: 2px; }
+    .view-toggle { display: inline-flex; background: rgba(255,255,255,0.12); border-radius: 11px; padding: 4px; gap: 2px; }
+    .view-toggle-btn { background: transparent; color: #EEF4FB; border: none; padding: 12px 22px; font-size: 14.5px; font-weight: 700; cursor: pointer; border-radius: 8px; display: flex; align-items: center; gap: 7px; transition: background 0.15s, color 0.15s; }
+    .view-toggle-btn.active { background: #fff; color: var(--navy); box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+    .view-toggle-btn:not(.active):hover { background: rgba(255,255,255,0.1); }
+    .view-toggle-new-badge { background: #FFB020; color: #6B3F00; font-size: 9px; font-weight: 800; letter-spacing: 0.5px; border-radius: 5px; padding: 2px 6px; text-transform: uppercase; }
+    @media (max-width: 640px) {
+      .view-toggle-card { flex-direction: column; align-items: stretch; text-align: center; }
+      .view-toggle { justify-content: stretch; }
+      .view-toggle-btn { flex: 1; justify-content: center; }
+    }
+
+    /* ===== Calendar view ===== */
+    #view-calendar { display: none; }
+    .cal-split { display: grid; grid-template-columns: 300px 1fr; gap: 24px; align-items: start; }
+    @media (max-width: 760px) { .cal-split { grid-template-columns: 1fr; } }
+    .cal-wrap { background: #fff; border: 0.5px solid var(--pale); border-radius: var(--radius); padding: 18px; }
+    .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .cal-month { font-family: Georgia, serif; font-size: 16px; font-weight: 700; color: var(--navy); }
+    .cal-nav { display: flex; gap: 6px; }
+    .cal-nav button { background: var(--pale); border: 0.5px solid var(--pale); color: var(--navy); border-radius: 6px; width: 28px; height: 28px; cursor: pointer; font-size: 13px; }
+    .cal-nav button:hover { background: var(--paleline, #B8D8F0); }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+    .cal-dow { font-size: 9px; color: var(--sky); text-align: center; text-transform: uppercase; letter-spacing: 0.5px; padding-bottom: 5px; }
+    .cal-day { aspect-ratio: 1/1; border-radius: 7px; border: 0.5px solid var(--pale); padding: 4px; font-size: 11px; color: var(--navy); display: flex; flex-direction: column; position: relative; background: var(--pale); }
+    .cal-day.empty { background: transparent; border-color: transparent; }
+    .cal-day.has-events { cursor: pointer; background: #fff; border-color: var(--mid); }
+    .cal-day.has-events:hover { background: #EAF4FC; }
+    .cal-day.selected { background: var(--navy); border-color: var(--navy); }
+    .cal-day.selected .day-num { color: #fff; }
+    .cal-day .day-num { font-weight: 600; }
+    .cal-dots { display: flex; gap: 2px; flex-wrap: wrap; position: absolute; bottom: 4px; left: 4px; right: 4px; }
+    .cal-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--sky); }
+    .cal-day.selected .cal-dot { background: var(--light); }
+    .cal-count { position: absolute; top: 3px; right: 4px; font-size: 8px; color: var(--sky); font-weight: 700; }
+    .cal-day.selected .cal-count { color: var(--light); }
+    .cal-legend { font-size: 11px; color: var(--sky); margin-top: 12px; line-height: 1.5; }
+    .cal-results-title { font-size: 12px; color: var(--sky); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .cal-results-empty { background: #fff; border: 1.5px dashed var(--pale); border-radius: var(--radius); padding: 48px 24px; text-align: center; }
+    .cal-results-empty-icon { font-size: 32px; margin-bottom: 12px; }
+    .cal-results-empty-text { font-size: 14px; color: var(--sky); }
+    .cal-results-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 12px; }
+    .cal-results-list .comp-card { display: block; }
     .no-results.show { display: block; }
 
     /* Info box */
@@ -411,7 +471,7 @@
 <div class="stats">
   <div class="stat"><div class="stat-n" id="total-count">410+</div><div class="stat-l">Competitions individually listed</div></div>
   <div class="stat"><div class="stat-n" id="upcoming-count">—</div><div class="stat-l">Still to come in 2026</div></div>
-  <div class="stat"><div class="stat-n">15</div><div class="stat-l">Counties, tours & national bodies</div></div>
+  <div class="stat"><div class="stat-n">40</div><div class="stat-l">Counties, tours & national bodies</div></div>
   <div class="stat"><div class="stat-n">Growing</div><div class="stat-l">More added every week</div></div>
 </div>
 
@@ -426,6 +486,19 @@
       </div>
     </div>
     <a href="competition-day-guide.html" style="background:white; color:#0B3D6B; font-size:13px; font-weight:700; padding:11px 22px; border-radius:8px; white-space:nowrap; flex-shrink:0; box-shadow:0 2px 8px rgba(0,0,0,0.15);">Read the parent's guide →</a>
+  </div>
+</div>
+
+<div class="view-toggle-wrap">
+  <div class="view-toggle-card">
+    <div class="view-toggle-label">
+      How would you like to browse?
+      <span>Switch any time — your county filter carries over</span>
+    </div>
+    <div class="view-toggle">
+      <button class="view-toggle-btn active" id="toggle-list-btn" onclick="showListView()">📋 List view</button>
+      <button class="view-toggle-btn" id="toggle-cal-btn" onclick="showCalendarView()">📅 Calendar view <span class="view-toggle-new-badge">New</span></button>
+    </div>
   </div>
 </div>
 
@@ -483,7 +556,7 @@
 
 <main class="main">
 
-  <!-- Welcome banner — shown after signup -->
+  <div id="view-list">
   <div class="welcome-banner" id="welcome-banner">
     <p>⛳ Welcome to the JuniorCaddie community!</p>
     <span>All 410+ competitions are now unlocked. We'll let you know when new ones are added near you.</span>
@@ -4559,6 +4632,34 @@
     <p style="margin-top:10px;"><strong>Coming soon:</strong> Cheshire, Devon, Suffolk, Oxfordshire and more. Know of a competition we've missed? Email <a href="mailto:hello@juniorcaddie.co.uk" style="color:#1A6EA8;">hello@juniorcaddie.co.uk</a> and we'll add it.</p>
   </div>
 
+  </div><!-- /view-list -->
+
+  <div id="view-calendar">
+    <div class="cal-split">
+      <div class="cal-wrap">
+        <div class="cal-head">
+          <div class="cal-month" id="cal-month-label"></div>
+          <div class="cal-nav">
+            <button onclick="calNav(-1)" aria-label="Previous month">‹</button>
+            <button onclick="calNav(1)" aria-label="Next month">›</button>
+          </div>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-legend">● dates with competitions — tap to see what's on. Respects the county filter above.</div>
+      </div>
+
+      <div>
+        <div class="cal-results-title" id="cal-results-title">Select a date to see competitions</div>
+        <div id="cal-results-area">
+          <div class="cal-results-empty">
+            <div class="cal-results-empty-icon">📅</div>
+            <div class="cal-results-empty-text">Tap a highlighted date on the calendar<br>to see what's on that day.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
@@ -4611,8 +4712,118 @@
     });
 
     document.getElementById('upcoming-count').textContent = upcomingCount;
+    attachCalendarButtons();
     applyFilters();
   }
+
+  /* ===================== Add to calendar — pure client-side .ics generation ===================== */
+  /* No backend, no accounts. Reads each card's own name/venue/date/entry-link — same approach
+     as the calendar view, so it can never drift out of sync with the card content. */
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function icsDate(dateStr) { return dateStr.replace(/-/g, ''); }
+  function icsDatePlusOne(dateStr) {
+    const d = new Date(dateStr + 'T00:00:00Z');
+    d.setUTCDate(d.getUTCDate() + 1);
+    return `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}`;
+  }
+  function icsEscape(text) {
+    return String(text).replace(/\\/g, '\\\\').replace(/,/g, '\\,').replace(/;/g, '\\;').replace(/\n/g, '\\n');
+  }
+  function icsStamp() {
+    const d = new Date();
+    return `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())}Z`;
+  }
+
+  function downloadICS(ev, btn) {
+    const uid = `${ev.date}-${ev.name.replace(/\s+/g, '-').toLowerCase()}@juniorcaddie.co.uk`;
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//JuniorCaddie//Competition Calendar//EN',
+      'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      `UID:${uid}`,
+      `DTSTAMP:${icsStamp()}`,
+      `DTSTART;VALUE=DATE:${icsDate(ev.date)}`,
+      `DTEND;VALUE=DATE:${icsDatePlusOne(ev.date)}`,
+      `SUMMARY:${icsEscape(ev.name)}`,
+      `LOCATION:${icsEscape(ev.venue)}`,
+      `DESCRIPTION:${icsEscape('Entry: ' + ev.url)}`,
+      `URL:${ev.url}`,
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ];
+    const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${ev.name.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+
+    gtag('event', 'add_to_calendar_click', { competition: ev.name, county: ev.county });
+
+    if (btn) {
+      const original = btn.innerHTML;
+      btn.textContent = '✓ Added';
+      btn.classList.add('added');
+      setTimeout(() => { btn.innerHTML = original; btn.classList.remove('added'); }, 2000);
+    }
+  }
+
+  function attachCalendarButtons() {
+    document.querySelectorAll('.comp-card').forEach(card => {
+      if (card.classList.contains('past')) return; // don't offer to save events that already happened
+      if (card.querySelector('.comp-cal-btn')) return; // avoid double-injection on re-init
+
+      const dateStr = card.dataset.date;
+      if (!dateStr || dateStr === 'tbc') return;
+
+      const enterLink = card.querySelector('.comp-enter');
+      if (!enterLink) return;
+
+      const nameEl = card.querySelector('.comp-name');
+      const venueEl = card.querySelector('.comp-venue');
+      const name = nameEl ? nameEl.textContent.trim() : 'Junior Golf Competition';
+      const venue = venueEl ? venueEl.textContent.trim() : '';
+      const url = enterLink.href;
+      const county = card.dataset.county || '';
+
+      const row = document.createElement('div');
+      row.className = 'comp-btn-row';
+      enterLink.parentNode.insertBefore(row, enterLink);
+      row.appendChild(enterLink);
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'comp-cal-btn';
+      btn.innerHTML = '📅 Add to calendar';
+      // Data attributes (not a JS-assigned onclick) so this survives cloneNode()
+      // when the calendar view clones cards into its results panel.
+      btn.dataset.calName = name;
+      btn.dataset.calVenue = venue;
+      btn.dataset.calDate = dateStr;
+      btn.dataset.calUrl = url;
+      btn.dataset.calCounty = county;
+      row.appendChild(btn);
+    });
+  }
+
+  // Delegated click handler — works for both originally-injected buttons and
+  // clones made by the calendar view's selectCalDate().
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.comp-cal-btn');
+    if (!btn) return;
+    downloadICS({
+      name: btn.dataset.calName,
+      venue: btn.dataset.calVenue,
+      date: btn.dataset.calDate,
+      url: btn.dataset.calUrl,
+      county: btn.dataset.calCounty
+    }, btn);
+  });
 
   function applyFilters() {
     const cards = document.querySelectorAll('.comp-card');
@@ -4660,6 +4871,7 @@
     });
     btn.classList.add('active');
     applyFilters();
+    if (currentView === 'calendar') { renderCalendar(); clearCalResults(); }
   }
 
   function filterUpcoming(btn) {
@@ -4669,6 +4881,7 @@
       if (b.textContent.trim() === 'Show all 2026') b.classList.remove('active');
     });
     applyFilters();
+    if (currentView === 'calendar') { renderCalendar(); clearCalResults(); }
   }
 
   function showAll(btn) {
@@ -4678,6 +4891,136 @@
       if (b.textContent.trim() === 'Upcoming only') b.classList.remove('active');
     });
     applyFilters();
+    if (currentView === 'calendar') { renderCalendar(); clearCalResults(); }
+  }
+
+  /* ===================== Calendar view ===================== */
+  /* Reads directly from the real .comp-card elements already on the page —
+     no separate data source, so it can never drift out of sync with the list. */
+
+  const CAL_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const CAL_DOW = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  let currentView = 'list';
+  let calYear, calMonth; // 0-indexed month
+
+  function showListView() {
+    currentView = 'list';
+    gtag('event', 'calendar_toggle_click', { view: 'list' });
+    document.getElementById('toggle-list-btn').classList.add('active');
+    document.getElementById('toggle-cal-btn').classList.remove('active');
+    document.getElementById('view-list').style.display = 'block';
+    document.getElementById('view-calendar').style.display = 'none';
+  }
+
+  function showCalendarView() {
+    currentView = 'calendar';
+    gtag('event', 'calendar_toggle_click', { view: 'calendar' });
+    document.getElementById('toggle-cal-btn').classList.add('active');
+    document.getElementById('toggle-list-btn').classList.remove('active');
+    document.getElementById('view-list').style.display = 'none';
+    document.getElementById('view-calendar').style.display = 'block';
+    renderCalendar();
+    clearCalResults();
+  }
+
+  function calendarCardsForCounty() {
+    // Cards matching the current county filter (calendar always shows all dates, past + upcoming,
+    // regardless of the Upcoming/Show all toggle — a parent picking a date wants to see it either way).
+    return Array.from(document.querySelectorAll('.comp-card')).filter(card => {
+      const county = card.dataset.county;
+      return currentCounty === 'all' || county === currentCounty;
+    });
+  }
+
+  function initCalendarDefaultMonth() {
+    const cards = calendarCardsForCounty();
+    const upcoming = cards
+      .map(c => c.dataset.date)
+      .filter(d => d && d !== 'tbc' && new Date(d) >= today)
+      .sort();
+    const ref = upcoming.length ? new Date(upcoming[0]) : today;
+    calYear = ref.getFullYear();
+    calMonth = ref.getMonth();
+  }
+
+  function calNav(dir) {
+    calMonth += dir;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    renderCalendar();
+    clearCalResults();
+  }
+
+  function renderCalendar() {
+    if (calYear === undefined) initCalendarDefaultMonth();
+    document.getElementById('cal-month-label').textContent = `${CAL_MONTHS[calMonth]} ${calYear}`;
+
+    const cards = calendarCardsForCounty();
+    const byDate = {};
+    cards.forEach(card => {
+      const d = card.dataset.date;
+      if (!d || d === 'tbc') return;
+      byDate[d] = (byDate[d] || 0) + 1;
+    });
+
+    const grid = document.getElementById('cal-grid');
+    grid.innerHTML = '';
+    CAL_DOW.forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'cal-dow';
+      el.textContent = d;
+      grid.appendChild(el);
+    });
+
+    const first = new Date(calYear, calMonth, 1);
+    const startOffset = (first.getDay() + 6) % 7; // Monday-first grid
+    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+    for (let i = 0; i < startOffset; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day empty';
+      grid.appendChild(el);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dstr = `${calYear}-${String(calMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const count = byDate[dstr] || 0;
+      const el = document.createElement('div');
+      el.className = 'cal-day' + (count ? ' has-events' : '');
+      el.innerHTML = `<span class="day-num">${day}</span>` +
+        (count ? `<span class="cal-count">${count}</span><div class="cal-dots">${Array(Math.min(count,4)).fill('<span class="cal-dot"></span>').join('')}</div>` : '');
+      if (count) {
+        el.onclick = () => selectCalDate(dstr, el);
+      }
+      grid.appendChild(el);
+    }
+  }
+
+  function clearCalResults() {
+    document.getElementById('cal-results-title').textContent = 'Select a date to see competitions';
+    document.getElementById('cal-results-area').innerHTML = `
+      <div class="cal-results-empty">
+        <div class="cal-results-empty-icon">📅</div>
+        <div class="cal-results-empty-text">Tap a highlighted date on the calendar<br>to see what's on that day.</div>
+      </div>`;
+  }
+
+  function selectCalDate(dstr, el) {
+    document.querySelectorAll('#cal-grid .cal-day').forEach(d => d.classList.remove('selected'));
+    el.classList.add('selected');
+
+    const matches = calendarCardsForCounty().filter(c => c.dataset.date === dstr);
+    const d = new Date(dstr + 'T00:00:00');
+    const dow = CAL_DOW[(d.getDay() + 6) % 7];
+    document.getElementById('cal-results-title').textContent =
+      `${dow} ${d.getDate()} ${CAL_MONTHS[d.getMonth()]} ${d.getFullYear()} — ${matches.length} competition${matches.length !== 1 ? 's' : ''}`;
+
+    const resultsArea = document.getElementById('cal-results-area');
+    resultsArea.innerHTML = '<div class="cal-results-list"></div>';
+    const list = resultsArea.querySelector('.cal-results-list');
+    matches.forEach(card => {
+      list.appendChild(card.cloneNode(true));
+    });
   }
 
   init();
@@ -4717,6 +5060,7 @@
       });
     } finally {
       localStorage.setItem('jc_community_member', '1');
+      gtag('event', 'gate_completed', { gate: 'competitions_soft_popup', source: 'competitions-soft' });
       document.getElementById('soft-signup').innerHTML = `
         <div style="font-size:40px; margin-bottom:12px;">✅</div>
         <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; color:white; margin-bottom:6px;">You're in.</div>
@@ -4728,7 +5072,7 @@
 <!-- ── COMMUNITY POPUP MODAL ── -->
 <div class="popup-overlay" id="popup-overlay">
   <div class="popup-panel" id="popup-panel">
-    <button class="popup-close" onclick="dismissPopup()" aria-label="Close">✕</button>
+    <button class="popup-close" onclick="dismissPopup('close_button')" aria-label="Close">✕</button>
     <div id="popup-inner">
       <span class="popup-icon">⛳</span>
       <div class="popup-title">Join the growing JuniorCaddie community and Unlock all Competitions</div>
@@ -4739,7 +5083,7 @@
         <button class="popup-btn" onclick="popupSignup()">Join free</button>
       </div>
       <div class="popup-note" style="font-size:11px; color:#AAA; margin-bottom:10px;">No spam. Unsubscribe any time.</div>
-      <div class="popup-dismiss" onclick="dismissPopup()">No thanks, continue browsing</div>
+      <div class="popup-dismiss" onclick="dismissPopup('no_thanks_link')">No thanks, continue browsing</div>
     </div>
   </div>
 </div>
@@ -4769,23 +5113,28 @@
     window.addEventListener('scroll', checkTrigger, { passive: true });
 
     function showPopup() {
+      gtag('event', 'gate_shown', { gate: 'competitions_soft_popup' });
       document.getElementById('popup-overlay').classList.add('visible');
       document.getElementById('popup-email').focus();
     }
   })();
 
-  function dismissPopup() {
-    document.getElementById('popup-overlay').classList.remove('visible');
+  function dismissPopup(method) {
+    const overlay = document.getElementById('popup-overlay');
+    if (overlay.classList.contains('visible') && method !== 'post_signup') {
+      gtag('event', 'gate_dismissed', { gate: 'competitions_soft_popup', method: method || 'unknown' });
+    }
+    overlay.classList.remove('visible');
   }
 
   // Close on overlay click (not panel click)
   document.getElementById('popup-overlay').addEventListener('click', function(e) {
-    if (e.target === this) dismissPopup();
+    if (e.target === this) dismissPopup('overlay');
   });
 
   // Close on Escape
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') dismissPopup();
+    if (e.key === 'Escape') dismissPopup('escape');
   });
 
   async function popupSignup() {
@@ -4806,11 +5155,12 @@
       });
     } finally {
       localStorage.setItem('jc_community_member', '1');
+      gtag('event', 'gate_completed', { gate: 'competitions_soft_popup', source: 'competitions-popup' });
       document.getElementById('popup-inner').innerHTML = `
         <div style="font-size:48px; margin-bottom:14px;">✅</div>
         <div style="font-family:Georgia,serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:8px;">You're in.</div>
         <div style="font-size:14px; color:var(--mid); line-height:1.6; margin-bottom:20px;">We'll keep you posted on new competitions and features.</div>
-        <button onclick="dismissPopup()" style="background:var(--navy); color:white; border:none; padding:12px 28px; border-radius:9px; font-size:15px; font-weight:700; cursor:pointer;">Continue browsing →</button>`;
+        <button onclick="dismissPopup('post_signup')" style="background:var(--navy); color:white; border:none; padding:12px 28px; border-radius:9px; font-size:15px; font-weight:700; cursor:pointer;">Continue browsing →</button>`;
     }
   }
 </script>
