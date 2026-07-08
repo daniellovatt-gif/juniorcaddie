@@ -83,6 +83,9 @@
     .nav-links { display: flex; gap: 24px; align-items: center; }
     .nav-links a { font-size: 13px; color: var(--light); transition: color 0.15s; }
     .nav-links a:hover { color: white; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 4px; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; }
+    .nav-mobile-menu { display: none; }
 
     /* ── HERO ── */
     .hero {
@@ -409,9 +412,6 @@
     .form-note { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 10px; }
 
     /* ── COMMUNITY SIGNUP ── */
-    .capture { background: var(--navy); padding: 40px 24px; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); }
-    .capture h2 { font-family: var(--serif); font-size: clamp(20px, 3vw, 26px); font-weight: 700; color: white; margin-bottom: 6px; }
-    .capture-sub { font-size: 14px; color: var(--light); margin-bottom: 20px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.6; }
     .email-form { display: flex; gap: 8px; max-width: 420px; margin: 0 auto 8px; }
     .email-input { flex: 1; padding: 12px 16px; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 15px; color: white; background: rgba(255,255,255,0.1); }
     .email-input::placeholder { color: rgba(255,255,255,0.4); }
@@ -419,6 +419,17 @@
     .email-btn { background: white; color: var(--navy); border: none; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap; }
     .email-btn:hover { background: var(--bg); }
     .reassurance { font-size: 11px; color: rgba(255,255,255,0.35); }
+
+    /* ── COMMUNITY SOFT GATE ── */
+    .community-gate-overlay { display: none; position: fixed; inset: 0; background: rgba(11,61,107,0.55); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+    .community-gate-overlay.open { display: flex; }
+    .community-gate-modal { position: relative; background: var(--navy); border-radius: 16px; padding: 40px 32px 28px; max-width: 440px; width: 100%; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+    .community-gate-close { position: absolute; top: 14px; right: 16px; background: none; border: none; color: rgba(255,255,255,0.5); font-size: 22px; line-height: 1; cursor: pointer; padding: 4px; }
+    .community-gate-close:hover { color: white; }
+    .community-gate-modal h2 { font-family: var(--serif); font-size: clamp(20px, 3vw, 26px); font-weight: 700; color: white; margin-bottom: 6px; }
+    .community-gate-sub { font-size: 14px; color: var(--light); margin-bottom: 20px; max-width: 380px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .community-gate-dismiss { display: block; margin-top: 14px; font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: underline; cursor: pointer; }
+    .community-gate-dismiss:hover { color: rgba(255,255,255,0.7); }
 
     /* ── FIVE STAGES ── */
     .stages { background: #F8F6F0; padding: 44px 24px 40px; }
@@ -438,6 +449,10 @@
     @media (max-width: 768px) {
       .nav { padding: 12px 16px; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile-menu.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.15); padding: 8px 16px 16px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+      .nav-mobile-menu.open a { padding: 12px 4px; font-size: 15px; color: var(--light); border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .nav-mobile-menu.open a:last-child { border-bottom: none; }
       .tabs-bar { padding: 12px 12px 16px; }
       .tabs-inner { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .hero { padding: 48px 20px 28px; }
@@ -491,12 +506,25 @@
     <div class="nl-caddie">Caddie</div>
   </a>
   <div class="nav-links">
-    <a href="about.html">Our story</a>
+    <a href="competitions.html">Competitions</a>
+    <a href="marketplace.html">Marketplace</a>
     <a href="journey.html">The journey</a>
-    <a href="golf-formats.html">Golf formats</a>
-    <a href="#ask">Ask us</a>
+    <a href="equipment-reviews.html">Reviews</a>
+    <a href="about.html">Our story</a>
   </div>
-  <a href="about.html" style="font-size:13px; color:var(--sky);">Our story</a>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-mobile-menu" id="nav-mobile-menu">
+    <a href="competitions.html">Competitions</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="journey.html">The journey</a>
+    <a href="equipment-reviews.html">Reviews</a>
+    <a href="junior-golf-clothing.html">Clothing guide</a>
+    <a href="golf-formats.html">Golf formats</a>
+    <a href="summer-camps.html">Summer camps</a>
+    <a href="about.html">Our story</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -660,20 +688,6 @@
   </div>
 </section>
 
-<!-- COMMUNITY SIGNUP -->
-<section class="capture">
-  <div style="max-width:460px;margin:0 auto;">
-    <h2>Join the JuniorCaddie community</h2>
-    <p class="capture-sub">New competitions, guides and updates — direct to your inbox.</p>
-    <div class="email-form">
-      <input id="capture-email" type="email" placeholder="Your email address" autocomplete="email" class="email-input"
-        onkeydown="if(event.key==='Enter') handleSignup('hero')"/>
-      <button onclick="handleSignup('hero')" class="email-btn">Join now</button>
-    </div>
-    <div class="reassurance">No spam. Unsubscribe any time.</div>
-  </div>
-</section>
-
 <!-- FIVE STAGES -->
 <section class="stages">
   <div class="stages-inner">
@@ -829,7 +843,27 @@
   </div>
 </footer>
 
+<!-- COMMUNITY SOFT GATE -->
+<div class="community-gate-overlay" id="community-gate-overlay">
+  <div class="community-gate-modal">
+    <button class="community-gate-close" aria-label="Close" onclick="closeCommunityGate()">✕</button>
+    <h2>Join the JuniorCaddie community</h2>
+    <p class="community-gate-sub">New competitions, guides and updates — direct to your inbox.</p>
+    <div class="email-form">
+      <input id="capture-email" type="email" placeholder="Your email address" autocomplete="email" class="email-input"
+        onkeydown="if(event.key==='Enter') handleSignup('gate')"/>
+      <button onclick="handleSignup('gate')" class="email-btn">Join now</button>
+    </div>
+    <div class="reassurance">No spam. Unsubscribe any time.</div>
+    <span class="community-gate-dismiss" onclick="closeCommunityGate()">No thanks, continue browsing</span>
+  </div>
+</div>
+
 <script>
+  function toggleMobileNav() {
+    document.getElementById('nav-mobile-menu').classList.toggle('open');
+  }
+
   function toggleQA(el) {
     const card = el.closest('.qa-card');
     const isOpen = card.classList.contains('open');
@@ -864,10 +898,12 @@
         localStorage.setItem('jc_community_member', '1');
         input.value = ''; input.placeholder = "You're on the list. Thank you.";
         btn.textContent = 'Done ✓'; btn.style.background = '#5AAAD4';
+        if (source === 'gate') setTimeout(closeCommunityGate, 1400);
       } else throw new Error();
     } catch(e) {
       localStorage.setItem('jc_community_member', '1');
       btn.textContent = 'Done ✓';
+      if (source === 'gate') setTimeout(closeCommunityGate, 1400);
     }
   }
 
@@ -895,9 +931,38 @@
     }
   }
 
-  document.getElementById('capture-email').addEventListener('keydown', e => {
-    if (e.key === 'Enter') handleSignup('footer');
+  /* ── COMMUNITY SOFT GATE ── */
+  function openCommunityGate() {
+    if (localStorage.getItem('jc_community_member') === '1') return;
+    if (sessionStorage.getItem('jc_gate_dismissed') === '1') return;
+    document.getElementById('community-gate-overlay').classList.add('open');
+  }
+  function closeCommunityGate() {
+    document.getElementById('community-gate-overlay').classList.remove('open');
+    sessionStorage.setItem('jc_gate_dismissed', '1');
+  }
+  document.getElementById('community-gate-overlay').addEventListener('click', e => {
+    if (e.target.id === 'community-gate-overlay') closeCommunityGate();
   });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeCommunityGate();
+  });
+
+  // Fire once the 5th (last) stage card scrolls past mid-screen
+  const stageCards = document.querySelectorAll('.stage-card');
+  if (stageCards.length >= 5) {
+    const fifthStageCard = stageCards[4];
+    const gateObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          openCommunityGate();
+          gateObserver.disconnect();
+        }
+      });
+    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+    gateObserver.observe(fifthStageCard);
+  }
 </script>
+
 </body>
 </html>
