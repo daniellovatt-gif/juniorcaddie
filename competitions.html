@@ -14,13 +14,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junior Golf Competitions 2026 UK | Find & Enter Opens Near You</title>
-  <meta name="description" content="410+ junior golf competitions listed across England, Scotland and Wales — with direct entry links. Filter by county. Updated weekly." />
+  <meta name="description" content="380+ junior golf competitions listed across England, Scotland and Wales — with direct entry links. Filter by county. Updated weekly." />
   <link rel="canonical" href="https://juniorcaddie.co.uk/competitions.html" />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://juniorcaddie.co.uk/competitions.html" />
   <meta property="og:title" content="Junior Golf Competitions 2026 UK — Find & Enter Junior Opens Near You" />
-  <meta property="og:description" content="410+ junior golf competitions listed across England and Scotland with direct entry links. Hertfordshire, Essex, Surrey, Middlesex, Bedfordshire, Cambridgeshire, BJGT, Faldo Series and national championships." />
+  <meta property="og:description" content="380+ junior golf competitions listed across England and Scotland with direct entry links. Hertfordshire, Essex, Surrey, Middlesex, Bedfordshire, Cambridgeshire, BJGT, Faldo Series and national championships." />
   <meta property="og:site_name" content="JuniorCaddie" />
   <meta property="og:image" content="https://juniorcaddie.co.uk/og-image.png" />
   <meta property="og:image:width" content="1200" />
@@ -31,7 +31,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Junior Golf Competitions 2026 UK — Find & Enter Junior Opens Near You" />
-  <meta name="twitter:description" content="410+ junior golf competitions listed across England and Scotland with direct entry links. Hertfordshire, Essex, Surrey, Middlesex, Bedfordshire, Cambridgeshire, BJGT, Faldo Series and national championships." />
+  <meta name="twitter:description" content="380+ junior golf competitions listed across England and Scotland with direct entry links. Hertfordshire, Essex, Surrey, Middlesex, Bedfordshire, Cambridgeshire, BJGT, Faldo Series and national championships." />
   <!-- Additional SEO -->
   <meta name="robots" content="index, follow" />
   <meta name="author" content="JuniorCaddie" />
@@ -89,6 +89,23 @@
     .filters { padding: 28px 24px 0; max-width: var(--max); margin: 0 auto; }
     .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
     .filter-label { font-size: 11px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+
+    /* Search box */
+    .search-wrap { position: relative; margin-bottom: 16px; max-width: 480px; }
+    .comp-search {
+      width: 100%; font-size: 15px; color: var(--navy);
+      background: var(--white); border: 1.5px solid var(--pale);
+      border-radius: 10px; padding: 12px 40px 12px 16px;
+      font-family: inherit; transition: border-color 0.15s;
+    }
+    .comp-search:focus { outline: none; border-color: var(--mid); box-shadow: 0 0 0 3px rgba(26,110,168,0.12); }
+    .comp-search::placeholder { color: var(--sky); }
+    .search-clear {
+      position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+      background: var(--pale); border: none; color: var(--navy);
+      border-radius: 50%; width: 26px; height: 26px; cursor: pointer; font-size: 12px;
+    }
+    .search-clear:hover { background: #B8D8F0; }
     .filter-btn {
       font-size: 13px; color: var(--mid);
       border: 0.5px solid var(--pale); background: var(--white);
@@ -100,6 +117,26 @@
     }
     .filter-btn.upcoming.active { background: #1A6EA8; border-color: #1A6EA8; }
 
+    /* Region grouping */
+    .region-btn { position: relative; padding-right: 26px; }
+    .region-btn::after {
+      content: '▾'; position: absolute; right: 10px; top: 50%;
+      transform: translateY(-50%); font-size: 10px; transition: transform 0.15s;
+    }
+    .region-btn.active::after { transform: translateY(-50%) rotate(180deg); }
+    .region-counties {
+      display: none; flex-wrap: wrap; gap: 8px;
+      margin: 8px 0 0 16px; padding: 12px 0 12px 16px;
+      border-left: 2.5px solid var(--pale);
+    }
+
+    /* Keyboard focus visibility — applies to every interactive element */
+    .filter-btn:focus-visible, .comp-enter:focus-visible, .comp-cal-btn:focus-visible,
+    .view-toggle-btn:focus-visible, .cal-nav button:focus-visible, .cal-day:focus-visible,
+    .county-link:focus-visible, .search-clear:focus-visible, a:focus-visible {
+      outline: 3px solid var(--sky); outline-offset: 2px;
+    }
+
     /* Main content */
     .main { max-width: var(--max); margin: 0 auto; padding: 24px 24px 64px; }
 
@@ -110,7 +147,7 @@
       margin-bottom: 16px; padding-bottom: 12px;
       border-bottom: 2px solid var(--pale);
     }
-    .county-name { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--navy); }
+    .county-name { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--navy); margin: 0; display: inline; }
     .county-count { font-size: 12px; color: var(--sky); background: var(--pale); border-radius: 12px; padding: 3px 10px; }
     .county-link { font-size: 12px; color: var(--mid); text-decoration: none; margin-left: auto; }
     .county-link:hover { color: var(--navy); }
@@ -149,6 +186,12 @@
       border-radius: 12px; padding: 3px 10px;
     }
     .tag.oom { background: #EEF4FB; border-color: var(--mid); color: var(--navy); font-weight: 500; }
+    .tag-more {
+      background: var(--pale); color: var(--navy); font-weight: 600;
+      cursor: pointer; font-family: inherit;
+    }
+    .tag-more:hover { background: #B8D8F0; }
+    .tag-more:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
     .comp-enter {
       display: inline-block; font-size: 13px; font-weight: 500;
       color: var(--white); background: var(--mid);
@@ -413,7 +456,7 @@
         "name": "How do I find junior golf competitions near me in the UK?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use JuniorCaddie's competition finder to filter by county. We list 410+ junior golf open competitions across England, Scotland and Wales with direct entry links."
+          "text": "Use JuniorCaddie's competition finder to filter by county. We list 380+ junior golf open competitions across England, Scotland and Wales with direct entry links."
         }
       },
       {
@@ -469,7 +512,7 @@
 </section>
 
 <div class="stats">
-  <div class="stat"><div class="stat-n" id="total-count">410+</div><div class="stat-l">Competitions individually listed</div></div>
+  <div class="stat"><div class="stat-n" id="total-count">380+</div><div class="stat-l">Competitions individually listed</div></div>
   <div class="stat"><div class="stat-n" id="upcoming-count">—</div><div class="stat-l">Still to come in 2026</div></div>
   <div class="stat"><div class="stat-n">39</div><div class="stat-l">Counties, tours & national bodies</div></div>
   <div class="stat"><div class="stat-n">Growing</div><div class="stat-l">More added every week</div></div>
@@ -503,45 +546,75 @@
 </div>
 
 <div class="filters">
-  <div class="filter-label">Filter by county or tour</div>
-  <div class="filter-row">
-    <button class="filter-btn active" onclick="filterCounty('all', this)">All</button>
+  <div class="search-wrap">
+    <input type="search" id="comp-search" class="comp-search" placeholder="Search competitions, clubs or venues…" aria-label="Search competitions by name, club or venue" oninput="onSearchInput()" />
+    <button type="button" class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Clear search" style="display:none;">✕</button>
+  </div>
+  <div class="filter-label">Filter by region or tour</div>
+  <div class="filter-row" id="region-row">
+    <button class="filter-btn active" onclick="filterAll(this)" aria-pressed="true">All</button>
+    <button class="filter-btn region-btn" id="regionbtn-se" onclick="toggleRegion('se', this)" aria-expanded="false">Home Counties &amp; South East</button>
+    <button class="filter-btn region-btn" id="regionbtn-east" onclick="toggleRegion('east', this)" aria-expanded="false">East of England</button>
+    <button class="filter-btn region-btn" id="regionbtn-sw" onclick="toggleRegion('sw', this)" aria-expanded="false">South West</button>
+    <button class="filter-btn region-btn" id="regionbtn-mid" onclick="toggleRegion('mid', this)" aria-expanded="false">Midlands</button>
+    <button class="filter-btn region-btn" id="regionbtn-north" onclick="toggleRegion('north', this)" aria-expanded="false">North</button>
+    <button class="filter-btn region-btn" id="regionbtn-scotwales" onclick="toggleRegion('scotwales', this)" aria-expanded="false">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland &amp; 🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</button>
+    <button class="filter-btn region-btn" id="regionbtn-tours" onclick="toggleRegion('tours', this)" aria-expanded="false">Tours &amp; National</button>
+    <button class="filter-btn" id="champ-toggle-btn" onclick="toggleChampionshipsOnly(this)" style="border-color:#D4AF37; color:#8B6800;">🏆 County Championships only</button>
+  </div>
+
+  <div class="region-counties" id="region-se" style="display:none;">
     <button class="filter-btn" onclick="filterCounty('herts', this)">Hertfordshire</button>
     <button class="filter-btn" onclick="filterCounty('beds', this)">Bedfordshire</button>
-    <button class="filter-btn" onclick="filterCounty('cambs', this)">Cambridgeshire</button>
     <button class="filter-btn" onclick="filterCounty('essex', this)">Essex</button>
     <button class="filter-btn" onclick="filterCounty('middx', this)">Middlesex</button>
     <button class="filter-btn" onclick="filterCounty('surrey', this)">Surrey</button>
     <button class="filter-btn" onclick="filterCounty('sussex', this)">Sussex</button>
-    <button class="filter-btn" onclick="filterCounty('hants', this)">Hampshire</button>
     <button class="filter-btn" onclick="filterCounty('kent', this)">Kent</button>
-    <button class="filter-btn" onclick="filterCounty('lancs', this)">Lancashire</button>
-    <button class="filter-btn" onclick="filterCounty('yorks', this)">Yorkshire</button>
-    <button class="filter-btn" onclick="filterCounty('glos', this)">Gloucestershire</button>
+    <button class="filter-btn" onclick="filterCounty('hants', this)">Hampshire</button>
+  </div>
+
+  <div class="region-counties" id="region-east" style="display:none;">
+    <button class="filter-btn" onclick="filterCounty('cambs', this)">Cambridgeshire</button>
     <button class="filter-btn" onclick="filterCounty('norfolk', this)">Norfolk</button>
-    <button class="filter-btn" onclick="filterCounty('cheshire', this)">Cheshire</button>
-    <button class="filter-btn" onclick="filterCounty('devon', this)">Devon</button>
-    <button class="filter-btn" onclick="filterCounty('warks', this)">Warwickshire</button>
-    <button class="filter-btn" onclick="filterCounty('wilts', this)">Wiltshire</button>
     <button class="filter-btn" onclick="filterCounty('suffolk', this)">Suffolk</button>
-    <button class="filter-btn" onclick="filterCounty('worcs', this)">Worcestershire</button>
-    <button class="filter-btn" onclick="filterCounty('oxon', this)">Oxfordshire</button>
-    <button class="filter-btn" onclick="filterCounty('lincs', this)">Lincolnshire</button>
-    <button class="filter-btn" onclick="filterCounty('notts', this)">Nottinghamshire</button>
-    <button class="filter-btn" onclick="filterCounty('derby', this)">Derbyshire</button>
-    <button class="filter-btn" onclick="filterCounty('leics', this)">Leicestershire</button>
-    <button class="filter-btn" onclick="filterCounty('durham', this)">Durham</button>
-    <button class="filter-btn" onclick="filterCounty('staffs', this)">Staffordshire</button>
+  </div>
+
+  <div class="region-counties" id="region-sw" style="display:none;">
+    <button class="filter-btn" onclick="filterCounty('devon', this)">Devon</button>
     <button class="filter-btn" onclick="filterCounty('cornwall', this)">Cornwall</button>
     <button class="filter-btn" onclick="filterCounty('somerset', this)">Somerset</button>
     <button class="filter-btn" onclick="filterCounty('dorset', this)">Dorset</button>
-    <button class="filter-btn" onclick="filterCounty('northumb', this)">Northumberland</button>
+    <button class="filter-btn" onclick="filterCounty('wilts', this)">Wiltshire</button>
+    <button class="filter-btn" onclick="filterCounty('glos', this)">Gloucestershire</button>
+  </div>
+
+  <div class="region-counties" id="region-mid" style="display:none;">
+    <button class="filter-btn" onclick="filterCounty('warks', this)">Warwickshire</button>
+    <button class="filter-btn" onclick="filterCounty('worcs', this)">Worcestershire</button>
+    <button class="filter-btn" onclick="filterCounty('oxon', this)">Oxfordshire</button>
+    <button class="filter-btn" onclick="filterCounty('staffs', this)">Staffordshire</button>
+    <button class="filter-btn" onclick="filterCounty('leics', this)">Leicestershire</button>
+    <button class="filter-btn" onclick="filterCounty('derby', this)">Derbyshire</button>
+    <button class="filter-btn" onclick="filterCounty('notts', this)">Nottinghamshire</button>
+    <button class="filter-btn" onclick="filterCounty('lincs', this)">Lincolnshire</button>
     <button class="filter-btn" onclick="filterCounty('shropshire', this)">Shropshire</button>
+  </div>
+
+  <div class="region-counties" id="region-north" style="display:none;">
+    <button class="filter-btn" onclick="filterCounty('yorks', this)">Yorkshire</button>
+    <button class="filter-btn" onclick="filterCounty('lancs', this)">Lancashire</button>
+    <button class="filter-btn" onclick="filterCounty('durham', this)">Durham</button>
+    <button class="filter-btn" onclick="filterCounty('northumb', this)">Northumberland</button>
+    <button class="filter-btn" onclick="filterCounty('cheshire', this)">Cheshire</button>
+  </div>
+
+  <div class="region-counties" id="region-scotwales" style="display:none;">
     <button class="filter-btn" onclick="filterCounty('scotland', this)">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</button>
     <button class="filter-btn" onclick="filterCounty('wales', this)">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</button>
-    <button class="filter-btn" id="champ-toggle-btn" onclick="toggleChampionshipsOnly(this)" style="border-color:#D4AF37; color:#8B6800;">🏆 County Championships only</button>
   </div>
-  <div class="filter-row" style="margin-top:8px;">
+
+  <div class="region-counties" id="region-tours" style="display:none;">
     <button class="filter-btn" onclick="filterCounty('bjgt', this)" style="background:#0F4F7A; color:white; border-color:#0F4F7A;">🏆 BJGT</button>
     <button class="filter-btn" onclick="filterCounty('pingjgt', this)" style="background:#003087; color:white; border-color:#003087;">🏓 PING JGT</button>
     <button class="filter-btn" onclick="filterCounty('rockgolf', this)" style="background:#8B0000; color:white; border-color:#8B0000;">🪨 Rock Golf</button>
@@ -549,6 +622,7 @@
     <button class="filter-btn" onclick="filterCounty('england', this)" style="background:#8B0000; color:white; border-color:#8B0000;">🌹 England Golf</button>
     <button class="filter-btn" onclick="filterCounty('schools', this)" style="background:#1A5A1A; color:white; border-color:#1A5A1A;">🏫 English Schools</button>
   </div>
+
   <div class="filter-row" style="margin-top:4px;">
     <button class="filter-btn upcoming active" onclick="filterUpcoming(this)">Upcoming only</button>
     <button class="filter-btn" onclick="showAll(this)">Show all 2026</button>
@@ -560,7 +634,7 @@
   <div id="view-list">
   <div class="welcome-banner" id="welcome-banner">
     <p>⛳ Welcome to the JuniorCaddie community!</p>
-    <span>All 410+ competitions are now unlocked. We'll let you know when new ones are added near you.</span>
+    <span>All 380+ competitions are now unlocked. We'll let you know when new ones are added near you.</span>
   </div>
 
   <!-- Growing notice -->
@@ -642,8 +716,8 @@
   <!-- HERTFORDSHIRE -->
   <div class="county-section" id="section-herts" data-county="herts">
     <div class="county-header">
-      <span class="county-name">Hertfordshire</span>
-      <span class="county-count">34 competitions</span>
+      <h2 class="county-name">Hertfordshire</h2>
+      <span class="county-count">24 competitions</span>
       <a href="https://hertfordshiregolf.org/juniors/" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
 
@@ -898,7 +972,7 @@
   <!-- BEDFORDSHIRE -->
   <div class="county-section" id="section-beds" data-county="beds">
     <div class="county-header">
-      <span class="county-name">Bedfordshire</span>
+      <h2 class="county-name">Bedfordshire</h2>
       <span class="county-count">6 competitions</span>
       <a href="https://www.bedfordshiregolf.org.uk/" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
@@ -964,8 +1038,8 @@
   <!-- CAMBRIDGESHIRE -->
   <div class="county-section" id="section-cambs" data-county="cambs">
     <div class="county-header">
-      <span class="county-name">Cambridgeshire</span>
-      <span class="county-count">7 competitions</span>
+      <h2 class="county-name">Cambridgeshire</h2>
+      <span class="county-count">5 competitions</span>
       <a href="https://www.cagu.co.uk/" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
     <div class="comps-grid" id="grid-cambs">
@@ -1021,7 +1095,7 @@
   <!-- ESSEX -->
   <div class="county-section" id="section-essex" data-county="essex">
     <div class="county-header">
-      <span class="county-name">Essex</span>
+      <h2 class="county-name">Essex</h2>
       <span class="county-count">16 competitions</span>
       <a href="https://www.essexgolfunion.org/junior_opens_2026" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
@@ -1177,7 +1251,7 @@
   <!-- MIDDLESEX -->
   <div class="county-section" id="section-middx" data-county="middx">
     <div class="county-header">
-      <span class="county-name">Middlesex</span>
+      <h2 class="county-name">Middlesex</h2>
       <span class="county-count">10 competitions</span>
       <a href="https://middlesexgolf.co.uk/" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
@@ -1282,7 +1356,7 @@
   <!-- SURREY -->
   <div class="county-section" id="section-surrey" data-county="surrey">
     <div class="county-header">
-      <span class="county-name">Surrey</span>
+      <h2 class="county-name">Surrey</h2>
       <span class="county-count">14 competitions</span>
       <a href="https://www.surreygolf.org/junior_merit" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
@@ -1423,7 +1497,7 @@
   <!-- SUSSEX -->
   <div class="county-section" id="section-sussex" data-county="sussex">
     <div class="county-header">
-      <span class="county-name">Sussex</span>
+      <h2 class="county-name">Sussex</h2>
       <span class="county-count">26 competitions</span>
       <a href="https://www.sussexgolf.org/sussex_junior_order_of_merit" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
@@ -1673,8 +1747,8 @@
   <!-- HAMPSHIRE -->
   <div class="county-section" id="section-hants" data-county="hants">
     <div class="county-header">
-      <span class="county-name">Hampshire</span>
-      <span class="county-count">13 competitions</span>
+      <h2 class="county-name">Hampshire</h2>
+      <span class="county-count">5 competitions</span>
       <a href="https://www.hampshiregolf.org.uk/entries" target="_blank" rel="noopener" class="county-link">Enter via GolfGenius ↗</a>
     </div>
     <div class="comps-grid" id="grid-hants">
@@ -1731,7 +1805,7 @@
   <!-- KENT -->
   <div class="county-section" id="section-kent" data-county="kent">
     <div class="county-header">
-      <span class="county-name">Kent</span>
+      <h2 class="county-name">Kent</h2>
       <span class="county-count">25 competitions</span>
       <a href="https://www.kentgolf.org/junior-competitions" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
@@ -1977,7 +2051,7 @@
   </div>
   <div class="county-section" id="section-lancs" data-county="lancs">
     <div class="county-header">
-      <span class="county-name">Lancashire</span>
+      <h2 class="county-name">Lancashire</h2>
       <span class="county-count">7 competitions</span>
       <a href="https://www.lancashiregolf.org" target="_blank" rel="noopener" class="county-link">County website ↗</a>
     </div>
@@ -2053,7 +2127,7 @@
   <!-- YORKSHIRE -->
   <div class="county-section" id="section-yorks" data-county="yorks">
     <div class="county-header">
-      <span class="county-name">Yorkshire</span>
+      <h2 class="county-name">Yorkshire</h2>
       <span class="county-count">24 competitions</span>
       <a href="https://www.yorkshiregolf.org/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -2284,8 +2358,8 @@
   <!-- GLOUCESTERSHIRE -->
   <div class="county-section" id="section-glos" data-county="glos">
     <div class="county-header">
-      <span class="county-name">Gloucestershire</span>
-      <span class="county-count">11 competitions</span>
+      <h2 class="county-name">Gloucestershire</h2>
+      <span class="county-count">14 competitions</span>
       <a href="https://www.gloucestershiregolfpartnership.com/junior_opens" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
     <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
@@ -2425,7 +2499,7 @@
   <!-- NORFOLK -->
   <div class="county-section" id="section-norfolk" data-county="norfolk">
     <div class="county-header">
-      <span class="county-name">Norfolk</span>
+      <h2 class="county-name">Norfolk</h2>
       <span class="county-count">9 competitions</span>
       <a href="https://norfolkcountygolfunion.co.uk/diary/category/juniors/list/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -2521,7 +2595,7 @@
   <!-- SCOTLAND -->
   <div class="county-section" id="section-scotland" data-county="scotland">
     <div class="county-header">
-      <span class="county-name">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</span>
+      <h2 class="county-name">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</h2>
       <span class="county-count">21 competitions</span>
       <a href="https://www.juniortourscotland.com/2026-events" target="_blank" rel="noopener" class="county-link">Junior Tour Scotland ↗</a>
     </div>
@@ -2726,8 +2800,8 @@
   <!-- WALES -->
   <div class="county-section" id="section-wales" data-county="wales">
     <div class="county-header">
-      <span class="county-name">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</span>
-      <span class="county-count">9 competitions</span>
+      <h2 class="county-name">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</h2>
+      <span class="county-count">11 competitions</span>
       <a href="https://www.walesgolf.org/national-junior-competitions" target="_blank" rel="noopener" class="county-link">Wales Golf ↗</a>
     </div>
 
@@ -2847,8 +2921,8 @@
   <!-- PING JUNIOR GOLF TOUR -->
   <div class="county-section" id="section-pingjgt" data-county="pingjgt">
     <div class="county-header">
-      <span class="county-name">🏆 PING Junior Golf Tour</span>
-      <span class="county-count">27 events · 2 tours</span>
+      <h2 class="county-name">🏆 PING Junior Golf Tour</h2>
+      <span class="county-count">16 events · 2 tours</span>
       <a href="https://pingjuniorgolftour.co.uk/events/" target="_blank" rel="noopener" class="county-link">Full schedule ↗</a>
     </div>
     <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
@@ -3009,7 +3083,7 @@
   <!-- ROCK GOLF LEAGUE (ROBERT ROCK JUNIOR GOLF TOUR) -->
   <div class="county-section" id="section-rockgolf" data-county="rockgolf">
     <div class="county-header">
-      <span class="county-name">🏆 Rock Golf League</span>
+      <h2 class="county-name">🏆 Rock Golf League</h2>
       <span class="county-count">15 UK events + 2 WAGR overseas</span>
       <a href="https://rockgolfleague.com/schedule/" target="_blank" rel="noopener" class="county-link">Full schedule ↗</a>
     </div>
@@ -3159,8 +3233,8 @@
   <!-- CHESHIRE -->
   <div class="county-section" id="section-cheshire" data-county="cheshire">
     <div class="county-header">
-      <span class="county-name">Cheshire</span>
-      <span class="county-count">9 competitions</span>
+      <h2 class="county-name">Cheshire</h2>
+      <span class="county-count">10 competitions</span>
       <a href="https://www.cheshiregolf.org.uk/junior/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
     <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
@@ -3264,9 +3338,9 @@
   <!-- DEVON -->
   <div class="county-section" id="section-devon" data-county="devon">
     <div class="county-header">
-      <span class="county-name">Devon</span>
-      <span class="county-count">7 competitions</span>
-      <a href="https://www.eastdevongolfclub.co.uk/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+      <h2 class="county-name">Devon</h2>
+      <span class="county-count">8 competitions</span>
+      <a href="https://www.devongolf.org.uk/junior_competitions" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
     <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
       Devon has 19 junior opens including two adult-junior pairs events. Saunton is a Top 100 links course. Royal North Devon is England's oldest golf course (1864). Two exceptional venues for a junior bucket list.
@@ -3351,7 +3425,7 @@
   <!-- WARWICKSHIRE -->
   <div class="county-section" id="section-warks" data-county="warks">
     <div class="county-header">
-      <span class="county-name">Warwickshire</span>
+      <h2 class="county-name">Warwickshire</h2>
       <span class="county-count">9 competitions</span>
       <a href="https://www.warwickshiregolf.com/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -3444,7 +3518,7 @@
   <!-- WILTSHIRE -->
   <div class="county-section" id="section-wilts" data-county="wilts">
     <div class="county-header">
-      <span class="county-name">Wiltshire</span>
+      <h2 class="county-name">Wiltshire</h2>
       <span class="county-count">5 competitions</span>
       <a href="https://www.highpostgolfclub.co.uk/visitors/opens/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -3501,8 +3575,8 @@
   <!-- SUFFOLK -->
   <div class="county-section" id="section-suffolk" data-county="suffolk">
     <div class="county-header">
-      <span class="county-name">Suffolk</span>
-      <span class="county-count">5 competitions</span>
+      <h2 class="county-name">Suffolk</h2>
+      <span class="county-count">4 competitions</span>
       <a href="https://www.suffolkgolfunion.com/juniors" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
     <div class="comps-grid" id="grid-suffolk">
@@ -3549,7 +3623,7 @@
   <!-- WORCESTERSHIRE -->
   <div class="county-section" id="section-worcs" data-county="worcs">
     <div class="county-header">
-      <span class="county-name">Worcestershire</span>
+      <h2 class="county-name">Worcestershire</h2>
       <span class="county-count">5 competitions</span>
       <a href="https://www.thekidderminstergolfclub.com/opens/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -3606,7 +3680,7 @@
   <!-- OXFORDSHIRE -->
   <div class="county-section" id="section-oxon" data-county="oxon">
     <div class="county-header">
-      <span class="county-name">Oxfordshire</span>
+      <h2 class="county-name">Oxfordshire</h2>
       <span class="county-count">7 competitions</span>
       <a href="https://www.oxfordshiregolf.org.uk/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -3685,8 +3759,8 @@
   <!-- LINCOLNSHIRE -->
   <div class="county-section" id="section-lincs" data-county="lincs">
     <div class="county-header">
-      <span class="county-name">Lincolnshire</span>
-      <span class="county-count">6 competitions</span>
+      <h2 class="county-name">Lincolnshire</h2>
+      <span class="county-count">7 competitions</span>
       <a href="https://www.lugc.co.uk/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
     <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
@@ -3756,8 +3830,8 @@
   <!-- NOTTINGHAMSHIRE -->
   <div class="county-section" id="section-notts" data-county="notts">
     <div class="county-header">
-      <span class="county-name">Nottinghamshire</span>
-      <span class="county-count">5 competitions</span>
+      <h2 class="county-name">Nottinghamshire</h2>
+      <span class="county-count">6 competitions</span>
       <a href="https://www.worksopgolfclub.com/visitors/open-competitions/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
     <div class="comps-grid" id="grid-notts">
@@ -3815,7 +3889,7 @@
   <!-- DERBYSHIRE -->
   <div class="county-section" id="section-derby" data-county="derby">
     <div class="county-header">
-      <span class="county-name">Derbyshire</span>
+      <h2 class="county-name">Derbyshire</h2>
       <span class="county-count">4 competitions</span>
       <a href="https://www.derbyshirecountygolf.co.uk/junior-golf" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -3858,7 +3932,7 @@
   <!-- LEICESTERSHIRE -->
   <div class="county-section" id="section-leics" data-county="leics">
     <div class="county-header">
-      <span class="county-name">Leicestershire</span>
+      <h2 class="county-name">Leicestershire</h2>
       <span class="county-count">4 competitions</span>
       <a href="https://www.lingdalegolfclub.co.uk/upcoming-open-competitions" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -3901,7 +3975,7 @@
   <!-- DURHAM -->
   <div class="county-section" id="section-durham" data-county="durham">
     <div class="county-header">
-      <span class="county-name">Durham</span>
+      <h2 class="county-name">Durham</h2>
       <span class="county-count">6 competitions</span>
       <a href="https://brancepeth-castle-golf.co.uk/golf-open-competitions-in-north-east/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -3964,7 +4038,7 @@
   <!-- STAFFORDSHIRE -->
   <div class="county-section" id="section-staffs" data-county="staffs">
     <div class="county-header">
-      <span class="county-name">Staffordshire</span>
+      <h2 class="county-name">Staffordshire</h2>
       <span class="county-count">3 competitions</span>
       <a href="https://www.staffsgolf.co.uk/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -3999,8 +4073,9 @@
   <!-- CORNWALL -->
   <div class="county-section" id="section-cornwall" data-county="cornwall">
     <div class="county-header">
+      <h2 class="county-name">Cornwall</h2>
       <span class="county-count">7 competitions</span>
-      <a href="https://www.st-enodoc.co.uk/visitors/open-competitions/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
+      <a href="https://www.cornwallgolf.org.uk/junior_competitions" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
     <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:12px 16px; margin-bottom:14px; font-size:13px; color:#1A6EA8; line-height:1.6;">
       St Enodoc is a Top 100 links opposite Padstow — John Betjeman is buried on the course. West Cornwall at Lelant is one of the oldest links in England (1889). Playing juniors opens in Cornwall means genuinely special venues at accessible prices.
@@ -4068,7 +4143,7 @@
   <!-- SOMERSET -->
   <div class="county-section" id="section-somerset" data-county="somerset">
     <div class="county-header">
-      <span class="county-name">Somerset</span>
+      <h2 class="county-name">Somerset</h2>
       <span class="county-count">4 competitions</span>
       <a href="https://www.saltfordgolfclub.co.uk/open_competitions" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -4111,7 +4186,7 @@
   <!-- DORSET -->
   <div class="county-section" id="section-dorset" data-county="dorset">
     <div class="county-header">
-      <span class="county-name">Dorset</span>
+      <h2 class="county-name">Dorset</h2>
       <span class="county-count">1 competition</span>
       <a href="https://ashleywoodgolfclub.com/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -4130,7 +4205,7 @@
   <!-- NORTHUMBERLAND -->
   <div class="county-section" id="section-northumb" data-county="northumb">
     <div class="county-header">
-      <span class="county-name">Northumberland</span>
+      <h2 class="county-name">Northumberland</h2>
       <span class="county-count">3 competitions</span>
       <a href="https://www.northumberlandgolfunion.co.uk/juniors" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -4168,7 +4243,7 @@
   <!-- SHROPSHIRE -->
   <div class="county-section" id="section-shropshire" data-county="shropshire">
     <div class="county-header">
-      <span class="county-name">Shropshire</span>
+      <h2 class="county-name">Shropshire</h2>
       <span class="county-count">4 competitions</span>
       <a href="https://www.shugc.com/junior-golf/" target="_blank" rel="noopener" class="county-link">View county calendar ↗</a>
     </div>
@@ -4213,8 +4288,8 @@
   <!-- BJGT — NATIONAL TOUR -->
   <div class="county-section" id="section-bjgt" data-county="bjgt">
     <div class="county-header">
-      <span class="county-name" style="color:#0F4F7A;">🏆 British Junior Golf Tour</span>
-      <span class="county-count">15+ UK events</span>
+      <h2 class="county-name" style="color:#0F4F7A;">🏆 British Junior Golf Tour</h2>
+      <span class="county-count">10+ UK events</span>
       <a href="https://juniorgolftour.co.uk" target="_blank" rel="noopener" class="county-link">Tour website ↗</a>
     </div>
     <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:16px 20px; margin-bottom:16px; font-size:14px; color:#1A6EA8; line-height:1.7;">
@@ -4319,8 +4394,8 @@
   <!-- FALDO SERIES — NATIONAL TOUR -->
   <div class="county-section" id="section-faldo" data-county="faldo">
     <div class="county-header">
-      <span class="county-name" style="color:#0F4F7A;">🏆 Faldo Series UK Events</span>
-      <span class="county-count">8 UK events</span>
+      <h2 class="county-name" style="color:#0F4F7A;">🏆 Faldo Series UK Events</h2>
+      <span class="county-count">11 UK events</span>
       <a href="https://www.faldoseries.com" target="_blank" rel="noopener" class="county-link">Tour website ↗</a>
     </div>
     <div style="background:#EEF4FB; border:0.5px solid var(--pale); border-radius:10px; padding:16px 20px; margin-bottom:16px; font-size:14px; color:#1A6EA8; line-height:1.7;">
@@ -4438,7 +4513,7 @@
   <!-- ENGLAND GOLF NATIONAL CHAMPIONSHIPS -->
   <div class="county-section" id="section-england" data-county="england">
     <div class="county-header">
-      <span class="county-name" style="color:#8B0000;">🌹 England Golf National Championships</span>
+      <h2 class="county-name" style="color:#8B0000;">🌹 England Golf National Championships</h2>
       <span class="county-count">16 national events</span>
       <a href="https://www.englandgolf.org/boys-and-girls-competitions" target="_blank" rel="noopener" class="county-link">England Golf website ↗</a>
     </div>
@@ -4598,7 +4673,7 @@
   <!-- ENGLISH SCHOOLS GOLF -->
   <div class="county-section" id="section-schools" data-county="schools">
     <div class="county-header">
-      <span class="county-name" style="color:#1A5A1A;">🏫 English Schools Golf</span>
+      <h2 class="county-name" style="color:#1A5A1A;">🏫 English Schools Golf</h2>
       <span class="county-count">4 national events</span>
       <a href="https://www.englishschoolsgolf.org" target="_blank" rel="noopener" class="county-link">ESGA website ↗</a>
     </div>
@@ -4649,7 +4724,7 @@
 
   <div class="info-box" style="margin-top:12px;">
     <h3>Always growing</h3>
-    <p>JuniorCaddie currently lists 410+ individual competitions across Hertfordshire, Essex, Middlesex, Surrey, Sussex, Hampshire, Kent, Bedfordshire, Cambridgeshire, Lancashire, Yorkshire, Gloucestershire, Norfolk plus the BJGT, Faldo Series, England Golf national championships and English Schools Golf.</p>
+    <p>JuniorCaddie currently lists 380+ individual competitions across Hertfordshire, Essex, Middlesex, Surrey, Sussex, Hampshire, Kent, Bedfordshire, Cambridgeshire, Lancashire, Yorkshire, Gloucestershire, Norfolk plus the BJGT, Faldo Series, England Golf national championships and English Schools Golf.</p>
     <p style="margin-top:10px;"><strong>Coming soon:</strong> Cheshire, Devon, Suffolk, Oxfordshire and more. Know of a competition we've missed? Email <a href="mailto:hello@juniorcaddie.co.uk" style="color:#1A6EA8;">hello@juniorcaddie.co.uk</a> and we'll add it.</p>
   </div>
 
@@ -4734,7 +4809,34 @@
 
     document.getElementById('upcoming-count').textContent = upcomingCount;
     attachCalendarButtons();
+    capTags();
     applyFilters();
+  }
+
+  // Cap visible tags at 4 per card; excess tags collapse behind a "+N more" chip.
+  // Clicking the chip reveals them. Runs once at load; clones in calendar view
+  // inherit whatever state the card was in, which is fine.
+  function capTags() {
+    const MAX_VISIBLE = 4;
+    document.querySelectorAll('.comp-card .comp-tags').forEach(tagWrap => {
+      const tags = tagWrap.querySelectorAll('.tag');
+      if (tags.length <= MAX_VISIBLE + 1) return; // capping 5 into 4+chip saves nothing
+      for (let i = MAX_VISIBLE; i < tags.length; i++) {
+        tags[i].style.display = 'none';
+        tags[i].classList.add('tag-overflow');
+      }
+      const more = document.createElement('button');
+      more.type = 'button';
+      more.className = 'tag tag-more';
+      more.textContent = `+${tags.length - MAX_VISIBLE} more`;
+      more.setAttribute('aria-label', `Show ${tags.length - MAX_VISIBLE} more tags`);
+      more.onclick = function(e) {
+        e.stopPropagation();
+        tagWrap.querySelectorAll('.tag-overflow').forEach(t => t.style.display = '');
+        more.remove();
+      };
+      tagWrap.appendChild(more);
+    });
   }
 
   /* ===================== Add to calendar — pure client-side .ics generation ===================== */
@@ -4849,6 +4951,7 @@
   function applyFilters() {
     const cards = document.querySelectorAll('.comp-card');
     let visible = 0;
+    const q = currentSearchQuery;
 
     cards.forEach(card => {
       const county = card.dataset.county;
@@ -4860,7 +4963,17 @@
       const timeMatch = !showingUpcoming || !isPast;
       const championshipMatch = !showingChampionshipsOnly || isChampionship;
 
-      if (countyMatch && timeMatch && championshipMatch) {
+      let searchMatch = true;
+      if (q) {
+        if (card._searchText === undefined) {
+          const name = card.querySelector('.comp-name');
+          const venue = card.querySelector('.comp-venue');
+          card._searchText = ((name ? name.textContent : '') + ' ' + (venue ? venue.textContent : '')).toLowerCase();
+        }
+        searchMatch = card._searchText.includes(q);
+      }
+
+      if (countyMatch && timeMatch && championshipMatch && searchMatch) {
         card.style.display = '';
         visible++;
       } else {
@@ -4884,10 +4997,37 @@
   }
 
   let showingChampionshipsOnly = false;
+  let currentSearchQuery = '';
+  let searchDebounce = null;
+
+  function onSearchInput() {
+    const input = document.getElementById('comp-search');
+    document.getElementById('search-clear').style.display = input.value ? '' : 'none';
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {
+      currentSearchQuery = input.value.trim().toLowerCase();
+      applyFilters();
+      if (currentView === 'calendar') { renderCalendar(); clearCalResults(); }
+      if (currentSearchQuery) {
+        gtag('event', 'competition_search', { query_length: currentSearchQuery.length });
+      }
+    }, 200);
+  }
+
+  function clearSearch() {
+    const input = document.getElementById('comp-search');
+    input.value = '';
+    currentSearchQuery = '';
+    document.getElementById('search-clear').style.display = 'none';
+    applyFilters();
+    if (currentView === 'calendar') { renderCalendar(); clearCalResults(); }
+    input.focus();
+  }
 
   function toggleChampionshipsOnly(btn) {
     showingChampionshipsOnly = !showingChampionshipsOnly;
     btn.classList.toggle('active', showingChampionshipsOnly);
+    btn.setAttribute('aria-pressed', showingChampionshipsOnly ? 'true' : 'false');
     btn.style.background = showingChampionshipsOnly ? '#D4AF37' : '';
     btn.style.color = showingChampionshipsOnly ? '#fff' : '#8B6800';
     applyFilters();
@@ -4896,10 +5036,59 @@
 
   let currentCounty = 'all';
 
+  // ── Region grouping — collapses 39 county buttons behind 7 region toggles ──
+  const REGION_MAP = {
+    herts:'se', beds:'se', essex:'se', middx:'se', surrey:'se', sussex:'se', kent:'se', hants:'se',
+    cambs:'east', norfolk:'east', suffolk:'east',
+    devon:'sw', cornwall:'sw', somerset:'sw', dorset:'sw', wilts:'sw', glos:'sw',
+    warks:'mid', worcs:'mid', oxon:'mid', staffs:'mid', leics:'mid', derby:'mid', notts:'mid', lincs:'mid', shropshire:'mid',
+    yorks:'north', lancs:'north', durham:'north', northumb:'north', cheshire:'north',
+    scotland:'scotwales', wales:'scotwales',
+    bjgt:'tours', pingjgt:'tours', rockgolf:'tours', faldo:'tours', england:'tours', schools:'tours'
+  };
+
+  function toggleRegion(key, btn) {
+    const panel = document.getElementById('region-' + key);
+    const isOpen = panel.style.display !== 'none';
+    document.querySelectorAll('.region-counties').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.region-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      panel.style.display = 'flex';
+      btn.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function filterAll(btn) {
+    document.querySelectorAll('.region-counties').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.region-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-expanded', 'false');
+    });
+    filterCounty('all', btn);
+  }
+
   function filterCounty(county, btn) {
     currentCounty = county;
-    document.querySelectorAll('.filter-btn[onclick^="filterCounty("]').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.filter-btn[onclick^="filterCounty("]').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+
+    // Keep the parent region visually highlighted for context (panel stays open —
+    // this only affects the region button's own active styling, not visibility).
+    const regionKey = REGION_MAP[county];
+    if (regionKey) {
+      document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+      const regionBtn = document.getElementById('regionbtn-' + regionKey);
+      if (regionBtn) regionBtn.classList.add('active');
+    }
+
     applyFilters();
     if (currentView === 'calendar') { renderCalendar(); clearCalResults(); }
   }
@@ -4956,12 +5145,21 @@
   function calendarCardsForCounty() {
     // Cards matching the current county filter (calendar always shows all dates, past + upcoming,
     // regardless of the Upcoming/Show all toggle — a parent picking a date wants to see it either way).
-    // Does respect the County Championships toggle, since that's a content filter, not a time filter.
+    // Does respect the County Championships toggle and search query, since those are content filters.
     return Array.from(document.querySelectorAll('.comp-card')).filter(card => {
       const county = card.dataset.county;
       const countyMatch = currentCounty === 'all' || county === currentCounty;
       const championshipMatch = !showingChampionshipsOnly || card.dataset.championship === 'true';
-      return countyMatch && championshipMatch;
+      let searchMatch = true;
+      if (currentSearchQuery) {
+        if (card._searchText === undefined) {
+          const name = card.querySelector('.comp-name');
+          const venue = card.querySelector('.comp-venue');
+          card._searchText = ((name ? name.textContent : '') + ' ' + (venue ? venue.textContent : '')).toLowerCase();
+        }
+        searchMatch = card._searchText.includes(currentSearchQuery);
+      }
+      return countyMatch && championshipMatch && searchMatch;
     });
   }
 
@@ -5024,9 +5222,54 @@
         (count ? `<span class="cal-count">${count}</span><div class="cal-dots">${Array(Math.min(count,4)).fill('<span class="cal-dot"></span>').join('')}</div>` : '');
       if (count) {
         el.onclick = () => selectCalDate(dstr, el);
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-label', `${day} ${CAL_MONTHS[calMonth]} — ${count} competition${count !== 1 ? 's' : ''}`);
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCalDate(dstr, el); }
+        });
       }
       grid.appendChild(el);
     }
+
+    // Empty-month message with jump links to the nearest months that do have events
+    const monthPrefix = `${calYear}-${String(calMonth + 1).padStart(2, '0')}-`;
+    const monthHasEvents = Object.keys(byDate).some(d => d.startsWith(monthPrefix));
+    const noticeId = 'cal-empty-notice';
+    const existing = document.getElementById(noticeId);
+    if (existing) existing.remove();
+
+    if (!monthHasEvents) {
+      const allDates = Object.keys(byDate).sort();
+      const monthStart = `${calYear}-${String(calMonth + 1).padStart(2, '0')}-01`;
+      const nextDate = allDates.find(d => d > monthStart);
+      const prevDate = [...allDates].reverse().find(d => d < monthStart);
+
+      const notice = document.createElement('div');
+      notice.id = noticeId;
+      notice.style.cssText = 'margin-top:12px; padding:12px 14px; background:var(--pale); border-radius:8px; font-size:13px; color:var(--mid); line-height:1.6;';
+      let msg = `No competitions in ${CAL_MONTHS[calMonth]} for this filter.`;
+      if (nextDate) {
+        const nd = new Date(nextDate + 'T00:00:00');
+        msg += ` <a href="#" onclick="jumpToCalMonth(${nd.getFullYear()}, ${nd.getMonth()}); return false;" style="color:var(--navy); font-weight:600;">Next: ${nd.getDate()} ${CAL_MONTHS[nd.getMonth()]} →</a>`;
+      }
+      if (prevDate) {
+        const pd = new Date(prevDate + 'T00:00:00');
+        msg += `${nextDate ? ' · ' : ' '}<a href="#" onclick="jumpToCalMonth(${pd.getFullYear()}, ${pd.getMonth()}); return false;" style="color:var(--navy); font-weight:600;">← Previous: ${pd.getDate()} ${CAL_MONTHS[pd.getMonth()]}</a>`;
+      }
+      if (!nextDate && !prevDate) {
+        msg = 'No competitions match this filter at all — try a different county or switch off the championships toggle.';
+      }
+      notice.innerHTML = msg;
+      grid.parentNode.insertBefore(notice, grid.nextSibling);
+    }
+  }
+
+  function jumpToCalMonth(year, month) {
+    calYear = year;
+    calMonth = month;
+    renderCalendar();
+    clearCalResults();
   }
 
   function clearCalResults() {
@@ -5198,5 +5441,33 @@
   }
 </script>
 
+<button id="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top of page">↑ Top</button>
+<style>
+  #back-to-top {
+    position: fixed; bottom: 24px; right: 24px; z-index: 90;
+    background: var(--navy); color: #fff; border: none;
+    border-radius: 24px; padding: 12px 18px; font-size: 14px; font-weight: 600;
+    cursor: pointer; box-shadow: 0 4px 14px rgba(11,61,107,0.3);
+    opacity: 0; pointer-events: none; transition: opacity 0.2s;
+  }
+  #back-to-top.show { opacity: 1; pointer-events: auto; }
+  #back-to-top:hover { background: var(--mid); }
+  #back-to-top:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+</style>
+<script>
+  (function() {
+    const btn = document.getElementById('back-to-top');
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          btn.classList.toggle('show', window.scrollY > 900);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+</script>
 </body>
 </html>

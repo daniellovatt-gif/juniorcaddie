@@ -205,6 +205,9 @@
     .badge-soon { background: rgba(255,255,255,0.15); color: var(--light); }
     .tab-title { font-size: 14px; font-weight: 700; color: white; line-height: 1.2; }
     .tab-desc { font-size: 11px; color: var(--light); line-height: 1.4; }
+    .tab-split-links { display: flex; gap: 8px; margin-top: 10px; }
+    .tab-split-links a { flex: 1; text-align: center; font-size: 12px; font-weight: 800; color: white; background: var(--mid); border: 1px solid rgba(255,255,255,0.4); border-radius: 8px; padding: 9px 6px; text-decoration: none; transition: all 0.15s; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+    .tab-split-links a:hover { background: var(--sky); transform: translateY(-1px); }
 
     /* ── FEATURED QUOTE (inline within hero, compact) ── */
     .hero-featured-quote {
@@ -424,67 +427,6 @@
     .stage-card { text-decoration: none; background: white; border-radius: 12px; padding: 16px 12px; text-align: center; box-shadow: 0 1px 8px rgba(0,0,0,0.06); transition: transform 0.15s; }
     .stage-card:hover { transform: translateY(-2px); }
 
-    /* ── POPUP SOFT GATE ── */
-    .gate-overlay {
-      position: fixed; inset: 0;
-      background: rgba(11,61,107,0.55);
-      backdrop-filter: blur(3px);
-      z-index: 500;
-      display: none;
-      align-items: center; justify-content: center;
-      padding: 20px;
-    }
-    .gate-overlay.visible { display: flex; }
-    .gate-modal {
-      background: var(--navy);
-      border-radius: 16px;
-      width: min(420px, 100%);
-      padding: 36px 32px 28px;
-      position: relative;
-      text-align: center;
-      animation: gatePop 0.3s cubic-bezier(0.34,1.56,0.64,1);
-      box-shadow: 0 24px 64px rgba(11,61,107,0.4);
-    }
-    @keyframes gatePop {
-      from { transform: scale(0.92); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .gate-close {
-      position: absolute; top: 14px; right: 14px;
-      background: rgba(255,255,255,0.1); border: none;
-      border-radius: 50%; width: 30px; height: 30px;
-      font-size: 15px; color: var(--light); cursor: pointer;
-    }
-    .gate-close:hover { background: rgba(255,255,255,0.18); color: white; }
-    .gate-icon { font-size: 32px; margin-bottom: 14px; }
-    .gate-title {
-      font-family: var(--serif); font-size: 21px; font-weight: 700;
-      color: white; line-height: 1.3; margin-bottom: 8px;
-    }
-    .gate-sub {
-      font-size: 14px; color: var(--light); line-height: 1.55;
-      margin-bottom: 22px; max-width: 320px; margin-left: auto; margin-right: auto;
-    }
-    .gate-form { display: flex; gap: 8px; margin-bottom: 12px; }
-    .gate-input {
-      flex: 1; padding: 12px 14px;
-      border: 1.5px solid rgba(255,255,255,0.2); border-radius: 8px;
-      font-size: 15px; color: white; background: rgba(255,255,255,0.1);
-    }
-    .gate-input::placeholder { color: rgba(255,255,255,0.4); }
-    .gate-input:focus { outline: none; border-color: var(--sky); }
-    .gate-btn {
-      background: white; color: var(--navy); border: none;
-      padding: 12px 20px; border-radius: 8px; font-size: 14px;
-      font-weight: 700; cursor: pointer; white-space: nowrap;
-    }
-    .gate-btn:hover { background: var(--pale); }
-    .gate-dismiss {
-      font-size: 12px; color: rgba(255,255,255,0.4);
-      cursor: pointer; text-decoration: underline;
-    }
-    .gate-dismiss:hover { color: rgba(255,255,255,0.7); }
-
     /* ── FOOTER ── */
     footer { background: var(--navy); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid rgba(255,255,255,0.06); }
     .footer-copy { font-size: 12px; color: var(--sky); }
@@ -527,7 +469,7 @@
     "mainEntity": [
       { "@type": "Question", "name": "What age should a child start junior golf in the UK?", "acceptedAnswer": { "@type": "Answer", "text": "Five is absolutely not too young — some of the best junior golfers in the UK started at four or five. The key at this age is that it is entirely fun-led. Short sessions, no pressure, lots of positive reinforcement." } },
       { "@type": "Question", "name": "How does my child get a golf handicap in the UK?", "acceptedAnswer": { "@type": "Answer", "text": "Your child needs to be a member of an England Golf affiliated club or have an iGolf membership. They then submit three 18-hole scorecards as handicap rounds. Once submitted, the World Handicap System calculates an initial handicap index automatically." } },
-      { "@type": "Question", "name": "Where can I find junior golf competitions near me?", "acceptedAnswer": { "@type": "Answer", "text": "JuniorCaddie lists 410+ junior golf competitions across England, Scotland and Wales with direct entry links. Filter by county to find competitions near you." } },
+      { "@type": "Question", "name": "Where can I find junior golf competitions near me?", "acceptedAnswer": { "@type": "Answer", "text": "JuniorCaddie lists 380+ junior golf competitions across England, Scotland and Wales with direct entry links. Filter by county to find competitions near you." } },
       { "@type": "Question", "name": "What junior golf clubs should I buy for a beginner?", "acceptedAnswer": { "@type": "Answer", "text": "For beginners, buy second-hand. A quality pre-loved starter set will serve a Stage 1 child as well as anything new. Size by height not age." } }
     ]
   }
@@ -630,7 +572,7 @@
       <span class="tab-badge badge-live">Live now</span>
       <div class="tab-icon">🏆</div>
       <div class="tab-title">Competition Finder</div>
-      <div class="tab-desc">410+ competitions across England, Scotland & Wales</div>
+      <div class="tab-desc">380+ competitions across England, Scotland & Wales</div>
     </a>
     <a href="marketplace.html" class="tab live">
       <span class="tab-badge badge-live">New</span>
@@ -650,12 +592,16 @@
       <div class="tab-title">Summer Camps</div>
       <div class="tab-desc">Holiday coaching camps across Hertfordshire</div>
     </a>
-    <a href="equipment-reviews.html" class="tab live">
+    <div class="tab live">
       <span class="tab-badge badge-live">New</span>
       <div class="tab-icon">🏌️</div>
-      <div class="tab-title">Club Reviews</div>
-      <div class="tab-desc">US Kids, PING Prodi G, TaylorMade & more — reviewed by a PGA Pro</div>
-    </a>
+      <div class="tab-title">Gear Reviews</div>
+      <div class="tab-desc">Clubs & clothing — honest, independent guides</div>
+      <div class="tab-split-links">
+        <a href="equipment-reviews.html">🏌️ Clubs</a>
+        <a href="junior-golf-clothing.html">🧥 Clothing</a>
+      </div>
+    </div>
     <a href="golf-formats.html" class="tab live">
       <span class="tab-badge badge-live">New</span>
       <div class="tab-icon">📋</div>
@@ -717,8 +663,8 @@
 <!-- COMMUNITY SIGNUP -->
 <section class="capture">
   <div style="max-width:460px;margin:0 auto;">
-    <h2>Join our newsletter and growing community</h2>
-    <p class="capture-sub">Junior golf parents across the UK signing up for competitions, guides and updates — direct to your inbox.</p>
+    <h2>Join the JuniorCaddie community</h2>
+    <p class="capture-sub">New competitions, guides and updates — direct to your inbox.</p>
     <div class="email-form">
       <input id="capture-email" type="email" placeholder="Your email address" autocomplete="email" class="email-input"
         onkeydown="if(event.key==='Enter') handleSignup('hero')"/>
@@ -875,6 +821,7 @@
     <a href="competitions.html">Competitions</a>
     <a href="golf-formats.html">Golf formats</a>
     <a href="equipment-reviews.html">Club reviews</a>
+    <a href="junior-golf-clothing.html">Clothing guide</a>
     <a href="marketplace.html">Marketplace</a>
     <a href="summer-camps.html">Summer camps</a>
     <a href="rules-card-final.html">Rules card</a>
@@ -951,80 +898,6 @@
   document.getElementById('capture-email').addEventListener('keydown', e => {
     if (e.key === 'Enter') handleSignup('footer');
   });
-
-  // ── POPUP SOFT GATE ──
-  let gateShown = false;
-
-  function shouldShowGate() {
-    return localStorage.getItem('jc_community_member') !== '1' && !sessionStorage.getItem('jc_gate_dismissed');
-  }
-
-  function maybeShowGate() {
-    if (gateShown || !shouldShowGate()) return;
-    const scrolled = window.scrollY + window.innerHeight;
-    const pageHeight = document.body.scrollHeight;
-    // Fire once the visitor has scrolled roughly halfway down the page
-    if (scrolled > pageHeight * 0.5) {
-      document.getElementById('gate-overlay').classList.add('visible');
-      gateShown = true;
-    }
-  }
-
-  window.addEventListener('scroll', maybeShowGate);
-
-  function closeGate() {
-    document.getElementById('gate-overlay').classList.remove('visible');
-    sessionStorage.setItem('jc_gate_dismissed', '1');
-  }
-
-  function closeGateOnOverlay(e) {
-    if (e.target === document.getElementById('gate-overlay')) closeGate();
-  }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && document.getElementById('gate-overlay').classList.contains('visible')) closeGate();
-  });
-
-  async function handleGateSignup() {
-    const input = document.getElementById('gate-email');
-    const btn = input.nextElementSibling;
-    const email = input.value.trim();
-    if (!email || !email.includes('@')) { input.style.borderColor = '#E05A5A'; input.focus(); return; }
-    btn.disabled = true; btn.textContent = 'Sending...';
-    try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_EMAIL_ID}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email, source: 'homepage-gate', _subject: 'New JuniorCaddie signup (gate)' })
-      });
-      if (res.ok) {
-        localStorage.setItem('jc_community_member', '1');
-        btn.textContent = 'Done ✓'; btn.style.background = '#5AAAD4';
-        setTimeout(closeGate, 900);
-      } else throw new Error();
-    } catch(e) {
-      localStorage.setItem('jc_community_member', '1');
-      btn.textContent = 'Done ✓';
-      setTimeout(closeGate, 900);
-    }
-  }
-
 </script>
-<!-- POPUP SOFT GATE -->
-<div class="gate-overlay" id="gate-overlay" onclick="closeGateOnOverlay(event)">
-  <div class="gate-modal">
-    <button class="gate-close" onclick="closeGate()">✕</button>
-    <div class="gate-icon">⛳</div>
-    <div class="gate-title">Join our newsletter and growing community of parents signing up for JuniorCaddie</div>
-    <div class="gate-sub">More features coming soon — be the first to know.</div>
-    <div class="gate-form">
-      <input id="gate-email" type="email" class="gate-input" placeholder="Your email address" autocomplete="email"
-        onkeydown="if(event.key==='Enter') handleGateSignup()"/>
-      <button class="gate-btn" onclick="handleGateSignup()">Join now</button>
-    </div>
-    <span class="gate-dismiss" onclick="closeGate()">No thanks, continue browsing</span>
-  </div>
-</div>
-
 </body>
 </html>

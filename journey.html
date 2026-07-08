@@ -622,6 +622,24 @@
       </div>
 
       <p class="body-text">If you take one thing from this section, take this: at Stage 1, your child cannot yet tell the difference between "you hit that badly" and "you are bad at this." Keep the language, the tone and the whole experience wrapped in warmth, and you are doing the most important psychological job of the entire junior journey — before a single lesson on the mental game is even needed.</p>
+
+      <div class="gate-marker" data-gate="journey-gate-1" style="height:1px;"></div>
+      <!-- Soft community gate — fires at ~66% scroll depth through Stage 1 -->
+      <div id="journey-gate-1" class="journey-gate-box" style="display:none; margin-top:32px; background:var(--navy); border-radius:14px; padding:28px; text-align:center; animation: fadeInUp 0.4s ease;">
+        <div style="font-size:32px; margin-bottom:12px;">⛳</div>
+        <p style="font-family:var(--serif); font-size:19px; font-weight:700; color:white; margin-bottom:8px; line-height:1.3;">Join the community. Help junior golf grow.</p>
+        <p style="font-size:14px; color:var(--light); margin-bottom:20px; line-height:1.65; max-width:400px; margin-left:auto; margin-right:auto;">JuniorCaddie is built by a golf parent, for golf families. Join free and help us grow the resource every junior golfer deserves.</p>
+        <div style="display:flex; gap:8px; max-width:380px; margin:0 auto 8px;">
+          <input id="journey-email-1" type="email" placeholder="Your email address" autocomplete="email"
+            style="flex:1; padding:11px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none;"/>
+          <button onclick="submitJourneyGate('journey-gate-1','journey-email-1')"
+            style="background:white; color:var(--navy); border:none; padding:11px 18px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
+            Join free
+          </button>
+        </div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-bottom:10px;">No spam. Unsubscribe any time.</div>
+        <div onclick="dismissJourneyGate('journey-gate-1')" style="font-size:12px; color:rgba(255,255,255,0.55); cursor:pointer; text-decoration:underline;">No thanks, continue reading</div>
+      </div>
     </div>
 
     <div class="section-divider"></div>
@@ -809,6 +827,24 @@
         <p>Children who succeed early are often labelled "naturally talented" rather than hard-working. That label feels nice in the moment, but it's fragile — it teaches a child their identity depends on always looking gifted, which makes the next bad round feel like a threat rather than just golf.</p>
         <div class="pull-quote-attr">— Chartered Sport Psychologist, Junior Golf</div>
       </div>
+
+      <div class="gate-marker" data-gate="journey-gate-2" style="height:1px;"></div>
+      <!-- Soft community gate — fires at ~66% scroll depth through Stage 2 -->
+      <div id="journey-gate-2" class="journey-gate-box" style="display:none; margin-top:32px; background:var(--navy); border-radius:14px; padding:28px; text-align:center; animation: fadeInUp 0.4s ease;">
+        <div style="font-size:32px; margin-bottom:12px;">🌱</div>
+        <p style="font-family:var(--serif); font-size:19px; font-weight:700; color:white; margin-bottom:8px; line-height:1.3;">Join the community. Help junior golf grow.</p>
+        <p style="font-size:14px; color:var(--light); margin-bottom:20px; line-height:1.65; max-width:400px; margin-left:auto; margin-right:auto;">JuniorCaddie is built by a golf parent, for golf families. Join free and help us grow the resource every junior golfer deserves.</p>
+        <div style="display:flex; gap:8px; max-width:380px; margin:0 auto 8px;">
+          <input id="journey-email-2" type="email" placeholder="Your email address" autocomplete="email"
+            style="flex:1; padding:11px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none;"/>
+          <button onclick="submitJourneyGate('journey-gate-2','journey-email-2')"
+            style="background:white; color:var(--navy); border:none; padding:11px 18px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
+            Join free
+          </button>
+        </div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-bottom:10px;">No spam. Unsubscribe any time.</div>
+        <div onclick="dismissJourneyGate('journey-gate-2')" style="font-size:12px; color:rgba(255,255,255,0.55); cursor:pointer; text-decoration:underline;">No thanks, continue reading</div>
+      </div>
     </div>
 
     <div class="section-divider"></div>
@@ -845,22 +881,6 @@
         <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">They actively want to keep score and know how they compare</div></div>
         <div class="ready-sign"><div class="ready-tick">✓</div><div class="ready-text">Their coach confirms they are ready to pursue a handicap and begin competitive golf</div></div>
       </div>
-    </div>
-
-    <!-- Soft community gate -->
-    <div id="journey-gate" style="display:none; margin-top:32px; background:var(--navy); border-radius:14px; padding:28px; text-align:center; animation: fadeInUp 0.4s ease;">
-      <div style="font-size:32px; margin-bottom:12px;">⛳</div>
-      <p style="font-family:var(--serif); font-size:19px; font-weight:700; color:white; margin-bottom:8px; line-height:1.3;">Join the community. Help junior golf grow.</p>
-      <p style="font-size:14px; color:var(--light); margin-bottom:20px; line-height:1.65; max-width:400px; margin-left:auto; margin-right:auto;">JuniorCaddie is built by a golf parent, for golf families. Join free and help us grow the resource every junior golfer deserves.</p>
-      <div id="journey-gate-form" style="display:flex; gap:8px; max-width:380px; margin:0 auto 8px;">
-        <input id="journey-email" type="email" placeholder="Your email address" autocomplete="email"
-          style="flex:1; padding:11px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none;"/>
-        <button onclick="submitJourneyGate()"
-          style="background:white; color:var(--navy); border:none; padding:11px 18px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
-          Join free
-        </button>
-      </div>
-      <div style="font-size:11px; color:rgba(255,255,255,0.4);">No spam. Unsubscribe any time.</div>
     </div>
 
   </div>
@@ -1000,6 +1020,24 @@
       <div class="pull-quote">
         <p>The three words that do the most damage after a junior round aren't cruel ones — they're "so, how'd you do?" asked the second a child gets in the car. Wait. Let them decompress. The score will still be there in five minutes, and the conversation will be a much better one.</p>
         <div class="pull-quote-attr">— Chartered Sport Psychologist, Junior Golf</div>
+      </div>
+
+      <div class="gate-marker" data-gate="journey-gate-3" style="height:1px;"></div>
+      <!-- Soft community gate — fires at ~66% scroll depth through Stage 3 -->
+      <div id="journey-gate-3" class="journey-gate-box" style="display:none; margin-top:32px; background:var(--navy); border-radius:14px; padding:28px; text-align:center; animation: fadeInUp 0.4s ease;">
+        <div style="font-size:32px; margin-bottom:12px;">🏌️</div>
+        <p style="font-family:var(--serif); font-size:19px; font-weight:700; color:white; margin-bottom:8px; line-height:1.3;">Join the community. Help junior golf grow.</p>
+        <p style="font-size:14px; color:var(--light); margin-bottom:20px; line-height:1.65; max-width:400px; margin-left:auto; margin-right:auto;">JuniorCaddie is built by a golf parent, for golf families. Join free and help us grow the resource every junior golfer deserves.</p>
+        <div style="display:flex; gap:8px; max-width:380px; margin:0 auto 8px;">
+          <input id="journey-email-3" type="email" placeholder="Your email address" autocomplete="email"
+            style="flex:1; padding:11px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none;"/>
+          <button onclick="submitJourneyGate('journey-gate-3','journey-email-3')"
+            style="background:white; color:var(--navy); border:none; padding:11px 18px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
+            Join free
+          </button>
+        </div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-bottom:10px;">No spam. Unsubscribe any time.</div>
+        <div onclick="dismissJourneyGate('journey-gate-3')" style="font-size:12px; color:rgba(255,255,255,0.55); cursor:pointer; text-decoration:underline;">No thanks, continue reading</div>
       </div>
     </div>
 
@@ -1182,6 +1220,24 @@
       <div class="pull-quote">
         <p>By the time a junior reaches proper county-level pressure, technique has usually stopped being the difference between players. What separates them is who can have a disaster on the 4th hole and still play the 5th like it's a fresh round.</p>
         <div class="pull-quote-attr">— Chartered Sport Psychologist, Junior Golf</div>
+      </div>
+
+      <div class="gate-marker" data-gate="journey-gate-4" style="height:1px;"></div>
+      <!-- Soft community gate — fires at ~66% scroll depth through Stage 4 -->
+      <div id="journey-gate-4" class="journey-gate-box" style="display:none; margin-top:32px; background:var(--navy); border-radius:14px; padding:28px; text-align:center; animation: fadeInUp 0.4s ease;">
+        <div style="font-size:32px; margin-bottom:12px;">🏆</div>
+        <p style="font-family:var(--serif); font-size:19px; font-weight:700; color:white; margin-bottom:8px; line-height:1.3;">You're clearly serious about this. Join us.</p>
+        <p style="font-size:14px; color:var(--light); margin-bottom:20px; line-height:1.65; max-width:400px; margin-left:auto; margin-right:auto;">JuniorCaddie is built by a golf parent, for golf families. Join free and help us grow the resource every junior golfer deserves.</p>
+        <div style="display:flex; gap:8px; max-width:380px; margin:0 auto 8px;">
+          <input id="journey-email-4" type="email" placeholder="Your email address" autocomplete="email"
+            style="flex:1; padding:11px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none;"/>
+          <button onclick="submitJourneyGate('journey-gate-4','journey-email-4')"
+            style="background:white; color:var(--navy); border:none; padding:11px 18px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
+            Join free
+          </button>
+        </div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-bottom:10px;">No spam. Unsubscribe any time.</div>
+        <div onclick="dismissJourneyGate('journey-gate-4')" style="font-size:12px; color:rgba(255,255,255,0.55); cursor:pointer; text-decoration:underline;">No thanks, continue reading</div>
       </div>
     </div>
 
@@ -1426,6 +1482,25 @@
       <p class="body-text"><strong>UK events that count.</strong> For English, Scottish, Welsh and Irish juniors, the main WAGR counting events at age-group level include The R&A's Boys and Girls Amateur Championships, the home unions' national age-group championships (such as the England Golf, Scottish Golf and Wales Golf boys' and girls' championships), and the stronger county and regional championships. Smaller local junior opens are very unlikely to carry enough Power on their own to move a ranking meaningfully, though they remain valuable for competitive experience and confidence at earlier stages of the journey.</p>
 
       <p class="body-text"><strong>An honest note on where WAGR fits.</strong> WAGR is one input among several a US college coach weighs — alongside handicap, academic record, references and a highlight video — not a replacement for any of them. It rewards results in strong fields over time, so it favours players who are already competing regularly at a high standard rather than juniors just starting out. Families should treat it as a tool for a player already deep into Stage 4 or Stage 5 who is serious about the US pathway, not as something to chase for its own sake at younger ages.</p>
+
+      <div class="gate-marker" data-gate="journey-gate-5" style="height:1px;"></div>
+      <!-- Soft community gate — fires at ~66% scroll depth through Stage 5 (right after WAGR) -->
+      <div id="journey-gate-5" class="journey-gate-box" style="display:none; margin:32px 0; background:var(--navy); border-radius:14px; padding:28px; text-align:center; animation: fadeInUp 0.4s ease;">
+        <div style="font-size:32px; margin-bottom:12px;">🎓</div>
+        <p style="font-family:var(--serif); font-size:19px; font-weight:700; color:white; margin-bottom:8px; line-height:1.3;">You've made it this deep into the Journey.</p>
+        <p style="font-size:14px; color:var(--light); margin-bottom:20px; line-height:1.65; max-width:400px; margin-left:auto; margin-right:auto;">Join free — help us keep building the resource every UK junior golf family deserves, from Stage 1 all the way to college.</p>
+        <div style="display:flex; gap:8px; max-width:380px; margin:0 auto 8px;">
+          <input id="journey-email-5" type="email" placeholder="Your email address" autocomplete="email"
+            style="flex:1; padding:11px 14px; border:1.5px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; background:rgba(255,255,255,0.1); color:white; outline:none;"/>
+          <button onclick="submitJourneyGate('journey-gate-5','journey-email-5')"
+            style="background:white; color:var(--navy); border:none; padding:11px 18px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
+            Join free
+          </button>
+        </div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-bottom:10px;">No spam. Unsubscribe any time.</div>
+        <div onclick="dismissJourneyGate('journey-gate-5')" style="font-size:12px; color:rgba(255,255,255,0.55); cursor:pointer; text-decoration:underline;">No thanks, continue reading</div>
+      </div>
+
       <p class="body-text" style="margin-top:20px;"><a href="#mental-game-5" style="color:var(--s5);font-weight:700;">→ Continue to Stage 5.3: The mental side of the transition</a></p>
     </div>
 
@@ -1536,6 +1611,7 @@
 
 <script>
   const JOURNEY_GATE_KEY = 'jc_community_member';
+  const JOURNEY_GATE_SESSION_KEY = 'jc_gate_shown_this_session';
 
   function showStage(n) {
     document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
@@ -1543,31 +1619,73 @@
     document.getElementById('stage-' + n).classList.add('active');
     document.querySelector(`.stage-tab[data-s="${n}"]`).classList.add('active');
     document.querySelector(`.stage-tab[data-s="${n}"]`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+    // Scroll to the top of the newly-active stage. We deliberately do NOT use
+    // #stage-selector's offsetTop here — it's a position:sticky element, and once
+    // it has "stuck" to the top of the viewport, Chromium reports its offsetTop
+    // as the current stuck screen position rather than its true document position.
+    // That made the old "sel.offsetTop - 57" formula collapse to a no-op (target ==
+    // current scroll position) any time this was called from partway down a stage.
+    // The stage banner is never sticky, so its position is always reliable.
+    const banner = document.querySelector('#stage-' + n + ' .stage-banner');
     const sel = document.getElementById('stage-selector');
-    window.scrollTo({ top: sel.offsetTop - 57, behavior: 'smooth' });
+    // #stage-selector sticks at `top: 57px` because there's a second sticky
+    // element (the global header) above it — its CSS `top` value tells us
+    // exactly how tall that header is, so we clear both layers correctly
+    // instead of hardcoding a number that breaks if either layer's height changes.
+    const stickyTopOffset = parseFloat(getComputedStyle(sel).top) || 0;
+    const totalClearance = stickyTopOffset + sel.offsetHeight;
+    if (banner) {
+      const bannerDocTop = banner.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: bannerDocTop - totalClearance, behavior: 'smooth' });
+    }
   }
 
-  // Journey soft gate — fires when ready-box in stage 2 scrolls into view
-  function initJourneyGate() {
+  // Journey soft gates — one gate box sits at the ~66% scroll-depth point of EACH
+  // of the 5 stages (measured against that stage's actual rendered content height,
+  // not a hand-picked section). Only ONE gate is allowed to appear per visit —
+  // whichever stage the reader reaches two-thirds of the way through first —
+  // so someone reading straight through never sees more than one prompt.
+  function initJourneyGates() {
     if (localStorage.getItem(JOURNEY_GATE_KEY) === '1') return;
-    const target = document.querySelector('#stage-2 .ready-box');
-    if (!target) return;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            const gate = document.getElementById('journey-gate');
-            if (gate) gate.style.display = 'block';
-          }, 600);
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.4 });
-    observer.observe(target);
+    if (sessionStorage.getItem(JOURNEY_GATE_SESSION_KEY) === '1') return;
+
+    // Note: we observe small always-in-layout marker divs, not the gate boxes
+    // themselves — the gate boxes start as display:none, and elements with no
+    // layout box are never reported as intersecting by IntersectionObserver.
+    const markers = document.querySelectorAll('.gate-marker');
+    let shown = false;
+    const observers = [];
+
+    markers.forEach((marker) => {
+      const gateId = marker.getAttribute('data-gate');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !shown && sessionStorage.getItem(JOURNEY_GATE_SESSION_KEY) !== '1') {
+            shown = true;
+            sessionStorage.setItem(JOURNEY_GATE_SESSION_KEY, '1');
+            setTimeout(() => {
+              const gate = document.getElementById(gateId);
+              if (gate) gate.style.display = 'block';
+            }, 400);
+            observers.forEach(o => o.disconnect());
+          }
+        });
+      }, { threshold: 0 });
+      observer.observe(marker);
+      observers.push(observer);
+    });
   }
 
-  async function submitJourneyGate() {
-    const emailEl = document.getElementById('journey-email');
+  function dismissJourneyGate(gateId) {
+    const gate = document.getElementById(gateId);
+    if (gate) gate.style.display = 'none';
+    // Session cap stays set — dismissing one gate means none of the others pop up this visit either.
+    sessionStorage.setItem(JOURNEY_GATE_SESSION_KEY, '1');
+  }
+
+  async function submitJourneyGate(gateId, emailId) {
+    const emailEl = document.getElementById(emailId);
     const email = emailEl.value.trim();
     if (!email || !email.includes('@')) {
       emailEl.style.borderColor = '#E05A5A';
@@ -1578,17 +1696,17 @@
     btn.disabled = true; btn.textContent = 'Joining...';
 
     try {
-      const res = await fetch('https://formspree.io/f/xbdewqvn', {
+      await fetch('https://formspree.io/f/xbdewqvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           email,
-          source: 'journey-page-gate',
+          source: 'journey-page-gate-' + gateId,
           _subject: 'New JuniorCaddie community signup — Journey page'
         })
       });
       localStorage.setItem(JOURNEY_GATE_KEY, '1');
-      document.getElementById('journey-gate').innerHTML = `
+      document.getElementById(gateId).innerHTML = `
         <div style="padding:8px 0;">
           <div style="font-size:40px; margin-bottom:12px;">✅</div>
           <p style="font-family:Georgia,serif; font-size:19px; font-weight:700; color:white; margin-bottom:8px;">Welcome to the community.</p>
@@ -1600,7 +1718,7 @@
     }
   }
 
-  initJourneyGate();
+  initJourneyGates();
 </script>
 
 </body>
