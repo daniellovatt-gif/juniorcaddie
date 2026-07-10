@@ -5139,8 +5139,10 @@
     document.getElementById('auth-overlay').classList.remove('visible');
   }
 
-  document.getElementById('auth-overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeAuthModal();
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('auth-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeAuthModal();
+    });
   });
 
   async function sendMagicLink() {
