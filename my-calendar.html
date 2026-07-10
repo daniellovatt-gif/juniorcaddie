@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Supabase client — powers magic-link accounts and saved competitions -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK2B373ZMM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZK2B373ZMM');
+</script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Calendar | JuniorCaddie — Your Saved Junior Golf Competitions</title>
+  <meta name="description" content="View and manage the junior golf competitions you've saved. Sign in with a magic link — no password needed." />
+  <link rel="canonical" href="https://juniorcaddie.co.uk/my-calendar.html" />
+  <meta name="robots" content="noindex" />
+  <!-- noindex: this page shows personal saved data, not content that should rank in search -->
+
+  <meta property="og:title" content="My Calendar | JuniorCaddie" />
+  <meta property="og:description" content="Your saved junior golf competitions in one place." />
+  <meta property="og:image" content="https://juniorcaddie.co.uk/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    background: #EEF4FB; color: #0B3D6B; line-height: 1.6;
+  }
+  :root {
+    --navy:  #0B3D6B;
+    --mid:   #1A6EA8;
+    --sky:   #5AAAD4;
+    --light: #7BBDE0;
+    --pale:  #B8D8F0;
+    --bg:    #EEF4FB;
+    --white: #ffffff;
+    --serif: Georgia, 'Times New Roman', serif;
+    --max:   1040px;
+    --radius: 10px;
+  }
+  a { color: inherit; }
+
+  /* Nav — identical to competitions.html */
+  nav {
+    background: var(--bg); border-bottom: 0.5px solid var(--pale);
+    padding: 20px 48px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-junior { font-family: var(--serif); font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1; }
+  .logo-caddie { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--mid); letter-spacing: -0.5px; line-height: 1; }
+  .nav-back { font-size: 14px; color: var(--mid); text-decoration: none; }
+  .nav-back:hover { color: var(--navy); }
+
+  /* Hero */
+  .hero { background: var(--navy); padding: 48px 24px 40px; text-align: center; }
+  .hero-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); font-weight: 700; color: #EEF4FB; line-height: 1.15; letter-spacing: -1px; margin-bottom: 14px; }
+  .hero h1 span { color: var(--light); }
+  .hero-sub { font-size: 15px; color: var(--light); max-width: 520px; margin: 0 auto; line-height: 1.65; }
+
+  .main { max-width: var(--max); margin: 0 auto; padding: 32px 24px 80px; }
+
+  /* Signed-out state */
+  .signin-card {
+    background: #fff; border: 0.5px solid var(--pale); border-radius: var(--radius);
+    padding: 48px 32px; text-align: center; max-width: 440px; margin: 24px auto;
+  }
+  .signin-icon { font-size: 44px; margin-bottom: 16px; }
+  .signin-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .signin-sub { font-size: 14px; color: var(--mid); line-height: 1.6; margin-bottom: 22px; }
+  .signin-input {
+    width: 100%; font-size: 15px; padding: 12px 14px; border: 1.5px solid var(--pale);
+    border-radius: 9px; margin-bottom: 12px; font-family: inherit;
+  }
+  .signin-input:focus { outline: none; border-color: var(--mid); }
+  .signin-btn {
+    width: 100%; background: var(--navy); color: #fff; border: none;
+    border-radius: 9px; padding: 12px; font-size: 15px; font-weight: 700; cursor: pointer;
+  }
+  .signin-btn:hover { background: var(--mid); }
+  .signin-btn:disabled { opacity: 0.6; cursor: wait; }
+  .signin-note { font-size: 11px; color: #AAA; margin-top: 10px; }
+
+  /* Loading state */
+  .loading-state { text-align: center; padding: 60px 24px; color: var(--sky); }
+
+  /* Signed-in header bar */
+  .account-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px; margin-bottom: 24px;
+    background: #fff; border: 0.5px solid var(--pale); border-radius: var(--radius);
+    padding: 14px 20px;
+  }
+  .account-email { font-size: 13px; color: var(--mid); }
+  .account-email strong { color: var(--navy); }
+  .signout-btn {
+    font-size: 13px; color: var(--mid); background: none; border: 1px solid var(--pale);
+    border-radius: 8px; padding: 7px 14px; cursor: pointer;
+  }
+  .signout-btn:hover { border-color: var(--mid); background: var(--bg); }
+
+  /* Subscribe banner */
+  .subscribe-banner {
+    background: linear-gradient(135deg, #0B3D6B 0%, #1A6EA8 100%);
+    border-radius: 14px; padding: 18px 22px; margin-bottom: 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .subscribe-text { font-size: 13px; color: #EEF4FB; }
+  .subscribe-text strong { display: block; font-family: var(--serif); font-size: 16px; margin-bottom: 3px; }
+  .subscribe-btn {
+    background: #fff; color: var(--navy); border: none; border-radius: 9px;
+    padding: 10px 18px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap;
+  }
+  .subscribe-btn:hover { background: var(--bg); }
+
+  /* Saved competition cards — same visual language as competitions.html */
+  .saved-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .saved-card { background: #fff; border: 0.5px solid var(--pale); border-radius: var(--radius); padding: 18px; }
+  .saved-date { font-size: 11px; color: var(--sky); margin-bottom: 6px; }
+  .date-badge { background: var(--navy); color: #fff; font-size: 10px; font-weight: 500; border-radius: 4px; padding: 2px 8px; }
+  .saved-name { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; line-height: 1.25; }
+  .saved-venue { font-size: 13px; color: var(--mid); margin-bottom: 12px; }
+  .saved-btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .saved-enter {
+    display: inline-block; font-size: 13px; font-weight: 500; color: #fff; background: var(--mid);
+    border-radius: 6px; padding: 8px 14px; text-decoration: none;
+  }
+  .saved-enter:hover { background: var(--navy); }
+  .saved-cal-btn, .saved-remove-btn {
+    font-size: 13px; font-weight: 600; color: var(--navy); background: #fff;
+    border: 1.5px solid var(--pale); border-radius: 6px; padding: 7px 14px; cursor: pointer;
+  }
+  .saved-cal-btn:hover { border-color: var(--mid); background: #EAF4FC; }
+  .saved-remove-btn:hover { border-color: #DC2626; background: #FEF2F2; color: #DC2626; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center; padding: 60px 24px; background: #fff;
+    border: 1.5px dashed var(--pale); border-radius: var(--radius);
+  }
+  .empty-icon { font-size: 40px; margin-bottom: 14px; }
+  .empty-title { font-family: var(--serif); font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .empty-sub { font-size: 14px; color: var(--sky); margin-bottom: 20px; }
+  .empty-cta {
+    display: inline-block; background: var(--navy); color: #fff; text-decoration: none;
+    border-radius: 9px; padding: 12px 24px; font-size: 14px; font-weight: 700;
+  }
+  .empty-cta:hover { background: var(--mid); }
+
+  :focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="20" height="60" viewBox="0 0 32 96" fill="none">
+      <line x1="8" y1="2" x2="8" y2="86" stroke="#0B3D6B" stroke-width="4" stroke-linecap="round"/>
+      <path d="M8 2 L30 12 L8 22 Z" fill="#1A6EA8"/>
+      <path d="M8 22 L26 30 L8 38 Z" fill="#7BBDE0"/>
+      <ellipse cx="8" cy="88" rx="8" ry="3" fill="#B8D8F0"/>
+    </svg>
+    <div>
+      <div class="logo-junior">Junior</div>
+      <div class="logo-caddie">Caddie</div>
+    </div>
+  </a>
+  <a href="competitions.html" class="nav-back">← Back to competitions</a>
+</nav>
+
+<div class="hero">
+  <p class="hero-label">My Calendar</p>
+  <h1>Your saved <span>competitions</span></h1>
+  <p class="hero-sub">Everything you've saved from the competition finder, in one place — sign in any time with just your email, no password to remember.</p>
+</div>
+
+<div class="main">
+  <div id="page-content">
+    <div class="loading-state">Loading…</div>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://amwwngkktfxqrpisxqza.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_CtB5nuLgIa97TjKGMHfGTQ_v8eENfnG';
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DOW = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+  function fmtDate(dstr) {
+    if (!dstr) return 'Date TBC';
+    const d = new Date(dstr + 'T00:00:00');
+    return `${DOW[(d.getDay()+6)%7]} ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  /* ── ICS generation — same approach as the standalone Add to calendar button ── */
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function icsDate(dateStr) { return dateStr.replace(/-/g, ''); }
+  function icsDatePlusOne(dateStr) {
+    const d = new Date(dateStr + 'T00:00:00Z');
+    d.setUTCDate(d.getUTCDate() + 1);
+    return `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}`;
+  }
+  function icsEscape(text) {
+    return String(text).replace(/\\/g, '\\\\').replace(/,/g, '\\,').replace(/;/g, '\\;').replace(/\n/g, '\\n');
+  }
+  function icsStamp() {
+    const d = new Date();
+    return `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())}Z`;
+  }
+  function downloadICS(ev) {
+    if (!ev.event_date) return; // can't build a calendar file without a real date
+    const uid = `${ev.event_date}-${ev.name.replace(/\s+/g, '-').toLowerCase()}@juniorcaddie.co.uk`;
+    const lines = [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//JuniorCaddie//Competition Calendar//EN', 'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT', `UID:${uid}`, `DTSTAMP:${icsStamp()}`,
+      `DTSTART;VALUE=DATE:${icsDate(ev.event_date)}`, `DTEND;VALUE=DATE:${icsDatePlusOne(ev.event_date)}`,
+      `SUMMARY:${icsEscape(ev.name)}`, `LOCATION:${icsEscape(ev.venue || '')}`,
+      `DESCRIPTION:${icsEscape('Entry: ' + (ev.entry_url || ''))}`, `URL:${ev.entry_url || ''}`,
+      'END:VEVENT', 'END:VCALENDAR'
+    ];
+    const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${ev.name.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+    gtag('event', 'add_to_calendar_click', { competition: ev.name, source: 'my_calendar' });
+  }
+
+  const content = document.getElementById('page-content');
+
+  function renderSignedOut() {
+    content.innerHTML = `
+      <div class="signin-card">
+        <div class="signin-icon">⭐</div>
+        <div class="signin-title">Sign in to see your saved competitions</div>
+        <div class="signin-sub">Enter your email and we'll send a link — no password needed. If you've saved anything before, it'll be waiting for you.</div>
+        <input type="email" class="signin-input" id="signin-email" placeholder="Your email address" autocomplete="email"
+          onkeydown="if(event.key==='Enter') sendSignInLink()"/>
+        <button class="signin-btn" id="signin-btn" onclick="sendSignInLink()">Send my link</button>
+        <div class="signin-note">No spam. Unsubscribe any time.</div>
+      </div>`;
+  }
+
+  async function sendSignInLink() {
+    const emailInput = document.getElementById('signin-email');
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@')) {
+      emailInput.style.borderColor = '#DC2626';
+      return;
+    }
+    const btn = document.getElementById('signin-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const { error } = await supabaseClient.auth.signInWithOtp({
+      email: email,
+      options: { emailRedirectTo: window.location.href }
+    });
+
+    if (error) {
+      content.innerHTML = `
+        <div class="signin-card">
+          <div class="signin-icon">⚠️</div>
+          <div class="signin-title">Something went wrong</div>
+          <div class="signin-sub">${error.message || 'Please try again in a moment.'}</div>
+          <button class="signin-btn" onclick="renderSignedOut()">Try again</button>
+        </div>`;
+      return;
+    }
+
+    gtag('event', 'gate_completed', { gate: 'my_calendar_signin', source: 'magic_link_sent' });
+    content.innerHTML = `
+      <div class="signin-card">
+        <div class="signin-icon">📬</div>
+        <div class="signin-title">Check your email</div>
+        <div class="signin-sub">We've sent a link to <strong>${email}</strong>. Tap it on this device to see your saved competitions.</div>
+      </div>`;
+  }
+
+  async function signOut() {
+    await supabaseClient.auth.signOut();
+    gtag('event', 'sign_out', { source: 'my_calendar' });
+    renderSignedOut();
+  }
+
+  async function removeSaved(slug, btn) {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if (!session) return;
+    btn.disabled = true;
+    btn.textContent = 'Removing…';
+    const { error } = await supabaseClient
+      .from('saved_competitions')
+      .delete()
+      .eq('user_id', session.user.id)
+      .eq('competition_slug', slug);
+    if (!error) {
+      gtag('event', 'competition_unsaved', { slug: slug, source: 'my_calendar' });
+      loadSavedCompetitions();
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Remove';
+    }
+  }
+
+  async function loadSavedCompetitions() {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if (!session) { renderSignedOut(); return; }
+
+    content.innerHTML = '<div class="loading-state">Loading your saved competitions…</div>';
+
+    // Join saved_competitions -> competition_registry so we always show
+    // this year's live date/venue/link, not whatever it was when saved.
+    const { data, error } = await supabaseClient
+      .from('saved_competitions')
+      .select('competition_slug, saved_at, competition_registry(name, venue, county, event_date, entry_url)')
+      .eq('user_id', session.user.id)
+      .order('saved_at', { ascending: false });
+
+    if (error) {
+      content.innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><div class="empty-title">Couldn't load your saved competitions</div><div class="empty-sub">${error.message}</div></div>`;
+      return;
+    }
+
+    const rows = (data || []).filter(r => r.competition_registry);
+
+    const accountBar = `
+      <div class="account-bar">
+        <div class="account-email">Signed in as <strong>${session.user.email}</strong></div>
+        <button class="signout-btn" onclick="signOut()">Sign out</button>
+      </div>`;
+
+    if (rows.length === 0) {
+      content.innerHTML = accountBar + `
+        <div class="empty-state">
+          <div class="empty-icon">📅</div>
+          <div class="empty-title">Nothing saved yet</div>
+          <div class="empty-sub">Browse competitions and tap ☆ Save on anything you want to keep track of.</div>
+          <a href="competitions.html" class="empty-cta">Browse competitions →</a>
+        </div>`;
+      return;
+    }
+
+    // Sort by event date, soonest first — undated (TBC) entries go last.
+    rows.sort((a, b) => {
+      const da = a.competition_registry.event_date, db = b.competition_registry.event_date;
+      if (!da) return 1;
+      if (!db) return -1;
+      return da.localeCompare(db);
+    });
+
+    const cardsHtml = rows.map(r => {
+      const c = r.competition_registry;
+      const dateLabel = fmtDate(c.event_date);
+      const evJson = JSON.stringify({ name: c.name, venue: c.venue, event_date: c.event_date, entry_url: c.entry_url }).replace(/"/g, '&quot;');
+      return `
+        <div class="saved-card">
+          <div class="saved-date"><span class="date-badge">${dateLabel}</span></div>
+          <div class="saved-name">${c.name}</div>
+          <div class="saved-venue">${c.venue || ''}</div>
+          <div class="saved-btn-row">
+            ${c.entry_url ? `<a href="${c.entry_url}" target="_blank" rel="noopener" class="saved-enter">Enter ↗</a>` : ''}
+            <button class="saved-cal-btn" onclick='downloadICS(${evJson})'>📅 Add to calendar</button>
+            <button class="saved-remove-btn" onclick="removeSaved('${r.competition_slug}', this)">Remove</button>
+          </div>
+        </div>`;
+    }).join('');
+
+    content.innerHTML = accountBar + `
+      <div class="subscribe-banner">
+        <div class="subscribe-text">
+          <strong>Coming soon: one-tap calendar sync</strong>
+          Subscribe once and your saved competitions will update automatically every year — no need to come back and re-save.
+        </div>
+        <button class="subscribe-btn" disabled title="Coming soon">Subscribe (soon)</button>
+      </div>
+      <div class="saved-grid">${cardsHtml}</div>`;
+  }
+
+  // Handle the magic-link redirect and any subsequent auth state change.
+  supabaseClient.auth.onAuthStateChange((event, session) => {
+    if (session) loadSavedCompetitions();
+    else renderSignedOut();
+  });
+
+  loadSavedCompetitions();
+</script>
+
+</body>
+</html>
