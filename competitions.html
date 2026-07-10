@@ -218,7 +218,13 @@
     .comp-cal-btn.added { background: #DCFCE7; border-color: #15803D; color: #15803D; }
 
     .comp-save-btn {
-      display: inline-flex; align-items: center; gap: 5px;
+      /* Hidden for now — accounts/save feature paused pending SMTP, privacy
+         notice, and a My Calendar nav link. All the JS/Supabase logic behind
+         this button is untouched and fully working — just flip this back to
+         "inline-flex" (and remove the display:none override below) to
+         re-enable it later. */
+      display: none;
+      align-items: center; gap: 5px;
       font-size: 13px; font-weight: 600; color: var(--navy);
       background: var(--white); border: 1.5px solid var(--pale);
       border-radius: 6px; padding: 7px 14px; cursor: pointer;
