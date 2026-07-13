@@ -184,7 +184,7 @@
     .tabs-inner {
       max-width: var(--max); margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 10px;
     }
     .tab {
@@ -209,8 +209,10 @@
     .tab-title { font-size: 14px; font-weight: 700; color: white; line-height: 1.2; }
     .tab-desc { font-size: 11px; color: var(--light); line-height: 1.4; }
     .tab-split-links { display: flex; gap: 8px; margin-top: 10px; }
-    .tab-split-links a { flex: 1; text-align: center; font-size: 12px; font-weight: 800; color: white; background: var(--mid); border: 1px solid rgba(255,255,255,0.4); border-radius: 8px; padding: 9px 6px; text-decoration: none; transition: all 0.15s; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+    .tab-split-links a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; text-align: center; color: white; background: var(--mid); border: 1px solid rgba(255,255,255,0.4); border-radius: 8px; padding: 10px 6px; text-decoration: none; transition: all 0.15s; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
     .tab-split-links a:hover { background: var(--sky); transform: translateY(-1px); }
+    .split-icon { font-size: 16px; line-height: 1; }
+    .split-label { font-size: 12px; font-weight: 800; line-height: 1; }
 
     /* ── FEATURED QUOTE (inline within hero, compact) ── */
     .hero-featured-quote {
@@ -626,8 +628,8 @@
       <div class="tab-title">Gear Reviews</div>
       <div class="tab-desc">Clubs & clothing — honest, independent guides</div>
       <div class="tab-split-links">
-        <a href="equipment-reviews.html">🏌️ Clubs</a>
-        <a href="junior-golf-clothing.html">🧥 Clothing</a>
+        <a href="equipment-reviews.html"><span class="split-icon">🏌️</span><span class="split-label">Clubs</span></a>
+        <a href="junior-golf-clothing.html"><span class="split-icon">🧥</span><span class="split-label">Clothing</span></a>
       </div>
     </div>
     <a href="golf-formats.html" class="tab live">
