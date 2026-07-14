@@ -210,7 +210,7 @@
   <h1>Junior golf camps<br><em>across Hertfordshire.</em></h1>
   <p class="hero-sub">Half-term camps, summer holiday coaching and junior academies — for every age and ability. Updated for 2026.</p>
   <div class="stats-bar">
-    <div class="stat"><div class="stat-n">13</div><div class="stat-l">Camps listed</div></div>
+    <div class="stat"><div class="stat-n">14</div><div class="stat-l">Camps listed</div></div>
     <div class="stat"><div class="stat-n">1</div><div class="stat-l">County so far</div></div>
     <div class="stat"><div class="stat-n">All</div><div class="stat-l">Ages & abilities</div></div>
   </div>
@@ -222,6 +222,7 @@
     <span class="filter-label">Filter:</span>
     <button class="filter-btn active" onclick="filterCamps('all', this)">All camps</button>
     <button class="filter-btn" onclick="filterCamps('herts', this)">Hertfordshire</button>
+    <button class="filter-btn" onclick="filterCamps('residential', this)">Residential</button>
     <button class="filter-btn" onclick="filterCamps('beginner', this)">Beginners welcome</button>
     <button class="filter-btn" onclick="filterCamps('advanced', this)">More advanced</button>
     <button class="filter-btn" onclick="filterCamps('fullday', this)">Full day</button>
@@ -231,8 +232,89 @@
 
 <!-- GRID -->
 <div class="grid-wrap">
-  <div class="results-count" id="results-count">13 camps listed in Hertfordshire</div>
+  <div class="results-count" id="results-count">14 camps listed — 13 in Hertfordshire, plus our first national pick</div>
   <div class="camps-grid" id="camps-grid">
+
+    <!-- JACOB'S PICK — St Andrews Golf Camp -->
+    <div class="camp-card" data-county="national" data-level="advanced" data-duration="fullday residential" style="border:2px solid var(--mid); grid-column: 1 / -1; background:linear-gradient(135deg, #EEF4FB 0%, #FFFFFF 60%);">
+      <div class="card-header" style="background:var(--navy); border-bottom:1px solid var(--mid);">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap;">
+          <span style="font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:var(--sky); color:var(--navy); border-radius:4px; padding:2px 10px;">⭐ Jacob's Pick</span>
+          <span style="font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:rgba(255,255,255,0.15); color:white; border-radius:4px; padding:2px 10px;">Scotland</span>
+        </div>
+        <div class="card-name" style="color:white;">St Andrews Golf Camp — The Home of Golf</div>
+        <div class="card-location" style="color:var(--light);">📍 St Andrews, Scotland</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tags">
+          <span class="card-tag highlight">Tournament Camp</span>
+          <span class="card-tag">Ages 14–17</span>
+          <span class="card-tag">PGA coaching · Links Academy</span>
+        </div>
+        <div class="card-desc">A residential golf camp on the actual Home of Golf, welcoming junior golfers from over 38 countries. Campers stay at St Leonards (a private boarding school in the heart of town), get daily coaching from PGA professionals at the St Andrews Links Academy, and play across the St Andrews Links courses. Jacob attended the Tournament Camp.</div>
+
+        <div style="margin-top:4px; margin-bottom:16px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Types of camp</div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:8px;">
+            <div style="background:white; border:1px solid var(--pale); border-radius:8px; padding:10px 12px;">
+              <div style="font-size:13px; font-weight:700; color:var(--navy);">Tournament Camp <span style="font-weight:400; color:#666; font-size:11px;">· Ages 14–17</span></div>
+              <div style="font-size:12px; color:#2A5070; margin-top:2px;">Competition-focused week — Jacob's camp.</div>
+            </div>
+            <div style="background:white; border:1px solid var(--pale); border-radius:8px; padding:10px 12px;">
+              <div style="font-size:13px; font-weight:700; color:var(--navy);">Development Camp <span style="font-weight:400; color:#666; font-size:11px;">· Ages 9–17</span></div>
+              <div style="font-size:12px; color:#2A5070; margin-top:2px;">10 nights, all-round coaching for keen improvers.</div>
+            </div>
+            <div style="background:white; border:1px solid var(--pale); border-radius:8px; padding:10px 12px;">
+              <div style="font-size:13px; font-weight:700; color:var(--navy);">Elite Camp <span style="font-weight:400; color:#666; font-size:11px;">· Ages 12–17</span></div>
+              <div style="font-size:12px; color:#2A5070; margin-top:2px;">For handicaps 13 and under, with WAGR tournament access.</div>
+            </div>
+            <div style="background:white; border:1px solid var(--pale); border-radius:8px; padding:10px 12px;">
+              <div style="font-size:13px; font-weight:700; color:var(--navy);">Parent/Child Camp <span style="font-weight:400; color:#666; font-size:11px;">· All ages</span></div>
+              <div style="font-size:12px; color:#2A5070; margin-top:2px;">5-night luxury trip, tuition covers parent and junior together.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">What every camper signs up to</div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:8px;">
+            <div style="background:var(--bg); border-radius:8px; padding:9px 11px;">
+              <div style="font-size:12px; font-weight:700; color:var(--navy);">Integrity</div>
+              <div style="font-size:11px; color:#2A5070; margin-top:2px; line-height:1.5;">Honest scoring and good sportsmanship, on and off the course.</div>
+            </div>
+            <div style="background:var(--bg); border-radius:8px; padding:9px 11px;">
+              <div style="font-size:12px; font-weight:700; color:var(--navy);">Respect</div>
+              <div style="font-size:11px; color:#2A5070; margin-top:2px; line-height:1.5;">For the course, for opponents, and for yourself.</div>
+            </div>
+            <div style="background:var(--bg); border-radius:8px; padding:9px 11px;">
+              <div style="font-size:12px; font-weight:700; color:var(--navy);">Resilience</div>
+              <div style="font-size:11px; color:#2A5070; margin-top:2px; line-height:1.5;">Bouncing back from setbacks with a positive attitude.</div>
+            </div>
+            <div style="background:var(--bg); border-radius:8px; padding:9px 11px;">
+              <div style="font-size:12px; font-weight:700; color:var(--navy);">Community</div>
+              <div style="font-size:11px; color:#2A5070; margin-top:2px; line-height:1.5;">Looking out for campmates and embracing local culture.</div>
+            </div>
+            <div style="background:var(--bg); border-radius:8px; padding:9px 11px;">
+              <div style="font-size:12px; font-weight:700; color:var(--navy);">Leadership</div>
+              <div style="font-size:11px; color:#2A5070; margin-top:2px; line-height:1.5;">Taking responsibility for yourself, your kit and your group.</div>
+            </div>
+            <div style="background:var(--bg); border-radius:8px; padding:9px 11px;">
+              <div style="font-size:12px; font-weight:700; color:var(--navy);">Kindness</div>
+              <div style="font-size:11px; color:#2A5070; margin-top:2px; line-height:1.5;">Small, thoughtful gestures that make camp better for everyone.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:white; border-radius:10px; padding:14px 16px; border:1px solid var(--pale); margin-top:4px;">
+          <div style="font-size:13px; color:var(--navy); font-style:italic; line-height:1.6;">"I had the time of my life here — the golf, the courses, the people I met. I'd recommend it to any junior golfer."</div>
+          <div style="font-size:12px; color:var(--mid); font-weight:700; margin-top:8px;">— Jacob, JuniorCaddie co-founder, Tournament Camp 2025</div>
+        </div>
+      </div>
+      <div class="card-footer" style="background:var(--navy); border-top:1px solid var(--mid);">
+        <div class="card-contact" style="font-size:12px; color:var(--light);">Book directly with St Andrews Golf Camp</div>
+        <a href="https://www.standrewsgolfcamp.com/" target="_blank" rel="noopener" class="card-website" style="background:var(--sky); color:var(--navy);">Visit website →</a>
+      </div>
+    </div>
 
     <!-- FEATURED — Neil Mac Golf -->
     <div class="camp-card" data-county="herts" data-level="beginner advanced" data-duration="halfday" style="border:2px solid #E8C97A; grid-column: 1 / -1; background:#FFFBF0;">
@@ -660,6 +742,7 @@
       else if (filter === 'advanced') show = card.dataset.level.includes('advanced');
       else if (filter === 'fullday') show = card.dataset.duration.includes('fullday');
       else if (filter === 'halfday') show = card.dataset.duration.includes('halfday');
+      else if (filter === 'residential') show = card.dataset.duration.includes('residential');
       card.style.display = show ? '' : 'none';
       if (show) count++;
     });
