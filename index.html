@@ -900,11 +900,13 @@
         localStorage.setItem('jc_community_member', '1');
         input.value = ''; input.placeholder = "You're on the list. Thank you.";
         btn.textContent = 'Done ✓'; btn.style.background = '#5AAAD4';
+        if (typeof gtag === 'function') gtag('event', 'community_signup', { source: source });
         if (source === 'gate') setTimeout(closeCommunityGate, 1400);
       } else throw new Error();
     } catch(e) {
       localStorage.setItem('jc_community_member', '1');
       btn.textContent = 'Done ✓';
+      if (typeof gtag === 'function') gtag('event', 'community_signup', { source: source });
       if (source === 'gate') setTimeout(closeCommunityGate, 1400);
     }
   }

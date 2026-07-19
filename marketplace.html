@@ -515,7 +515,10 @@
     applyFilters();
   }
 
+  let currentEnquiryListing = null;
+
   function openEnquiry(listing) {
+    currentEnquiryListing = listing;
     const isClothing = listing.category === 'clothing';
     const gt = isClothing ? (clothingTypeLabels[listing.clothing_type] || listing.clothing_type || '') : '';
     const tt = !isClothing ? (typeLabels[listing.club_type] || listing.club_type || '') : '';
@@ -543,6 +546,25 @@
 
     window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '#enquiry-form', formId: 'xgojwvag' });
+
+    // Fire GA4 event when Formspree reveals its success message (no library callback available,
+    // so we watch the element it toggles rather than guessing at internal hooks)
+    const successEl = document.querySelector('[data-fs-success]');
+    if (successEl && !successEl.dataset.jcObserved) {
+      successEl.dataset.jcObserved = '1';
+      const observer = new MutationObserver(() => {
+        const visible = successEl.style.display !== 'none' && successEl.offsetParent !== null;
+        if (visible && currentEnquiryListing && typeof gtag === 'function') {
+          gtag('event', 'marketplace_enquiry', {
+            listing_id: currentEnquiryListing.id,
+            county: currentEnquiryListing.seller_county,
+            category: currentEnquiryListing.category || 'clubs'
+          });
+          currentEnquiryListing = null;
+        }
+      });
+      observer.observe(successEl, { attributes: true, attributeFilter: ['style', 'class'] });
+    }
   }
 
   function closeModal() {
