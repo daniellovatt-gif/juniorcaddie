@@ -214,6 +214,42 @@
     .split-icon { font-size: 16px; line-height: 1; }
     .split-label { font-size: 12px; font-weight: 800; line-height: 1; }
 
+    /* ── HERO CTA BUTTONS ── */
+    .hero-cta-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      max-width: 360px;
+      margin: 26px auto 0;
+    }
+    .hero-cta-primary {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--sky), var(--mid));
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 15px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+    }
+    .hero-cta-secondary {
+      display: block;
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+    }
+
     /* ── FEATURED QUOTE (inline within hero, compact) ── */
     .hero-featured-quote {
       max-width: 560px;
@@ -549,11 +585,16 @@
   <h1>Everything a junior<br><span>golf family needs.</span></h1>
   <p class="hero-sub">Competitions, guides, formats and equipment — for every stage of your child's journey.</p>
 
+  <div class="hero-cta-row">
+    <a href="journey.html" class="hero-cta-secondary">See the Junior Journey →</a>
+    <a href="competitions.html" class="hero-cta-primary">Find competitions near you →</a>
+  </div>
+
   <!-- Featured quote, folded directly into hero -->
   <div class="hero-featured-quote">
     <span class="hero-featured-quote-mark">&ldquo;</span>
     <span class="hero-featured-quote-text">You've saved my life. This simplifies everything relevant for juniors.</span>
-    <span class="hero-featured-quote-attr">— PGA Junior Coach &amp; Golf Ops Manager</span>
+    <span class="hero-featured-quote-attr">— PGA Teaching Pro, Hertfordshire</span>
   </div>
 </section>
 
