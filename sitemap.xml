@@ -118,4 +118,11 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://juniorcaddie.co.uk/updates.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
