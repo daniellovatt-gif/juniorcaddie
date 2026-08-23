@@ -5874,6 +5874,34 @@
   const SUPABASE_KEY = 'sb_publishable_CtB5nuLgIa97TjKGMHfGTQ_v8eENfnG';
   const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  // --- Competition entry-link click tracking ---
+  // Logs every "Enter" / "Club Website" click to competition_clicks so we can
+  // see which competitions and counties get the most demand — used to
+  // prioritise featured listings and county partnership conversations.
+  // Fire-and-forget: never blocks or delays the link opening in its new tab.
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('.comp-enter');
+    if (!link || link.classList.contains('disabled')) return;
+    const card = link.closest('.comp-card');
+    if (!card) return;
+    const slug = card.dataset.slug || '';
+    if (!slug) return;
+    const nameEl = card.querySelector('.comp-name');
+    const compName = nameEl ? nameEl.textContent.trim() : '';
+    const linkType = link.classList.contains('club-site') ? 'club_site' : 'enter';
+
+    supabaseClient.from('competition_clicks').insert({
+      slug: slug,
+      county: card.dataset.county || '',
+      comp_name: compName,
+      link_type: linkType
+    }).then(function(){}, function(){});
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'competition_enter_click', { slug: slug, county: card.dataset.county || '', competition: compName });
+    }
+  });
+
   let currentUser = null;
   let savedSlugs = new Set();
   let pendingSaveSlug = null;
