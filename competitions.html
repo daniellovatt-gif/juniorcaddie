@@ -5874,6 +5874,18 @@
   const SUPABASE_KEY = 'sb_publishable_CtB5nuLgIa97TjKGMHfGTQ_v8eENfnG';
   const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  // Persistent anonymous session ID for unique-click tracking — lets us tell
+  // "5 different families clicked this" apart from "1 family clicked 5 times".
+  // No names/emails, just a random tag saved in the visitor's own browser.
+  function getSessionId() {
+    let id = localStorage.getItem('jc_session_id');
+    if (!id) {
+      id = crypto.randomUUID();
+      localStorage.setItem('jc_session_id', id);
+    }
+    return id;
+  }
+
   // --- Competition entry-link click tracking ---
   // Logs every "Enter" / "Club Website" click to competition_clicks so we can
   // see which competitions and counties get the most demand — used to
@@ -5894,7 +5906,8 @@
       slug: slug,
       county: card.dataset.county || '',
       comp_name: compName,
-      link_type: linkType
+      link_type: linkType,
+      session_id: getSessionId()
     }).then(function(){}, function(){});
 
     if (typeof gtag === 'function') {
