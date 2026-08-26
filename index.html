@@ -976,9 +976,11 @@
         ['q-name','q-email','q-question'].forEach(id => document.getElementById(id).value = '');
         document.getElementById('q-stage').selectedIndex = 0;
         btn.textContent = 'Question sent ✓'; btn.style.background = '#5AAAD4'; btn.style.color = '#0B3D6B';
+        if (typeof gtag === 'function') gtag('event', 'question_submitted', { stage: stage });
       } else throw new Error();
     } catch(e) {
       btn.textContent = 'Question sent ✓';
+      if (typeof gtag === 'function') gtag('event', 'question_submitted', { stage: stage });
     }
   }
 
