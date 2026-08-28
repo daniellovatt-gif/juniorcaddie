@@ -152,6 +152,9 @@
       -ms-overflow-style: none;
       flex: 1;
       scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      -webkit-mask-image: linear-gradient(to right, black 0%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to right, black 0%, black 88%, transparent 100%);
     }
     .proof-quotes::-webkit-scrollbar { display: none; }
     .proof-quote {
@@ -160,6 +163,7 @@
       gap: 3px;
       flex-shrink: 0;
       max-width: 280px;
+      scroll-snap-align: start;
     }
     .proof-quote-text {
       font-family: var(--serif);
@@ -498,14 +502,17 @@
       .nav-mobile-menu.open a:last-child { border-bottom: none; }
       .tabs-bar { padding: 12px 12px 16px; }
       .tabs-inner { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .tabs-inner .tab:not(:last-child) { min-height: 192px; }
+      .tabs-inner .tab:last-child { grid-column: 1 / -1; }
       .hero { padding: 48px 20px 28px; }
       .hero h1 { font-size: 30px; }
       .hero-sub { font-size: 16px; }
       .proof-strip { padding: 12px 16px; }
       .hero-featured-quote { margin-top: 20px; padding: 14px 18px; }
       .hero-featured-quote-text { font-size: 15px; }
-      .proof-label { display: none; }
+      .proof-label { padding-right: 10px; margin-right: 10px; font-size: 8px; letter-spacing: 1.5px; white-space: normal; max-width: 54px; line-height: 1.3; }
       .proof-quotes { gap: 20px; }
+      .proof-quote { max-width: 240px; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .jargon-grid { grid-template-columns: repeat(2, 1fr); }
       .jargon-grid .jargon-item:last-child { display: none; }
@@ -675,17 +682,6 @@
       <div class="tab-title">Summer Camps</div>
       <div class="tab-desc">Holiday coaching camps across Hertfordshire</div>
     </a>
-    <div class="tab live">
-      <span class="tab-badge badge-live">Live now</span>
-      <div class="tab-icon">🏌️</div>
-      <div class="tab-title">Gear Reviews</div>
-      <div class="tab-desc">Clubs & clothing — honest, independent guides</div>
-      <div class="tab-split-links">
-        <a href="equipment-reviews.html"><span class="split-icon">🏌️</span><span class="split-label">Clubs</span></a>
-        <a href="junior-golf-clothing.html"><span class="split-icon">🧥</span><span class="split-label">Clothing</span></a>
-        <a href="junior-golf-accessories.html"><span class="split-icon">🧤</span><span class="split-label">Accessories</span></a>
-      </div>
-    </div>
     <a href="golf-formats.html" class="tab live">
       <span class="tab-badge badge-live">Live now</span>
       <div class="tab-icon">📋</div>
@@ -704,6 +700,17 @@
       <div class="tab-title">Ready to Compete?</div>
       <div class="tab-desc">Find out if your child is ready for their first junior open</div>
     </a>
+    <div class="tab live">
+      <span class="tab-badge badge-live">Live now</span>
+      <div class="tab-icon">🏌️</div>
+      <div class="tab-title">Gear Reviews</div>
+      <div class="tab-desc">Clubs & clothing — honest, independent guides</div>
+      <div class="tab-split-links">
+        <a href="equipment-reviews.html"><span class="split-icon">🏌️</span><span class="split-label">Clubs</span></a>
+        <a href="junior-golf-clothing.html"><span class="split-icon">🧥</span><span class="split-label">Clothing</span></a>
+        <a href="junior-golf-accessories.html"><span class="split-icon">🧤</span><span class="split-label">Accessories</span></a>
+      </div>
+    </div>
   </div>
 </div>
 
