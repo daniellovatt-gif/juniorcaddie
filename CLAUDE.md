@@ -17,7 +17,10 @@ step. Hosted on Vercel, deployed from this GitHub repo (`daniellovatt-gif/junior
 Never introduce www URLs, canonicals, or sitemap entries.
 
 **Services:**
-- Backend: Supabase, project `amwwngkktfxqrpisxqza`
+- Backend: Supabase, project `amwwngkktfxqrpisxqza`. A `staging` branch exists — always develop
+  and test against it first. Never run destructive SQL against production without it being
+  explicitly requested and confirmed. See §12 for the schema built on it.
+- Vercel project: `prj_AT0qYruFqxJuAPuA7L7h16bioQ7f`
 - Images: Cloudinary, cloud `dywsk8iat`, upload preset `juniorcaddie_marketplace`
 - Forms: Formspree — community signup `xbdewqvn`, marketplace enquiry `xgojwvag`
 - Email: Mailchimp for campaigns, ImprovMX for inbound mail
@@ -49,7 +52,9 @@ Never introduce www URLs, canonicals, or sitemap entries.
    exceptions were themselves the ones that turned out to be wrong.)
 4. **Never publish competition data the human hasn't reviewed.** Hand-verification is the moat.
    You make verification cheap; you never make it optional. Propose additions as a diff/branch
-   for review — do not auto-commit new competition cards to `main` without sign-off.
+   for review — do not auto-commit new competition cards to `main` without sign-off. The same
+   applies to the Supabase `competitions` table (§12) — the season-refresh agent proposes
+   candidate rows for review; it never writes directly.
 5. **The soft gate stays soft.** The competitions email gate is a dismissable popup — closable
    via the ✕ button, the Escape key, an overlay click, or the "No thanks" link. A hard/
    undismissable version was tested and explicitly reverted. Do not re-introduce a hard gate
@@ -61,6 +66,9 @@ Never introduce www URLs, canonicals, or sitemap entries.
 8. **No equipment manufacturer commercial relationships or affiliate links.** Editorial
    independence on `equipment-reviews.html` is a core brand value.
 9. **No new county partnership pages without a real partnership in place.**
+10. **"Free. Always." is retired as a slogan.** Use inclusivity framing instead ("open to every
+    junior, every level"). For the paid tier specifically, use the Community Plus framing in §13
+    — never say "all free" unqualified once Community Plus exists on a page.
 
 ---
 
@@ -86,7 +94,7 @@ Never introduce www URLs, canonicals, or sitemap entries.
 ## 4. competitions.html — the main working file
 
 469KB+, single hand-edited HTML file, ~6,600 lines. Cards are rendered directly as markup
-(no data/presentation separation yet — migrating to Supabase `competition_registry` is the
+(no data/presentation separation yet — migrating to Supabase is underway, see §12 — the
 long-term fix). Date-awareness is built in: past cards get a `.past` class and are hidden by
 default; the "still to come" count and calendar view compute live from `data-date`.
 
@@ -125,6 +133,11 @@ Despite the section title, that's four labels total, not two: "Enter" and "Club 
 two *confirmed/live* tiers; "Link coming soon" and "Entry closed" are separate disabled-state
 labels for different reasons (no link found vs. window passed). Never collapse "Entry closed"
 into "Link coming soon," or invent any label beyond these four.
+
+Once Community Plus is live (§13), a fifth visual state applies on top of this: a "live"
+`comp-enter` link is shown to free users as locked (see §13's approved copy), not hidden and not
+shown as a working link that walls after the click. This is a presentation-layer concern — the
+underlying four-label classification above is unchanged and still drives the icon/status.
 
 ---
 
@@ -295,11 +308,14 @@ Also carry forward from outside that priority list: **Tiverton (Devon)** and **S
 links turned out to be stale (§2 rule 2). Easy to forget since neither county is in the
 priority-five; they still need a proper from-scratch search, not just a status-quo re-check.
 
-For every card in the rollover: re-verify per this methodology **and capture `entry_deadline`
-+ source URL while the page is already open** — this is the only cheap moment to collect deadline
-data, and it's the hard dependency for the paid tier's headline "deadline alerts" feature. It
-cannot be retrofitted without a second full pass. Migrate cards into `competition_registry`
-(Supabase) as each county is verified, rather than as a separate pass.
+For every card in the rollover: re-verify per this methodology **and capture `entry_deadline`,
+`venue_postcode` (for geocoding), and the real per-event entry route** while the page is already
+open — this is the only cheap moment to collect this data, and it's the hard dependency for
+Community Plus's headline features (deadline alerts, distance-from-home, and honestly-gated
+entry links — see §13). It cannot be retrofitted without a second full pass. Write directly into
+the Supabase `competitions` table (§12) as each county is verified — via the season-refresh
+agent producing candidate rows for review, not a direct write — rather than as a separate
+HTML-then-migrate pass.
 
 ---
 
@@ -336,3 +352,99 @@ borderline county), flag it with what you found on each side rather than guessin
 - Changing the soft gate to a hard gate.
 - Touching `about.html`'s photo set — one photo was deliberately removed; don't re-add without
   being asked.
+- Running any destructive SQL (`drop`, `truncate`, `delete`) against Supabase production.
+  Staging is fair game for iteration; see §12.
+- Writing to `households.is_member` from anywhere other than `set_household_membership()` (§12)
+  — this is the Community Plus paywall's source of truth and must never be set directly.
+
+---
+
+## 12. Supabase schema (added 2 Sep 2026)
+
+The competitions data and the whole Community Plus account model live in Supabase, migrated in
+five numbered files (`001`–`005` in the repo), applied to the staging branch first and proven
+working there before any promotion to production is even discussed. A sixth/seventh file
+(`006`/`007`) loaded the real ~439 live competitions from `competitions.html` into the staging
+table — 007 is the corrected version (006 had a parsing bug that mis-set every link as "coming
+soon"; don't reuse 006's approach for future loads).
+
+**The five core tables**
+
+- `competitions` — one row per event: `slug` (unique), `name`, `venue`, `county`, `comp_type`,
+  `event_date`, `entry_deadline`, `venue_postcode`/`lat`/`lng` (populated in the Nov rollover,
+  §8), `entry_url` (gated, see below), `link_status` (`live`/`closed`/`coming_soon` — mirrors
+  §4's four-label system), `confidence`.
+- `households` → `adults` → `juniors` — the account model. One household holds many juniors
+  (siblings share a subscription). One adult belongs to exactly one household, max 2 adults per
+  household at launch (enforced by a trigger) — no multi-household membership, no permissions
+  matrix. `household_invites` handles the invite-a-second-adult flow.
+- `saved_competitions` — the shared season calendar (a junior's saved events).
+- `county_subscriptions` — the "notify me about [county]" feature.
+- `subscriptions` — mirrors Stripe; `referrals` — the optional refer-a-friend credit system.
+
+**The paywall — how it actually works, don't break this**
+
+- `competitions.entry_url` is deliberately excluded from the anon/authenticated column grant in
+  `001_competitions.sql`. The public API literally cannot read it — this isn't a frontend `if`
+  statement, it's enforced at the database level, because the anon key lives in client-side JS
+  and anything it can read is effectively public.
+- The only way `entry_url` is ever returned to a client is `get_competition_entry()`, which
+  checks `households.is_member` server-side, on every call, before returning anything.
+- `households.is_member` is flipped only by `set_household_membership()`, called exclusively by
+  the Stripe webhook handler with the service_role key. `anon`/`authenticated` cannot call it
+  directly (explicitly revoked). Never write this flag any other way, and never build a shortcut
+  that trusts a client-supplied "I'm a member" claim.
+- Before the Feb 2027 launch, entry links are still free to everyone — that works because the
+  static-site build (service_role) bakes `entry_url` straight into the generated
+  `competitions.html`, bypassing the gate entirely by design. The gate only starts mattering
+  once the frontend switches from "read the baked HTML" to "call `get_competition_entry()` per
+  card," which happens at Phase 3 (§13).
+
+**Working conventions**
+
+- Migrations are numbered sequentially, idempotent where possible (`if not exists`,
+  `on conflict do nothing`), and each carries its own "post-run validation" checks as SQL
+  comments at the bottom — run those, don't just check the migration executed without error.
+  (006's bug is the cautionary tale: it ran successfully and still loaded wrong data.)
+- RLS is on for every table. Test as `anon` (`set role anon; ...; reset role;`) and as an
+  authenticated test user before considering any migration done.
+- When loading real site data into Supabase (as 007 did), parse defensively — don't assume a
+  fixed HTML attribute order (e.g. `class` before `href`); match the whole tag and extract
+  attributes independently of their order. Verify the resulting status breakdown against what's
+  actually visible on the live page before trusting a bulk load.
+
+---
+
+## 13. Community Plus — the paid tier
+
+- Member-facing name is "Community Plus" everywhere a user sees it (site copy, buttons, Stripe
+  product name). Never use the word "Premium" in user-facing text.
+- The pitch is support-led, not a paywall: "free to explore, forever — a Community Plus
+  membership is what keeps it alive, independent, hand-verified, ad-free, and growing." Never
+  say "all free" unqualified once this exists on a page.
+- Price: £4/month. Annual price: not yet finalised — default assumption £40/year unless told
+  otherwise; confirm with Dan before hard-coding it anywhere.
+- Free forever: browsing, searching, filtering every competition; the marketplace.
+- Community Plus unlocks: the direct "Enter →" link (see the paywall mechanics in §12), the
+  season calendar, deadline alerts, county notifications, the AI season planner, inviting a
+  second adult.
+- Approved locked-link copy (use verbatim unless told otherwise):
+  `🔒 Direct entry — Community Plus` / `Browsing's free forever. Members unlock one-click entry
+  & season tools — and keep JuniorCaddie growing. £4/mo`
+- The lock must always be shown honestly up front on the card — never a live-looking link that
+  walls after the click. This is the same honesty principle as §2 rule 1, applied to the
+  paywall.
+
+---
+
+## 14. Known small outstanding issues (competitions.html)
+
+Carried over from an earlier session's critical review — verify current state before acting,
+some may already be fixed:
+
+- 5 cards link to a county-union homepage but are labelled "Enter →" (should be "Club Website →"
+  per §4): 3× Bedfordshire, 1× Cambridgeshire, 1× Wales.
+- Two insecure `http://` links (both Durham, both past events, low urgency).
+- Surrey county-count header may not match actual card count — verify per §5.
+- Competition count references (title, meta, hero, FAQ schema) should agree with each other —
+  check before editing any of them in isolation.
