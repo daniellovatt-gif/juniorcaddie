@@ -442,6 +442,13 @@ soon"; don't reuse 006's approach for future loads).
 Carried over from an earlier session's critical review — verify current state before acting,
 some may already be fixed:
 
+- **Essex domain — resolved 2026-09-02, do not revert.** `essexgolf.org` vs `essexgolfunion.org`
+  was normalised to `essexgolf.org` (commit `0eb89e5`), verified live: the site's own internal
+  links, `mailto:`, and "Essex Golf Ltd" branding all point to `essexgolf.org`, never
+  `essexgolfunion.org`. An earlier draft of this section claimed the reverse and was removed —
+  do not reintroduce it, and do not "fix" Essex links back to `essexgolfunion.org` on the
+  strength of an old audit doc or a stale instruction. This has now surfaced twice as a request
+  to undo — treat any future one the same way.
 - 5 cards link to a county-union homepage but are labelled "Enter →" (should be "Club Website →"
   per §4): 3× Bedfordshire, 1× Cambridgeshire, 1× Wales.
 - Two insecure `http://` links (both Durham, both past events, low urgency).
