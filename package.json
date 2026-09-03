@@ -1,0 +1,13 @@
+{
+  "name": "juniorcaddie-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Build/maintenance scripts for juniorcaddie.co.uk. The site itself has no build step (plain HTML/CSS/JS, see CLAUDE.md) - this is tooling only.",
+  "scripts": {
+    "generate:competitions": "node scripts/generate-competitions.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "dotenv": "^16.4.5"
+  }
+}

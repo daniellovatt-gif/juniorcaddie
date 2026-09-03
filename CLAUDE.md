@@ -69,6 +69,12 @@ Never introduce www URLs, canonicals, or sitemap entries.
 10. **"Free. Always." is retired as a slogan.** Use inclusivity framing instead ("open to every
     junior, every level"). For the paid tier specifically, use the Community Plus framing in §13
     — never say "all free" unqualified once Community Plus exists on a page.
+11. **Never hand-edit a `comp-card` block inside `competitions.html` directly.** Every card
+    (except the 5 verbatim tour-hub cards, §4) is generated from Supabase — a direct HTML edit
+    will be silently overwritten the next time the generator runs. Any change to a competition
+    (date, link, fee, tags, anything) goes into the `competitions` table, then re-run
+    `scripts/generate-competitions.js` and review the diff (§4). Headers, counts, and banners
+    outside `.comps-grid` are genuinely still hand-authored — those are fine to edit directly.
 
 ---
 
@@ -93,10 +99,39 @@ Never introduce www URLs, canonicals, or sitemap entries.
 
 ## 4. competitions.html — the main working file
 
-469KB+, single hand-edited HTML file, ~6,600 lines. Cards are rendered directly as markup
-(no data/presentation separation yet — migrating to Supabase is underway, see §12 — the
-long-term fix). Date-awareness is built in: past cards get a `.past` class and are hidden by
-default; the "still to come" count and calendar view compute live from `data-date`.
+469KB+ HTML file, ~6,700 lines. As of 2026-09-02, the `<div class="comp-card">` blocks inside
+each `.comps-grid` are **generated from the Supabase `competitions` table** (§12) via
+`scripts/generate-competitions.js` — they are no longer hand-authored. County section headers,
+names, counts, county-links, and the county-level banner boxes remain hand-authored, since
+they aren't per-row data and the generator never touches anything outside a `.comps-grid`.
+
+Five "tour hub" cards are also still effectively hand-authored: the generator copies them
+verbatim from the existing file rather than rebuilding them, because they carry hand-written
+extra content (application-form links, "remaining dates" boxes) with no column to store it in.
+This is the `COPY_VERBATIM_SLUGS` list in the script — keep it in sync if these cards are ever
+restructured:
+- `herts-hertfordshire-futures-tour-2026`
+- `herts-hertfordshire-itour-2026`
+- `wales-ping-welsh-junior-tour`
+- `wales-wales-mini-masters-2026`
+- `pingjgt-ping-jgt-rookies-tour-9-hole`
+
+Date-awareness is built in: past cards get a `.past` class and are hidden by default; the
+"still to come" count and calendar view compute live from `data-date`.
+
+**Updating a competition:** don't hand-edit the card in `competitions.html` — see golden rule 11.
+Instead:
+1. `npm install` (once, if `node_modules` isn't already present).
+2. Copy `.env.example` to `.env` and fill in `SUPABASE_SERVICE_ROLE_KEY` from the staging
+   branch's dashboard (Project Settings → API). `.env` is git-ignored — never commit it.
+3. Make the change in Supabase (the `competitions` table, staging first, per §12).
+4. `node scripts/generate-competitions.js` — writes `competitions.generated.html`; never
+   touches the real file directly.
+5. Review the diff between `competitions.generated.html` and `competitions.html` before
+   trusting it — div balance, county headers/counts/banners untouched, and (critically) that
+   only the cards you actually meant to change have changed.
+6. Once satisfied, replace `competitions.html` with the generated file's contents and delete
+   `competitions.generated.html`. This is the workflow the first Supabase migration used.
 
 ### Card structure (match this exactly when adding)
 
@@ -356,6 +391,9 @@ borderline county), flag it with what you found on each side rather than guessin
   Staging is fair game for iteration; see §12.
 - Writing to `households.is_member` from anywhere other than `set_household_membership()` (§12)
   — this is the Community Plus paywall's source of truth and must never be set directly.
+- Hand-editing a `comp-card` block inside `competitions.html`. See golden rule 11 — any
+  competition-level change goes into Supabase and gets regenerated, not edited in the HTML
+  directly, or it will be silently lost the next time `scripts/generate-competitions.js` runs.
 
 ---
 
