@@ -487,9 +487,20 @@ some may already be fixed:
   do not reintroduce it, and do not "fix" Essex links back to `essexgolfunion.org` on the
   strength of an old audit doc or a stale instruction. This has now surfaced twice as a request
   to undo — treat any future one the same way.
-- 5 cards link to a county-union homepage but are labelled "Enter →" (should be "Club Website →"
-  per §4): 3× Bedfordshire, 1× Cambridgeshire, 1× Wales.
-- Two insecure `http://` links (both Durham, both past events, low urgency).
-- Surrey county-count header may not match actual card count — verify per §5.
-- Competition count references (title, meta, hero, FAQ schema) should agree with each other —
-  check before editing any of them in isolation.
+- **Houghton-le-Spring (Durham) stays on `http://` — intentional, do not "fix" to https.**
+  Checked 2026-09-02: `houghtongolfclub.co.uk`'s HTTPS certificate is untrusted
+  (`SEC_E_UNTRUSTED_ROOT`); the `http://` version loads fine. Two sibling insecure links
+  (Llandudno/Maesdu, Tyneside) were confirmed safe and upgraded to https in commit `75c3886` —
+  this one was deliberately left alone. Re-check the cert before ever changing this one.
+- **3 Scotland cards have a non-standard "Closed" link label, not "Entry closed."** Found
+  2026-09-02 via the §7 standard checks: `scotland-junior-tour-scotland-royal-dornoch`,
+  `-portpatrick-dunskey`, and `-alyth-glenisla` (all "Junior Tour Scotland" cards) have
+  `link_label = "Closed"` in Supabase — a third, undocumented disabled-state label, violating
+  §4's rule of exactly four labels. Fix in Supabase, not the HTML (golden rule 11), then
+  regenerate.
+- **The "Always growing" info box (near the end of competitions.html) is stale in two ways.**
+  It still says "440+ individual competitions" — the 2026-09-02 count-sync pass (title/meta/OG/
+  hero/gate copy) deliberately left this one alone, since fixing it properly needs more than a
+  number swap: its "Coming soon: Cheshire, Devon, Suffolk, Oxfordshire and more" line is also
+  wrong now — Devon, Suffolk, and Oxfordshire already have live county sections. Needs a real
+  rewrite of which counties are actually still missing, not just a count edit.
