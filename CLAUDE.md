@@ -222,6 +222,25 @@ verification:
 A standalone club open (A) must never be redirected to a generic county/national hub unless that
 club's specific event genuinely routes through it.
 
+### Pattern D — email-only entry (no web entry page)
+
+Some clubs run entries entirely by email — no online form, no dedicated entry page, sometimes no
+website at all. Confirmed first with Gillingham Junior Open (Kent), verified against the club's
+own Instagram flyer and cross-checked against an independent Golf Empire listing (discovery-only
+per §2 rule 2 — the Golf Empire URL itself is never stored or linked).
+
+- `entry_url` and `source_url` both get the `mailto:` address, e.g.
+  `mailto:name@example.com` — not a homepage guess, and not left on "Link coming soon" once a
+  real contact route is confirmed (same principle as §5 point 5).
+- `link_status = 'live'`, `link_tier = 'enter'` (this is a genuine, specific entry route for
+  *that* event, same tier as a confirmed web entry page — see §4's two-tier classification).
+- `link_label = 'Enter via email ✉'` — distinct wording from the web "Enter ↗" so a parent isn't
+  surprised their click opens a mail client instead of a page.
+- `confidence = 'verified'` only once cross-checked against a second independent source (the
+  flyer alone is one source; Golf Empire — or another club/county listing — is the second).
+- Everything else (stage badge, tags, county conventions) follows the same rules as a normal
+  standalone club open (Pattern A) — email-only only changes the link fields, nothing else.
+
 ### Data-integrity errors — flag, never remove unilaterally
 
 Watch for a card filed under the wrong county (venue actually in a different, non-adjacent
