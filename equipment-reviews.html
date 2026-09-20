@@ -106,6 +106,9 @@
     /* Review header card — dark navy */
     .review-header-card { background: var(--navy); border-radius: 12px; padding: 24px 28px; margin-bottom: 24px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; }
     .review-brand-tag { display: inline-block; background: rgba(90,170,212,0.2); border: 1px solid rgba(90,170,212,0.4); color: var(--light); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; margin-bottom: 10px; }
+    .test-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px; margin-left: 6px; }
+    .test-badge-tested { background: rgba(34,197,94,0.18); border: 1px solid rgba(34,197,94,0.45); color: #4ADE80; }
+    .test-badge-assessed { background: rgba(90,170,212,0.18); border: 1px solid rgba(90,170,212,0.45); color: var(--light); }
     .review-title { font-family: var(--serif); font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; color: white; line-height: 1.1; margin-bottom: 5px; letter-spacing: -0.3px; }
     .review-subtitle { font-size: 12px; color: var(--light); margin-bottom: 10px; }
     .review-stage-row { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -282,6 +285,11 @@
 <!-- REVIEWS -->
 <div class="reviews-wrap main">
 
+  <!-- TESTED / ASSESSED LEGEND -->
+  <div class="honest-note" style="margin-top:0; margin-bottom:32px;">
+    <strong>How we rated these:</strong> Not every review on this page comes from the same depth of hands-on time, and we'd rather tell you than blur the line. <span class="test-badge test-badge-tested" style="margin:0 4px 0 0; vertical-align:1px;">🟢 Hands-on tested</span> means our PGA Professional has physically tested that set with junior golfers. <span class="test-badge test-badge-assessed" style="margin:0 4px 0 0; vertical-align:1px;">🔵 Expert assessment</span> means the verdict is built from specifications, fitting knowledge and market research rather than in-hand testing. Both badges appear on every review header below.
+  </div>
+
   <!-- QUICK ANSWERS: LEFT-HAND & GIRLS -->
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:40px;">
     <div class="sizing-box" style="margin:0;">
@@ -303,7 +311,7 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">US Kids Golf</div>
+        <div class="review-brand-tag">US Kids Golf</div><span class="test-badge test-badge-tested">🟢 Hands-on tested</span>
         <div class="review-title">Ultralight 7 (UL7)</div>
         <div class="review-subtitle">The industry standard for beginner junior golf since 1997 · from £149</div>
         <div class="review-stage-row">
@@ -366,14 +374,14 @@
       <p>The honest limitation of the UL7 is longevity. Your child will outgrow these clubs in 12–18 months during the fast-growth years, and the performance ceiling becomes apparent once they reach Stage 3 and begin competing. The shaft technology and iron construction, while perfect for beginners, does not serve a junior who is developing real swing speed and competing regularly. That is not a criticism — it is the correct set for the stage it serves. It simply means planning ahead.</p>
 
       <div class="pull-quote">
-        "The first set most junior coaches in the UK would recommend. Buy second-hand if you can. When your child outgrows them and still loves golf, that's the best £149 you'll ever spend."
+        "The first set most junior coaches in the UK would recommend. Buy second-hand if you can. When your child outgrows them and still loves golf, that's £149 well spent."
       </div>
     </div>
     </div>
 
     <div class="verdict-box">
       <div class="verdict-label">JuniorCaddie Verdict</div>
-      <div class="verdict-text">The best first set of clubs in the world for the price. Buy second-hand at Stage 1 — the resale market is excellent because the quality is consistent. Buy new at Stage 2 if your child is playing regularly. The gold standard in beginner junior golf equipment. Nothing else comes close at this price point.</div>
+      <div class="verdict-text">Best suited to a first set for a child just starting out. Buy second-hand at Stage 1 — the resale market is excellent because the quality is consistent. Buy new at Stage 2 if your child is playing regularly. One of the strongest beginner junior golf sets on the UK market at this price point.</div>
     </div>
 
     <div class="price-row">
@@ -394,7 +402,7 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">US Kids Golf</div>
+        <div class="review-brand-tag">US Kids Golf</div><span class="test-badge test-badge-tested">🟢 Hands-on tested</span>
         <div class="review-title">Tour Series 6 (TS6)</div>
         <div class="review-subtitle">US Kids' premium performance range — designed for advanced competitors · from £299</div>
         <div class="review-stage-row">
@@ -466,7 +474,7 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">PING</div>
+        <div class="review-brand-tag">PING</div><span class="test-badge test-badge-tested">🟢 Hands-on tested</span>
         <div class="review-title">Prodi G</div>
         <div class="review-subtitle">The benchmark for serious junior golf equipment · from £800 custom</div>
         <div class="review-stage-row">
@@ -539,7 +547,7 @@
 
     <div class="verdict-box">
       <div class="verdict-label">JuniorCaddie Verdict</div>
-      <div class="verdict-text">The best junior golf clubs made. The fitting system is unmatched. The free resize programme makes the premium price rational. Buy these the moment you are certain golf is going to be a serious part of your child's life — and not one day before. When you do, buy them without hesitation.</div>
+      <div class="verdict-text">Best suited to a family that's certain golf is becoming a serious part of their child's life — and not one day before. The fitting system stands apart from the rest of the junior market, and the free resize programme is what makes the premium price rational. When the moment is right, buy with confidence.</div>
     </div>
 
     <div class="price-row">
@@ -560,7 +568,7 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">TaylorMade</div>
+        <div class="review-brand-tag">TaylorMade</div><span class="test-badge test-badge-assessed">🔵 Expert assessment</span>
         <div class="review-title">Team TaylorMade Junior Set</div>
         <div class="review-subtitle">The smartest packaged set for ages 4–12 · £249–£499</div>
         <div class="review-stage-row">
@@ -639,7 +647,7 @@
 
     <div class="verdict-box">
       <div class="verdict-label">JuniorCaddie Verdict</div>
-      <div class="verdict-text">The best packaged junior set available today. Better quality than most parents expect at this price. A genuinely smart purchase for the Stage 1–3 junior whose interest is confirmed. Check the height specifications — don't buy by age label. The Size 3 set is a particularly strong buy for a 10–12 year old getting seriously into competition.</div>
+      <div class="verdict-text">Best suited to a Stage 1–3 junior whose interest in golf is confirmed. Better quality than most parents expect at this price. Check the height specifications — don't buy by age label. The Size 3 set is a particularly strong buy for a 10–12 year old getting seriously into competition.</div>
     </div>
 
     <div class="price-row">
@@ -660,9 +668,9 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">Callaway</div>
+        <div class="review-brand-tag">Callaway</div><span class="test-badge test-badge-assessed">🔵 Expert assessment</span>
         <div class="review-title">XJ Junior Sets & XT Teen</div>
-        <div class="review-subtitle">A complete range from ages 7 to 16 — including the best teen set on the market · £349–£499</div>
+        <div class="review-subtitle">A complete range from ages 7 to 16 — including one of the standout teen sets on the market · £349–£499</div>
         <div class="review-stage-row">
           <span class="stage-chip s2">🏌️ Stage 2</span>
           <span class="stage-chip s3">📋 Stage 3</span>
@@ -719,7 +727,7 @@
         <div class="sub-set">
           <div class="sub-set-name">XT Teen</div>
           <div class="sub-set-stage"><span class="stage-chip s4">Stage 4</span><span class="stage-chip s5">Stage 5</span></div>
-          <div class="sub-set-spec">62–69" / 157–175cm · 10-piece set · the best teen set available</div>
+          <div class="sub-set-spec">62–69" / 157–175cm · 10-piece set · best suited to a serious teen closing in on adult length</div>
           <div class="sub-set-price">£499</div>
         </div>
       </div>
@@ -753,7 +761,7 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">MKids</div>
+        <div class="review-brand-tag">MKids</div><span class="test-badge test-badge-assessed">🔵 Expert assessment</span>
         <div class="review-title">MKids Junior Pro Half Set</div>
         <div class="review-subtitle">UK-designed · colour-coded by height · excellent value in the mid-tier · from £209</div>
         <div class="review-stage-row">
@@ -823,7 +831,7 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">Ben Sayers</div>
+        <div class="review-brand-tag">Ben Sayers</div><span class="test-badge test-badge-assessed">🔵 Expert assessment</span>
         <div class="review-title">M1i Junior Set</div>
         <div class="review-subtitle">The honest entry-level choice · from £99</div>
         <div class="review-stage-row">
@@ -890,7 +898,7 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">Cleveland</div>
+        <div class="review-brand-tag">Cleveland</div><span class="test-badge test-badge-assessed">🔵 Expert assessment</span>
         <div class="review-title">Cleveland Junior Series</div>
         <div class="review-subtitle">Strong entry-level alternative to Ben Sayers · from £119</div>
         <div class="review-stage-row">
@@ -955,7 +963,7 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">Wilson</div>
+        <div class="review-brand-tag">Wilson</div><span class="test-badge test-badge-assessed">🔵 Expert assessment</span>
         <div class="review-title">Profile Jr</div>
         <div class="review-subtitle">"Custom fit in a box" — the smartest budget purchase on the market · £149–£199</div>
         <div class="review-stage-row">
@@ -1039,7 +1047,7 @@
 
     <div class="review-header-card">
       <div>
-        <div class="review-brand-tag">Mizuno</div>
+        <div class="review-brand-tag">Mizuno</div><span class="test-badge test-badge-assessed">🔵 Expert assessment</span>
         <div class="review-title">JM01</div>
         <div class="review-subtitle">Mizuno's first-ever junior range — a credible premium alternative · from £329</div>
         <div class="review-stage-row">
@@ -1253,8 +1261,16 @@
 
 </div>
 
-<!-- CROSS-LINK: CLOTHING GUIDE -->
+<!-- CROSS-LINK: EQUIPMENT CHECKLIST -->
 <div class="honest-note" style="margin-top:48px; background:var(--navy); border:none;">
+  <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <div style="color:rgba(255,255,255,0.85); font-size:13px; line-height:1.6;"><strong style="color:white;">Not sure what your child actually needs?</strong><br>Skip the brand comparison and go straight to our stage-by-stage checklist — what to buy now, what can wait, at every stage of the Junior Journey.</div>
+    <a href="junior-golf-equipment-checklist.html" style="flex-shrink:0; font-size:13px; font-weight:700; color:white; background:var(--mid); padding:10px 18px; border-radius:7px;">See the equipment checklist →</a>
+  </div>
+</div>
+
+<!-- CROSS-LINK: CLOTHING GUIDE -->
+<div class="honest-note" style="margin-top:16px; background:var(--navy); border:none;">
   <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
     <div style="color:rgba(255,255,255,0.85); font-size:13px; line-height:1.6;"><strong style="color:white;">Kitted out with clubs — what about clothing?</strong><br>We've also put together an impartial guide to junior golf clothing brands, spotlighting a few small UK labels worth knowing about.</div>
     <a href="junior-golf-clothing.html" style="flex-shrink:0; font-size:13px; font-weight:700; color:white; background:var(--mid); padding:10px 18px; border-radius:7px;">See the clothing guide →</a>
@@ -1272,7 +1288,7 @@
 <!-- HONEST NOTE -->
 <div class="honest-note">
   <div class="honest-box">
-    <strong>A note on independence:</strong> JuniorCaddie has no commercial relationships with any equipment manufacturer featured in this guide. No affiliate commissions. No sponsored placements. Scores and verdicts reflect the honest assessment of our PGA Professional based on personal testing and coaching experience. Prices quoted are correct as of August 2026 — always verify current UK pricing with retailers. We always recommend buying second-hand where suitable for your child's stage.
+    <strong>A note on independence:</strong> JuniorCaddie has no commercial relationships with any equipment manufacturer featured in this guide. No affiliate commissions. No sponsored placements. US Kids Golf and PING Prodi G have been hands-on tested by our PGA Professional with junior golfers; every other review on this page is an expert assessment built from specifications, fitting knowledge and market research rather than in-hand testing — see the tested/assessed badge on each review above. Prices quoted are correct as of August 2026 — always verify current UK pricing with retailers. We always recommend buying second-hand where suitable for your child's stage.
   </div>
 </div>
 
@@ -1291,6 +1307,7 @@
     <a href="competitions.html">Competitions</a>
     <a href="journey.html">The journey</a>
     <a href="marketplace.html">Marketplace</a>
+    <a href="junior-golf-equipment-checklist.html">Equipment checklist</a>
     <a href="junior-golf-clothing.html">Clothing guide</a>
     <a href="junior-golf-accessories.html">Accessories</a>
     <a href="mailto:hello@juniorcaddie.co.uk">Contact</a>
