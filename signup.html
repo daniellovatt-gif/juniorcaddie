@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create your account | JuniorCaddie</title>
+<meta name="description" content="Create your JuniorCaddie account to join Community Plus — deadline alerts, a shared season calendar, and more.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://juniorcaddie.co.uk/signup.html">
+<style>
+  :root {
+    --navy: #0B3D6B;
+    --mid: #1A6EA8;
+    --sky: #5AAAD4;
+    --light: #7BBDE0;
+    --pale: #EEF4FB;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    background: var(--pale);
+    color: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px;
+  }
+  .wordmark {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--navy);
+    text-decoration: none;
+    margin-bottom: 28px;
+    display: inline-block;
+  }
+  .wordmark span { color: var(--mid); }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(11, 61, 107, 0.08);
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 420px;
+  }
+  h1 {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+    color: var(--navy);
+  }
+  .sub {
+    color: var(--mid);
+    font-size: 0.95rem;
+    margin: 0 0 24px;
+    line-height: 1.4;
+  }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 16px 0 6px;
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid #C9DCEC;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--navy);
+    background: #fff;
+  }
+  input:focus {
+    outline: none;
+    border-color: var(--sky);
+    box-shadow: 0 0 0 3px rgba(90, 170, 212, 0.25);
+  }
+  .hint {
+    font-size: 0.78rem;
+    color: #6B87A0;
+    margin-top: 5px;
+  }
+  button[type="submit"] {
+    width: 100%;
+    margin-top: 24px;
+    padding: 13px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button[type="submit"]:hover { background: var(--mid); }
+  button[type="submit"]:disabled { background: #A9C2D8; cursor: not-allowed; }
+  .foot {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 0.9rem;
+    color: var(--mid);
+  }
+  .foot a { color: var(--navy); font-weight: 600; text-decoration: none; }
+  .foot a:hover { text-decoration: underline; }
+  .error-box {
+    display: none;
+    background: #FDEEEE;
+    border: 1px solid #F3C6C6;
+    color: #A32E2E;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    margin-top: 18px;
+  }
+  .invite-badge {
+    display: inline-block;
+    background: var(--pale);
+    color: var(--mid);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .success-state { display: none; text-align: center; }
+  .success-state .icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .success-state p { color: var(--mid); line-height: 1.5; font-size: 0.95rem; }
+  .success-state strong { color: var(--navy); }
+  form.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<a class="wordmark" href="/index.html">⛳ Junior<span>Caddie</span></a>
+
+<div class="card">
+  <div id="inviteBadge" class="invite-badge" style="display:none;">You've been invited</div>
+  <h1 id="heading">Create your account</h1>
+  <p class="sub" id="subheading">Free to browse forever. Create an account when you're ready for Community Plus — deadline alerts, a shared calendar, and more.</p>
+
+  <form id="signupForm">
+    <label for="displayName">Your name</label>
+    <input type="text" id="displayName" name="displayName" autocomplete="name" placeholder="e.g. Sarah">
+
+    <label for="email">Email address</label>
+    <input type="email" id="email" name="email" autocomplete="email" required>
+    <div class="hint" id="emailHint" style="display:none;">Use the email your invite was sent to.</div>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" autocomplete="new-password" required minlength="8">
+    <div class="hint">At least 8 characters.</div>
+
+    <label for="confirmPassword">Confirm password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" required minlength="8">
+
+    <button type="submit" id="submitBtn">Create account</button>
+    <div class="error-box" id="errorBox"></div>
+  </form>
+
+  <div class="success-state" id="successState">
+    <div class="icon">📬</div>
+    <p>We've sent a confirmation link to <strong id="successEmail"></strong>.<br>Click it to finish setting up your account.</p>
+  </div>
+
+  <div class="foot" id="loginFoot">Already have an account? <a href="#" id="loginLink">Log in</a></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/jc-auth.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const inviteToken = jcGetInviteToken();
+
+  // Preserve the invite token on the "log in instead" link too.
+  document.getElementById('loginLink').href = inviteToken
+    ? `login.html?invite=${encodeURIComponent(inviteToken)}`
+    : 'login.html';
+
+  if (inviteToken) {
+    document.getElementById('inviteBadge').style.display = 'inline-block';
+    document.getElementById('heading').textContent = 'Join your household';
+    document.getElementById('subheading').textContent = "You've been invited to join a JuniorCaddie household. Sign up using the email your invite was sent to.";
+    document.getElementById('emailHint').style.display = 'block';
+  }
+
+  const form = document.getElementById('signupForm');
+  const errorBox = document.getElementById('errorBox');
+  const submitBtn = document.getElementById('submitBtn');
+
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.style.display = 'block';
+  }
+  function hideError() {
+    errorBox.style.display = 'none';
+  }
+
+  async function finishAndRedirect() {
+    try {
+      await jcEnsureMembership();
+    } catch (e) {
+      // Membership bootstrap failing post-signup shouldn't strand the user on
+      // a dead page — send them to account.html, which retries the same call.
+      console.error('jcEnsureMembership failed:', e);
+    }
+    window.location.href = 'account.html';
+  }
+
+  // If someone already has a live session (e.g. they clicked the email
+  // confirmation link and got redirected straight back here), skip the form.
+  (async () => {
+    const { data: { session } } = await jcSupabase.auth.getSession();
+    if (session) {
+      await finishAndRedirect();
+    }
+  })();
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError();
+
+    const displayName = document.getElementById('displayName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+      showError("Those passwords don't match.");
+      return;
+    }
+    if (password.length < 8) {
+      showError('Password needs to be at least 8 characters.');
+      return;
+    }
+
+    jcSetPendingName(displayName);
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Creating account…';
+
+    const redirectUrl = inviteToken
+      ? `${window.location.origin}/signup.html?invite=${encodeURIComponent(inviteToken)}`
+      : `${window.location.origin}/signup.html`;
+
+    const { data, error } = await jcSupabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { display_name: displayName || null },
+        emailRedirectTo: redirectUrl
+      }
+    });
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Create account';
+
+    if (error) {
+      showError(jcFriendlyAuthError(error.message));
+      return;
+    }
+
+    if (data.session) {
+      // Email confirmation is off for this project — we're straight in.
+      await finishAndRedirect();
+      return;
+    }
+
+    // Email confirmation required — show the "check your inbox" state.
+    document.getElementById('successEmail').textContent = email;
+    form.classList.add('hidden');
+    document.getElementById('successState').style.display = 'block';
+    document.getElementById('loginFoot').style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
