@@ -46,6 +46,20 @@
   </url>
 
   <url>
+    <loc>https://juniorcaddie.co.uk/junior-golf-shoes.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://juniorcaddie.co.uk/junior-golf-club-sizing-calculator.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://juniorcaddie.co.uk/junior-golf-clothing.html</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -101,13 +115,6 @@
     <lastmod>2026-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://juniorcaddie.co.uk/stableford-guide.html</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 
   <!-- ── IN DEVELOPMENT ──

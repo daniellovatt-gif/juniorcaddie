@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK2B373ZMM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZK2B373ZMM');
+</script>
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Junior Golf Club Sizing Calculator | JuniorCaddie</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="description" content="Free junior golf club sizing calculator. Enter your child's height to get a stage, sets to consider, typical spend and buy guidance — UK, height-based."/>
+  <link rel="canonical" href="https://juniorcaddie.co.uk/junior-golf-club-sizing-calculator.html"/>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0B3D6B;
+      --mid:    #1A6EA8;
+      --sky:    #5AAAD4;
+      --light:  #7BBDE0;
+      --pale:   #EEF4FB;
+      --green:  #22C55E;
+      --amber:  #E8A000;
+      --serif:  Georgia, serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; background: var(--pale); color: #1A2A3A; -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ── NAV ── */
+    nav { background: var(--navy); padding: 13px 48px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nl { display: flex; flex-direction: column; gap: 1px; }
+    .nl-junior { font-family: var(--serif); font-size: 10px; font-weight: 700; color: #B8D8F0; text-transform: uppercase; letter-spacing: 1px; }
+    .nl-rule { height: 1.5px; width: 100%; background: linear-gradient(to right, #EEF4FB, #1A6EA8, #7BBDE0); border-radius: 1px; margin: 2px 0; }
+    .nl-caddie { font-family: var(--serif); font-size: 18px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: -0.8px; line-height: 0.95; }
+    .nav-back { font-size: 13px; color: var(--sky); }
+
+    /* ── HERO ── */
+    .hero { background: var(--navy); padding: 56px 48px 48px; }
+    .hero-inner { max-width: 720px; margin: 0 auto; }
+    .hero-section { font-size: 10px; color: var(--sky); letter-spacing: 4px; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+    .hero-section::after { content: ''; flex: 0 0 48px; height: 1px; background: rgba(90,170,212,0.4); }
+    .hero h1 { font-family: var(--serif); font-size: clamp(26px, 4vw, 40px); font-weight: 700; color: white; letter-spacing: -1px; line-height: 1.08; margin-bottom: 16px; }
+    .hero h1 em { color: var(--light); font-style: normal; }
+    .hero-intro { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.8; max-width: 560px; }
+
+    /* ── MAIN ── */
+    .main { max-width: 720px; margin: 0 auto; padding: 40px 48px 0; }
+
+    /* ── CALCULATOR CARD ── */
+    .calc-card { background: white; border: 1px solid #D0DEE8; border-radius: 14px; padding: 28px 28px 30px; }
+    .calc-field { margin-bottom: 26px; }
+    .calc-field:last-of-type { margin-bottom: 0; }
+    .calc-label { font-size: 11px; color: var(--mid); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; display: block; }
+    .calc-sub { font-size: 12px; color: #778; margin-top: -4px; margin-bottom: 10px; }
+
+    /* Height input */
+    .height-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .unit-toggle { display: inline-flex; background: var(--pale); border-radius: 7px; padding: 3px; }
+    .unit-toggle button { border: none; background: transparent; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 5px; color: #567; }
+    .unit-toggle button.active { background: var(--navy); color: white; }
+    .cm-input-wrap { display: flex; align-items: center; gap: 8px; }
+    input[type="number"] { font-family: inherit; font-size: 20px; font-weight: 700; color: var(--navy); border: 1.5px solid #D0DEE8; border-radius: 8px; padding: 10px 12px; width: 100px; }
+    input[type="number"]:focus { outline: none; border-color: var(--sky); }
+    .input-unit-label { font-size: 13px; color: #556; font-weight: 600; }
+    .ftin-wrap { display: none; align-items: center; gap: 8px; }
+    .ftin-wrap.show { display: flex; }
+    .cm-input-wrap.hide { display: none; }
+    .height-slider { width: 100%; margin-top: 16px; accent-color: var(--mid); }
+
+    /* Segmented choice buttons */
+    .choice-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .choice-btn { flex: 1; min-width: 100px; border: 1.5px solid #D0DEE8; background: white; color: #445; font-size: 13px; font-weight: 600; padding: 11px 10px; border-radius: 8px; text-align: center; transition: all .12s ease; }
+    .choice-btn:hover { border-color: var(--sky); }
+    .choice-btn.active { background: var(--navy); border-color: var(--navy); color: white; }
+
+    .calc-submit { width: 100%; margin-top: 8px; background: var(--mid); color: white; font-size: 14px; font-weight: 700; padding: 15px; border: none; border-radius: 9px; letter-spacing: 0.3px; }
+    .calc-submit:hover { background: var(--navy); }
+
+    /* ── RESULT ── */
+    .result-wrap { display: none; margin-top: 28px; }
+    .result-wrap.show { display: block; animation: fadeIn .3s ease; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
+
+    .result-header-card { background: var(--navy); border-radius: 12px; padding: 26px 28px; }
+    .result-eyebrow { font-size: 10px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+    .result-stage-row { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .stage-chip { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 4px; }
+    .s1 { background: #FEF9C3; color: #A16207; }
+    .s2 { background: #DCFCE7; color: #15803D; }
+    .s3 { background: #DBEAFE; color: #1D4ED8; }
+    .s4 { background: #F3E8FF; color: #7E22CE; }
+    .s5 { background: #FFE4E6; color: #BE123C; }
+    .result-headline { font-family: var(--serif); font-size: clamp(20px,3vw,26px); font-weight: 700; color: white; margin-bottom: 4px; }
+    .result-sub { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+    .result-body-card { background: white; border: 1px solid #D0DEE8; border-radius: 12px; padding: 24px 28px; margin-top: -1px; border-top-left-radius:0; border-top-right-radius:0; }
+    .result-block { margin-bottom: 20px; }
+    .result-block:last-child { margin-bottom: 0; }
+    .result-block-label { font-size: 10px; color: var(--mid); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+    .result-block-body { font-size: 13.5px; color: #2A3A4A; line-height: 1.7; }
+    .sets-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .set-pill { background: var(--pale); border: 1px solid #D0DEE8; color: var(--navy); font-size: 12px; font-weight: 600; padding: 5px 11px; border-radius: 20px; }
+
+    .result-divider { height: 1px; background: #EEF4FB; margin: 20px 0; }
+
+    .verdict-box { background: var(--navy); color: white; border-radius: 8px; padding: 16px 20px; margin-top: 4px; }
+    .verdict-label { font-size: 9px; color: var(--sky); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+    .verdict-text { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.65; }
+    .verdict-text a { color: var(--light); font-weight: 600; }
+
+    .result-cta-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .result-cta { flex: 1; min-width: 160px; text-align: center; font-size: 13px; font-weight: 700; padding: 12px 16px; border-radius: 8px; }
+    .result-cta.primary { background: var(--mid); color: white; }
+    .result-cta.secondary { background: white; border: 1.5px solid #D0DEE8; color: var(--navy); }
+
+    .recalc-link { display: block; text-align: center; font-size: 12px; color: var(--mid); margin-top: 16px; font-weight: 600; }
+
+    /* Honest note */
+    .honest-note { background: white; border: 1px solid #D0DEE8; border-radius: 8px; padding: 16px 20px; font-size: 12px; color: #555; line-height: 1.7; margin: 40px 0 0; }
+    .honest-note strong { color: var(--navy); }
+
+    /* Footer */
+    footer { background: var(--navy); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 64px; }
+    .footer-copy { font-size: 12px; color: var(--sky); }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .footer-links a { font-size: 12px; color: var(--light); }
+
+    @media (max-width: 620px) {
+      nav { padding: 12px 20px; }
+      .hero { padding: 40px 20px 36px; }
+      .main { padding: 32px 20px 0; }
+      .calc-card { padding: 22px 20px 26px; }
+      .result-header-card, .result-body-card { padding: 20px; }
+      .choice-btn { min-width: 90px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">
+    <div class="nl">
+      <div class="nl-junior">Junior ⛳</div>
+      <div class="nl-rule"></div>
+      <div class="nl-caddie">Caddie</div>
+    </div>
+  </a>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-section">Equipment · Calculator</div>
+    <h1>What size clubs<br>does my child<br><em>actually</em> need?</h1>
+    <p class="hero-intro">Answer four quick questions and we'll match your child's height against our full sizing chart — the same one used in our club reviews — to tell you the stage, the sets worth considering, and roughly what to spend.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- CALCULATOR -->
+  <div class="calc-card">
+
+    <div class="calc-field">
+      <label class="calc-label">1 · How tall is your child?</label>
+      <div class="height-row">
+        <div class="unit-toggle">
+          <button type="button" id="unit-cm" class="active" onclick="setUnit('cm')">cm</button>
+          <button type="button" id="unit-ftin" onclick="setUnit('ftin')">ft / in</button>
+        </div>
+        <div class="cm-input-wrap" id="cm-wrap">
+          <input type="number" id="height-cm" min="80" max="200" value="130" oninput="onHeightChange()">
+          <span class="input-unit-label">cm</span>
+        </div>
+        <div class="ftin-wrap" id="ftin-wrap">
+          <input type="number" id="height-ft" min="2" max="6" value="4" oninput="onFtInChange()">
+          <span class="input-unit-label">ft</span>
+          <input type="number" id="height-in" min="0" max="11" value="3" oninput="onFtInChange()">
+          <span class="input-unit-label">in</span>
+        </div>
+      </div>
+      <input type="range" class="height-slider" id="height-slider" min="80" max="190" value="130" oninput="onSliderChange()">
+    </div>
+
+    <div class="calc-field">
+      <label class="calc-label">2 · How handed?</label>
+      <div class="choice-row" id="hand-row">
+        <button type="button" class="choice-btn active" data-val="right" onclick="selectChoice('hand-row', this)">Right-handed</button>
+        <button type="button" class="choice-btn" data-val="left" onclick="selectChoice('hand-row', this)">Left-handed</button>
+      </div>
+    </div>
+
+    <div class="calc-field">
+      <label class="calc-label">3 · How often do they play?</label>
+      <div class="choice-row" id="freq-row">
+        <button type="button" class="choice-btn active" data-val="occasional" onclick="selectChoice('freq-row', this)">Occasional / trying it out</button>
+        <button type="button" class="choice-btn" data-val="weekly" onclick="selectChoice('freq-row', this)">Weekly, regular</button>
+        <button type="button" class="choice-btn" data-val="competitive" onclick="selectChoice('freq-row', this)">Competing</button>
+      </div>
+    </div>
+
+    <div class="calc-field">
+      <label class="calc-label">4 · Budget in mind?</label>
+      <div class="choice-row" id="budget-row">
+        <button type="button" class="choice-btn active" data-val="low" onclick="selectChoice('budget-row', this)">Under £150</button>
+        <button type="button" class="choice-btn" data-val="mid" onclick="selectChoice('budget-row', this)">£150–£300</button>
+        <button type="button" class="choice-btn" data-val="high" onclick="selectChoice('budget-row', this)">£300+</button>
+      </div>
+    </div>
+
+    <button type="button" class="calc-submit" onclick="calculate()">Get my recommendation →</button>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-wrap" id="result-wrap">
+    <div class="result-header-card">
+      <div class="result-eyebrow">Your child's equipment profile</div>
+      <div class="result-stage-row" id="result-stage-row"></div>
+      <div class="result-headline" id="result-headline"></div>
+      <div class="result-sub" id="result-sub"></div>
+    </div>
+    <div class="result-body-card">
+
+      <div class="result-block">
+        <div class="result-block-label">Sets to consider</div>
+        <div class="sets-list" id="result-sets"></div>
+      </div>
+
+      <div class="result-divider"></div>
+
+      <div class="result-block">
+        <div class="result-block-label">Typical spend at this stage</div>
+        <div class="result-block-body" id="result-budget"></div>
+      </div>
+
+      <div class="result-block">
+        <div class="result-block-label">New, used, or borrow?</div>
+        <div class="result-block-body" id="result-freq"></div>
+      </div>
+
+      <div class="result-block" id="result-hand-block" style="display:none;">
+        <div class="result-block-label">Left-handed note</div>
+        <div class="result-block-body">Left-handed junior clubs are made in far smaller numbers than right-handed, so choice is genuinely more limited. US Kids Golf and PING both produce left-handed junior options, but check current stock before assuming a specific size or set is available. Second-hand left-handed sets are rarer too — worth buying a good one when you find it on the <a href="marketplace.html" style="color:var(--mid); font-weight:600;">marketplace</a> rather than waiting for a perfect match.</div>
+      </div>
+
+      <div class="verdict-box">
+        <div class="verdict-label">JuniorCaddie says</div>
+        <div class="verdict-text" id="result-verdict"></div>
+      </div>
+
+      <div class="result-cta-row">
+        <a href="equipment-reviews.html" class="result-cta primary">See the full club reviews →</a>
+        <a href="marketplace.html" class="result-cta secondary">Browse second-hand →</a>
+      </div>
+    </div>
+    <a href="#" class="recalc-link" onclick="document.querySelector('.calc-card').scrollIntoView({behavior:'smooth'}); return false;">← Change my answers</a>
+  </div>
+
+  <div class="honest-note">
+    <strong>How this works:</strong> This calculator maps your child's height against the same sizing chart used in our full <a href="equipment-reviews.html" style="color:var(--mid); font-weight:600;">club reviews</a> — height, not age, is what actually determines fit, so a tall child for their age and a small child for their age can land at very different recommendations even at the same birthday. It's a starting point, not a substitute for trying clubs in person where possible. JuniorCaddie has no commercial relationship with any brand mentioned — no affiliate commissions, no sponsored placements.
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="nl">
+      <div class="nl-junior" style="font-size:9px;">Junior ⛳</div>
+      <div class="nl-rule" style="width:60px;"></div>
+      <div class="nl-caddie" style="font-size:14px;">Caddie</div>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 JuniorCaddie · juniorcaddie.co.uk</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="junior-golf-equipment-checklist.html">Equipment checklist</a>
+    <a href="equipment-reviews.html">Club reviews</a>
+    <a href="junior-golf-clothing.html">Clothing guide</a>
+    <a href="junior-golf-shoes.html">Shoes guide</a>
+    <a href="junior-golf-accessories.html">Accessories</a>
+    <a href="mailto:hello@juniorcaddie.co.uk">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // ── DATA: exact bands from equipment-reviews.html sizing chart ──
+  var BANDS = [
+    { max: 100,  label: 'Under 100cm', ageLabel: '3–5 yrs',   stages: ['s1'],       stageNames: 'Stage 1 · First Swing',
+      sets: ['US Kids UL7 39','Cleveland Small','Wilson Profile Jr Small'], spend: '£0 – £100' },
+    { max: 115,  label: '100–115cm',   ageLabel: '4–6 yrs',   stages: ['s1'],       stageNames: 'Stage 1 · First Swing',
+      sets: ['Ben Sayers M1i (5–8)','Cleveland Small','US Kids UL7 42–45'], spend: '£0 – £150' },
+    { max: 125,  label: '115–125cm',   ageLabel: '6–8 yrs',   stages: ['s1','s2'],  stageNames: 'Stage 1–2 · First Swing / Finding the Game',
+      sets: ['US Kids UL7 48–51','MKids Lite','TaylorMade Team (7–9)','Wilson Profile Jr Medium'], spend: '£100 – £200' },
+    { max: 140,  label: '125–140cm',   ageLabel: '9–11 yrs',  stages: ['s2','s3'],  stageNames: 'Stage 2–3 · Finding the Game / On the Course',
+      sets: ['US Kids UL7 54–57','MKids Pro','Callaway XJ (7–9)','PING Prodi G','Mizuno JM01 120'], spend: '£150 – £300' },
+    { max: 150,  label: '140–150cm',   ageLabel: '10–12 yrs', stages: ['s3','s4'],  stageNames: 'Stage 3–4 · On the Course / Serious Junior',
+      sets: ['US Kids UL7 60','Callaway XJ (9–12)','PING Prodi G','TaylorMade Team (10–12)','Mizuno JM01 140','Wilson Profile Jr Large'], spend: '£200 – £450' },
+    { max: 170,  label: '150–170cm',   ageLabel: '12–14 yrs', stages: ['s4','s5'],  stageNames: 'Stage 4–5 · Serious Junior / Transition',
+      sets: ['US Kids UL7 63','Callaway XT Teen','PING Prodi G','Junior-spec adult irons'], spend: '£400 – £800' },
+    { max: Infinity, label: '170cm+',  ageLabel: '14–16 yrs', stages: ['s5'],       stageNames: 'Stage 5 · Transition & College Golf',
+      sets: ['Callaway XT Teen','Begin transition to adult equipment'], spend: '£600 – £1,200+' }
+  ];
+
+  var STAGE_LABELS = { s1: 'Stage 1', s2: 'Stage 2', s3: 'Stage 3', s4: 'Stage 4', s5: 'Stage 5' };
+
+  var FREQ_TEXT = {
+    occasional: "Don't buy new yet if you can help it. Ask the club or coach about kit to borrow, or buy second-hand on the marketplace — occasional players outgrow clubs long before they wear them out, so there's no shortage of good used sets.",
+    weekly: "Second-hand is still the smarter first move, but this is a reasonable stage to buy new if you can't find the right used set — regular play justifies proper equipment. Check the marketplace before committing to a full-price new set.",
+    competitive: "Worth buying properly now, new or a well-maintained second-hand set close to this height band. A competing junior benefits from equipment that actually fits, and it's a reasonable point to consider a proper fitting session."
+  };
+
+  var BUDGET_NOTE = {
+    low: "At this budget, start with the entry end of the list above — Ben Sayers, Cleveland and the smaller US Kids UL7 sizes are built for exactly this price point.",
+    mid: "Most of the sets above are realistic at this budget — the packaged sets (US Kids UL7, MKids, TaylorMade, Callaway XJ) sit comfortably in this range new, and second-hand stretches it further.",
+    high: "At this budget, a fitted option like PING Prodi G or US Kids TS6 becomes realistic — see the full reviews for the case on when that premium is actually worth paying."
+  };
+
+  var currentUnit = 'cm';
+
+  function setUnit(u) {
+    currentUnit = u;
+    document.getElementById('unit-cm').classList.toggle('active', u === 'cm');
+    document.getElementById('unit-ftin').classList.toggle('active', u === 'ftin');
+    document.getElementById('cm-wrap').classList.toggle('hide', u !== 'cm');
+    document.getElementById('ftin-wrap').classList.toggle('show', u === 'ftin');
+    if (u === 'ftin') {
+      var cm = parseInt(document.getElementById('height-cm').value, 10) || 130;
+      var totalIn = cm / 2.54;
+      var ft = Math.floor(totalIn / 12);
+      var inch = Math.round(totalIn % 12);
+      document.getElementById('height-ft').value = ft;
+      document.getElementById('height-in').value = inch;
+    }
+  }
+
+  function onHeightChange() {
+    var cm = parseInt(document.getElementById('height-cm').value, 10) || 0;
+    document.getElementById('height-slider').value = cm;
+  }
+
+  function onFtInChange() {
+    var ft = parseInt(document.getElementById('height-ft').value, 10) || 0;
+    var inch = parseInt(document.getElementById('height-in').value, 10) || 0;
+    var cm = Math.round((ft * 12 + inch) * 2.54);
+    document.getElementById('height-cm').value = cm;
+    document.getElementById('height-slider').value = cm;
+  }
+
+  function onSliderChange() {
+    var cm = parseInt(document.getElementById('height-slider').value, 10);
+    document.getElementById('height-cm').value = cm;
+    if (currentUnit === 'ftin') {
+      var totalIn = cm / 2.54;
+      document.getElementById('height-ft').value = Math.floor(totalIn / 12);
+      document.getElementById('height-in').value = Math.round(totalIn % 12);
+    }
+  }
+
+  function selectChoice(rowId, btn) {
+    var row = document.getElementById(rowId);
+    var buttons = row.querySelectorAll('.choice-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('active'); }
+    btn.classList.add('active');
+  }
+
+  function getActive(rowId) {
+    return document.querySelector('#' + rowId + ' .choice-btn.active').getAttribute('data-val');
+  }
+
+  function findBand(cm) {
+    for (var i = 0; i < BANDS.length; i++) {
+      if (cm < BANDS[i].max) return BANDS[i];
+    }
+    return BANDS[BANDS.length - 1];
+  }
+
+  function calculate() {
+    var cm = parseInt(document.getElementById('height-cm').value, 10);
+    if (!cm || cm < 60 || cm > 210) {
+      alert('Please enter a height between 60cm and 210cm.');
+      return;
+    }
+    var hand = getActive('hand-row');
+    var freq = getActive('freq-row');
+    var budget = getActive('budget-row');
+    var band = findBand(cm);
+
+    var stageRowEl = document.getElementById('result-stage-row');
+    stageRowEl.innerHTML = '';
+    band.stages.forEach(function(s) {
+      var chip = document.createElement('span');
+      chip.className = 'stage-chip ' + s;
+      chip.textContent = STAGE_LABELS[s];
+      stageRowEl.appendChild(chip);
+    });
+
+    document.getElementById('result-headline').textContent = band.stageNames;
+    document.getElementById('result-sub').textContent = cm + 'cm · ' + band.label + ' band · typically ' + band.ageLabel + ' (use height, not age)';
+
+    var setsEl = document.getElementById('result-sets');
+    setsEl.innerHTML = '';
+    band.sets.forEach(function(s) {
+      var pill = document.createElement('span');
+      pill.className = 'set-pill';
+      pill.textContent = s;
+      setsEl.appendChild(pill);
+    });
+
+    document.getElementById('result-budget').innerHTML = '<strong>' + band.spend + '</strong> — ' + BUDGET_NOTE[budget];
+    document.getElementById('result-freq').textContent = FREQ_TEXT[freq];
+
+    document.getElementById('result-hand-block').style.display = (hand === 'left') ? 'block' : 'none';
+
+    var verdict = "Size by height, not age — that's the whole point of this tool. " +
+      (freq === 'occasional' ? "Since this is still early days, resist buying the top of this list — borrowed or second-hand kit at the entry end will serve just as well while you find out if golf sticks." :
+       freq === 'weekly' ? "Regular play at this height band makes a properly sized set worthwhile — check the marketplace first, then consider a new packaged set if nothing suitable turns up used." :
+       "At competitive level, fit matters more than at any earlier stage — if budget allows, this is a sensible point to get a proper fitting rather than relying on the chart alone.") +
+      " Revisit this calculator every season — junior height moves fast, and last year's size rarely lasts two.";
+    document.getElementById('result-verdict').innerHTML = verdict;
+
+    var resultWrap = document.getElementById('result-wrap');
+    resultWrap.classList.add('show');
+    setTimeout(function() { resultWrap.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
+  }
+</script>
+
+</body>
+</html>
