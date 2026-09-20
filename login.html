@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in | JuniorCaddie</title>
+<meta name="description" content="Log in to your JuniorCaddie account.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://juniorcaddie.co.uk/login.html">
+<style>
+  :root {
+    --navy: #0B3D6B;
+    --mid: #1A6EA8;
+    --sky: #5AAAD4;
+    --light: #7BBDE0;
+    --pale: #EEF4FB;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    background: var(--pale);
+    color: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px;
+  }
+  .wordmark {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--navy);
+    text-decoration: none;
+    margin-bottom: 28px;
+    display: inline-block;
+  }
+  .wordmark span { color: var(--mid); }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(11, 61, 107, 0.08);
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 420px;
+  }
+  h1 {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+    color: var(--navy);
+  }
+  .sub {
+    color: var(--mid);
+    font-size: 0.95rem;
+    margin: 0 0 24px;
+    line-height: 1.4;
+  }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 16px 0 6px;
+  }
+  input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid #C9DCEC;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--navy);
+    background: #fff;
+  }
+  input:focus {
+    outline: none;
+    border-color: var(--sky);
+    box-shadow: 0 0 0 3px rgba(90, 170, 212, 0.25);
+  }
+  button[type="submit"] {
+    width: 100%;
+    margin-top: 24px;
+    padding: 13px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button[type="submit"]:hover { background: var(--mid); }
+  button[type="submit"]:disabled { background: #A9C2D8; cursor: not-allowed; }
+  .foot {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 0.9rem;
+    color: var(--mid);
+  }
+  .foot a { color: var(--navy); font-weight: 600; text-decoration: none; }
+  .foot a:hover { text-decoration: underline; }
+  .error-box {
+    display: none;
+    background: #FDEEEE;
+    border: 1px solid #F3C6C6;
+    color: #A32E2E;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+
+<a class="wordmark" href="/index.html">⛳ Junior<span>Caddie</span></a>
+
+<div class="card">
+  <h1>Welcome back</h1>
+  <p class="sub">Log in to your JuniorCaddie account.</p>
+
+  <form id="loginForm">
+    <label for="email">Email address</label>
+    <input type="email" id="email" name="email" autocomplete="email" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" autocomplete="current-password" required>
+
+    <button type="submit" id="submitBtn">Log in</button>
+    <div class="error-box" id="errorBox"></div>
+  </form>
+
+  <div class="foot">New here? <a href="#" id="signupLink">Create an account</a></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/jc-auth.js"></script>
+<script>
+  // Preserve an invite token through to signup if someone lands here by mistake.
+  const inviteToken = new URLSearchParams(window.location.search).get('invite');
+  document.getElementById('signupLink').href = inviteToken
+    ? `signup.html?invite=${encodeURIComponent(inviteToken)}`
+    : 'signup.html';
+  if (inviteToken) sessionStorage.setItem('jc_invite_token', inviteToken);
+
+  const form = document.getElementById('loginForm');
+  const errorBox = document.getElementById('errorBox');
+  const submitBtn = document.getElementById('submitBtn');
+
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.style.display = 'block';
+  }
+  function hideError() {
+    errorBox.style.display = 'none';
+  }
+
+  async function finishAndRedirect() {
+    try {
+      await jcEnsureMembership();
+    } catch (e) {
+      console.error('jcEnsureMembership failed:', e);
+    }
+    window.location.href = 'account.html';
+  }
+
+  // Already logged in? Skip straight through.
+  (async () => {
+    const { data: { session } } = await jcSupabase.auth.getSession();
+    if (session) {
+      await finishAndRedirect();
+    }
+  })();
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError();
+
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Logging in…';
+
+    const { error } = await jcSupabase.auth.signInWithPassword({ email, password });
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Log in';
+
+    if (error) {
+      showError(jcFriendlyAuthError(error.message));
+      return;
+    }
+
+    await finishAndRedirect();
+  });
+</script>
+
+</body>
+</html>

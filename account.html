@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your account | JuniorCaddie</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://juniorcaddie.co.uk/account.html">
+<style>
+  :root {
+    --navy: #0B3D6B;
+    --mid: #1A6EA8;
+    --sky: #5AAAD4;
+    --light: #7BBDE0;
+    --pale: #EEF4FB;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    background: var(--pale);
+    color: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px;
+  }
+  .wordmark {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--navy);
+    text-decoration: none;
+    margin-bottom: 28px;
+    display: inline-block;
+  }
+  .wordmark span { color: var(--mid); }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(11, 61, 107, 0.08);
+    padding: 32px;
+    width: 100%;
+    max-width: 480px;
+  }
+  h1 {
+    font-family: Georgia, serif;
+    font-size: 1.4rem;
+    margin: 0 0 4px;
+    color: var(--navy);
+  }
+  .email { color: var(--mid); font-size: 0.9rem; margin: 0 0 22px; }
+  .pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .pill.member { background: #E4F3E9; color: #1F7A45; }
+  .pill.free { background: var(--pale); color: var(--mid); }
+  .section {
+    border-top: 1px solid #EAF1F8;
+    padding-top: 18px;
+    margin-top: 18px;
+  }
+  .section h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--mid);
+    margin: 0 0 10px;
+  }
+  .row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 0.95rem; }
+  .empty { color: #6B87A0; font-size: 0.9rem; font-style: italic; }
+  .signout {
+    width: 100%;
+    margin-top: 28px;
+    padding: 12px;
+    background: #fff;
+    color: var(--navy);
+    border: 1px solid #C9DCEC;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .signout:hover { background: var(--pale); }
+  .loading, .error-state { text-align: center; color: var(--mid); padding: 20px 0; }
+  .error-state { color: #A32E2E; }
+</style>
+</head>
+<body>
+
+<a class="wordmark" href="/index.html">⛳ Junior<span>Caddie</span></a>
+
+<div class="card">
+  <div id="loading" class="loading">Loading your account…</div>
+  <div id="errorState" class="error-state" style="display:none;"></div>
+
+  <div id="content" style="display:none;">
+    <h1 id="greeting">Welcome</h1>
+    <p class="email" id="userEmail"></p>
+    <span class="pill" id="membershipPill"></span>
+
+    <div class="section">
+      <h2>Household</h2>
+      <div class="row"><span id="householdName">—</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Adults</h2>
+      <div id="adultsList"></div>
+    </div>
+
+    <div class="section">
+      <h2>Juniors</h2>
+      <div id="juniorsList"></div>
+    </div>
+
+    <button class="signout" id="signOutBtn">Sign out</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/jc-auth.js"></script>
+<script>
+  (async () => {
+    const { data: { session } } = await jcSupabase.auth.getSession();
+    if (!session) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    const user = session.user;
+
+    let householdId;
+    try {
+      householdId = await jcEnsureMembership();
+    } catch (e) {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('errorState').style.display = 'block';
+      document.getElementById('errorState').textContent = jcFriendlyAuthError(e.message);
+      return;
+    }
+
+    const [{ data: household }, { data: adults }, { data: juniors }] = await Promise.all([
+      jcSupabase.from('households').select('name, is_member').eq('id', householdId).maybeSingle(),
+      jcSupabase.from('adults').select('email, display_name').eq('household_id', householdId),
+      jcSupabase.from('juniors').select('first_name, stage').eq('household_id', householdId)
+    ]);
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+
+    const displayName = user.user_metadata && user.user_metadata.display_name;
+    document.getElementById('greeting').textContent = `Welcome${displayName ? ', ' + displayName : ''}`;
+    document.getElementById('userEmail').textContent = user.email;
+
+    const pill = document.getElementById('membershipPill');
+    if (household && household.is_member) {
+      pill.textContent = 'Community Plus member';
+      pill.className = 'pill member';
+    } else {
+      pill.textContent = 'Browsing free';
+      pill.className = 'pill free';
+    }
+
+    document.getElementById('householdName').textContent = (household && household.name) || '—';
+
+    const adultsList = document.getElementById('adultsList');
+    if (adults && adults.length) {
+      adultsList.innerHTML = adults.map(a =>
+        `<div class="row"><span>${a.display_name || a.email}</span></div>`
+      ).join('');
+    } else {
+      adultsList.innerHTML = '<div class="empty">Nobody else linked yet.</div>';
+    }
+
+    const juniorsList = document.getElementById('juniorsList');
+    if (juniors && juniors.length) {
+      juniorsList.innerHTML = juniors.map(j =>
+        `<div class="row"><span>${j.first_name}</span><span>${j.stage ? 'Stage ' + j.stage : ''}</span></div>`
+      ).join('');
+    } else {
+      juniorsList.innerHTML = '<div class="empty">No juniors added yet — coming soon.</div>';
+    }
+
+    document.getElementById('signOutBtn').addEventListener('click', async () => {
+      await jcSupabase.auth.signOut();
+      window.location.href = 'login.html';
+    });
+  })();
+</script>
+
+</body>
+</html>
