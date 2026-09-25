@@ -82,7 +82,7 @@
     .hero-label { font-size: 11px; color: var(--sky); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
     .hero h1 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: #EEF4FB; line-height: 1.15; letter-spacing: -1px; margin-bottom: 16px; }
     .hero h1 span { color: var(--light); }
-    @media (max-width: 400px) { .hero h1 { font-size: 24px; } }
+    @media (max-width: 440px) { .hero h1 { font-size: clamp(22px, 6.4vw, 28px); } }
     .hero-sub { font-size: 16px; color: var(--light); max-width: 560px; margin: 0 auto; line-height: 1.65; }
 
     /* Stats bar */
@@ -6491,25 +6491,45 @@
 
 <script>
 
+  const SIGNUP_ERROR_MSG = 'Something went wrong — please try again, or email hello@juniorcaddie.co.uk.';
+
+  // Shows (or clears, with text '') a small error line directly under a signup form row.
+  // Shared by softSignup() and popupSignup().
+  function setSignupError(row, text) {
+    let el = row.nextElementSibling;
+    if (!el || !el.classList.contains('signup-error')) {
+      if (!text) return;
+      el = document.createElement('div');
+      el.className = 'signup-error';
+      el.style.cssText = 'font-size:13px; color:#E05A5A; margin-bottom:8px;';
+      row.insertAdjacentElement('afterend', el);
+    }
+    el.textContent = text;
+  }
+
   async function softSignup() {
     const emailEl = document.getElementById('soft-email');
     const email = emailEl.value.trim();
     if (!email || !email.includes('@')) { emailEl.style.borderColor='#E05A5A'; emailEl.focus(); return; }
     const btn = emailEl.nextElementSibling;
+    setSignupError(emailEl.parentElement, '');
     btn.disabled = true; btn.textContent = 'Joining...';
     try {
-      await fetch('https://formspree.io/f/xbdewqvn', {
+      const res = await fetch('https://formspree.io/f/xbdewqvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ email, source: 'competitions-soft', _subject: 'New JuniorCaddie signup' })
       });
-    } finally {
+      if (!res.ok) throw new Error('Formspree ' + res.status);
       localStorage.setItem('jc_community_member', '1');
-      gtag('event', 'gate_completed', { gate: 'competitions_soft_popup', source: 'competitions-soft' });
+      if (typeof gtag === 'function') gtag('event', 'gate_completed', { gate: 'competitions_soft_popup', source: 'competitions-soft' });
       document.getElementById('soft-signup').innerHTML = `
         <div style="font-size:40px; margin-bottom:12px;">✅</div>
         <div style="font-family:Georgia,serif; font-size:20px; font-weight:700; color:white; margin-bottom:6px;">You're in.</div>
         <div style="font-size:14px; color:#7BBDE0;">We'll keep you posted on new competitions.</div>`;
+    } catch(e) {
+      btn.disabled = false; btn.textContent = 'Join free';
+      setSignupError(emailEl.parentElement, SIGNUP_ERROR_MSG);
     }
   }
 </script>
@@ -6616,21 +6636,25 @@
       return;
     }
     const btn = document.querySelector('.popup-btn');
+    setSignupError(emailEl.parentElement, '');
     btn.disabled = true; btn.textContent = 'Joining...';
     try {
-      await fetch('https://formspree.io/f/xbdewqvn', {
+      const res = await fetch('https://formspree.io/f/xbdewqvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ email, source: 'competitions-popup', _subject: 'New JuniorCaddie signup' })
       });
-    } finally {
+      if (!res.ok) throw new Error('Formspree ' + res.status);
       localStorage.setItem('jc_community_member', '1');
-      gtag('event', 'gate_completed', { gate: 'competitions_soft_popup', source: 'competitions-popup' });
+      if (typeof gtag === 'function') gtag('event', 'gate_completed', { gate: 'competitions_soft_popup', source: 'competitions-popup' });
       document.getElementById('popup-inner').innerHTML = `
         <div style="font-size:48px; margin-bottom:14px;">✅</div>
         <div style="font-family:Georgia,serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:8px;">You're in.</div>
         <div style="font-size:14px; color:var(--mid); line-height:1.6; margin-bottom:20px;">We'll keep you posted on new competitions and features.</div>
         <button onclick="dismissPopup('post_signup')" style="background:var(--navy); color:white; border:none; padding:12px 28px; border-radius:9px; font-size:15px; font-weight:700; cursor:pointer;">Continue browsing →</button>`;
+    } catch(e) {
+      btn.disabled = false; btn.textContent = 'Join free';
+      setSignupError(emailEl.parentElement, SIGNUP_ERROR_MSG);
     }
   }
 </script>
