@@ -898,6 +898,7 @@
       // fail silently, still mark as joined locally
     } finally {
       localStorage.setItem(UPDATES_MEMBER_KEY, '1');
+      if (typeof gtag === 'function') gtag('event', 'community_signup', { source: 'updates' });
       document.querySelector('.signup-row').style.display = 'none';
       msg.textContent = "Welcome to the community — thank you for supporting JuniorCaddie.";
     }

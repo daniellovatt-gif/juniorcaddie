@@ -577,6 +577,7 @@
     try {
       const { error } = await sb.from('listings').insert([listing]);
       if (error) throw error;
+      if (typeof gtag === 'function') gtag('event', 'marketplace_listing_submitted', { category: listing.category || '', county: listing.seller_county || '' });
       document.getElementById('listing-form').style.display = 'none';
       document.getElementById('success-wrap').classList.add('visible');
       window.scrollTo({ top: 0, behavior: 'smooth' });

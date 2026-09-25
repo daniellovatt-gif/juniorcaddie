@@ -816,6 +816,7 @@
       });
     } finally {
       localStorage.setItem('jc_community_member', '1');
+      if (typeof gtag === 'function') gtag('event', 'community_signup', { source: 'summer-camps' });
       emailEl.closest('div').parentElement.innerHTML = `
         <div style="text-align:center; width:100%;">
           <span style="font-size:22px;">✅</span>

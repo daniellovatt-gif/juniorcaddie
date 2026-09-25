@@ -521,6 +521,7 @@
   }
 
   let currentEnquiryListing = null;
+  let enquiryFormReady = false;
 
   function openEnquiry(listing) {
     currentEnquiryListing = listing;
@@ -550,25 +551,25 @@
     document.body.style.overflow = 'hidden';
 
     window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
-    formspree('initForm', { formElement: '#enquiry-form', formId: 'xgojwvag' });
-
-    // Fire GA4 event when Formspree reveals its success message (no library callback available,
-    // so we watch the element it toggles rather than guessing at internal hooks)
-    const successEl = document.querySelector('[data-fs-success]');
-    if (successEl && !successEl.dataset.jcObserved) {
-      successEl.dataset.jcObserved = '1';
-      const observer = new MutationObserver(() => {
-        const visible = successEl.style.display !== 'none' && successEl.offsetParent !== null;
-        if (visible && currentEnquiryListing && typeof gtag === 'function') {
-          gtag('event', 'marketplace_enquiry', {
-            listing_id: currentEnquiryListing.id,
-            county: currentEnquiryListing.seller_county,
-            category: currentEnquiryListing.category || 'clubs'
-          });
-          currentEnquiryListing = null;
+    // Init once: every initForm call adds another submit listener, so re-initialising on each
+    // open would send (and count) one enquiry per modal opened this session.
+    if (!enquiryFormReady) {
+      enquiryFormReady = true;
+      formspree('initForm', {
+        formElement: '#enquiry-form',
+        formId: 'xgojwvag',
+        // Called only when Formspree accepts the submission (its response-ok path)
+        onSuccess: (ctx) => {
+          ctx.form.reset(); // the library skips its own reset when onSuccess is supplied
+          if (currentEnquiryListing && typeof gtag === 'function') {
+            gtag('event', 'marketplace_enquiry', {
+              listing_id: currentEnquiryListing.id,
+              county: currentEnquiryListing.seller_county,
+              category: currentEnquiryListing.category || 'clubs'
+            });
+          }
         }
       });
-      observer.observe(successEl, { attributes: true, attributeFilter: ['style', 'class'] });
     }
   }
 

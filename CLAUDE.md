@@ -380,8 +380,12 @@ HTML-then-migrate pass.
   white text on white/pale.
 - Fonts: Georgia for headings; `-apple-system, Helvetica Neue, Arial` for body.
 - SEO: title tags <60 chars, meta descriptions <155; all canonicals → `https://juniorcaddie.co.uk`
-  (no www). Keep the displayed competition count in sync across title, meta, OG, hero stat and
-  gate copy whenever cards are added/removed.
+  (no www).
+- Competition count: the `competitions.html` `<title>` and og:title/twitter:title deliberately
+  contain **no count**, so the title stays stable in GA reports and search results — don't add
+  one back. The count lives only in the meta description, hero stat and gate copy; keep those
+  three in sync whenever cards are added/removed. The title's season ("UK 2026–27") changes its
+  year to "2027" on 1 January.
 - GA4 tag is `G-ZK2B373ZMM`. Only add/verify it when actually editing a page's `<head>`; grep for
   it first and only insert where genuinely missing.
 
