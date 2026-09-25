@@ -558,9 +558,15 @@
       formspree('initForm', {
         formElement: '#enquiry-form',
         formId: 'xgojwvag',
+        // We show our own "Enquiry sent!" block below; stop the library adding data-fs-active,
+        // which would layer its default green alert styling onto that block
+        renderSuccess: () => {},
         // Called only when Formspree accepts the submission (its response-ok path)
         onSuccess: (ctx) => {
           ctx.form.reset(); // the library skips its own reset when onSuccess is supplied
+          // Swap the form for the success message (closeModal() restores both)
+          ctx.form.style.display = 'none';
+          document.querySelector('[data-fs-success]').style.display = 'block';
           if (currentEnquiryListing && typeof gtag === 'function') {
             gtag('event', 'marketplace_enquiry', {
               listing_id: currentEnquiryListing.id,

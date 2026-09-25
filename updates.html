@@ -882,10 +882,11 @@
       return;
     }
     const btn = document.getElementById('updates-signup-btn');
+    msg.textContent = '';
     btn.disabled = true;
     btn.textContent = 'Joining...';
     try {
-      await fetch('https://formspree.io/f/xbdewqvn', {
+      const res = await fetch('https://formspree.io/f/xbdewqvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
@@ -894,13 +895,15 @@
           _subject: 'New JuniorCaddie community signup — Weekly Updates and News page'
         })
       });
-    } catch (e) {
-      // fail silently, still mark as joined locally
-    } finally {
+      if (!res.ok) throw new Error('Formspree ' + res.status);
       localStorage.setItem(UPDATES_MEMBER_KEY, '1');
       if (typeof gtag === 'function') gtag('event', 'community_signup', { source: 'updates' });
       document.querySelector('.signup-row').style.display = 'none';
       msg.textContent = "Welcome to the community — thank you for supporting JuniorCaddie.";
+    } catch (e) {
+      btn.disabled = false;
+      btn.textContent = 'Join the list';
+      msg.textContent = 'Something went wrong — please try again, or email hello@juniorcaddie.co.uk.';
     }
   }
 </script>

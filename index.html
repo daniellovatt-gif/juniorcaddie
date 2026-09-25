@@ -970,11 +970,27 @@
   const FORMSPREE_EMAIL_ID = 'xbdewqvn';
   const FORMSPREE_QUESTION_ID = 'mbdewqnn';
 
+  const SIGNUP_ERROR_MSG = 'Something went wrong — please try again, or email hello@juniorcaddie.co.uk.';
+
+  // Shows (or clears, with text '') a small error line directly under the signup form row
+  function setSignupError(row, text) {
+    let el = row.nextElementSibling;
+    if (!el || !el.classList.contains('signup-error')) {
+      if (!text) return;
+      el = document.createElement('div');
+      el.className = 'signup-error';
+      el.style.cssText = 'font-size:13px; color:#E05A5A; margin:8px 0;';
+      row.insertAdjacentElement('afterend', el);
+    }
+    el.textContent = text;
+  }
+
   async function handleSignup(source) {
     const input = document.getElementById('capture-email');
     const btn = input.nextElementSibling;
     const email = input.value.trim();
     if (!email || !email.includes('@')) { input.style.borderColor = '#E05A5A'; input.focus(); return; }
+    setSignupError(input.parentElement, '');
     btn.disabled = true; btn.textContent = 'Sending...';
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_EMAIL_ID}`, {
@@ -982,18 +998,15 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ email, source, _subject: 'New JuniorCaddie signup' })
       });
-      if (res.ok) {
-        localStorage.setItem('jc_community_member', '1');
-        input.value = ''; input.placeholder = "You're on the list. Thank you.";
-        btn.textContent = 'Done ✓'; btn.style.background = '#5AAAD4';
-        if (typeof gtag === 'function') gtag('event', 'community_signup', { source: source });
-        if (source === 'gate') setTimeout(closeCommunityGate, 1400);
-      } else throw new Error();
-    } catch(e) {
+      if (!res.ok) throw new Error('Formspree ' + res.status);
       localStorage.setItem('jc_community_member', '1');
-      btn.textContent = 'Done ✓';
+      input.value = ''; input.placeholder = "You're on the list. Thank you.";
+      btn.textContent = 'Done ✓'; btn.style.background = '#5AAAD4';
       if (typeof gtag === 'function') gtag('event', 'community_signup', { source: source });
       if (source === 'gate') setTimeout(closeCommunityGate, 1400);
+    } catch(e) {
+      btn.disabled = false; btn.textContent = 'Join now';
+      setSignupError(input.parentElement, SIGNUP_ERROR_MSG);
     }
   }
 

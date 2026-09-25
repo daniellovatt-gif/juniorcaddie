@@ -1784,6 +1784,21 @@
     sessionStorage.setItem(JOURNEY_GATE_SESSION_KEY, '1');
   }
 
+  const SIGNUP_ERROR_MSG = 'Something went wrong — please try again, or email hello@juniorcaddie.co.uk.';
+
+  // Shows (or clears, with text '') a small error line directly under the signup form row
+  function setSignupError(row, text) {
+    let el = row.nextElementSibling;
+    if (!el || !el.classList.contains('signup-error')) {
+      if (!text) return;
+      el = document.createElement('div');
+      el.className = 'signup-error';
+      el.style.cssText = 'font-size:13px; color:#E05A5A; margin-bottom:8px;';
+      row.insertAdjacentElement('afterend', el);
+    }
+    el.textContent = text;
+  }
+
   async function submitJourneyGate(gateId, emailId) {
     const emailEl = document.getElementById(emailId);
     const email = emailEl.value.trim();
@@ -1793,10 +1808,11 @@
       return;
     }
     const btn = emailEl.nextElementSibling;
+    setSignupError(emailEl.parentElement, '');
     btn.disabled = true; btn.textContent = 'Joining...';
 
     try {
-      await fetch('https://formspree.io/f/xbdewqvn', {
+      const res = await fetch('https://formspree.io/f/xbdewqvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
@@ -1805,6 +1821,7 @@
           _subject: 'New JuniorCaddie community signup — Journey page'
         })
       });
+      if (!res.ok) throw new Error('Formspree ' + res.status);
       localStorage.setItem(JOURNEY_GATE_KEY, '1');
       document.getElementById(gateId).innerHTML = `
         <div style="padding:8px 0;">
@@ -1814,9 +1831,8 @@
         </div>`;
       if (typeof gtag === 'function') gtag('event', 'community_signup', { source: 'journey' });
     } catch(e) {
-      localStorage.setItem(JOURNEY_GATE_KEY, '1');
-      btn.textContent = 'Joined ✓';
-      if (typeof gtag === 'function') gtag('event', 'community_signup', { source: 'journey' });
+      btn.disabled = false; btn.textContent = 'Join free';
+      setSignupError(emailEl.parentElement, SIGNUP_ERROR_MSG);
     }
   }
 

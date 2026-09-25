@@ -807,14 +807,17 @@
     const email = emailEl.value.trim();
     if (!email || !email.includes('@')) { emailEl.style.borderColor='#E05A5A'; emailEl.focus(); return; }
     const btn = emailEl.nextElementSibling;
+    // Error line sits inside the input/button row, wrapped onto its own line beneath them
+    let errEl = document.getElementById('camps-signup-error');
+    if (errEl) errEl.textContent = '';
     btn.disabled = true; btn.textContent = 'Joining...';
     try {
-      await fetch('https://formspree.io/f/xbdewqvn', {
+      const res = await fetch('https://formspree.io/f/xbdewqvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ email, source: 'summer-camps-page', _subject: 'New JuniorCaddie signup — camps page' })
       });
-    } finally {
+      if (!res.ok) throw new Error('Formspree ' + res.status);
       localStorage.setItem('jc_community_member', '1');
       if (typeof gtag === 'function') gtag('event', 'community_signup', { source: 'summer-camps' });
       emailEl.closest('div').parentElement.innerHTML = `
@@ -822,6 +825,15 @@
           <span style="font-size:22px;">✅</span>
           <span style="font-family:Georgia,serif; font-size:16px; font-weight:700; color:white; margin-left:10px;">You're in. We'll keep you posted.</span>
         </div>`;
+    } catch(e) {
+      btn.disabled = false; btn.textContent = 'Join free';
+      if (!errEl) {
+        errEl = document.createElement('div');
+        errEl.id = 'camps-signup-error';
+        errEl.style.cssText = 'flex-basis:100%; font-size:13px; color:#E05A5A;';
+        emailEl.parentElement.appendChild(errEl);
+      }
+      errEl.textContent = 'Something went wrong — please try again, or email hello@juniorcaddie.co.uk.';
     }
   }
 
