@@ -312,6 +312,15 @@ ul.body-list strong, ol.body-list strong { color: #1A1A1A; font-weight: 600; }
 .ready-sign { display: flex; gap: 12px; align-items: flex-start; }
 .ready-tick { width: 22px; height: 22px; border-radius: 50%; background: #22C55E; color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
 .ready-text { font-size: 14px; color: #333; line-height: 1.55; }
+.warn-tick { background: #DC2626; }
+
+/* Highlighted "this stage" row inside a jc-table */
+.jc-table .jc-highlight-row td { font-weight: 700; }
+.s1 .jc-table .jc-highlight-row td { background: var(--s1l); color: var(--s1d); }
+.s2 .jc-table .jc-highlight-row td { background: var(--s2l); color: var(--s2d); }
+.s3 .jc-table .jc-highlight-row td { background: var(--s3l); color: var(--s3d); }
+.s4 .jc-table .jc-highlight-row td { background: var(--s4l); color: var(--s4d); }
+.s5 .jc-table .jc-highlight-row td { background: var(--s5l); color: var(--s5d); }
 
 /* Nav arrows (previous/next stage) */
 .nav-arrows {
