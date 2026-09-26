@@ -151,6 +151,26 @@ p.body-text {
 }
 p.body-text:last-child { margin-bottom: 0; }
 p.body-text strong { color: #1A1A1A; font-weight: 600; }
+.jc-link { color: var(--mid); font-weight: 600; }
+
+/* Bulleted/numbered lists inside body copy (Body & Readiness, Practice, Course management boxes) */
+ul.body-list, ol.body-list {
+  font-size: 16px; color: #3A4A3A;
+  line-height: 1.85; margin: 0 0 16px; padding-left: 22px;
+}
+ul.body-list li, ol.body-list li { margin-bottom: 8px; }
+ul.body-list li:last-child, ol.body-list li:last-child { margin-bottom: 0; }
+ul.body-list strong, ol.body-list strong { color: #1A1A1A; font-weight: 600; }
+
+/* Reference tables inside body copy */
+.jc-table-wrap { overflow-x: auto; margin: 0 0 16px; -webkit-overflow-scrolling: touch; }
+.jc-table-wrap:last-child { margin-bottom: 0; }
+.jc-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,0.06); min-width: 440px; }
+.jc-table th { background: var(--navy); color: white; font-size: 12px; font-weight: 600; padding: 10px 14px; text-align: left; letter-spacing: 0.03em; white-space: nowrap; }
+.jc-table td { padding: 10px 14px; font-size: 13px; color: var(--navy); line-height: 1.5; border-bottom: 1px solid var(--pale); vertical-align: top; }
+.jc-table tr:last-child td { border-bottom: none; }
+.jc-table tbody tr:nth-child(even) td { background: #F8FBFF; }
+.jc-table td:first-child { font-weight: 600; white-space: nowrap; }
 
 /* Pull quote */
 .pull-quote {
