@@ -478,23 +478,25 @@ soon"; don't reuse 006's approach for future loads).
 
 ## 13. Community Plus — the paid tier
 
-- Member-facing name is "Community Plus" everywhere a user sees it (site copy, buttons, Stripe
+- Member-facing name is **"Community Plus"** everywhere a user sees it (site copy, buttons, Stripe
   product name). Never use the word "Premium" in user-facing text.
-- The pitch is support-led, not a paywall: "free to explore, forever — a Community Plus
-  membership is what keeps it alive, independent, hand-verified, ad-free, and growing." Never
-  say "all free" unqualified once this exists on a page.
-- Price: £4/month. Annual price: not yet finalised — default assumption £40/year unless told
-  otherwise; confirm with Dan before hard-coding it anywhere.
-- Free forever: browsing, searching, filtering every competition; the marketplace.
-- Community Plus unlocks: the direct "Enter →" link (see the paywall mechanics in §12), the
-  season calendar, deadline alerts, county notifications, the AI season planner, inviting a
-  second adult.
-- Approved locked-link copy (use verbatim unless told otherwise):
-  `🔒 Direct entry — Community Plus` / `Browsing's free forever. Members unlock one-click entry
-  & season tools — and keep JuniorCaddie growing. £4/mo`
-- The lock must always be shown honestly up front on the card — never a live-looking link that
-  walls after the click. This is the same honesty principle as §2 rule 1, applied to the
-  paywall.
+- The pitch is support-led, not a paywall: *"free to explore, forever — a Community Plus
+  membership is what keeps it alive, independent, hand-verified, ad-free, and growing."*
+  Never say "all free" unqualified once this exists on a page.
+- **Pricing: not yet decided.** Do not state, imply, or hard-code any specific figure
+  (£4, £40, "per month," "£X/mo," or any other number) anywhere — in code, copy, commit
+  messages, or this file. The only approved public claim right now is that **Community
+  Plus is coming in 2027** — no price attached.
+- **Free forever:** browsing, searching, filtering every competition; the marketplace.
+- **Community Plus unlocks:** the direct "Enter →" link (see the paywall mechanics in
+  §12), the season calendar, deadline alerts, county notifications, the AI season
+  planner, inviting a second adult.
+- **Approved copy** (use verbatim unless told otherwise):
+  `🔒 Direct entry — Community Plus`
+  `Coming 2027 — browsing stays free forever.`
+- The lock must always be shown honestly up front on the card — never a live-looking
+  link that walls after the click. This is the same honesty principle as §2 rule 1,
+  applied to the paywall.
 
 ---
 
