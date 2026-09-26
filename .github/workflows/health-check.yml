@@ -1,0 +1,39 @@
+# ============================================================================
+# JuniorCaddie -- automated competition-data health check
+# ----------------------------------------------------------------------------
+# Runs scripts/health-check.js on a schedule and on every push that touches
+# competitions.html. Read-only -- never modifies anything, never touches
+# Supabase. A failed run means "a human should take a look", not "something
+# is broken right now" -- see CLAUDE.md §7 for what each check means.
+#
+# GitHub emails repo watchers automatically when a scheduled workflow fails,
+# so a red X here surfaces without anyone needing to check the Actions tab.
+# ============================================================================
+
+name: Competition data health check
+
+on:
+  schedule:
+    # Every Monday at 08:00 UTC
+    - cron: '0 8 * * 1'
+  push:
+    branches: [main]
+    paths:
+      - 'competitions.html'
+      - 'scripts/health-check.js'
+  workflow_dispatch: {}  # allows a manual "Run workflow" button in the Actions tab
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run health check
+        run: node scripts/health-check.js competitions.html
