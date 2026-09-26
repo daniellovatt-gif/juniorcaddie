@@ -201,6 +201,70 @@ function extractExistingCard(sourceHtml, slug) {
   return sourceHtml.slice(tagStart, i);
 }
 
+function isRealHttpUrl(url) {
+  return typeof url === 'string' && /^https?:\/\//i.test(url);
+}
+
+// Builds one schema.org/Event object per eligible competition, for SEO rich-result markup.
+// Eligible = not past (real event_date, per isPast above), has no date_badge_text override
+// (that override means a placeholder/vague date like "Season series" or "Early April 2026" —
+// not a real date worth asserting in structured data), and isn't one of the 5 verbatim
+// tour-hub cards (COPY_VERBATIM_SLUGS) — those have no clean single event_date/venue to assert.
+function buildEventSchema(rows, today) {
+  return rows
+    .filter((row) => !COPY_VERBATIM_SLUGS.has(row.slug))
+    .filter((row) => !row.date_badge_text)
+    .filter((row) => !isPast(row, today))
+    .map((row) => {
+      const event = {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: row.name,
+        startDate: row.event_date,
+        location: { '@type': 'Place', name: row.venue },
+      };
+
+      // Only a real http(s) entry link is offer-worthy — never a mailto: (Pattern D, §5) and
+      // never the "#" placeholder href used for coming_soon (§4's four-label system). Also
+      // require a known fee: fabricating a price for a row with no entry_fee_pence would
+      // violate the "never fabricate" principle (CLAUDE.md §2 rule 6) just as much as a
+      // fabricated link would.
+      if (isRealHttpUrl(row.entry_url) && row.entry_fee_pence != null) {
+        event.offers = {
+          '@type': 'Offer',
+          price: (row.entry_fee_pence / 100).toFixed(2),
+          priceCurrency: 'GBP',
+          url: row.entry_url,
+          availability:
+            row.link_status === 'closed'
+              ? 'https://schema.org/SoldOut'
+              : 'https://schema.org/InStock',
+        };
+      }
+
+      return event;
+    });
+}
+
+const SCHEMA_BEGIN_MARKER = '<!-- BEGIN GENERATED EVENT SCHEMA -->';
+const SCHEMA_END_MARKER = '<!-- END GENERATED EVENT SCHEMA -->';
+
+// Replaces the previously-generated schema block in place if present (so re-running the
+// generator doesn't duplicate it), otherwise inserts a new one just before </head>.
+function injectEventSchema(html, events) {
+  const script = `${SCHEMA_BEGIN_MARKER}\n<script type="application/ld+json">\n${JSON.stringify(events, null, 2)}\n</script>\n${SCHEMA_END_MARKER}`;
+
+  const beginIdx = html.indexOf(SCHEMA_BEGIN_MARKER);
+  const endIdx = html.indexOf(SCHEMA_END_MARKER);
+  if (beginIdx !== -1 && endIdx !== -1) {
+    return html.slice(0, beginIdx) + script + html.slice(endIdx + SCHEMA_END_MARKER.length);
+  }
+
+  const headCloseIdx = html.indexOf('</head>');
+  if (headCloseIdx === -1) return html; // bail rather than guess at a malformed file
+  return html.slice(0, headCloseIdx) + script + '\n' + html.slice(headCloseIdx);
+}
+
 // Finds the full span of a `.comps-grid` div (from its opening tag through its true
 // matching closing tag), tracking div depth rather than assuming the first `</div>`
 // found is the right one (per CLAUDE.md §12: parse defensively, don't assume structure).
@@ -290,9 +354,13 @@ async function main() {
     replacedCounties.push(county);
   }
 
+  const eventSchema = buildEventSchema(data, today);
+  html = injectEventSchema(html, eventSchema);
+
   fs.writeFileSync(OUTPUT_PATH, html, 'utf8');
 
   console.log(`\nWrote ${OUTPUT_PATH}`);
+  console.log(`Built Event schema for ${eventSchema.length} competitions.`);
   console.log(`Replaced grids for ${replacedCounties.length} counties: ${replacedCounties.join(', ')}`);
   console.log(`Copied verbatim (unchanged from live file): ${copiedVerbatim.length}/${COPY_VERBATIM_SLUGS.size} — ${copiedVerbatim.join(', ')}`);
   if (copyVerbatimNotFound.length) {
